@@ -2,15 +2,36 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-import Header from './components/header';
-import Home from './pages/home';
-
-import './App.css';
+//import { Home } from './pages/exports';
+import { BlockHeader, PageLoader, TopBar, Navigation } from './components/exports';
 
 class App extends Component {
   render() {
     return (
-        <Router>
+      <div>
+        <PageLoader />
+          <div class="overlay"></div>    
+          <TopBar />
+          <section>
+            <aside id="leftsidebar" class="sidebar">
+              <Navigation />
+            </aside>
+          </section>
+          <section class="content">
+            <div class="container-fluid">
+              <BlockHeader header="DASHBOARD"/>
+              
+            </div>
+          </section>
+      </div>
+    )
+  }
+}
+
+export default App;
+
+/*
+<Router>
           <div className = "main">
             <Header />
             <br />
@@ -24,9 +45,8 @@ class App extends Component {
 
             <Route exact path="/" component={Home} />
           </div>
+          
         </Router>
-    )
-  }
-}
 
-export default App;
+*/
+
