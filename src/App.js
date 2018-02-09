@@ -6,6 +6,13 @@ import Header from './components/header';
 import Home from './pages/home';
 
 import './App.css';
+import 'https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext';
+import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+import './assets/plugins/node-waves/waves.css'; //Waves effect
+import './assets/plugins/animate-css/animate.css'; //Animation
+import './assets/plugins/morrisjs/morris.css'; //Morris chart
+import './assets/css/style.css'; //UI custom CSS
+import './assets/css/themes/theme-black.css'; //AdminBSB theme-black
 
 class App extends Component {
   render() {
