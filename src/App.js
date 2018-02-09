@@ -1,6 +1,5 @@
 /*jshint esversion:6 */
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 //import { Home } from './pages/exports';
 import { BlockHeader, PageLoader, TopBar, Navigation } from './components/exports';
@@ -10,15 +9,15 @@ class App extends Component {
     return (
       <div>
         <PageLoader />
-          <div class="overlay"></div>    
+          <div className="overlay"></div>    
           <TopBar />
           <section>
-            <aside id="leftsidebar" class="sidebar">
+            <aside id="leftsidebar" className="sidebar">
               <Navigation />
             </aside>
           </section>
-          <section class="content">
-            <div class="container-fluid">
+          <section className="content">
+            <div className="container-fluid">
               <BlockHeader header="DASHBOARD"/>
               
             </div>
@@ -30,23 +29,5 @@ class App extends Component {
 
 export default App;
 
-/*
-<Router>
-          <div className = "main">
-            <Header />
-            <br />
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-            </ul>
 
-            <hr />
-
-            <Route exact path="/" component={Home} />
-          </div>
-          
-        </Router>
-
-*/
 

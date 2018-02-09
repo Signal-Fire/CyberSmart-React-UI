@@ -5,6 +5,7 @@ import SearchBar from './searchBar';
 import PageLoader from './pageLoader';
 import Navigation from './navigation';
 import BlockHeader from './blockHeader';
+import Legal from './legal';
 
 export {
     Header,
@@ -12,5 +13,6 @@ export {
     SearchBar,
     PageLoader,
     Navigation,
-    BlockHeader
+    BlockHeader,
+    Legal
 };

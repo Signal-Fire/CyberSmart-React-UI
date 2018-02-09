@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 export default class BlockHeader extends Component {
     render() {
         return (
-            <div class="block-header">
+            <div className="block-header">
                 <h2>{this.props.header}</h2>
             </div>
         )
