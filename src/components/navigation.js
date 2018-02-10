@@ -27,6 +27,9 @@ export default class Navigation extends Component {
                                 <NavTab icon="arrow_back" name="Sign out" />
                             </Link>
                             <Route exact path="/" component={Home} />
+                            <Route path = "/" component = {Home} />
+                            <Route path = "/" component = {Home} />
+                            <Route path = "/" component = {Home} />
                         </ul>
                     </div>
                     <Legal />
