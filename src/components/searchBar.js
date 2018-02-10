@@ -7,7 +7,7 @@ export default class SearchBar extends Component {
             <div>
                 <div className="collapse navbar-collapse" id="navbar-collapse">
                     <ul className="nav navbar-nav navbar-right">
-                        <li><a href="javascript:void(0);" className="js-search" data-close="true"><i className="material-icons">search</i></a></li>
+                        <li><a className="js-search" data-close="true"><i className="material-icons">search</i></a></li>
                     </ul>
                 </div>
                 <div className="search-bar">

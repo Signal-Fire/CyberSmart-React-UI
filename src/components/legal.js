@@ -6,7 +6,7 @@ export default class Legal extends Component {
         return (
             <div className="legal">
                 <div className="copyright">
-                    &copy; 2018 <a href="javascript:void(0);">CyberSmart</a>
+                    &copy; 2018 <a>CyberSmart</a>
                 </div>
             </div>
         )
