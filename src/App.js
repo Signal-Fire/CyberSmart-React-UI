@@ -1,32 +1,30 @@
 /*jshint esversion:6 */
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-import Header from './components/header';
-import Home from './pages/home';
+//import { Home } from './pages/exports';
+import { BlockHeader, PageLoader, TopBar, Navigation } from './components/exports';
 
-import './App.css';
-
-class App extends Component {
+export default class App extends Component {
   render() {
     return (
-      <Router>
-        <div className = "main">
-          <Header />
-          <br />
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-          </ul>
-
-          <hr />
-
-          <Route exact path="/" component={Home} />
-        </div>
-      </Router>
+      <div>
+        <PageLoader />
+          <div className="overlay"></div>    
+          <TopBar />
+          <section>
+            <aside id="leftsidebar" className="sidebar">
+              <Navigation />
+            </aside>
+          </section>
+          <section className="content">
+            <div className="container-fluid">
+              <BlockHeader header="DASHBOARD"/>
+              
+            </div>
+          </section>
+      </div>
     )
   }
 }
 
-export default App;
+
