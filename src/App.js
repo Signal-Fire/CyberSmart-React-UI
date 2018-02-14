@@ -4,9 +4,8 @@ import { Sidebar, Segment, Menu, Card } from 'semantic-ui-react';
 import { Scrollbars } from 'react-custom-scrollbars';
 
 //Custom imports
-import { MenuBar, SideBarItems, DeviceWidget } from './components/Exports/Exports';
+import { MenuBar, CustomSideBar, DeviceWidget } from './components/Exports/Exports';
 
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
@@ -29,7 +28,7 @@ class App extends Component {
               autoHeightMax={1000}>       
                 <Sidebar.Pushable as={ Segment }>        
                   <Sidebar as={Menu} animation='slide out' direction='left' width='wide' visible={this.state.visible} icon='labeled' vertical inverted>            
-                    <SideBarItems />          
+                    <CustomSideBar />          
                   </Sidebar>
                   <Sidebar.Pusher>             
                         <header className="App-header">

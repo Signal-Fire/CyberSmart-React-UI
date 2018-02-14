@@ -1,9 +1,9 @@
 /* jshint esversion: 6*/
 import React, { Component } from 'react';
-import { Card, Button, Image } from 'semantic-ui-react';
+import { Card, Button } from 'semantic-ui-react';
 import { AreaChart, Area } from 'recharts';
 
-export default class componentName extends Component {
+export default class Device extends Component {
     render() {
         const data = [
             {name: '13:00', kwh: 2400},
