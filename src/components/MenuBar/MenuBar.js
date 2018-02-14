@@ -2,48 +2,34 @@
 import React, { Component } from 'react';
 
 import { Dropdown, Icon, Menu, Segment } from 'semantic-ui-react';
-import { MenuIcon } from '../Exports/Exports';
+import { MenuIcon, MenuMessage } from '../Exports/Exports';
 
-export default class componentName extends Component {
+export default class MenuBar extends Component {
   componentWillMount() {
     
   }
 
   render() {
     return (
-      <div className="ui secondary menu">      
+      <div className="ui primary menu">      
         <div className="left logo">
           <div className= "item"> 
-            <p>Logo </p>
+            <p>CyberSmart</p>
           </div>
-        </div>
-        <a className="active item">
-          Home
-        </a>
-        <a className="item">
-          Messages
-        </a>
-        <a className="item">
-          Friends
-        </a>        
+        </div>     
         <div className="right menu">   
-          <Dropdown item icon='announcement' simple>
-            <Dropdown.Menu>
-              
-              
+          <Dropdown item icon='announcement' pointing = 'top right' simple>
+            <Dropdown.Menu>              
+              <MenuMessage message="You left x lights on this week!" />
             </Dropdown.Menu>
-          </Dropdown>            
-          <div className= "ui dropdown icon item">
-            <i className= "announcement icon" />
-          </div>
-          <div className= "ui dropdown icon item">
-            <i className= "settings icon" />
-              <div className="ui vertical menu">
-                <div className = "item">User Settings</div>
-                <div className = "item">Hub Configuration</div>
-                <div className = "item">Logout</div>
-              </div>
-          </div>
+          </Dropdown>
+          <Dropdown item icon='settings' pointing = 'top right' simple>
+            <Dropdown.Menu>              
+              <MenuIcon title = "User Settings" icon = "user"/>
+              <MenuIcon title = "Hub Configuration" icon = "settings"/>
+              <MenuIcon title = "Logout" icon = "sign out" />
+            </Dropdown.Menu>
+          </Dropdown>          
         </div>
       </div>
     )
