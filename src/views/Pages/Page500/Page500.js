@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Container, Row, Col, Button, Input, InputGroup, InputGroupAddon, InputGroupText} from 'reactstrap';
+import React, {Component} from "react";
+import {Container, Row, Col, Button, Input, InputGroup, InputGroupAddon, InputGroupButton} from "reactstrap";
 
 class Page500 extends Component {
   render() {
@@ -14,15 +14,11 @@ class Page500 extends Component {
                 <p className="text-muted float-left">The page you are looking for is temporarily unavailable.</p>
               </span>
               <InputGroup className="input-prepend">
-                <InputGroupAddon addonType="prepend">
-                  <InputGroupText>
-                    <i className="fa fa-search"></i>
-                  </InputGroupText>
-                </InputGroupAddon>
+                <InputGroupAddon><i className="fa fa-search"></i></InputGroupAddon>
                 <Input size="16" type="text" placeholder="What are you looking for?" />
-                <InputGroupAddon addonType="append">
+                <InputGroupButton>
                   <Button color="info">Search</Button>
-                </InputGroupAddon>
+                </InputGroupButton>
               </InputGroup>
             </Col>
           </Row>

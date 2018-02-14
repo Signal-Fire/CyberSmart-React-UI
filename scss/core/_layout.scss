@@ -65,22 +65,22 @@ app-root {
 // Sidebar
 //
 .sidebar-hidden {
+
   .sidebar {
     margin-left: - $sidebar-width;
   }
 }
 
 .sidebar-fixed {
+
   .sidebar {
     position: fixed;
-    z-index: $zindex-sticky - 1;
     width: $sidebar-width;
-    height: calc(100vh - #{$navbar-height});
-    // margin-top: - $navbar-height;
+    height: 100%;
 
-    // .sidebar-nav {
-    //   height: calc(100vh - #{$navbar-height});
-    // }
+    .sidebar-nav {
+      height: calc(100vh - #{$navbar-height});
+    }
   }
 
   .main, .app-footer {
@@ -88,6 +88,7 @@ app-root {
   }
 
   &.sidebar-hidden {
+
     .main, .app-footer {
       margin-left: 0;
     }
@@ -98,7 +99,12 @@ app-root {
   .sidebar {
     position: fixed;
     z-index: $zindex-sticky - 1;
-    height: calc(100vh - #{$navbar-height});
+    height: 100%;
+
+
+    .sidebar-nav {
+      height: calc(100vh - #{$navbar-height});
+    }
   }
 }
 
@@ -109,12 +115,14 @@ app-root {
     }
 
     &.sidebar-hidden {
+
       .sidebar {
         margin-left: - $sidebar-compact-width;
       }
     }
 
     &.sidebar-fixed {
+
       .main, .app-footer {
         margin-left: $sidebar-compact-width;
       }
@@ -124,13 +132,11 @@ app-root {
       }
 
       &.sidebar-hidden {
+
         .main, .app-footer {
           margin-left: 0;
         }
       }
-    }
-    .sidebar-minimizer {
-      display: none;
     }
   }
 
@@ -140,12 +146,14 @@ app-root {
     }
 
     &.sidebar-hidden {
+
       .sidebar {
         margin-left: - $sidebar-minimized-width;
       }
     }
 
     &.sidebar-fixed {
+
       .main, .app-footer {
         margin-left: $sidebar-minimized-width;
       }
@@ -155,6 +163,7 @@ app-root {
       }
 
       &.sidebar-hidden {
+
         .main, .app-footer {
           margin-left: 0;
         }
@@ -167,12 +176,14 @@ app-root {
 // Aside Menu
 //
 .aside-menu-hidden {
+
   .aside-menu {
     margin-right: - $aside-menu-width;
   }
 }
 
 .aside-menu-fixed {
+
   .aside-menu {
     position: fixed;
     right: 0;
@@ -188,6 +199,7 @@ app-root {
   }
 
   &.aside-menu-hidden {
+
     .main, .app-footer {
       margin-right: 0;
     }
@@ -211,6 +223,7 @@ app-root {
 // Breadcrumb
 //
 .breadcrumb-fixed {
+
   .main {
     $breadcrumb-height: 2 * $breadcrumb-padding-y + $font-size-base + 1.5 * $spacer;
     padding-top: $breadcrumb-height;
@@ -270,13 +283,12 @@ app-root {
 // Footer
 //
 .footer-fixed {
+
   .app-footer {
     position: fixed;
-    right: 0;
     bottom: 0;
-    left: 0;
     z-index: $zindex-sticky;
-    height: $footer-height;
+    width: 100%;
   }
 
   .app-body {
@@ -294,9 +306,6 @@ app-root {
 .aside-menu {
   transition: margin-left $layout-transition-speed, margin-right $layout-transition-speed, width $layout-transition-speed, flex $layout-transition-speed;
 }
-.sidebar-nav {
-  transition: width $layout-transition-speed;
-}
 .breadcrumb {
   transition: left $layout-transition-speed, right $layout-transition-speed, width $layout-transition-speed;
 }
@@ -306,13 +315,12 @@ app-root {
 //
 
 @include media-breakpoint-down(md) {
-  .app-header.navbar {
+
+  .app-header {
     position: fixed !important;
     z-index: $zindex-sticky;
     width: 100%;
     text-align: center;
-    background-color: $navbar-brand-bg;
-    @include borders($navbar-brand-border);
 
     .navbar-toggler {
       @if (lightness( $navbar-brand-bg ) > 40) {
@@ -333,29 +341,15 @@ app-root {
     margin-top: $navbar-height;
   }
 
-  .breadcrumb-fixed {
-    .main:nth-child(2) .breadcrumb {
-      right: auto;
-      left: auto;
-      width: 100%;
-    }
-  }
-
   .sidebar {
     position: fixed;
-    z-index: $zindex-sticky - 1;
     width: $mobile-sidebar-width;
-    height: calc(100vh - #{$navbar-height});
+    height: 100%;
     margin-left: - $mobile-sidebar-width;
 
     .sidebar-nav,
     .nav {
-      width: $mobile-sidebar-width;
-      min-height: calc(100vh - #{$navbar-height});
-    }
-
-    .sidebar-minimizer {
-      display: none;
+      width: $mobile-sidebar-width !important;
     }
   }
 
@@ -374,14 +368,26 @@ app-root {
   }
 
   .sidebar-mobile-show {
+
     .sidebar {
       width: $mobile-sidebar-width;
       margin-left: 0;
+
+      .sidebar-nav {
+        height: calc(100vh - #{$navbar-height});
+      }
     }
 
     .main {
       margin-right: - $mobile-sidebar-width !important;
       margin-left: $mobile-sidebar-width !important;
+    }
+  }
+
+  .breadcrumb-fixed {
+    .main .breadcrumb {
+      right: 0 !important;
+      left: 0 !important;
     }
   }
 }

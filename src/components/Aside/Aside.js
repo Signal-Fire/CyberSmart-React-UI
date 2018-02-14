@@ -8,7 +8,7 @@ class Aside extends Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      activeTab: '1'
+      activeTab: '3'
     };
   }
 
@@ -24,18 +24,6 @@ class Aside extends Component {
     return (
       <aside className="aside-menu">
         <Nav tabs>
-          <NavItem>
-            <NavLink className={classnames({ active: this.state.activeTab === '1' })}
-                     onClick={() => { this.toggle('1'); }}>
-              <i className="icon-list"></i>
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink className={classnames({ active: this.state.activeTab === '2' })}
-                     onClick={() => { this.toggle('2'); }}>
-              <i className="icon-speech"></i>
-            </NavLink>
-          </NavItem>
           <NavItem>
             <NavLink className={classnames({ active: this.state.activeTab === '3' })}
                      onClick={() => { this.toggle('3'); }}>
@@ -229,8 +217,7 @@ class Aside extends Component {
                 </Label>
               </div>
               <div>
-                <small className="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua.
+                <small className="text-muted">TODO
                 </small>
               </div>
             </div>
@@ -245,8 +232,7 @@ class Aside extends Component {
                 </Label>
               </div>
               <div>
-                <small className="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua.
+                <small className="text-muted">TODO
                 </small>
               </div>
             </div>
@@ -299,6 +285,15 @@ class Aside extends Component {
             </div>
             <Progress className="progress-xs" color="success" value="10"/>
             <small className="text-muted">25GB/256GB</small>
+
+            <div className="text-uppercase mb-1 mt-2">
+              <small><b>Memory</b></small>
+            </div>
+            <Progress multi>
+              <Progress bar className="progress-xs" color="secondary" value={60}>declared</Progress>
+              <Progress bar className="progress-xs" color="info" value="15">buffered</Progress>
+            </Progress>
+            <small className="text-muted">12GB/16GB</small>
           </TabPane>
         </TabContent>
       </aside>

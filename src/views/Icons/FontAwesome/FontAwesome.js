@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Alert, Row, Col, Card, CardHeader, CardBody} from 'reactstrap';
+import {Alert, Row, Col, Card, CardHeader, CardBlock} from 'reactstrap';
 
 
 class FontAwesome extends Component {
@@ -7,10 +7,8 @@ class FontAwesome extends Component {
     return (
       <div className="animated fadeIn">
 		<Card id="new47">
-          <CardHeader>
-            <i className="fa fa-font-awesome"></i> 55 New Icons in 4.7
-          </CardHeader>
-          <CardBody>
+          <CardHeader>55 New Icons in 4.7</CardHeader>
+          <CardBlock className="card-body">
             <Row className="text-center">
               <Col className="fa-hover" xs="6" sm="4" md="3" lg="2">
                 <i className="fa fa-address-book fa-lg mt-4"></i><br/>address-book
@@ -178,11 +176,11 @@ class FontAwesome extends Component {
                 <i className="fa fa-wpexplorer fa-lg mt-4"></i><br/>wpexplorer
               </Col>
             </Row>
-          </CardBody>
+          </CardBlock>
         </Card>
 		<Card id="new">
           <CardHeader>20 New Icons in 4.5</CardHeader>
-          <CardBody>
+          <CardBlock className="card-body">
             <Row className="text-center">
 
               <Col xs="6" sm="4" md="3" lg="2">
@@ -267,12 +265,12 @@ class FontAwesome extends Component {
 
             </Row>
 
-          </CardBody>
+          </CardBlock>
         </Card>
 
         <Card id="web-application">
           <CardHeader>Web Application Icons</CardHeader>
-          <CardBody>
+          <CardBlock className="card-body">
             <Row className="text-center">
 
               <Col xs="6" sm="4" md="3" lg="2">
@@ -1864,13 +1862,13 @@ class FontAwesome extends Component {
               </Col>
 
             </Row>
-          </CardBody>
+          </CardBlock>
 
         </Card>
 
         <Card id="hand">
           <CardHeader>Hand Icons</CardHeader>
-          <CardBody>
+          <CardBlock className="card-body">
             <Row className="text-center">
 
               <Col xs="6" sm="4" md="3" lg="2">
@@ -1944,13 +1942,13 @@ class FontAwesome extends Component {
               </Col>
 
             </Row>
-          </CardBody>
+          </CardBlock>
 
         </Card>
 
         <Card id="transportation">
           <CardHeader>Transportation Icons</CardHeader>
-          <CardBody>
+          <CardBlock className="card-body">
             <Row className="text-center">
 
               <Col xs="6" sm="4" md="3" lg="2">
@@ -2023,12 +2021,12 @@ class FontAwesome extends Component {
               </Col>
 
             </Row>
-          </CardBody>
+          </CardBlock>
         </Card>
 
         <Card id="gender">
           <CardHeader>Gender Icons</CardHeader>
-          <CardBody>
+          <CardBlock className="card-body">
             <Row className="text-center">
 
               <Col xs="6" sm="4" md="3" lg="2">
@@ -2088,12 +2086,12 @@ class FontAwesome extends Component {
               </Col>
 
             </Row>
-          </CardBody>
+          </CardBlock>
         </Card>
 
         <Card id="file-type">
           <CardHeader>File Type Icons</CardHeader>
-          <CardBody>
+          <CardBlock className="card-body">
             <Row className="text-center">
 
               <Col xs="6" sm="4" md="3" lg="2">
@@ -2173,12 +2171,12 @@ class FontAwesome extends Component {
               </Col>
 
             </Row>
-          </CardBody>
+          </CardBlock>
         </Card>
 
         <Card id="spinner">
           <CardHeader>Spinner Icons</CardHeader>
-          <CardBody>
+          <CardBlock className="card-body">
             <Alert color="success">
               <ul className="fa-ul">
                 <li>
@@ -2210,12 +2208,12 @@ class FontAwesome extends Component {
               </Col>
 
             </Row>
-          </CardBody>
+          </CardBlock>
         </Card>
 
         <Card id="form-control">
           <CardHeader>Form Control Icons</CardHeader>
-          <CardBody>
+          <CardBlock className="card-body">
             <Row className="text-center">
 
               <Col xs="6" sm="4" md="3" lg="2">
@@ -2263,12 +2261,12 @@ class FontAwesome extends Component {
               </Col>
 
             </Row>
-          </CardBody>
+          </CardBlock>
         </Card>
 
         <Card id="payment">
           <CardHeader>Payment Icons</CardHeader>
-          <CardBody>
+          <CardBlock className="card-body">
             <Row className="text-center">
 
               <Col xs="6" sm="4" md="3" lg="2">
@@ -2320,12 +2318,12 @@ class FontAwesome extends Component {
               </Col>
 
             </Row>
-          </CardBody>
+          </CardBlock>
         </Card>
 
         <Card id="chart">
           <CardHeader>Chart Icons</CardHeader>
-          <CardBody>
+          <CardBlock className="card-body">
             <Row className="text-center">
 
               <Col xs="6" sm="4" md="3" lg="2">
@@ -2350,12 +2348,12 @@ class FontAwesome extends Component {
               </Col>
 
             </Row>
-          </CardBody>
+          </CardBlock>
         </Card>
 
         <Card id="currency">
           <CardHeader>Currency Icons</CardHeader>
-          <CardBody>
+          <CardBlock className="card-body">
             <Row className="text-center">
 
               <Col xs="6" sm="4" md="3" lg="2">
@@ -2464,12 +2462,12 @@ class FontAwesome extends Component {
               </Col>
 
             </Row>
-          </CardBody>
+          </CardBlock>
         </Card>
 
         <Card id="text-editor">
           <CardHeader>Text Editor Icons</CardHeader>
-          <CardBody>
+          <CardBlock className="card-body">
             <Row className="text-center">
 
               <Col xs="6" sm="4" md="3" lg="2">
@@ -2671,12 +2669,12 @@ class FontAwesome extends Component {
               </Col>
 
             </Row>
-          </CardBody>
+          </CardBlock>
         </Card>
 
         <Card id="directional">
           <CardHeader>Directional Icons</CardHeader>
-          <CardBody>
+          <CardBlock className="card-body">
             <Row className="text-center">
 
               <Col xs="6" sm="4" md="3" lg="2">
@@ -2895,12 +2893,12 @@ class FontAwesome extends Component {
               </Col>
 
             </Row>
-          </CardBody>
+          </CardBlock>
         </Card>
 
         <Card id="video-player">
           <CardHeader>Video Player Icons</CardHeader>
-          <CardBody>
+          <CardBlock className="card-body">
             <Row className="text-center">
 
               <Col xs="6" sm="4" md="3" lg="2">
@@ -2988,12 +2986,12 @@ class FontAwesome extends Component {
               </Col>
 
             </Row>
-          </CardBody>
+          </CardBlock>
         </Card>
 
         <Card id="brand">
           <CardHeader>Brand Icons</CardHeader>
-          <CardBody>
+          <CardBlock className="card-body">
             <Alert color="warning">
               <h4><i className="fa fa-warning"></i> Warning!</h4>
               Apparently, Adblock Plus can remove Font Awesome brand icons with their "Remove Social
@@ -3639,12 +3637,12 @@ class FontAwesome extends Component {
                 <li>Brand icons should only be used to represent the company or product to which they refer.</li>
               </ul>
             </Alert>
-          </CardBody>
+          </CardBlock>
         </Card>
 
         <Card id="medical">
           <CardHeader>Medical Icons</CardHeader>
-          <CardBody>
+          <CardBlock className="card-body">
             <Row className="text-center">
 
               <Col xs="6" sm="4" md="3" lg="2">
@@ -3692,7 +3690,7 @@ class FontAwesome extends Component {
               </Col>
 
             </Row>
-          </CardBody>
+          </CardBlock>
         </Card>
       </div>
 

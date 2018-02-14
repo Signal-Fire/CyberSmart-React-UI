@@ -1,19 +1,19 @@
 .breadcrumb-menu {
-  margin-left: auto;
+  position: absolute;
+  top: 0;
+  right: $breadcrumb-padding-x;
 
   &::before {
     display: none;
   }
 
-  .btn-group {
-    vertical-align: top;
+  .btn {
+    padding-top: $breadcrumb-padding-y;
+    padding-bottom: $breadcrumb-padding-y;
   }
 
   .btn {
-    padding: 0 $input-btn-padding-x;
     color: $text-muted;
-    vertical-align: top;
-    border: 0;
 
     &:hover, &.active {
       color: $body-color;

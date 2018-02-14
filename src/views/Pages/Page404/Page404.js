@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Container, Row, Col, Button, Input, InputGroupAddon, InputGroup, InputGroupText} from 'reactstrap';
+import React, {Component} from "react";
+import {Container, Row, Col, Button, Input, InputGroupAddon, InputGroup, InputGroupButton} from "reactstrap";
 
 class Page404 extends Component {
   render() {
@@ -14,15 +14,11 @@ class Page404 extends Component {
                 <p className="text-muted float-left">The page you are looking for was not found.</p>
               </div>
               <InputGroup className="input-prepend">
-                <InputGroupAddon addonType="prepend">
-                  <InputGroupText>
-                    <i className="fa fa-search"></i>
-                  </InputGroupText>
-                </InputGroupAddon>
+                <InputGroupAddon><i className="fa fa-search"></i></InputGroupAddon>
                 <Input size="16" type="text" placeholder="What are you looking for?"/>
-                <InputGroupAddon addonType="append">
+                <InputGroupButton>
                   <Button color="info">Search</Button>
-                </InputGroupAddon>
+                </InputGroupButton>
               </InputGroup>
             </Col>
           </Row>

@@ -11,10 +11,10 @@
 
   .chart-wrapper {
     position: absolute;
-    top: 10px;
-    left: 50%;
+    top: 18px;
+    left: 45%;
     float: right;
-    width: 50%;
+    width: 100px;
   }
 }
 
@@ -45,7 +45,7 @@
 }
 
 @each $color, $value in $theme-colors {
-  .callout-#{$color} {
+  &.callout-#{$color} {
     border-left-color: $value;
 
     h4 {

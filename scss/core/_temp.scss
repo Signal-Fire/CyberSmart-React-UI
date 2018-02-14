@@ -12,14 +12,24 @@
   border-radius: 1rem !important;
 }
 
-// temp fix for Vue & React
+// temp fix for Vue-Strap
 
 // Open state for the dropdown
 .open, .show {
+  // Show the menu
+  > .dropdown-menu {
+    display: block;
+  }
+
   // Remove the outline when :focus is triggered
   > a {
     outline: 0;
   }
+}
+
+//
+.modal-open .modal {
+  display: block;
 }
 
 // navbar dropdown fix
