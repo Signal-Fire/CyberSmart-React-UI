@@ -7,10 +7,14 @@ import MenuMessage from '../MenuBar/Messages/MenuMessages';
 import CustomSideBar from '../SideBar/SideBar';
 import SideBarItems from '../SideBar/SideBarItems/SideBarItems';
 
+//Device components
+import DeviceWidget from '../Device/Device';
+
 export {
     MenuBar,
     MenuIcon,
     MenuMessage,
     CustomSideBar,
-    SideBarItems
+    SideBarItems,
+    DeviceWidget
 };

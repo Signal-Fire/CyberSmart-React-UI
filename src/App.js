@@ -1,10 +1,10 @@
 /* jshint esversion: 6*/
 import React, { Component } from 'react';
-import { Sidebar, Segment, Menu } from 'semantic-ui-react';
+import { Sidebar, Segment, Menu, Card } from 'semantic-ui-react';
 import { Scrollbars } from 'react-custom-scrollbars';
 
 //Custom imports
-import { MenuBar, SideBarItems } from './components/Exports/Exports';
+import { MenuBar, SideBarItems, DeviceWidget } from './components/Exports/Exports';
 
 import logo from './logo.svg';
 import './App.css';
@@ -33,8 +33,10 @@ class App extends Component {
                   </Sidebar>
                   <Sidebar.Pusher>             
                         <header className="App-header">
-                          <img src={logo} className="App-logo" alt="logo" />
-                          <h1 className="App-title">Welcome to React</h1>
+                          <Card.Group>
+                            <DeviceWidget name = "Living Room Light" state = "OFF"/>
+                            <DeviceWidget name = "Kitchen Light" state = "ON"/>
+                          </Card.Group>
                         </header>
                   </Sidebar.Pusher>
                 </Sidebar.Pushable> 
