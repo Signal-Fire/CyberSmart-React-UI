@@ -1,29 +1,49 @@
 /*jshint esversion: 6*/
 import React, { Component } from 'react';
 
+import { Dropdown, Icon, Menu, Segment } from 'semantic-ui-react';
+import { MenuIcon } from '../Exports/Exports';
+
 export default class componentName extends Component {
+  componentWillMount() {
+    
+  }
+
   render() {
     return (
-      <div class="ui secondary  menu">
-        <a class="active item">
+      <div className="ui secondary menu">      
+        <div className="left logo">
+          <div className= "item"> 
+            <p>Logo </p>
+          </div>
+        </div>
+        <a className="active item">
           Home
         </a>
-        <a class="item">
+        <a className="item">
           Messages
         </a>
-        <a class="item">
+        <a className="item">
           Friends
-        </a>
-        <div class="right menu">
-          <div class="item">
-            <div class="ui icon input">
-              <input type="text" placeholder="Search..." />
-              <i class="search link icon"></i>
-            </div>
+        </a>        
+        <div className="right menu">   
+          <Dropdown item icon='announcement' simple>
+            <Dropdown.Menu>
+              
+              
+            </Dropdown.Menu>
+          </Dropdown>            
+          <div className= "ui dropdown icon item">
+            <i className= "announcement icon" />
           </div>
-          <a class="ui item">
-            Logout
-          </a>
+          <div className= "ui dropdown icon item">
+            <i className= "settings icon" />
+              <div className="ui vertical menu">
+                <div className = "item">User Settings</div>
+                <div className = "item">Hub Configuration</div>
+                <div className = "item">Logout</div>
+              </div>
+          </div>
         </div>
       </div>
     )
