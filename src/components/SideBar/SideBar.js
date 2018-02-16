@@ -12,6 +12,8 @@ import { DevicePage, HomePage, RoomPage, HelpPage } from '../../pages/Exports/Ex
  * Route. Leaving it as <Route path> means /#/ gets added, <Route exact path> means it goes direct to /
  * By embedding it in a div, it means each page gets rendered into the container, meaning SideBar and MenuBar
  * don't get re-rendered whenever a new page is loaded
+ * <Route exact path = "/" component = {HomePage} />
+ * means, when the URL is looking at "/", render the HomePage (../Pages/Home/Home.js) into the <div> tag encasing this route
  */
 export default class SideBar extends Component {
     render() {
