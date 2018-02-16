@@ -1,7 +1,7 @@
 /* jshint esversion: 6*/
 import React, { Component } from 'react';
 
-import { Message, Icon } from 'semantic-ui-react';
+import { Message } from 'semantic-ui-react';
 
 export default class MenuMessages extends Component {
     render() {
