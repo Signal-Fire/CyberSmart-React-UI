@@ -31,9 +31,7 @@ class App extends Component {
                     <CustomSideBar />
                   </Sidebar>
                   <Sidebar.Pusher>
-                        <header className="App-header">
-                          <DeviceWidget name = 'Lamp' state = 'ON' />
-                        </header>
+                        
                   </Sidebar.Pusher>
                 </Sidebar.Pushable>
             </Scrollbars>
