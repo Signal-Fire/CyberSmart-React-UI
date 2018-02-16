@@ -1,6 +1,5 @@
 /* jshint esversion: 6*/
 import React, { Component } from 'react';
-import { Icon, Menu } from 'semantic-ui-react';
 
 import { SideBarItem } from '../Exports/Exports';
 

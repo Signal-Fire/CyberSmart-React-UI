@@ -1,6 +1,6 @@
 /* jshint esversion: 6*/
 import React, { Component } from 'react';
-import { Sidebar, Segment, Menu, Card } from 'semantic-ui-react';
+import { Sidebar, Segment, Menu } from 'semantic-ui-react';
 import { Scrollbars } from 'react-custom-scrollbars';
 
 //Custom imports
@@ -19,7 +19,7 @@ class App extends Component {
       this.setState({ visible: !this.state.visible })
   }
 
-  render() {
+  render() {    
     return (
         <div className = "App">
             <MenuBar toggleVisibility = {this.toggleVisibility} />
@@ -32,6 +32,7 @@ class App extends Component {
                   </Sidebar>
                   <Sidebar.Pusher>
                         <header className="App-header">
+                          <DeviceWidget name = 'Lamp' state = 'ON' />
                         </header>
                   </Sidebar.Pusher>
                 </Sidebar.Pushable>
@@ -39,7 +40,7 @@ class App extends Component {
         </div>
 
     );
-  }
+  }  
 }
 
 export default App;
