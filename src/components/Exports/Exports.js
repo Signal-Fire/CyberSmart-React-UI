@@ -5,7 +5,7 @@ import MenuMessage from '../MenuBar/Messages/MenuMessages';
 
 //Sidebar
 import CustomSideBar from '../SideBar/SideBar';
-import SideBarItems from '../SideBar/SideBarItems/SideBarItems';
+import SideBarItem from '../SideBar/SideBarItem/SideBarItem';
 
 //Device components
 import DeviceWidget from '../Device/Device';
@@ -15,6 +15,6 @@ export {
     MenuIcon,
     MenuMessage,
     CustomSideBar,
-    SideBarItems,
+    SideBarItem,
     DeviceWidget
 };
