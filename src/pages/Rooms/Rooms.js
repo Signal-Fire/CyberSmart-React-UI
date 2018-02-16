@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import '../Master.css';
 import './RoomsPage.css';
 
-export default class componentName extends Component {
+export default class RoomPage extends Component {
     render() {
         return (
             <header className="page-body">

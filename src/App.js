@@ -4,7 +4,7 @@ import {  } from 'semantic-ui-react';
 import { Scrollbars } from 'react-custom-scrollbars';
 
 //Custom imports
-import { MenuBar, CustomSideBar, DeviceWidget } from './components/Exports/Exports';
+import { MenuBar, CustomSideBar } from './components/Exports/Exports';
 
 import './App.css';
 
