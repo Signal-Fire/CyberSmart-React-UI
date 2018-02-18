@@ -1,10 +1,10 @@
 /* jshint esversion: 6*/
 import React, { Component } from 'react';
-import { Sidebar, Segment, Menu } from 'semantic-ui-react';
+import {  } from 'semantic-ui-react';
 import { Scrollbars } from 'react-custom-scrollbars';
 
 //Custom imports
-import { MenuBar, CustomSideBar, DeviceWidget } from './components/Exports/Exports';
+import { MenuBar, CustomSideBar } from './components/Exports/Exports';
 
 import './App.css';
 
@@ -26,16 +26,7 @@ class App extends Component {
             <Scrollbars
               autoHeight
               autoHeightMax={1000}>
-                <Sidebar.Pushable as={ Segment }>
-                  <Sidebar as={Menu} animation='push' direction='left' width='thin' visible={this.state.visible} icon='labeled' vertical inverted>
-                    <CustomSideBar />
-                  </Sidebar>
-                  <Sidebar.Pusher>
-                        <header className="App-header">
-                          <DeviceWidget name = 'Lamp' state = 'ON' />
-                        </header>
-                  </Sidebar.Pusher>
-                </Sidebar.Pushable>
+              <CustomSideBar visible = {this.state.visible}/>   
             </Scrollbars>
         </div>
 
