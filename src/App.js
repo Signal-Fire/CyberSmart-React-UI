@@ -1,21 +1,46 @@
+/* jshint esversion: 6*/
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { Sidebar, Segment, Menu } from 'semantic-ui-react';
+import { Scrollbars } from 'react-custom-scrollbars';
+
+//Custom imports
+import { MenuBar, CustomSideBar, DeviceWidget } from './components/Exports/Exports';
+
 import './App.css';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+  constructor(props) {
+    super(props);
+    this.state = { visible: false }
+    this.toggleVisibility = this.toggleVisibility.bind(this);
   }
+
+  toggleVisibility() {
+      this.setState({ visible: !this.state.visible })
+  }
+
+  render() {    
+    return (
+        <div className = "App">
+            <MenuBar toggleVisibility = {this.toggleVisibility} />
+            <Scrollbars
+              autoHeight
+              autoHeightMax={1000}>
+                <Sidebar.Pushable as={ Segment }>
+                  <Sidebar as={Menu} animation='push' direction='left' width='thin' visible={this.state.visible} icon='labeled' vertical inverted>
+                    <CustomSideBar />
+                  </Sidebar>
+                  <Sidebar.Pusher>
+                        <header className="App-header">
+                          <DeviceWidget name = 'Lamp' state = 'ON' />
+                        </header>
+                  </Sidebar.Pusher>
+                </Sidebar.Pushable>
+            </Scrollbars>
+        </div>
+
+    );
+  }  
 }
 
 export default App;

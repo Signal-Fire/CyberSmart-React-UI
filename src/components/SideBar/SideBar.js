@@ -1,0 +1,17 @@
+/* jshint esversion: 6*/
+import React, { Component } from 'react';
+
+import { SideBarItem } from '../Exports/Exports';
+
+export default class SideBar extends Component {
+    render() {
+        return (
+            <div>
+                <SideBarItem icon = 'dashboard' title = 'Dashboard' />
+                <SideBarItem icon = 'plug' title = 'Devices' />
+                <SideBarItem icon = 'home' title = 'Rooms' />
+                <SideBarItem icon = 'info' title = 'Help' />   
+            </div>
+        )
+    }
+}
