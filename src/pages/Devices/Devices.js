@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 
 //Custom components import
-import { DeviceWidget } from '../../components/Exports/Exports';
+import { DeviceWidget } from '../../components/Exports/Widgets/Exports';
 
 //CSS import
 import '../Master.css';
