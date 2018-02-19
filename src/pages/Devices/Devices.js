@@ -13,6 +13,8 @@ export default class DevicePage extends Component {
         return (
             <header className="page-body">
                 <DeviceWidget name = 'Lamp' state = 'ON' />
+                <DeviceWidget name = 'TV' state = 'OFF' />
+                <DeviceWidget name = 'Cooker' state = 'ON' />
             </header>
         )
     }

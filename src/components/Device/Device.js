@@ -14,10 +14,10 @@ export default class Device extends Component {
             {name: '15:30', kwh: 3800},
             {name: '16:00', kwh: 4300},
         ];
-        
+
         return (
             <Card>
-                <Card.Content>                    
+                <Card.Content>
                     <Card.Header>
                     {this.props.name}
                     </Card.Header>
