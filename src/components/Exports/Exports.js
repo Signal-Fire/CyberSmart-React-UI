@@ -10,11 +10,17 @@ import SideBarItem from '../SideBar/SideBarItem/SideBarItem';
 //Device components
 import DeviceWidget from '../Device/Device';
 
+//Login page components
+
+//Home page components
+import StatisticsWidget from '../Statistics/statistics';
+
 export {
     MenuBar,
     MenuIcon,
     MenuMessage,
     CustomSideBar,
     SideBarItem,
-    DeviceWidget
+    DeviceWidget,
+    StatisticsWidget
 };

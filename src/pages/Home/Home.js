@@ -5,11 +5,14 @@ import React, { Component } from 'react';
 import '../Master.css';
 import './HomePage.css';
 
+//Custom components import
+import { StatisticsWidget } from '../../components/Exports/Exports';
+
 export default class HomePage extends Component {
     render() {
         return (
             <header className="page-body">
-                <p>Home Page</p>
+            <StatisticsWidget icon = 'power' label = 'wagwan'/>
             </header>
         )
     }
