@@ -13,7 +13,7 @@ export default class StatisticWidget extends Component {
                 <Statistic.Label > 
                     <p>{this.props.title}</p>
                 </Statistic.Label> 
-                </Statistic>
+            </Statistic>
         )
     }
 }
