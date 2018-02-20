@@ -11,7 +11,8 @@ import SideBarItem from '../SideBar/SideBarItem/SideBarItem';
 
 //Login page components
 
-//Home page components
+//charts
+import FluidChart from '../Charts/charts';
 
 //Statistics
 import StatisticsGroup from '../Statistics/StatisticsGroup';
@@ -22,5 +23,6 @@ export {
     MenuMessage,
     CustomSideBar,
     SideBarItem,
+    FluidChart,
     StatisticsGroup
 };

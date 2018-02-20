@@ -7,35 +7,11 @@ import { StatisticsWidget } from '../Exports/Widgets/Exports';
 export default class StatisticsGroup extends Component {
   render() {
     return (
-      <Statistic.Group widths = 'four' >   
-        <StatisticsWidget icon = 'power' title = 'Devices ON' number = '4' />
-        <Statistic >
-          <Statistic.Value >
-            <Icon name = 'power'/>
-            <p>4</p>
-          </Statistic.Value> 
-          <Statistic.Label> 
-            <p>Devices off</p> 
-          </Statistic.Label>
-        </Statistic>
-        <Statistic>
-          <Statistic.Value>
-            <Icon name = 'plug' />
-              <p>5</p> 
-          </Statistic.Value> 
-          <Statistic.Label> 
-            <p>Known smart plugs</p>
-          </Statistic.Label> 
-        </Statistic>
-        <Statistic>
-          <Statistic.Value>
-            <Icon name = 'warning' />
-              <p>5</p> 
-          </Statistic.Value> 
-          <Statistic.Label> 
-            <p>Errors</p> 
-          </Statistic.Label>
-        </Statistic>
+      <Statistic.Group widths = 'four' >
+        <StatisticsWidget icon = 'power' title = 'Devices ON' number = '1' />
+        <StatisticsWidget icon = 'power' title = 'Devices OFF' number = '4' />
+        <StatisticsWidget icon = 'plug' title = 'Known Plugs' number = '5' />
+        <StatisticsWidget icon = 'warning' title = 'Errors' number = '0' />
       </Statistic.Group>
     );
   }
