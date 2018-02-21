@@ -1,7 +1,8 @@
+/*jshint esversion: 6*/
 import React, {  Component  } from 'react';
 import { Card } from 'semantic-ui-react'
-import { AreaChart, Area } from 'recharts';
-
+//unused for now
+//import { AreaChart, Area } from 'recharts';
 
 export default class charts extends Component {
   render() {
