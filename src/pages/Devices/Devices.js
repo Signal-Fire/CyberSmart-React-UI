@@ -1,8 +1,12 @@
 /*jshint esversion: 6*/
 import React, { Component } from 'react';
+import { Grid } from 'semantic-ui-react';
 
 //Custom components import
 import { DeviceWidget } from '../../components/Exports/Widgets/Exports';
+
+//Models
+import { Device } from '../../models/Exports/Exports';
 
 //CSS import
 import '../Master.css';
@@ -13,7 +17,7 @@ export default class DevicePage extends Component {
         super();
         this.state = {
           isLoading: true,
-          devices: {}
+          devices: []
         };
         this.createDevices = this.createDevices.bind(this);
       }
@@ -30,9 +34,9 @@ export default class DevicePage extends Component {
         })
           .then((response) => response.json())
           .then((responseJson) => {
+            this.createDevices(responseJson);
             this.setState({
-              isLoading: false,
-              devices: this.createDevices(responseJson)
+              isLoading: false              
             }, function() {
               
             });
@@ -43,27 +47,27 @@ export default class DevicePage extends Component {
       }
     
       createDevices(responseJson) {
-        var device = {};
-        var devices = [];
-        device.name = "";
-        device.state = "";
-        
         for(let i = 0; i < responseJson.length; i++) {
-            device.name = responseJson[i].name;
-            device.state = responseJson[i].active ? 'ON' : 'OFF';    
-            devices.push(device);                  
+            Device.name = responseJson[i].name;
+            Device.state = responseJson[i].active ? 'ON' : 'OFF';   
+            Device.id = responseJson[i]._id; 
+            this.state.devices.push(Device); 
         }
 
-        return devices;
+        console.log(this.state.devices);
       }
     
     render() {
-        return (
-            <header className="page-body">
-                <DeviceWidget name = 'Lamp' state = 'ON' />
-                <DeviceWidget name = 'TV' state = 'OFF' />
-                <DeviceWidget name = 'Cooker' state = 'ON' />
-            </header>
-        )
+            return (
+                <header className="page-body">       
+                    <Grid relaxed columns = {6}>                              
+                        {this.state.devices.map((device) => 
+                            <Grid.Column>  
+                                <DeviceWidget key = {device.id} name = {device.name} state = {device.state} />
+                            </Grid.Column>
+                        )}                        
+                    </Grid>
+                </header>
+            )
     }
 }

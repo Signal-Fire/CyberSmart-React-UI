@@ -1,4 +1,5 @@
 exports = {
+    id: '',
     name: '',
-    state: ''
+    state: ''    
 };
