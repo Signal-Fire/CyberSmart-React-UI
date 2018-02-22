@@ -34,7 +34,7 @@ export default class DevicePage extends Component {
               isLoading: false,
               devices: responseJson              
             }, function() {
-              console.log(this.state.devices);
+              
             });
           })
           .catch((error) => {
