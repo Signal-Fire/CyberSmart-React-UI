@@ -26,7 +26,7 @@ export default class Device extends Component {
                     </Card.Meta>
                     <Card.Description>
                         <AreaChart width={260} height={50} data={data}>
-                            <Area type="monotone" dataKey="kwh" stroke="#82ca9d" fillOpacity={0.5} fill="#82ca9d" />
+                            <Area type="monotone" dataKey="kwh" stroke={this.props.state === 'ON' ? "#82ca9d" : "#ff0000"} fillOpacity={0.5} fill={this.props.state === 'ON' ? "#82ca9d" : "#ff0000"} />
                         </AreaChart>
                     </Card.Description>
                 </Card.Content>
