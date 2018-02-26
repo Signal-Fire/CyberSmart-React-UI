@@ -16,7 +16,7 @@ export default class StatisticsGroup extends Component {
   }
 
   componentDidMount() {
-    return fetch('http://localhost:8080/api/action/find_devices', {
+    return fetch('http://localhost:8080/api/device/find/all', {
       method: 'GET',
       headers: {
         'Access-Control-Allow-Origin' : '*',
