@@ -19,8 +19,8 @@ class App extends Component {
       this.setState({ visible: !this.state.visible })
   }
 
-  render() {    
-    return (
+  render() {   
+    return (       
         <div className = "App">
             <MenuBar toggleVisibility = {this.toggleVisibility} />
             <Scrollbars
