@@ -1,6 +1,9 @@
 /*jshint esversion: 6*/
 import React, { Component } from 'react';
 
+//Component imports
+import { LoginScreen } from '../../components/Exports/Exports';
+
 //CSS import
 import '../Master.css';
 import './HelpPage.css';
