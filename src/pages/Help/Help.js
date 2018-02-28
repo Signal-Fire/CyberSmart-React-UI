@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 
 //Component imports
-import { LoginScreen } from '../../components/Exports/Exports';
+import { InfoAccordian } from '../../components/Exports/Exports';
 
 //CSS import
 import '../Master.css';
@@ -12,7 +12,7 @@ export default class HelpPage extends Component {
     render() {
         return (
             <header className="page-body">
-                <p>Help Page</p>
+                <InfoAccordian />
             </header>
         )
     }

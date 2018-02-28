@@ -20,6 +20,9 @@ import StatisticsGroup from '../Statistics/StatisticsGroup';
 //Modals
 import LoginScreen from '../Modals/LoginModal';
 
+//Accordions
+import InfoAccordian from '../Accordian/Accordian';
+
 export {
     MenuBar,
     MenuIcon,
@@ -28,5 +31,6 @@ export {
     SideBarItem,
     FluidChart,
     StatisticsGroup,
-    LoginScreen
+    LoginScreen,
+    InfoAccordian
 };
