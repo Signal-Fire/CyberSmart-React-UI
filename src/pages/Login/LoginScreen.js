@@ -6,13 +6,13 @@ import { LoginScreen } from '../../components/Exports/Exports';
 
 //CSS import
 import '../Master.css';
-import './HelpPage.css';
+import './LoginScreen.css';
 
-export default class HelpPage extends Component {
+export default class Login extends Component {
     render() {
         return (
             <header className="page-body">
-                <p>Help Page</p>
+            <LoginScreen />
             </header>
         )
     }

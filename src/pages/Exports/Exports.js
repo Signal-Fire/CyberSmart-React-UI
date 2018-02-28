@@ -3,8 +3,9 @@ import DevicePage from '../Devices/Devices';
 import RoomPage from '../Rooms/Rooms';
 import HomePage from '../Home/Home';
 import HelpPage from '../Help/Help';
-import UserManagementPage from '../userManagement/UserManagement'
-import HubManagementPage from '../hubManagement/HubManagement'
+import UserManagementPage from '../userManagement/UserManagement';
+import HubManagementPage from '../hubManagement/HubManagement';
+import Authentication from '../Login/LoginScreen';
 
 
 export {
@@ -13,5 +14,6 @@ export {
     HelpPage,
     HomePage,
     UserManagementPage,
-    HubManagementPage
+    HubManagementPage,
+    Authentication
 };

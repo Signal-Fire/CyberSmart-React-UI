@@ -4,7 +4,7 @@ import {  Sidebar, Segment, Menu } from 'semantic-ui-react';
 import { HashRouter, Route, NavLink } from 'react-router-dom';
 
 import { SideBarItem } from '../Exports/Exports';
-import { DevicePage, HomePage, RoomPage, HelpPage } from '../../pages/Exports/Exports';
+import { DevicePage, HomePage, RoomPage, HelpPage, Authentication } from '../../pages/Exports/Exports';
 
 /**
  * Class uses combination of HashRouter - meaning the URL is appended to the window location
@@ -26,6 +26,7 @@ export default class SideBar extends Component {
                             <NavLink to="/devices"><SideBarItem icon = 'plug' title = 'Devices' /></NavLink>
                             <NavLink to="/rooms"><SideBarItem icon = 'home' title = 'Rooms' /></NavLink>
                             <NavLink to="/help"><SideBarItem icon = 'info' title = 'Help' /></NavLink>
+                            <NavLink to="/authentication"><SideBarItem icon = 'protect' title = 'Authentication' /></NavLink>
                         </Sidebar>
                         <Sidebar.Pusher>
                             <div>
@@ -33,6 +34,7 @@ export default class SideBar extends Component {
                                 <Route exact path="/devices" component={DevicePage} />
                                 <Route exact path="/rooms" component={RoomPage} />
                                 <Route exact path="/help" component={HelpPage} />
+                                <Route exact path="/authentication" component={Authentication} />
                             </div>
                         </Sidebar.Pusher>
                     </Sidebar.Pushable>
