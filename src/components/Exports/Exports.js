@@ -8,7 +8,14 @@ import CustomSideBar from '../SideBar/SideBar';
 import SideBarItem from '../SideBar/SideBarItem/SideBarItem';
 
 //Device components
-import DeviceWidget from '../Device/Device';
+
+//Login page components
+
+//charts
+import FluidChart from '../Charts/charts';
+
+//Statistics
+import StatisticsGroup from '../Statistics/StatisticsGroup';
 
 export {
     MenuBar,
@@ -16,5 +23,6 @@ export {
     MenuMessage,
     CustomSideBar,
     SideBarItem,
-    DeviceWidget
+    FluidChart,
+    StatisticsGroup
 };

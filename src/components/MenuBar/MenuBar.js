@@ -16,7 +16,7 @@ export default class MenuBar extends Component {
 
   render() {
     return (
-      <div className="ui inverted primary attached pointing menu"> 
+      <div className="ui inverted primary attached pointing menu">
         <Menu.Item icon = 'sidebar' onClick = { this.toggleVisibility } />
         <div className="left logo">
           <div className= "item">
