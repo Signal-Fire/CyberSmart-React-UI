@@ -24,7 +24,7 @@ export default class LoginScreen extends Component {
                  </Form.Field>
                  <Form.Field>
                    <label>Password</label>
-                   <input placeholder='Password' />
+                   <input type='Password' placeholder='Password' />
                  </Form.Field>
                 </Form>
                 </Modal.Description>
