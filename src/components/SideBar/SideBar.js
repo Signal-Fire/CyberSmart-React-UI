@@ -17,16 +17,16 @@ import { DevicePage, HomePage, RoomPage, HelpPage } from '../../pages/Exports/Ex
  */
 export default class SideBar extends Component {
     render() {
-        return (   
-            <HashRouter>         
-                <div>                
+        return (
+            <HashRouter>
+                <div>
                     <Sidebar.Pushable as={ Segment }>
-                        <Sidebar as={Menu} animation='push' direction='left' width='thin' visible={this.props.visible}icon='labeled' vertical inverted>
+                        <Sidebar as={Menu} animation='scale down' direction='left' width='thin' visible={this.props.visible}icon='labeled' vertical inverted>
                             <NavLink to="/"><SideBarItem icon = 'dashboard' title = 'Dashboard' /></NavLink>
                             <NavLink to="/devices"><SideBarItem icon = 'plug' title = 'Devices' /></NavLink>
                             <NavLink to="/rooms"><SideBarItem icon = 'home' title = 'Rooms' /></NavLink>
                             <NavLink to="/help"><SideBarItem icon = 'info' title = 'Help' /></NavLink>
-                        </Sidebar>                        
+                        </Sidebar>
                         <Sidebar.Pusher>
                             <div>
                                 <Route exact path="/" component={HomePage} />
@@ -35,9 +35,9 @@ export default class SideBar extends Component {
                                 <Route exact path="/help" component={HelpPage} />
                             </div>
                         </Sidebar.Pusher>
-                    </Sidebar.Pushable>   
-                </div>       
-            </HashRouter>  
+                    </Sidebar.Pushable>
+                </div>
+            </HashRouter>
         )
     }
 }
