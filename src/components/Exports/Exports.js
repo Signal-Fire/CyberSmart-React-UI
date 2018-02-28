@@ -17,6 +17,9 @@ import FluidChart from '../Charts/charts';
 //Statistics
 import StatisticsGroup from '../Statistics/StatisticsGroup';
 
+//Modals
+import LoginScreen from '../Modals/LoginModal';
+
 export {
     MenuBar,
     MenuIcon,
@@ -24,5 +27,6 @@ export {
     CustomSideBar,
     SideBarItem,
     FluidChart,
-    StatisticsGroup
+    StatisticsGroup,
+    LoginScreen
 };
