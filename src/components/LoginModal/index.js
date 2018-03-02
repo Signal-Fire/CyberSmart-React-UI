@@ -1,15 +1,22 @@
 /*jshint esversion: 6*/
 import React, { Component } from 'react';
 
-import { Modal, Button, Header, Form, Grid, Image, Segment, Message } from 'semantic-ui-react';
+import { Modal, Button, Form, Grid, Message } from 'semantic-ui-react';
 
 export default class LoginModal extends Component {
     constructor() {
         super();
         this.state = {
-            isOpen: false
+            isOpen: localStorage.getItem("token") === null,
+            username : "",
+            password: "",
+            loginError: false
         };
         this.handleClick = this.handleClick.bind(this);
+        this.handlePassChange = this.handlePassChange.bind(this);
+        this.handleUserChange = this.handleUserChange.bind(this);
+        this.loginAction = this.loginAction.bind(this);
+        this.handleClose = this.handleClose.bind(this);
     }
    
     handleClick() {
@@ -18,11 +25,48 @@ export default class LoginModal extends Component {
         });
     }
 
+    handleClose() {
+        this.setState({ isOpen: false });
+    }
+
+    handleUserChange(e) {
+        this.setState({username: e.target.value});
+    }
+
+    handlePassChange(e) {
+        this.setState({password: e.target.value});
+    }
+
+    loginAction() {
+        fetch("http://localhost:8080/api/users/login", {
+          method: "POST",
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+              username: this.state.username,
+              password: this.state.password
+          })
+        }).then(res => {
+          if (res.ok) {
+              res.json().then(result =>
+                    localStorage.setItem("token", result.token)
+                );   
+                this.handleClose();
+          } else if (res.status === 401) {
+            this.setState({loginError: true});
+          }
+        }, function (e) {
+          alert("Error submitting form!");
+        });
+      }
+
     render() {
       return (
         <Modal
           dimmer={true}
-          open={this.props.open}
+          open={this.state.isOpen}
           onClose={this.handleClick}
           size='small'
           closeOnEscape={false}
@@ -52,6 +96,9 @@ export default class LoginModal extends Component {
                                     icon='user'
                                     iconPosition='left'
                                     placeholder='E-mail address'
+                                    value={this.state.username}
+                                    onChange={this.handleUserChange}
+                                    error = {this.state.loginError}
                                     />
                                     <Form.Input
                                     fluid
@@ -59,9 +106,15 @@ export default class LoginModal extends Component {
                                     iconPosition='left'
                                     placeholder='Password'
                                     type='password'
+                                    value={this.state.password}
+                                    onChange={this.handlePassChange}
+                                    error = {this.state.loginError}
                                     />
-                                    <Button positive icon ='home' labelPosition='right' content="Login" onClick={this.close} />                                        
+                                    <Button positive icon ='home' labelPosition='right' content="Login" onClick={this.loginAction.bind(this)} />                                        
                             </Form>
+                            <Message hidden={!this.state.loginError} color='red'>
+                                There was an error logging you in, please check your login credentials!
+                            </Message>
                         </Grid.Column> 
                     </Grid.Row>
                 </Grid>
