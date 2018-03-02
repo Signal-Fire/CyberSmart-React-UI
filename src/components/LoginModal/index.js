@@ -67,9 +67,6 @@ export default class LoginModal extends Component {
                 </Grid>
             </Modal.Description>
           </Modal.Content>
-          <Modal.Actions>
-            
-          </Modal.Actions>
         </Modal>
       )
     }
