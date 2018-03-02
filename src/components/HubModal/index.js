@@ -36,7 +36,7 @@ export default class HubModal extends Component {
           <Modal.Content>
             <Modal.Description>
               <Header>Edit your Hub Settings from here</Header>
-              <Form stackable>
+              <Form>
                     <Form.Group widths={2}>
                         <Form.Input label='Hub Login' placeholder='Hub Login Username' value = 'admin'/>
                         <Form.Input label='Hub Password' placeholder='Hub Password' type='password' value='password' />             
