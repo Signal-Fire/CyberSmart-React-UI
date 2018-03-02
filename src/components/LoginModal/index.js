@@ -1,10 +1,9 @@
 /*jshint esversion: 6*/
 import React, { Component } from 'react';
 
-import { MenuIcon } from '../Exports';
 import { Modal, Button, Header, Form } from 'semantic-ui-react';
 
-export default class UserModal extends Component {
+export default class LoginModal extends Component {
     constructor() {
         super();
         this.state = {
@@ -23,17 +22,16 @@ export default class UserModal extends Component {
       return (
         <Modal
           dimmer={true}
-          open={this.state.isOpen}
+          open={this.props.open}
           onClose={this.handleClick}
           size='small'
-          closeOnEscape={true}
+          closeOnEscape={false}
           closeOnRootNodeClick={false}
-          trigger={<MenuIcon title = "User Settings" icon = "user" onClick={this.handleClick}/>}
         >
-          <Modal.Header>User Settings</Modal.Header>
+          <Modal.Header>Login</Modal.Header>
           <Modal.Content>
             <Modal.Description>
-              <Header>Edit your User Settings from here</Header>
+              <Header>Login</Header>
               <Form>
                     <Form.Group widths={2}>
                         <Form.Input label='Contact Email' placeholder='Contact Email' />             

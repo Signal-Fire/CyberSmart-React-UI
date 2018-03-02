@@ -22,6 +22,7 @@ import HelpTabs from '../Help';
 //Modals
 import UserModal from '../UserModal';
 import HubModal from '../HubModal';
+import LoginModal from '../LoginModal';
 
 export {
     MenuBar,
@@ -34,5 +35,6 @@ export {
     InfoAccordian,
     HelpTabs,
     UserModal,
-    HubModal
+    HubModal,
+    LoginModal
 };
