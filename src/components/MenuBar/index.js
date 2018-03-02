@@ -7,8 +7,13 @@ import { MenuIcon, MenuMessage, UserModal, HubModal } from '../Exports';
 export default class MenuBar extends Component {
   constructor(props) {
     super(props);
-
+    
     this.toggleVisibility = this.toggleVisibility.bind(this);
+  }
+
+  logout() {
+    localStorage.removeItem("token");
+    window.location.reload();
   }
 
   toggleVisibility() {
@@ -34,7 +39,7 @@ export default class MenuBar extends Component {
             <Dropdown.Menu>
               <UserModal />
               <HubModal />
-              <MenuIcon title = "Logout" icon = "sign out" />
+              <MenuIcon title = "Logout" icon = "sign out" onClick = {this.logout}/>
             </Dropdown.Menu>
           </Dropdown>
         </div>
