@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Grid } from 'semantic-ui-react';
 
 //Custom components import
-import { DeviceWidget } from '../../components/Exports/Widgets/Exports';
+import { DeviceWidget } from '../../components/Exports/Widgets';
 
 //CSS import
 import '../Master.css';
@@ -45,7 +45,7 @@ export default class DevicePage extends Component {
     render() {
             return (
                 <header className="page-body">       
-                    <Grid relaxed columns = {6}>                              
+                    <Grid relaxed columns = {5}>                              
                         {this.state.devices.map((device) =>                             
                             <Grid.Column key = {device._id}>  
                                 <DeviceWidget name = {device.name} state = {device.state} />

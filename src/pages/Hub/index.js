@@ -1,8 +1,8 @@
 /*jshint esversion: 6*/
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 import '../Master.css';
-import './HubManagement.css';
+import './hub.css';
 
 export default class HubManagementPage extends Component {
       render() {

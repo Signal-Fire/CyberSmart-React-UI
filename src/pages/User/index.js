@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 
 import '../Master.css';
-import './UserManagement.css';
+import './user.css';
 
 export default class UserManagementPage extends Component {
       render() {

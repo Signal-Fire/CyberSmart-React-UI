@@ -6,8 +6,8 @@ import '../Master.css';
 import './HomePage.css';
 
 //Custom components import
-import {StatisticsGroup} from '../../components/Exports/Exports';
-import {FluidChart} from '../../components/Exports/Exports';
+import {StatisticsGroup} from '../../components/Exports';
+import {FluidChart} from '../../components/Exports';
 
 export default class HomePage extends Component {
   render() {

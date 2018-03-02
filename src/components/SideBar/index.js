@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import {  Sidebar, Segment, Menu } from 'semantic-ui-react';
 import { HashRouter, Route, NavLink } from 'react-router-dom';
 
-import { SideBarItem } from '../Exports/Exports';
-import { DevicePage, HomePage, RoomPage, HelpPage, UserManagementPage } from '../../pages/Exports/Exports';
+import { SideBarItem } from '../Exports';
+import { DevicePage, HomePage, RoomPage, HelpPage, UserManagementPage } from '../../pages/Exports';
 
 export default class SideBar extends Component {
     render() {
@@ -15,7 +15,7 @@ export default class SideBar extends Component {
                         <Sidebar as={Menu} animation='scale down' 
                             direction='left' 
                             width='thin' 
-                            visible={true}
+                            visible={this.props.visible}
                             icon='labeled' 
                             vertical 
                             inverted

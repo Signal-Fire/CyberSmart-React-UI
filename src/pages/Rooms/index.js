@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 
 import '../Master.css';
-import './RoomsPage.css';
+import './rooms.css';
 
 export default class RoomPage extends Component {
     render() {

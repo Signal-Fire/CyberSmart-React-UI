@@ -2,7 +2,7 @@
 import React, {  Component } from 'react';
 import { Grid } from 'semantic-ui-react';
 
-import { StatisticsWidget } from '../Exports/Widgets/Exports';
+import { StatisticsWidget } from '../Exports/Widgets';
 
 export default class StatisticsGroup extends Component {
   constructor() {
