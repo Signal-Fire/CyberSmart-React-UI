@@ -34,7 +34,7 @@ export default class UserModal extends Component {
           <Modal.Content>
             <Modal.Description>
               <Header>Edit your User Settings from here</Header>
-              <Form unstackable>
+              <Form stackable>
                     <Form.Group widths={2}>
                         <Form.Input label='Contact Email' placeholder='Contact Email' />             
                     </Form.Group>

@@ -19,8 +19,9 @@ import InfoAccordian from '../Accordian';
 //Help Tabs
 import HelpTabs from '../Help';
 
-//User Modal
+//Modals
 import UserModal from '../UserModal';
+import HubModal from '../HubModal';
 
 export {
     MenuBar,
@@ -32,5 +33,6 @@ export {
     StatisticsGroup,
     InfoAccordian,
     HelpTabs,
-    UserModal
+    UserModal,
+    HubModal
 };

@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 
 import { Dropdown, Menu } from 'semantic-ui-react';
-import { MenuIcon, MenuMessage, UserModal } from '../Exports';
+import { MenuIcon, MenuMessage, UserModal, HubModal } from '../Exports';
 
 export default class MenuBar extends Component {
   constructor(props) {
@@ -33,7 +33,7 @@ export default class MenuBar extends Component {
           <Dropdown item icon='settings' pointing = 'top right'>
             <Dropdown.Menu>
               <UserModal />
-              <MenuIcon title = "Hub Configuration" icon = "settings"/>
+              <HubModal />
               <MenuIcon title = "Logout" icon = "sign out" />
             </Dropdown.Menu>
           </Dropdown>
