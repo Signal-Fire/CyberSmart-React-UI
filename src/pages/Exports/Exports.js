@@ -5,7 +5,6 @@ import HomePage from '../Home/Home';
 import HelpPage from '../Help/Help';
 import UserManagementPage from '../UserManagement';
 import HubManagementPage from '../hubManagement/HubManagement';
-import Authentication from '../Login/LoginScreen';
 
 export {
     DevicePage,
@@ -13,6 +12,5 @@ export {
     HelpPage,
     HomePage,
     UserManagementPage,
-    HubManagementPage,
-    Authentication
+    HubManagementPage
 };

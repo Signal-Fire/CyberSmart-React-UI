@@ -1,23 +1,13 @@
 /*jshint esversion: 6*/
 import React, { Component } from 'react';
 
-import { Dropdown, Menu } from 'semantic-ui-react';
+import { Dropdown } from 'semantic-ui-react';
 import { MenuIcon, MenuMessage } from '../Exports/Exports';
 
 export default class MenuBar extends Component {
-  constructor(props) {
-    super(props);
-    this.toggleVisibility = this.toggleVisibility.bind(this);
-  }
-
-  toggleVisibility() {
-    this.props.toggleVisibility();
-  }
-
   render() {
     return (
       <div className="ui inverted primary attached pointing menu">
-        <Menu.Item icon = 'sidebar' onClick = { this.toggleVisibility } />
         <div className="left logo">
           <div className= "item">
             <p>CyberSmart</p>

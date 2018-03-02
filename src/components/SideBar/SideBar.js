@@ -25,7 +25,6 @@ export default class SideBar extends Component {
                             <NavLink to="/rooms"><SideBarItem icon = 'home' title = 'Rooms' /></NavLink>
                             <NavLink to="/help"><SideBarItem icon = 'info' title = 'Help' /></NavLink>
                             <NavLink to="/user"><SideBarItem icon = 'user' title = 'Users' /></NavLink>
-                            <NavLink to="/authentication"><SideBarItem icon = 'protect' title = 'Authentication' /></NavLink>
                         </Sidebar>
                         <Sidebar.Pusher>
                             <div>
@@ -34,7 +33,6 @@ export default class SideBar extends Component {
                                 <Route exact path="/rooms" component={RoomPage} />
                                 <Route exact path="/help" component={HelpPage} />
                                 <Route exact path="/user" component={UserManagementPage} />
-                                <Route exact path="/authentication" component={Authentication} />
                             </div>
                         </Sidebar.Pusher>
                     </Sidebar.Pushable>
