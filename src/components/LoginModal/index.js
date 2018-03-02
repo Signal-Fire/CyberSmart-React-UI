@@ -39,7 +39,7 @@ export default class LoginModal extends Component {
                     <Grid.Row>
                         <Grid.Column>
                             <Message compact>
-                                It looks like you're not logged in! 
+                                It looks like you need to login! <br />
                                 Just enter your hub login details to get started!
                             </Message>
                         </Grid.Column>
@@ -67,6 +67,7 @@ export default class LoginModal extends Component {
                 </Grid>
             </Modal.Description>
           </Modal.Content>
+          <Modal.Actions></Modal.Actions>
         </Modal>
       )
     }
