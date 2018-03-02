@@ -55,7 +55,7 @@ export default class Device extends Component {
                     {this.state.deviceState === 0 ? 'OFF' : 'ON'}
                     </Card.Meta>
                     <Card.Description>
-                        <AreaChart width={260} height={50} data={data}>
+                        <AreaChart width={240} height={50} data={data}>
                             <Area type="monotone" dataKey="kwh" stroke={this.state.deviceState === 1 ? "#82ca9d" : "#ff0000"} fillOpacity={0.5} fill={this.state.deviceState === 1 ? "#82ca9d" : "#ff0000"} />
                         </AreaChart>
                     </Card.Description>

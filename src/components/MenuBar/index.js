@@ -2,11 +2,12 @@
 import React, { Component } from 'react';
 
 import { Dropdown, Menu } from 'semantic-ui-react';
-import { MenuIcon, MenuMessage } from '../Exports';
+import { MenuIcon, MenuMessage, UserModal } from '../Exports';
 
 export default class MenuBar extends Component {
   constructor(props) {
     super(props);
+
     this.toggleVisibility = this.toggleVisibility.bind(this);
   }
 
@@ -31,7 +32,7 @@ export default class MenuBar extends Component {
           </Dropdown>
           <Dropdown item icon='settings' pointing = 'top right'>
             <Dropdown.Menu>
-              <MenuIcon title = "User Settings" icon = "user"/>
+              <UserModal />
               <MenuIcon title = "Hub Configuration" icon = "settings"/>
               <MenuIcon title = "Logout" icon = "sign out" />
             </Dropdown.Menu>

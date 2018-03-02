@@ -19,6 +19,9 @@ import InfoAccordian from '../Accordian';
 //Help Tabs
 import HelpTabs from '../Help';
 
+//User Modal
+import UserModal from '../UserModal';
+
 export {
     MenuBar,
     MenuIcon,
@@ -28,5 +31,6 @@ export {
     FluidChart,
     StatisticsGroup,
     InfoAccordian,
-    HelpTabs
+    HelpTabs,
+    UserModal
 };
