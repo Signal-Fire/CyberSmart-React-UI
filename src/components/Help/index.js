@@ -1,14 +1,30 @@
 /* jshint esversion: 6*/
 import React from 'react';
-import { Tab } from 'semantic-ui-react';
+import { Label, Menu, Tab } from 'semantic-ui-react'
 
 import { InfoAccordian } from '../../components/Exports';
 
-
 const panes = [
-  { menuItem: 'Guide', render: () => <Tab.Pane attached={true}>Coming soon!</Tab.Pane> },
-  { menuItem: 'FAQ', render: () => <Tab.Pane attached={true}>Coming soon!</Tab.Pane> },
-  { menuItem: 'Contact us', render: () => <Tab.Pane attached={true}>CyberSmart Team</Tab.Pane> },
+  {
+    menuItem: { key: 'Guide', icon: 'file', content: 'Guide' },
+    render: () => <Tab.Pane>Coming soon!</Tab.Pane>,
+  },
+  {
+    menuItem: { key: 'FAQ', icon: 'question circle', content: 'FAQ' },
+    render: () => <Tab.Pane>Coming soon!</Tab.Pane>,
+  },
+  {
+    menuItem: { key: 'Contact', icon: 'talk', content: 'Contact us' },
+    render: () =>
+    <Tab.Pane>
+    CyberSmart Team <br/>
+    <br/>
+    Dean Lingard - Github: deanolingardo <br/>
+    Henry Pye - Github: signal-fire <br/>
+    Brandon Parkinson - Github: brandonjamesparkinson <br/>
+    George Clayton - Github: jafoolly
+    </Tab.Pane>,
+  },
 ]
 
 const HelpTabs = () => (
