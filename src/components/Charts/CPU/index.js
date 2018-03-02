@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 
 import { Header } from 'semantic-ui-react';
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from 'recharts';
 
 export default class CPUChart extends Component {
     render() {
@@ -19,14 +19,14 @@ export default class CPUChart extends Component {
         return (
             <div>
                 <Header as ='h3' textAlign='center'>CPU Usage</Header>
-                    <AreaChart width={600} height={200} data={data}
-                        margin={{top: 10, right: 30, left: 0, bottom: 0}}>
-                    <XAxis dataKey="time" />
-                    <YAxis/>
-                    <CartesianGrid strokeDasharray="3 3"/>
-                    <Tooltip/>
-                    <Area connectNulls={true} type='monotone' dataKey='cpu' stroke='#fff' fill='#0534b7' label='CPU (%)'/>
-                </AreaChart>
+                <ResponsiveContainer width="100%" height={200}>
+                    <AreaChart data={data} margin={{top: 10, right: 30, left: 0, bottom: 0}}>
+                        <XAxis dataKey="time" />
+                        <YAxis dataKey='cpu'/>
+                        <CartesianGrid strokeDasharray="3 3"/>
+                        <Area connectNulls={true} type='monotone' dataKey='cpu' stroke='#fff' fill='#0534b7'/>
+                    </AreaChart>
+                </ResponsiveContainer>
             </div>
         )
     }
