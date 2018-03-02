@@ -1,8 +1,6 @@
 /* jshint esversion: 6*/
 import React from 'react';
-import { Label, Menu, Tab } from 'semantic-ui-react'
-
-import { InfoAccordian } from '../../components/Exports';
+import { Tab } from 'semantic-ui-react';
 
 const panes = [
   {

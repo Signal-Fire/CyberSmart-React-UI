@@ -17,9 +17,12 @@ export default class Device extends Component {
     handleClick(state) {
         return fetch('http://192.168.1.107:8000/api/state/changestate', {
           method: 'POST',
+          mode: 'no-cors',
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Headers': '*'
           },
           body: JSON.stringify({
               state : state
