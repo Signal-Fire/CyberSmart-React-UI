@@ -6,7 +6,7 @@ import { Dropdown } from 'semantic-ui-react';
 export default class MenuIcon extends Component {
     render() {
         return (
-            <Dropdown.Item icon = {this.props.icon} text = {this.props.title} />
+            <Dropdown.Item icon = {this.props.icon} text = {this.props.title} onClick = {this.props.onClick}/>
         )
     }
 }

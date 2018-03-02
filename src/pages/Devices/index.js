@@ -45,7 +45,7 @@ export default class DevicePage extends Component {
     render() {
             return (
                 <header className="page-body">       
-                    <Grid relaxed columns = {5}>                              
+                    <Grid stackable columns = {4}>                              
                         {this.state.devices.map((device) =>                             
                             <Grid.Column key = {device._id}>  
                                 <DeviceWidget name = {device.name} state = {device.state} />
