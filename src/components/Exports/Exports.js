@@ -17,6 +17,12 @@ import FluidChart from '../Charts/charts';
 //Statistics
 import StatisticsGroup from '../Statistics/StatisticsGroup';
 
+//Modals
+import LoginScreen from '../Modals/LoginModal';
+
+//Accordions
+import InfoAccordian from '../Accordian/Accordian';
+
 export {
     MenuBar,
     MenuIcon,
@@ -24,5 +30,7 @@ export {
     CustomSideBar,
     SideBarItem,
     FluidChart,
-    StatisticsGroup
+    StatisticsGroup,
+    LoginScreen,
+    InfoAccordian
 };

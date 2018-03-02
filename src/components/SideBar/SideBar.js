@@ -6,7 +6,6 @@ import { HashRouter, Route, NavLink } from 'react-router-dom';
 import { SideBarItem } from '../Exports/Exports';
 import { DevicePage, HomePage, RoomPage, HelpPage, UserManagementPage } from '../../pages/Exports/Exports';
 
-
 export default class SideBar extends Component {
     render() {
         return (
@@ -26,6 +25,7 @@ export default class SideBar extends Component {
                             <NavLink to="/rooms"><SideBarItem icon = 'home' title = 'Rooms' /></NavLink>
                             <NavLink to="/help"><SideBarItem icon = 'info' title = 'Help' /></NavLink>
                             <NavLink to="/user"><SideBarItem icon = 'user' title = 'Users' /></NavLink>
+                            <NavLink to="/authentication"><SideBarItem icon = 'protect' title = 'Authentication' /></NavLink>
                         </Sidebar>
                         <Sidebar.Pusher>
                             <div>
@@ -34,6 +34,7 @@ export default class SideBar extends Component {
                                 <Route exact path="/rooms" component={RoomPage} />
                                 <Route exact path="/help" component={HelpPage} />
                                 <Route exact path="/user" component={UserManagementPage} />
+                                <Route exact path="/authentication" component={Authentication} />
                             </div>
                         </Sidebar.Pusher>
                     </Sidebar.Pushable>
