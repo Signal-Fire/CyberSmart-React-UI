@@ -60,8 +60,7 @@ export default class LoginModal extends Component {
                                     placeholder='Password'
                                     type='password'
                                     />
-                                    <Button positive icon ='home' labelPosition='right' content="Login" onClick={this.close} />
-                                                
+                                    <Button positive icon ='home' labelPosition='right' content="Login" onClick={this.close} />                                        
                             </Form>
                         </Grid.Column> 
                     </Grid.Row>
