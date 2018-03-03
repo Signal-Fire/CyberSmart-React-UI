@@ -22,7 +22,7 @@ class App extends Component {
   }
 
   getSession() {
-    return localStorage.getItem("username") !== null;
+    return localStorage.getItem("token") !== null;
   } 
 
   render() {   
