@@ -1,6 +1,6 @@
 /* jshint esversion: 6 */
 import React, {  Component } from 'react';
-import { Grid } from 'semantic-ui-react';
+import { Grid, Segment } from 'semantic-ui-react';
 
 import { StatisticsWidget } from '../Exports/Widgets';
 
@@ -32,7 +32,7 @@ export default class StatisticsGroup extends Component {
           dataSource: responseJson,
           deviceStates: this.calculateStatistics(responseJson)
         }, function() {
-          
+
         });
       })
       .catch((error) => {
@@ -45,27 +45,35 @@ export default class StatisticsGroup extends Component {
     deviceStates.activeDevices = 0;
     deviceStates.inactiveDevices = 0;
     deviceStates.errorDevices = 0;
-    
-    for(let i = 0; i < responseJson.length; i++) 
+
+    for(let i = 0; i < responseJson.length; i++)
       responseJson[i].active ? deviceStates.activeDevices++ : deviceStates.inactiveDevices++;
-    
+
     return deviceStates;
   }
 
   render() {
-        return (     
-          <Grid relaxed columns = {4}>
+        return (
+           <Grid columns={4} divided inverted padded>
           <Grid.Column>
-              <StatisticsWidget icon = 'power' title = 'Devices ON' number = {this.state.deviceStates.activeDevices} />
+          <Segment color='orange' inverted >
+          <StatisticsWidget icon = 'power' title = 'Devices ON' number = {this.state.deviceStates.activeDevices} />
+          </Segment>
             </Grid.Column>
             <Grid.Column>
+            <Segment color='teal' inverted >
               <StatisticsWidget icon = 'power' title = 'Devices OFF' number = {this.state.deviceStates.inactiveDevices} />
+              </Segment>
             </Grid.Column>
             <Grid.Column>
+            <Segment color='green' inverted >
               <StatisticsWidget icon = 'plug' title = 'Known Plugs' number = {this.state.dataSource.length}/>
+              </Segment>
             </Grid.Column>
             <Grid.Column>
+            <Segment color='yellow' inverted >
               <StatisticsWidget icon = 'warning' title = 'Errors' number = '0' />
+              </Segment>
             </Grid.Column>
           </Grid>
         );
