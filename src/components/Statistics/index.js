@@ -53,25 +53,28 @@ export default class StatisticsGroup extends Component {
   }
 
   render() {
+
+    const square = { width: 300, height: 175 }
+
         return (
-           <Grid columns={4} divided inverted padded>
+           <Grid columns={4} divided inverted>
           <Grid.Column>
-          <Segment color='orange' inverted >
+          <Segment circular style={square}  color='black' >
           <StatisticsWidget icon = 'power' title = 'Devices ON' number = {this.state.deviceStates.activeDevices} />
           </Segment>
             </Grid.Column>
             <Grid.Column>
-            <Segment color='teal' inverted >
+            <Segment circular style={square} color='black'  >
               <StatisticsWidget icon = 'power' title = 'Devices OFF' number = {this.state.deviceStates.inactiveDevices} />
               </Segment>
             </Grid.Column>
             <Grid.Column>
-            <Segment color='green' inverted >
+            <Segment circular  style={square} color='black'  >
               <StatisticsWidget icon = 'plug' title = 'Known Plugs' number = {this.state.dataSource.length}/>
               </Segment>
             </Grid.Column>
             <Grid.Column>
-            <Segment color='yellow' inverted >
+            <Segment circular style={square} color='black'  >
               <StatisticsWidget icon = 'warning' title = 'Errors' number = '0' />
               </Segment>
             </Grid.Column>
