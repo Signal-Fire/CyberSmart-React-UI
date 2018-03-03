@@ -14,7 +14,7 @@ export default class HomePage extends Component {
     return (
       <header className = "page-body" >
       <StatisticsGroup />
-        <FluidChart name = "Electricty Usage" color = "yellow"/>
+        <FluidChart name = "Electricty Usage" color = "black"/>
       </header>
     )
   }
