@@ -1,7 +1,5 @@
 /* jshint esversion: 6*/
 import React, { Component } from 'react';
-import {  } from 'semantic-ui-react';
-import { Scrollbars } from 'react-custom-scrollbars';
 
 import { LoginModal } from './components/Exports';
 

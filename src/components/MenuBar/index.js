@@ -13,7 +13,7 @@ export default class MenuBar extends Component {
   }
 
   logout() {
-    localStorage.removeItem({USER_COOKIE_IDENTIFIER});
+    localStorage.removeItem(USER_COOKIE_IDENTIFIER);
     window.location.reload();
   }
 
@@ -26,7 +26,6 @@ export default class MenuBar extends Component {
       <div>
       <Menu 
         inverted
-        primary
         attached
         pointing
         borderless>

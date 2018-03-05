@@ -22,7 +22,7 @@ export default class DevicePage extends Component {
       }
     
       componentDidMount() {
-        return fetch({API_DEVICES_URL} + '/find/all', {
+        return fetch(API_DEVICES_URL + '/find/all', {
           method: 'GET',
           headers: {
             'Access-Control-Allow-Origin' : '*',

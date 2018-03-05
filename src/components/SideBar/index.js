@@ -9,6 +9,7 @@ import { DevicePage, HomePage, RoomPage, HelpPage, UserManagementPage } from '..
 import './styles.css';
 
 export default class SideBar extends Component {
+   
     render() {
         return (
             <HashRouter>

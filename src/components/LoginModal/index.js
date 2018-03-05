@@ -39,7 +39,7 @@ export default class LoginModal extends Component {
     }
 
     loginAction() {
-        fetch({API_USERS_URL} + "/login", {
+        fetch(API_USERS_URL + "/login", {
           method: "POST",
           headers: {
             'Accept': 'application/json',

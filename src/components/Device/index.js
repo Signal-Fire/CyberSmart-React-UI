@@ -18,7 +18,7 @@ export default class Device extends Component {
     }
 
     handleClick(state) {
-        return fetch({API_STATE_URL} + '/changestate', {
+        return fetch(API_STATE_URL + '/changestate', {
           method: 'POST',
           mode: 'no-cors',
           headers: {

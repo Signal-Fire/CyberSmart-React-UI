@@ -1,6 +1,6 @@
 /*jshint esversion: 6*/
 import React, {  Component  } from 'react';
-import { Header, Card } from 'semantic-ui-react';
+import { Card } from 'semantic-ui-react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from 'recharts';
 
 export default class charts extends Component {

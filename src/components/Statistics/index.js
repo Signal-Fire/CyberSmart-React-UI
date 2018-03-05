@@ -18,7 +18,7 @@ export default class StatisticsGroup extends Component {
   }
 
   componentDidMount() {
-    return fetch({API_DEVICES_URL} + '/find/all', {
+    return fetch(API_DEVICES_URL + "/find/all", {
       method: 'GET',
       headers: {
         'Access-Control-Allow-Origin' : '*',
@@ -29,17 +29,19 @@ export default class StatisticsGroup extends Component {
     })
       .then((response) => response.json())
       .then((responseJson) => {
+        
         this.setState({
           isLoading: false,
           dataSource: responseJson,
           deviceStates: this.calculateStatistics(responseJson)
         }, function() {
-
+          
         });
       })
       .catch((error) => {
         console.error(error);
       });
+      
   }
 
   calculateStatistics(responseJson) {
