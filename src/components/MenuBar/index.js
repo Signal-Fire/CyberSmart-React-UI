@@ -1,6 +1,7 @@
 /*jshint esversion: 6*/
 import React, { Component } from 'react';
 
+import { APP_NAME, USER_COOKIE_IDENTIFIER } from '../../config';
 import { Dropdown, Menu } from 'semantic-ui-react';
 import { MenuIcon, MenuMessage, UserModal, HubModal } from '../Exports';
 
@@ -12,7 +13,7 @@ export default class MenuBar extends Component {
   }
 
   logout() {
-    localStorage.removeItem("token");
+    localStorage.removeItem({USER_COOKIE_IDENTIFIER});
     window.location.reload();
   }
 
@@ -32,7 +33,7 @@ export default class MenuBar extends Component {
           <Menu.Item icon = 'sidebar' onClick = { this.toggleVisibility } />
           <div className="left logo">
             <div className= "item">
-              <p>CyberSmart</p>
+              <p>{APP_NAME}</p>
             </div>
           </div>
           <div className="right menu">
