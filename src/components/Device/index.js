@@ -1,5 +1,8 @@
 /* jshint esversion: 6*/
 import React, { Component } from 'react';
+
+import { API_STATE_URL } from '../../config';
+
 import { Card, Button } from 'semantic-ui-react';
 import { AreaChart, Area } from 'recharts';
 
@@ -15,7 +18,7 @@ export default class Device extends Component {
     }
 
     handleClick(state) {
-        return fetch('http://192.168.1.107:8000/api/state/changestate', {
+        return fetch({API_STATE_URL} + '/changestate', {
           method: 'POST',
           mode: 'no-cors',
           headers: {
