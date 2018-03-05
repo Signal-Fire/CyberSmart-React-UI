@@ -29,12 +29,8 @@ class App extends Component {
       return (       
           <div className = "App">
               <MenuBar toggleVisibility = {this.toggleVisibility} />
-              <Scrollbars
-                autoHeight
-                autoHeightMax={1000}>
-                <CustomSideBar visible = {this.state.visible}/>  
-                <LoginModal open = {!this.getSession()}/> 
-              </Scrollbars>
+              <CustomSideBar visible = {this.state.visible}/>  
+              <LoginModal open = {!this.getSession()}/> 
           </div>
 
       );

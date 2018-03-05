@@ -6,11 +6,13 @@ import { HashRouter, Route, NavLink } from 'react-router-dom';
 import { SideBarItem } from '../Exports';
 import { DevicePage, HomePage, RoomPage, HelpPage, UserManagementPage } from '../../pages/Exports';
 
+import './styles.css';
+
 export default class SideBar extends Component {
     render() {
         return (
             <HashRouter>
-                <div>
+                <div className = "sidebar-container">
                     <Sidebar.Pushable as={ Segment }>
                         <Sidebar as={Menu} animation='scale down' 
                             direction='left' 
@@ -27,7 +29,7 @@ export default class SideBar extends Component {
                             <NavLink to="/user"><SideBarItem icon = 'user' title = 'Users' /></NavLink>
                         </Sidebar>
                         <Sidebar.Pusher>
-                            <div>
+                            <div className = "sidebar-content">
                                 <Route exact path="/" component={HomePage} />
                                 <Route exact path="/devices" component={DevicePage} />
                                 <Route exact path="/rooms" component={RoomPage} />
