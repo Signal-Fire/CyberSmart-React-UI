@@ -2,6 +2,9 @@
 import React, { Component } from 'react';
 import { Grid } from 'semantic-ui-react';
 
+//Config
+import { API_DEVICES_URL } from '../../config';
+
 //Custom components import
 import { DeviceWidget } from '../../components/Exports/Widgets';
 
@@ -19,7 +22,7 @@ export default class DevicePage extends Component {
       }
     
       componentDidMount() {
-        return fetch('http://localhost:8080/api/device/find/all', {
+        return fetch({API_DEVICES_URL} + '/find/all', {
           method: 'GET',
           headers: {
             'Access-Control-Allow-Origin' : '*',
