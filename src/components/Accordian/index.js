@@ -1,5 +1,6 @@
 /* jshint esversion: 6 */
 import React, { Component } from 'react';
+import { APP_NAME } from '../../config';
 
 import { Accordion, Icon, Segment } from 'semantic-ui-react';
 
@@ -24,7 +25,7 @@ render() {
           <Accordion inverted>
           <Accordion.Title active={activeIndex === 0} index={0} onClick={this.handleClick}>
             <Icon name='dropdown' />
-            What is CyberSmart?
+            What is {APP_NAME}?
           </Accordion.Title>
           <Accordion.Content active={activeIndex === 0}>
             <p>

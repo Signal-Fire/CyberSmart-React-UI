@@ -1,6 +1,7 @@
 /*jshint esversion: 6*/
 import React, { Component } from 'react';
 
+import { API_USERS_URL } from '../../config';
 import { Modal, Button, Form, Grid, Message } from 'semantic-ui-react';
 
 export default class LoginModal extends Component {
@@ -38,7 +39,7 @@ export default class LoginModal extends Component {
     }
 
     loginAction() {
-        fetch("http://localhost:8080/api/users/login", {
+        fetch(API_USERS_URL + "/login", {
           method: "POST",
           headers: {
             'Accept': 'application/json',

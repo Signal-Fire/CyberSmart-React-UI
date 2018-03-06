@@ -2,6 +2,8 @@
 import React, {  Component } from 'react';
 import { Grid } from 'semantic-ui-react';
 
+import { API_DEVICES_URL } from '../../config';
+
 import { StatisticsWidget } from '../Exports/Widgets';
 
 export default class StatisticsGroup extends Component {
@@ -16,7 +18,7 @@ export default class StatisticsGroup extends Component {
   }
 
   componentDidMount() {
-    return fetch('http://localhost:8080/api/device/find/all', {
+    return fetch(API_DEVICES_URL + "/find/all", {
       method: 'GET',
       headers: {
         'Access-Control-Allow-Origin' : '*',
@@ -27,17 +29,19 @@ export default class StatisticsGroup extends Component {
     })
       .then((response) => response.json())
       .then((responseJson) => {
+        
         this.setState({
           isLoading: false,
           dataSource: responseJson,
           deviceStates: this.calculateStatistics(responseJson)
         }, function() {
-
+          
         });
       })
       .catch((error) => {
         console.error(error);
       });
+      
   }
 
   calculateStatistics(responseJson) {
