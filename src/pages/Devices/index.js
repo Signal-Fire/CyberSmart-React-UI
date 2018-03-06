@@ -12,6 +12,8 @@ import { DeviceWidget } from '../../components/Exports/Widgets';
 import '../Master.css';
 import './DevicePage.css';
 
+import axios from 'axios';
+
 export default class DevicePage extends Component {
     constructor() {
         super();
@@ -22,27 +24,15 @@ export default class DevicePage extends Component {
       }
     
       componentDidMount() {
-        return fetch(API_DEVICES_URL + '/find/all', {
-          method: 'GET',
-          headers: {
-            'Access-Control-Allow-Origin' : '*',
-            'Access-Control-Allow-Methods': '*',
-            'Access-Control-Allow-Credentials': 'true',
-            'Access-Control-Allow-Headers': 'Access-Control-Allow-Origin'
-          }
-        })
-          .then((response) => response.json())
-          .then((responseJson) => {
-            this.setState({
-              isLoading: false,
-              devices: responseJson              
-            }, function() {
-
-            });
-          })
-          .catch((error) => {
-            console.error(error);
+        axios.get(API_DEVICES_URL + '/find/all')
+        .then(res => {
+          this.setState({
+            isLoading: false,
+            devices: res.data
           });
+        }).catch(err => {
+          console.error(err);
+        });
       }     
     
     render() {

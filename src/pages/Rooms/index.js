@@ -16,8 +16,10 @@ export default class RoomPage extends Component {
     constructor() {
         super();
         this.state = {
-
+            locations : [],
+            isLoading : true
         };
+        
     }
 
     componentWillMount() {
@@ -27,25 +29,28 @@ export default class RoomPage extends Component {
     componentDidMount() {
         axios.get(API_LOCATION_URL + "/combine/devices")
         .then(result => {
-            this.handleLocationResult(result);
+            this.handleLocationResult(result.data);
         }).catch(error => {
-
+            console.log(error);
         });
     }
 
     handleLocationResult(locations) {
         this.setState({
-            locations : locations
+            locations : locations,
+            isLoading : false
         });
     }
 
     render() {
         return (
-            <header className="page-body">
-                <Grid stackable columns = {4}>                           
-                    <Grid.Column>  
-                        <LocationWidget name = 'Kitchen' roomDevices = '0'/>
-                    </Grid.Column>                      
+            <header className="page-body ">
+                <Grid stackable columns = {4}> 
+                    {this.state.locations.map((location) =>                           
+                        <Grid.Column key = {location.id}>  
+                            <LocationWidget name = {location.location} roomDevices = {location.devices}/>
+                        </Grid.Column>    
+                    )}                  
                 </Grid>
             </header>
         )
