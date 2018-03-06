@@ -1,6 +1,6 @@
 /* jshint esversion: 6*/
 import React, { Component } from 'react';
-import {  Sidebar, Segment, Menu } from 'semantic-ui-react';
+import { Sidebar, Segment, Menu } from 'semantic-ui-react';
 import { HashRouter, Route, NavLink } from 'react-router-dom';
 
 import { SideBarItem } from '../Exports';
@@ -8,8 +8,7 @@ import { DevicePage, HomePage, RoomPage, HelpPage, UserManagementPage } from '..
 
 import './styles.css';
 
-export default class SideBar extends Component {
-   
+export default class SideBar extends Component {   
     render() {
         return (
             <HashRouter>
