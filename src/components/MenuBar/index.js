@@ -22,8 +22,6 @@ export default class MenuBar extends Component {
 
   render() {
     return (
-
-
       <Menu 
         inverted
         primary
@@ -51,7 +49,6 @@ export default class MenuBar extends Component {
             </Dropdown>
           </div>
         </Menu>
-
     )
   }
 };
