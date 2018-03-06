@@ -5,7 +5,11 @@ import DeviceWidget from '../../Device';
 //Statistics
 import StatisticsWidget from '../../Statistics/StatisticsWidget';
 
+//Location widget
+import LocationWidget from '../../Locations/';
+
 export {
     DeviceWidget,
-    StatisticsWidget
+    StatisticsWidget,
+    LocationWidget
 };
