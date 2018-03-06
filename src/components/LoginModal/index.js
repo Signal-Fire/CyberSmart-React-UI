@@ -1,14 +1,17 @@
 /*jshint esversion: 6*/
 import React, { Component } from 'react';
 
-import { API_USERS_URL } from '../../config';
+import { API_USERS_URL, USER_COOKIE_IDENTIFIER } from '../../config';
 import { Modal, Button, Form, Grid, Message } from 'semantic-ui-react';
+
+//Axios web requests
+import axios from 'axios';
 
 export default class LoginModal extends Component {
     constructor() {
         super();
         this.state = {
-            isOpen: localStorage.getItem("token") === null,
+            isOpen: localStorage.getItem(USER_COOKIE_IDENTIFIER) === null,
             username : "",
             password: "",
             loginError: false
@@ -39,28 +42,19 @@ export default class LoginModal extends Component {
     }
 
     loginAction() {
-        fetch(API_USERS_URL + "/login", {
-          method: "POST",
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-              username: this.state.username,
-              password: this.state.password
-          })
+        axios.post(API_USERS_URL + '/login', { 
+            username: this.state.username,
+            password: this.state.password 
         }).then(res => {
-          if (res.ok) {
-              res.json().then(result =>
-                    localStorage.setItem("token", result.token)
-                );   
-                this.handleClose();
-          } else if (res.status === 401) {
-            this.setState({loginError: true});
-          }
-        }, function (e) {
-          alert("Error submitting form!");
-        });
+                if (res.status === 200) {
+                    localStorage.setItem(USER_COOKIE_IDENTIFIER, res.data.token)                    
+                    this.handleClose();
+                } else {
+                    this.setState({loginError: true});
+                }
+            }).catch(err => {
+                this.setState({ loginError: true });
+            });
       }
 
     render() {

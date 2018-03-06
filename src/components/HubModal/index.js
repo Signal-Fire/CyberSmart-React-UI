@@ -38,10 +38,6 @@ export default class HubModal extends Component {
               <Header>Edit your Hub Settings from here</Header>
               <Form>
                     <Form.Group widths={2}>
-                        <Form.Input label='Hub Login' placeholder='Hub Login Username' value = 'admin'/>
-                        <Form.Input label='Hub Password' placeholder='Hub Password' type='password' value='password' />             
-                    </Form.Group>
-                    <Form.Group widths={2}>
                         <Form.Input label='Hub IP Address' placeholder='Hub IP Address' readOnly value ='127.0.0.1'/>
                     </Form.Group>
                 </Form>
@@ -54,10 +50,10 @@ export default class HubModal extends Component {
             </Modal.Description>
           </Modal.Content>
           <Modal.Actions>
-            <Button color='black' onClick={this.close}>
+            <Button color='black' onClick={this.handleClick}>
               Cancel
             </Button>
-            <Button positive icon='checkmark' labelPosition='right' content="Save" onClick={this.close} />
+            <Button positive icon='checkmark' labelPosition='right' content="Save" onClick={this.handleClick} />
           </Modal.Actions>
         </Modal>
       )
