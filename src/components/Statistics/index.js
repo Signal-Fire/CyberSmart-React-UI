@@ -50,8 +50,8 @@ export default class StatisticsGroup extends Component {
     deviceStates.inactiveDevices = 0;
     deviceStates.errorDevices = 0;
 
-    for(let i = 0; i < responseJson.length; i++)
-      responseJson[i].active ? deviceStates.activeDevices++ : deviceStates.inactiveDevices++;
+    for(let i = 0; i < responseJson.length; i++) 
+      responseJson[i].state == 1 ? deviceStates.activeDevices++ : deviceStates.inactiveDevices++;
 
     return deviceStates;
   }
