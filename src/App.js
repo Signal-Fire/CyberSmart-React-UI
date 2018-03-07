@@ -30,7 +30,6 @@ class App extends Component {
               <CustomSideBar visible = {this.state.visible} />  
               <LoginModal open = {!this.getSession()}/> 
           </div>
-
       );
   }
 }  
