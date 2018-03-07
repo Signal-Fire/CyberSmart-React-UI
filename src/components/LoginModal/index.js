@@ -22,7 +22,7 @@ export default class LoginModal extends Component {
         this.loginAction = this.loginAction.bind(this);
         this.handleClose = this.handleClose.bind(this);
     }
-   
+
     handleClick() {
         this.setState({
             isOpen: !this.state.isOpen
@@ -42,12 +42,12 @@ export default class LoginModal extends Component {
     }
 
     loginAction() {
-        axios.post(API_USERS_URL + '/login', { 
+        axios.post(API_USERS_URL + '/login', {
             username: this.state.username,
-            password: this.state.password 
+            password: this.state.password
         }).then(res => {
                 if (res.status === 200) {
-                    localStorage.setItem(USER_COOKIE_IDENTIFIER, res.data.token)                    
+                    localStorage.setItem(USER_COOKIE_IDENTIFIER, res.data.token)
                     this.handleClose();
                 } else {
                     this.setState({loginError: true});
@@ -60,7 +60,7 @@ export default class LoginModal extends Component {
     render() {
       return (
         <Modal
-          dimmer={true}
+          dimmer='blurring'
           open={this.state.isOpen}
           onClose={this.handleClick}
           size='small'
@@ -105,12 +105,12 @@ export default class LoginModal extends Component {
                                     onChange={this.handlePassChange}
                                     error = {this.state.loginError}
                                     />
-                                    <Button positive icon ='home' labelPosition='right' content="Login" onClick={this.loginAction.bind(this)} />                                        
+                                    <Button positive icon ='home' labelPosition='right' content="Login" onClick={this.loginAction.bind(this)} />
                             </Form>
                             <Message hidden={!this.state.loginError} color='red'>
                                 There was an error logging you in, please check your login credentials!
                             </Message>
-                        </Grid.Column> 
+                        </Grid.Column>
                     </Grid.Row>
                 </Grid>
             </Modal.Description>
