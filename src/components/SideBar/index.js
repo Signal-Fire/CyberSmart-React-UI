@@ -8,18 +8,18 @@ import { DevicePage, HomePage, RoomPage, HelpPage, UserManagementPage } from '..
 
 import './styles.css';
 
-export default class SideBar extends Component {   
+export default class SideBar extends Component {
     render() {
         return (
             <HashRouter>
                 <div className = "sidebar-container">
                     <Sidebar.Pushable as={ Segment }>
-                        <Sidebar as={Menu} animation='scale down' 
-                            direction='left' 
-                            width='thin' 
+                        <Sidebar as={Menu} animation='push left' 
+                            direction='left'
+                            width='thin'
                             visible={this.props.visible}
-                            icon='labeled' 
-                            vertical 
+                            icon='labeled'
+                            vertical
                             inverted
                             >
                             <NavLink to="/"><SideBarItem icon = 'dashboard' title = 'Dashboard' /></NavLink>
