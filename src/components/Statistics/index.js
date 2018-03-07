@@ -6,6 +6,8 @@ import { API_DEVICES_URL } from '../../config';
 
 import { StatisticsWidget } from '../Exports/Widgets';
 
+import axios from 'axios';
+
 export default class StatisticsGroup extends Component {
   constructor() {
     super();
@@ -18,30 +20,15 @@ export default class StatisticsGroup extends Component {
   }
 
   componentDidMount() {
-    return fetch(API_DEVICES_URL + "/find/all", {
-      method: 'GET',
-      headers: {
-        'Access-Control-Allow-Origin' : '*',
-        'Access-Control-Allow-Methods': '*',
-        'Access-Control-Allow-Credentials': 'true',
-        'Access-Control-Allow-Headers': 'Access-Control-Allow-Origin'
-      }
-    })
-      .then((response) => response.json())
-      .then((responseJson) => {
-        
-        this.setState({
-          isLoading: false,
-          dataSource: responseJson,
-          deviceStates: this.calculateStatistics(responseJson)
-        }, function() {
-          
-        });
-      })
-      .catch((error) => {
-        console.error(error);
+    axios.get(API_DEVICES_URL + '/find/all')
+    .then(res => {
+      this.setState({
+        isLoading : false,
+        deviceStates : this.calculateStatistics(res.data)
       });
-      
+    }).catch(err => {
+      console.error(err);
+    });
   }
 
   calculateStatistics(responseJson) {
@@ -49,9 +36,12 @@ export default class StatisticsGroup extends Component {
     deviceStates.activeDevices = 0;
     deviceStates.inactiveDevices = 0;
     deviceStates.errorDevices = 0;
+    deviceStates.count = 0;
 
-    for(let i = 0; i < responseJson.length; i++) 
-      responseJson[i].state == 1 ? deviceStates.activeDevices++ : deviceStates.inactiveDevices++;
+    for(let i = 0; i < responseJson.length; i++) {
+      responseJson[i].state === 1 ? deviceStates.activeDevices++ : deviceStates.inactiveDevices++;
+      deviceStates.count++;
+    }
 
     return deviceStates;
   }
@@ -66,7 +56,7 @@ export default class StatisticsGroup extends Component {
               <StatisticsWidget icon = 'power' title = 'Devices OFF' number = {this.state.deviceStates.inactiveDevices} />
             </Grid.Column>
             <Grid.Column>
-              <StatisticsWidget icon = 'plug' title = 'Known Plugs' number = {this.state.dataSource.length}/>
+              <StatisticsWidget icon = 'plug' title = 'Known Plugs' number = {this.state.deviceStates.count}/>
             </Grid.Column>
             <Grid.Column>
               <StatisticsWidget icon = 'warning' title = 'Errors' number = '0' />

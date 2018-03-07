@@ -22,7 +22,7 @@ export default class SideBar extends Component {
                             vertical
                             inverted
                             >
-                            <NavLink to="/"><SideBarItem icon = 'dashboard' title = 'Dashboard' /></NavLink>
+                            <NavLink to="/" ><SideBarItem icon = 'dashboard' title = 'Dashboard' /></NavLink>
                             <NavLink to="/devices"><SideBarItem icon = 'plug' title = 'Devices' /></NavLink>
                             <NavLink to="/rooms"><SideBarItem icon = 'home' title = 'Rooms' /></NavLink>
                             <NavLink to="/help"><SideBarItem icon = 'info' title = 'Help' /></NavLink>
@@ -30,7 +30,7 @@ export default class SideBar extends Component {
                         </Sidebar>
                         <Sidebar.Pusher>
                             <div className = "sidebar-content">
-                                <Route exact path="/" component={HomePage} />
+                                <Route exact path="/" component={HomePage}  />
                                 <Route exact path="/devices" component={DevicePage} />
                                 <Route exact path="/rooms" component={RoomPage} />
                                 <Route exact path="/help" component={HelpPage} />
