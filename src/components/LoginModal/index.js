@@ -60,7 +60,6 @@ export default class LoginModal extends Component {
     render() {
       return (
         <Modal
-          dimmer={true}
           dimmer='blurring'
           open={this.state.isOpen}
           onClose={this.handleClick}
