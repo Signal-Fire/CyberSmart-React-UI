@@ -38,7 +38,7 @@ export default class UserModal extends Component {
           firstName : this.upperCase(res.data.first_name),
           lastName : this.upperCase(res.data.last_name),
           username : res.data.username,
-          password : "*******"
+          password : ""
         });
       }).catch(err => {
         console.error(err);
