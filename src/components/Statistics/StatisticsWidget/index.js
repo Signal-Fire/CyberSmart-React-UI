@@ -7,7 +7,7 @@ export default class StatisticWidget extends Component {
         return (
             <Statistic >
                 <Statistic.Value >
-                    <Icon name = {this.props.icon} /> 
+                    <Icon name = {this.props.icon}/> 
                     <p>{this.props.number}</p> 
                 </Statistic.Value> 
                 <Statistic.Label > 

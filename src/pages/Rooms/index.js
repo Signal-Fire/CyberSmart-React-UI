@@ -53,7 +53,7 @@ export default class RoomPage extends Component {
                 <Grid stackable columns = {4}> 
                     {this.state.locations.map((location) =>                           
                         <Grid.Column key = {location.id}>  
-                            <LocationWidget name = {location.location} roomDevices = {location.devices}/>
+                            <LocationWidget location = {location}/>
                         </Grid.Column>    
                     )}                  
                 </Grid>

@@ -9,13 +9,13 @@ export default class LocationWidget extends Component {
     constructor() {
         super();
         this.state = {
-            roomDevices : 0
+            location : null
         };
     }
 
-    componentDidMount() {
+    componentWillMount() {
         this.setState({
-            roomDevices : this.props.roomDevices
+            location : this.props.location
         });
     }
 
@@ -29,11 +29,12 @@ export default class LocationWidget extends Component {
                     <Card.Meta>
                     </Card.Meta>
                     <Card.Description>
-                        {this.props.name}
+                        {this.state.location.name}
                     </Card.Description>
                 </Card.Content>
                 <Card.Content extra>
-                    <StatisticsWidget icon = 'power' title = 'Devices' number = {this.props.roomDevices}/>
+                    <StatisticsWidget icon = 'power' title = 'Active Devices' number = {this.state.location.active.length > 0 ? this.props.location.activeDevices : 0}/>
+                    <StatisticsWidget icon = 'power' title = 'Active Devices' number = {this.state.location.active.length > 0 ? this.props.location.activeDevices : 0}/>
                 </Card.Content>
             </Card>
         )
