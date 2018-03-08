@@ -33,14 +33,17 @@ export default class RoomPage extends Component {
     fetchLocationData() {
         axios.get(API_LOCATION_URL + "/combine/devices")
         .then(result => {
-            this.handleLocationResult(result.data);
+            if (result.data.length > 0) {
+                this.handleLocationResult(result.data);
+            } else {
+                this.forceUpdate();
+            }
         }).catch(error => {
             console.log(error);
         });
     }
 
     handleLocationResult(locations) {
-        console.log(locations);
         this.setState({
             locations : locations,
             isLoading : false
