@@ -3,10 +3,10 @@ import React, { Component } from 'react';
 import { Grid } from 'semantic-ui-react';
 
 //Config
-import { API_DEVICES_URL } from '../../config';
+import { API_LOCATION_URL } from '../../config';
 
 //Custom components import
-import { DeviceWidget } from '../../components/Exports/Widgets';
+import { DeviceWidget, DeviceControlPanel } from '../../components/Exports/Widgets';
 
 //CSS import
 import '../Master.css';
@@ -19,12 +19,12 @@ export default class DevicePage extends Component {
         super();
         this.state = {
           isLoading: true,
-          devices: []
+          data: []
         };
       }
     
       componentDidMount() {
-        axios.get(API_DEVICES_URL + '/find/all')
+        axios.get(API_LOCATION_URL + '/combine/devices')
         .then(res => {
             if (res.status === 200) {
                 this.setState({
@@ -41,14 +41,20 @@ export default class DevicePage extends Component {
     
     render() {
             return (
-                <header className="page-body">       
-                    <Grid stackable columns = {4}>                              
-                        {this.state.devices.map((device) =>                             
-                            <Grid.Column key = {device._id}>  
-                                <DeviceWidget name = {device.name} state = {device.state} />
-                            </Grid.Column>
-                        )}                        
-                    </Grid>
+                <header className="page-body">
+                    <Grid stackable columns = {1} divided = 'vertically'>
+                        <Grid.Column verticalAlign = 'middle'>
+                            <DeviceControlPanel />
+                        </Grid.Column>
+                        
+                    </Grid>              
+                        <Grid stackable columns = {4}>                              
+                            {this.state.data.map((d) =>
+                                <Grid.Column key = {d._id}>  
+                                    <DeviceWidget name = {d.name} state = {d.state} />
+                                </Grid.Column>
+                            )}                        
+                        </Grid>
                 </header>
             )
     }

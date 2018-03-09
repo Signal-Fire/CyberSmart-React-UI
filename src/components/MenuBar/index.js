@@ -28,15 +28,15 @@ export default class MenuBar extends Component {
         attached
         pointing
         borderless>
-          <Menu.Item icon = 'sidebar' onClick = { this.toggleVisibility } />
+          <Menu.Item icon = 'sidebar' onClick = { this.toggleVisibility } />         
           <div className="left logo">
             <div className= "item">
               <p>{APP_NAME}</p>
             </div>
           </div>
           <div className="right menu">
-            <Dropdown item icon='announcement' pointing = 'top right'>
-              <Dropdown.Menu>
+            <Dropdown item icon='announcement' pointing = 'top right'>                        
+              <Dropdown.Menu>                
                 <MenuMessage message="You left x lights on this week!"/>
               </Dropdown.Menu>
             </Dropdown>

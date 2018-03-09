@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 
 import { USER_COOKIE_IDENTIFIER, API_USERS_URL } from '../../config';
 
-import { MenuIcon } from '../Exports';
-import { Modal, Button, Header, Form, Message, Confirm } from 'semantic-ui-react';
+import { MenuIcon, ConfirmModal } from '../Exports';
+import { Modal, Button, Header, Form, Message } from 'semantic-ui-react';
 
 import axios from 'axios';
 
@@ -38,8 +38,7 @@ export default class UserModal extends Component {
         this.setState({
           firstName : this.upperCase(res.data.first_name),
           lastName : this.upperCase(res.data.last_name),
-          username : res.data.username,
-          password : ""
+          username : res.data.username
         });
       }).catch(err => {
         console.error(err);
@@ -68,7 +67,6 @@ export default class UserModal extends Component {
         this.setState({ loading: false });
         console.error(err);
       });
-      this.setState({ open: false });
     }
 
     handleClick() {
@@ -101,18 +99,6 @@ export default class UserModal extends Component {
       return value.charAt(0).toUpperCase() + value.slice(1);
     }
 
-    showConfirmModal = () => {
-      this.setState({ confirmModalOpen: true });
-    };
-
-    handleConfirmClick = () => {
-      this.setState({ confirmModalOpen: false });
-    };
-
-    handleCancelModal = () => {
-      this.setState({ confirmModalOpen: false });
-    };
-    
     render() {
       return (
         <Modal
@@ -172,12 +158,7 @@ export default class UserModal extends Component {
             <Button color='black' onClick={this.handleClick}>
               Cancel
             </Button>
-            <Button positive icon='checkmark' labelPosition='right' content="Save" onClick={this.showConfirmModal} />
-              <Confirm
-                open={this.state.confirmModalOpen}
-                onCancel={this.handleCancelModal}
-                onConfirm={this.updateUserInformation}
-              />
+            <ConfirmModal updateUserInformation = {this.updateUserInformation} open = {this.state.confirmModalOpen}/>
           </Modal.Actions>
         </Modal>
       )
