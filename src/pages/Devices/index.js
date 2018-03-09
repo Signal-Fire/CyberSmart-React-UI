@@ -45,7 +45,7 @@ export default class DevicePage extends Component {
                         
                     </Grid>              
                         <Grid stackable columns = {4}>                              
-                            {this.state.data.map((d) =>                             
+                            {this.state.data.map((d) =>
                                 <Grid.Column key = {d._id}>  
                                     <DeviceWidget name = {d.name} state = {d.state} />
                                 </Grid.Column>
