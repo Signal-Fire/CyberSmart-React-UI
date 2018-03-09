@@ -19,7 +19,8 @@ export default class UserModal extends Component {
             password : "",
             loading: false,
             changed: false,
-            isOpen: false
+            isOpen: false,
+            confirmModalOpen: false
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -38,7 +39,7 @@ export default class UserModal extends Component {
           firstName : this.upperCase(res.data.first_name),
           lastName : this.upperCase(res.data.last_name),
           username : res.data.username,
-          password : "*******"
+          password : ""
         });
       }).catch(err => {
         console.error(err);
@@ -46,7 +47,10 @@ export default class UserModal extends Component {
     }
 
     updateUserInformation() {
-      this.setState({ loading: true });
+      this.setState({ 
+        loading: true,
+        confirmModalOpen : false
+      });
       axios({ method: 'POST',
           url: API_USERS_URL + '/update',
           headers: {
@@ -97,10 +101,18 @@ export default class UserModal extends Component {
       return value.charAt(0).toUpperCase() + value.slice(1);
     }
 
-    show = () => this.setState({ open: true })
-     handleConfirm = () => this.setState({ open: false })
-     handleCancel = () => this.setState({ open: false })
+    showConfirmModal = () => {
+      this.setState({ confirmModalOpen: true });
+    };
 
+    handleConfirmClick = () => {
+      this.setState({ confirmModalOpen: false });
+    };
+
+    handleCancelModal = () => {
+      this.setState({ confirmModalOpen: false });
+    };
+    
     render() {
       return (
         <Modal
@@ -138,7 +150,7 @@ export default class UserModal extends Component {
                           placeholder = 'Hub Username'
                           name = 'username'
                           value = {this.state.username}
-                          onChange = {this.handleChange}/>
+                          readOnly/>
                         <Form.Input
                           label='Hub Password'
                           placeholder='Hub Password'
@@ -160,12 +172,12 @@ export default class UserModal extends Component {
             <Button color='black' onClick={this.handleClick}>
               Cancel
             </Button>
-            <Button positive icon='checkmark' labelPosition='right' content="Save" onClick={this.show} />
-        <Confirm
-          open={this.state.open}
-          onCancel={this.handleCancel}
-          onConfirm={this.updateUserInformation}
-        />
+            <Button positive icon='checkmark' labelPosition='right' content="Save" onClick={this.showConfirmModal} />
+              <Confirm
+                open={this.state.confirmModalOpen}
+                onCancel={this.handleCancelModal}
+                onConfirm={this.updateUserInformation}
+              />
           </Modal.Actions>
         </Modal>
       )
