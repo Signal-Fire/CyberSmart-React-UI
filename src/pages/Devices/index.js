@@ -26,10 +26,14 @@ export default class DevicePage extends Component {
       componentDidMount() {
         axios.get(API_LOCATION_URL + '/combine/devices')
         .then(res => {
-          this.setState({
-            isLoading: false,
-            data: res.data
-          });
+            if (res.status === 200) {
+                this.setState({
+                    isLoading: false,
+                    devices: res.data
+                });
+            } else {
+                this.forceUpdate();
+            }
         }).catch(err => {
           console.error(err);
         });
