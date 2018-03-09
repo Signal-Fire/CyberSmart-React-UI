@@ -6,17 +6,8 @@ import { StatisticsWidget } from '../../components/Exports/Widgets';
 import { Card, Icon } from 'semantic-ui-react';
 
 export default class LocationWidget extends Component {
-    constructor() {
-        super();
-        this.state = {
-            roomDevices : 0
-        };
-    }
-
-    componentDidMount() {
-        this.setState({
-            roomDevices : this.props.roomDevices
-        });
+    componentWillMount() {
+        console.log(this.props.location);
     }
 
     render() {
@@ -29,11 +20,12 @@ export default class LocationWidget extends Component {
                     <Card.Meta>
                     </Card.Meta>
                     <Card.Description>
-                        {this.props.name}
+                        {this.props.location.name}
                     </Card.Description>
                 </Card.Content>
                 <Card.Content extra>
-                    <StatisticsWidget icon = 'power' title = 'Devices' number = {this.props.roomDevices}/>
+                    <StatisticsWidget icon = 'power' title = 'Active Devices' number = {this.props.location.activeDevices > 0 ? this.props.location.activeDevices : 0}/>
+                    <StatisticsWidget icon = 'plug' title = 'Inactive Devices' number = {this.props.location.inactiveDevices > 0 ? this.props.location.inactiveDevices : 0}/>
                 </Card.Content>
             </Card>
         )
