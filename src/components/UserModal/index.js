@@ -39,7 +39,7 @@ export default class UserModal extends Component {
           firstName : this.upperCase(res.data.first_name),
           lastName : this.upperCase(res.data.last_name),
           username : res.data.username,
-          password : "*******"
+          password : ""
         });
       }).catch(err => {
         console.error(err);
@@ -47,7 +47,10 @@ export default class UserModal extends Component {
     }
 
     updateUserInformation() {
-      this.setState({ loading: true });
+      this.setState({ 
+        loading: true,
+        confirmModalOpen : false
+      });
       axios({ method: 'POST',
           url: API_USERS_URL + '/update',
           headers: {
@@ -147,7 +150,7 @@ export default class UserModal extends Component {
                           placeholder = 'Hub Username'
                           name = 'username'
                           value = {this.state.username}
-                          readonly/>
+                          readOnly/>
                         <Form.Input
                           label='Hub Password'
                           placeholder='Hub Password'
