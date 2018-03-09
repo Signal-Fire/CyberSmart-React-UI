@@ -99,18 +99,6 @@ export default class UserModal extends Component {
       return value.charAt(0).toUpperCase() + value.slice(1);
     }
 
-    showConfirmModal = () => {
-      this.setState({ confirmModalOpen: true });
-    };
-
-    handleConfirmClick = () => {
-      this.setState({ confirmModalOpen: false });
-    };
-
-    handleCancelModal = () => {
-      this.setState({ confirmModalOpen: false });
-    };
-    
     render() {
       return (
         <Modal

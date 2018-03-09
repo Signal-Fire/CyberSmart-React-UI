@@ -24,6 +24,7 @@ import UserModal from '../UserModal';
 import HubModal from '../HubModal';
 import LoginModal from '../LoginModal';
 import ConfirmModal from '../ConfirmModal';
+import AddDeviceModal from '../Device/AddModal';
 
 export {
     MenuBar,
@@ -38,5 +39,6 @@ export {
     UserModal,
     HubModal,
     LoginModal,
-    ConfirmModal
+    ConfirmModal,
+    AddDeviceModal
 };

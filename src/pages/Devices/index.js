@@ -38,10 +38,11 @@ export default class DevicePage extends Component {
     render() {
             return (
                 <header className="page-body">
-                    <Grid stackable columns = {1}>
-                        <Grid.Column>
+                    <Grid stackable columns = {1} divided = 'vertically'>
+                        <Grid.Column verticalAlign = 'middle'>
                             <DeviceControlPanel />
                         </Grid.Column>
+                        
                     </Grid>              
                         <Grid stackable columns = {4}>                              
                             {this.state.data.map((d) =>                             
