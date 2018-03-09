@@ -23,6 +23,7 @@ import HelpTabs from '../Help';
 import UserModal from '../UserModal';
 import HubModal from '../HubModal';
 import LoginModal from '../LoginModal';
+import ConfirmModal from '../ConfirmModal';
 
 export {
     MenuBar,
@@ -36,5 +37,6 @@ export {
     HelpTabs,
     UserModal,
     HubModal,
-    LoginModal
+    LoginModal,
+    ConfirmModal
 };
