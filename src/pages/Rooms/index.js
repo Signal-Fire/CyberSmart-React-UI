@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 import { API_LOCATION_URL } from '../../config';
 
-import { LocationWidget } from '../../components/Exports/Widgets';
+import { LocationWidget, LocationControlPanel } from '../../components/Exports/Widgets';
 
 import { Grid } from 'semantic-ui-react';
 
@@ -31,8 +31,9 @@ export default class RoomPage extends Component {
     }
 
     fetchLocationData() {
-        axios.get(API_LOCATION_URL + "/combine/devices")
+        axios.get(API_LOCATION_URL + "/find/all")
         .then(result => {
+            console.log(result.data.length);
             if (result.data.length > 0) {
                 this.handleLocationResult(result.data);
             } else {
@@ -53,9 +54,14 @@ export default class RoomPage extends Component {
     render() {
         return (
             <header className="page-body ">
-                <Grid stackable columns = {4}> 
+                <Grid stackable columns = {1} divided = 'vertically'>
+                        <Grid.Column verticalAlign = 'middle'>
+                            <LocationControlPanel />
+                        </Grid.Column>                        
+                    </Grid>      
+                <Grid stackable columns = {6}> 
                     {this.state.locations.map((location) =>                           
-                        <Grid.Column key = {location.id}>  
+                        <Grid.Column key = {location._id}>  
                             <LocationWidget location = {location}/>
                         </Grid.Column>    
                     )}                  

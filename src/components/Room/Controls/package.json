@@ -1,0 +1,7 @@
+{
+    "name" : "add-location-control-panel",
+    "version" : "1.0.0",
+    "author" : "Henry Pye",
+    "main" : "index.js",
+    "description" : "An add location control panel"
+}
