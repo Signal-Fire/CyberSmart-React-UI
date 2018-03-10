@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Grid } from 'semantic-ui-react';
 
 //Config
-import { API_LOCATION_URL } from '../../config';
+import { API_DEVICES_URL } from '../../config';
 
 //Custom components import
 import { DeviceWidget, DeviceControlPanel } from '../../components/Exports/Widgets';
@@ -19,12 +19,12 @@ export default class DevicePage extends Component {
         super();
         this.state = {
           isLoading: true,
-          data: []
+          devices: []
         };
       }
     
       componentDidMount() {
-        axios.get(API_LOCATION_URL + '/combine/devices')
+        axios.get(API_DEVICES_URL + '/find/all')
         .then(res => {
             if (res.status === 200) {
                 this.setState({
@@ -45,11 +45,10 @@ export default class DevicePage extends Component {
                     <Grid stackable columns = {1} divided = 'vertically'>
                         <Grid.Column verticalAlign = 'middle'>
                             <DeviceControlPanel />
-                        </Grid.Column>
-                        
+                        </Grid.Column>                        
                     </Grid>              
-                        <Grid stackable columns = {4}>                              
-                            {this.state.data.map((d) =>
+                        <Grid stackable columns = {6}>                              
+                            {this.state.devices.map((d) =>
                                 <Grid.Column key = {d._id}>  
                                     <DeviceWidget name = {d.name} state = {d.state} />
                                 </Grid.Column>
