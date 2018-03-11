@@ -1,7 +1,7 @@
 /* jshint esversion: 6*/
 import React, { Component } from 'react';
 
-import { USER_COOKIE_IDENTIFIER } from '../../config';
+import { USER_COOKIE_IDENTIFIER, API_STATE_URL } from '../../config';
 
 import { Card, Button } from 'semantic-ui-react';
 import { AreaChart, Area } from 'recharts';
@@ -22,11 +22,12 @@ export default class Device extends Component {
     handleClick(state) {
         console.log();
         axios({ method: 'POST',
-            url: 'http://' + this.props.address + ':8000/api/state/changestate',
+            url: API_STATE_URL + '/changestate',
             headers: {
                 'Authorization' : localStorage.getItem(USER_COOKIE_IDENTIFIER)
             },
             data: {
+                address : this.props.address,
                 state : state
             }
         }).then(res => {
