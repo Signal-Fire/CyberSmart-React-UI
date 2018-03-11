@@ -52,7 +52,8 @@ export default class AddDeviceModal extends Component {
                 location : this.state.deviceLocation
             }
         }).then(res => {
-            this.handleClick();
+            this.forceUpdate();
+            this.handleClick();            
         }).catch(err => {
             console.error(err);
         });
