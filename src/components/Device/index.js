@@ -22,7 +22,7 @@ export default class Device extends Component {
     handleClick(state) {
         console.log();
         axios({ method: 'POST',
-            url: 'http://' + this.props.address + ':8000/changestate',
+            url: 'http://' + this.props.address + ':8000/api/state/changestate',
             headers: {
                 'Authorization' : localStorage.getItem(USER_COOKIE_IDENTIFIER)
             },
