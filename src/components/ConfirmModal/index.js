@@ -29,8 +29,16 @@ export default class ConfirmModal extends Component {
     }
 
     render() {
+        const inlineStyle = {
+            modal : {
+                marginTop: '0px !important',
+                marginLeft: 'auto',
+                marginRight: 'auto'
+            }
+        };
         return (
-            <Modal 
+          <Modal
+            style = {inlineStyle.modal}
             trigger={<Button positive icon='checkmark' labelPosition='right' content="Save" onClick = {this.handleOpen} />} 
             basic 
             size='small'
