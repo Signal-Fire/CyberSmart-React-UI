@@ -31,7 +31,9 @@ export default class Device extends Component {
                 state : state
             }
         }).then(res => {
-            this.handleClick();
+            this.setState({
+                deviceState : state
+            })
         }).catch(err => {
             console.error(err);
         });
