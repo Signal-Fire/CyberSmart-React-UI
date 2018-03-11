@@ -13,18 +13,35 @@ export default class AddDeviceModal extends Component {
             isOpen : false,
             deviceName : "",
             deviceAddress : "",
+            deviceLocations : [],
             deviceLocation : ""
         };
 
         this.handleClick = this.handleClick.bind(this);
         this.addDevice = this.addDevice.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.findConnectedDevices = this.findConnectedDevices.bind(this);
+    }
+
+    componentWillMount() {
+        this.findConnectedDevices();
     }
 
     handleClick() {
         this.setState(prevState => ({
             isOpen : !prevState.isOpen
         }));        
+    }    
+
+    findConnectedDevices() {
+        axios.get(API_DEVICES_URL + '/find/connected')
+        .then(res => {            
+            this.setState({
+                deviceLocations : res.data
+            });
+        }).catch(err => {
+            console.error(err);
+        });
     }
 
     addDevice() {
