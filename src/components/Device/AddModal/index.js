@@ -11,38 +11,34 @@ export default class AddDeviceModal extends Component {
         super();
         this.state = {
             isOpen : false,
+            isLoading : true,
             deviceName : "",
-            deviceAddress : "",
-            deviceLocations : [],
-            deviceLocation : ""
+            deviceAddress : "Devices",
+            deviceLocation : "",
+            deviceAddresses : []        
         };
 
         this.handleClick = this.handleClick.bind(this);
         this.addDevice = this.addDevice.bind(this);
-        this.handleChange = this.handleChange.bind(this);
-        this.findConnectedDevices = this.findConnectedDevices.bind(this);
+        this.handleChange = this.handleChange.bind(this);  
+        this.findConnectedDevices = this.findConnectedDevices.bind(this);    
     }
 
     componentWillMount() {
         this.findConnectedDevices();
-    }
-
+    }  
+    
     handleClick() {
         this.setState(prevState => ({
             isOpen : !prevState.isOpen
         }));        
     }    
 
-    findConnectedDevices() {
-        axios.get(API_DEVICES_URL + '/find/connected')
-        .then(res => {            
-            this.setState({
-                deviceLocations : res.data
-            });
-        }).catch(err => {
-            console.error(err);
-        });
-    }
+    handleDropdownChange = (e, { value, key }) => {        
+        this.setState({
+            deviceAddress : value
+        });        
+    };
 
     addDevice() {
         axios({ method: 'POST',
@@ -69,11 +65,6 @@ export default class AddDeviceModal extends Component {
                     deviceName : e.target.value
                 });
             break;
-            case 'deviceAddress':
-                this.setState({
-                    deviceAddress : e.target.value
-                });
-            break;
             case 'deviceLocation':
                 this.setState({
                     deviceLocation : e.target.value
@@ -82,6 +73,28 @@ export default class AddDeviceModal extends Component {
             default:
             break;
         }
+    }
+
+    findConnectedDevices() {
+        axios.get(API_DEVICES_URL + '/find/connected')
+        .then(res => {            
+            this.setState({
+                isLoading : false,
+                deviceAddresses : this.createDropdownOptions(res.data)
+            });
+        }).catch(err => {
+            console.error(err);
+        });
+    }
+
+    createDropdownOptions(data) {        
+        var newData = data.filter(x => x.ip !== undefined);
+        newData.forEach(item => {            
+            item.key = item.mac;  
+            item.text = "Plug";
+            item.value = item.ip.replace("(", "").replace(")", "");               
+        });
+        return newData;
     }
 
     render() {
@@ -106,13 +119,13 @@ export default class AddDeviceModal extends Component {
                                     value = {this.state.deviceName}
                                     onChange = {this.handleChange}
                                     />
-                                <Form.Input 
-                                    label = 'Device Address'
-                                    placeholder = 'Device Address'
-                                    name = 'deviceAddress'
-                                    value = {this.state.deviceAddress}
-                                    onChange = {this.handleChange}
-                                    />
+                                <Form.Select 
+                                    fluid 
+                                    label='Devices' 
+                                    options={this.state.deviceAddresses} 
+                                    onChange={this.handleDropdownChange} 
+                                    placeholder='Devices' 
+                                    loading = {this.state.isLoading}/>    
                             </Form.Group>
                             <Form.Group widths={2}>
                                 <Form.Input 

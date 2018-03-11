@@ -1,10 +1,12 @@
 /* jshint esversion: 6*/
 import React, { Component } from 'react';
 
-import { API_STATE_URL } from '../../config';
+import { USER_COOKIE_IDENTIFIER } from '../../config';
 
 import { Card, Button } from 'semantic-ui-react';
 import { AreaChart, Area } from 'recharts';
+
+import axios from 'axios';
 
 export default class Device extends Component {    
     constructor(props) {
@@ -18,26 +20,20 @@ export default class Device extends Component {
     }
 
     handleClick(state) {
-        return fetch(API_STATE_URL + '/changestate', {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Headers': '*'
-          },
-          body: JSON.stringify({
-              state : state
-          })
-        }).then(() => {
-            this.setState({
-                deviceState : state
-            });
-          })
-          .catch((error) => {
-            console.error(error);
-          });
+        console.log();
+        axios({ method: 'POST',
+            url: 'http://' + this.props.address + ':8000/changestate',
+            headers: {
+                'Authorization' : localStorage.getItem(USER_COOKIE_IDENTIFIER)
+            },
+            data: {
+                state : state
+            }
+        }).then(res => {
+            this.handleClick();
+        }).catch(err => {
+            console.error(err);
+        });
       }    
 
     render() {
