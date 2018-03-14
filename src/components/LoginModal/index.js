@@ -58,8 +58,16 @@ export default class LoginModal extends Component {
       }
 
     render() {
+        const inlineStyle = {
+            modal : {
+                marginTop: '0px !important',
+                marginLeft: 'auto',
+                marginRight: 'auto'
+            }
+        };
       return (
         <Modal
+          style = {inlineStyle.modal}
           dimmer='blurring'
           open={this.state.isOpen}
           onClose={this.handleClick}

@@ -100,8 +100,16 @@ export default class UserModal extends Component {
     }
 
     render() {
+      const inlineStyle = {
+          modal : {
+              marginTop: '0px !important',
+              marginLeft: 'auto',
+              marginRight: 'auto'
+          }
+      };
       return (
         <Modal
+          style = {inlineStyle.modal}
           dimmer={true}
           open={this.state.isOpen}
           onClose={this.handleClick}
