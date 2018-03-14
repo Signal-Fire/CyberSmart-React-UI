@@ -4,11 +4,11 @@ import React, { Component } from 'react';
 import { USER_COOKIE_IDENTIFIER, API_STATE_URL } from '../../config';
 
 import { Card, Button } from 'semantic-ui-react';
-import { AreaChart, Area } from 'recharts';
+import { AreaChart, Area, ResponsiveContainer } from 'recharts';
 
 import axios from 'axios';
 
-export default class Device extends Component {    
+export default class Device extends Component {   
     constructor(props) {
         super(props);
         this.state = {
@@ -60,9 +60,11 @@ export default class Device extends Component {
                     {this.state.deviceState === 0 ? 'OFF' : 'ON'}
                     </Card.Meta>
                     <Card.Description>
+                    <ResponsiveContainer width="100%" height={50}>
                         <AreaChart width={240} height={50} data={data}>
                             <Area type="monotone" dataKey="kwh" stroke={this.state.deviceState === 1 ? "#82ca9d" : "#ff0000"} fillOpacity={0.5} fill={this.state.deviceState === 1 ? "#82ca9d" : "#ff0000"} />
                         </AreaChart>
+                    </ResponsiveContainer>
                     </Card.Description>
                 </Card.Content>
                 <Card.Content extra>
