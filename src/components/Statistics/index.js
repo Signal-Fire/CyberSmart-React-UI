@@ -39,7 +39,7 @@ export default class StatisticsGroup extends Component {
     deviceStates.count = 0;
 
     for(let i = 0; i < responseJson.length; i++) {
-      responseJson[i].state === 1 ? deviceStates.activeDevices++ : deviceStates.inactiveDevices++;
+      (parseInt(responseJson[i].state)) === 1 ? deviceStates.activeDevices++ : deviceStates.inactiveDevices++;
       deviceStates.count++;
     }
 
