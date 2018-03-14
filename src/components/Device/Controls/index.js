@@ -5,7 +5,7 @@ import { AddDeviceModal } from '../../Exports';
 import { Card } from 'semantic-ui-react';
 
 const AddDeviceControlPanel = () => (
-    <Card>
+    <Card fluid>
       <Card.Content>
         <Card.Header>Control Panel</Card.Header>
         <Card.Meta></Card.Meta>
