@@ -6,17 +6,15 @@ import '../Master.css';
 import './HomePage.css';
 
 //Custom components import
-import {StatisticsGroup} from '../../components/Exports/Exports';
-import {FluidChart} from '../../components/Exports/Exports';
+import {StatisticsGroup} from '../../components/Exports';
+import {FluidChart} from '../../components/Exports';
 
 export default class HomePage extends Component {
   render() {
     return (
       <header className = "page-body" >
       <StatisticsGroup />
-        <FluidChart name = "Chart 1" color = "red"/>
-        <FluidChart name = "Chart 2" color = "orange"/>
-        <FluidChart name = "Chart 3" color = "green"/>
+      <FluidChart name = "Electricty Usage" color = "black"/>
       </header>
     )
   }

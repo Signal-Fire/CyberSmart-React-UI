@@ -1,5 +1,7 @@
 {
     "name": "device-page",
     "version": "1.0.0",
-    "author": "Henry Pye"
+    "author": "Henry Pye",
+    "main" : "index.js",
+    "description" : "A Devices page to hold device components"
 }

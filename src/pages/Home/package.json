@@ -1,5 +1,6 @@
 {
     "name": "home-page",
     "version": "1.0.0",
-    "author": "Henry Pye"
+    "author": "Henry Pye",
+    "main" : "index.js"
 }

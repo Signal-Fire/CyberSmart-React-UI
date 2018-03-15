@@ -1,10 +1,10 @@
 /* jshint esversion: 6*/
 import React, { Component } from 'react';
-import {  } from 'semantic-ui-react';
-import { Scrollbars } from 'react-custom-scrollbars';
+
+import { LoginModal } from './components/Exports';
 
 //Custom imports
-import { MenuBar, CustomSideBar } from './components/Exports/Exports';
+import { MenuBar, CustomSideBar } from './components/Exports';
 
 import './App.css';
 
@@ -16,22 +16,22 @@ class App extends Component {
   }
 
   toggleVisibility() {
-      this.setState({ visible: !this.state.visible })
+      this.setState({ visible: !this.state.visible });
   }
 
-  render() {   
-    return (       
-        <div className = "App">
-            <MenuBar toggleVisibility = {this.toggleVisibility} />
-            <Scrollbars
-              autoHeight
-              autoHeightMax={1000}>
-              <CustomSideBar visible = {this.state.visible}/>   
-            </Scrollbars>
-        </div>
+  getSession() {
+    return localStorage.getItem("token") !== null;
+  } 
 
-    );
-  }  
-}
+  render() {   
+      return (       
+          <div className = "App">
+              <MenuBar toggleVisibility = {this.toggleVisibility} />
+              <CustomSideBar visible = {this.state.visible} />  
+              <LoginModal open = {!this.getSession()}/> 
+          </div>
+      );
+  }
+}  
 
 export default App;

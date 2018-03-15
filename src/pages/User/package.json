@@ -1,0 +1,6 @@
+{
+    "name": "user-management-page",
+    "version": "1.0.0",
+    "author": "Dean Lingard",
+    "main" : "index.js"
+}

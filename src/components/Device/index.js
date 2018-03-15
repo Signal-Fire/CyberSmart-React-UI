@@ -1,9 +1,14 @@
 /* jshint esversion: 6*/
 import React, { Component } from 'react';
-import { Card, Button } from 'semantic-ui-react';
-import { AreaChart, Area } from 'recharts';
 
-export default class Device extends Component {    
+import { USER_COOKIE_IDENTIFIER, API_STATE_URL } from '../../config';
+
+import { Card, Button } from 'semantic-ui-react';
+import { AreaChart, Area, ResponsiveContainer } from 'recharts';
+
+import axios from 'axios';
+
+export default class Device extends Component {   
     constructor(props) {
         super(props);
         this.state = {
@@ -15,23 +20,23 @@ export default class Device extends Component {
     }
 
     handleClick(state) {
-        return fetch('http://192.168.1.107:8000/api/state/changestate', {
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-              state : state
-          })
-        }).then(() => {
+        console.log();
+        axios({ method: 'POST',
+            url: API_STATE_URL + '/changestate',
+            headers: {
+                'Authorization' : localStorage.getItem(USER_COOKIE_IDENTIFIER)
+            },
+            data: {
+                address : this.props.address,
+                state : state
+            }
+        }).then(res => {
             this.setState({
                 deviceState : state
-            });
-          })
-          .catch((error) => {
-            console.error(error);
-          });
+            })
+        }).catch(err => {
+            console.error(err);
+        });
       }    
 
     render() {
@@ -55,9 +60,11 @@ export default class Device extends Component {
                     {this.state.deviceState === 0 ? 'OFF' : 'ON'}
                     </Card.Meta>
                     <Card.Description>
-                        <AreaChart width={260} height={50} data={data}>
+                    <ResponsiveContainer width="100%" height={50}>
+                        <AreaChart width={240} height={50} data={data}>
                             <Area type="monotone" dataKey="kwh" stroke={this.state.deviceState === 1 ? "#82ca9d" : "#ff0000"} fillOpacity={0.5} fill={this.state.deviceState === 1 ? "#82ca9d" : "#ff0000"} />
                         </AreaChart>
+                    </ResponsiveContainer>
                     </Card.Description>
                 </Card.Content>
                 <Card.Content extra>

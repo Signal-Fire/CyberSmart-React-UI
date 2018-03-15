@@ -1,0 +1,7 @@
+{
+    "name" : "cpu-chart",
+    "author" : "Henry Pye",
+    "version" : "1.0.0",
+    "description" : "A CPU usage chart, to display the CPU usage of a hub on a Hub Configuration page",
+    "main" : "index.js"
+}
