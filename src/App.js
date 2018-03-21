@@ -20,7 +20,7 @@ class App extends Component {
   }
 
   getSession() {
-    return localStorage.getItem("token") !== null;
+        return window.localStorage ? localStorage.getItem("token") !== null : null;
   } 
 
   render() {   

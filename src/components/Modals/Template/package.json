@@ -1,0 +1,7 @@
+{
+    "name" : "base-modal-semantic-ui",
+    "version" : "1.0.0",
+    "author" : "Henry Pye",
+    "main" : "index.js",
+    "description" : "A baseplate for a Modal object, using Semantics Modal object"
+}

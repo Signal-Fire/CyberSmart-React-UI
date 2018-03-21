@@ -11,7 +11,7 @@ export default class LoginModal extends Component {
     constructor() {
         super();
         this.state = {
-            isOpen: localStorage.getItem(USER_COOKIE_IDENTIFIER) === null,
+            isOpen: window.localStorage ? localStorage.getItem(USER_COOKIE_IDENTIFIER) === null : null,
             username : "",
             password: "",
             loginError: false
@@ -59,15 +59,12 @@ export default class LoginModal extends Component {
 
     render() {
         const inlineStyle = {
-            modal : {
-                marginTop: '0px !important',
+                marginTop: '0px',
                 marginLeft: 'auto',
-                marginRight: 'auto'
-            }
+                marginRight: 'auto'         
         };
       return (
-        <Modal
-          style = {inlineStyle.modal}
+        <Modal      
           dimmer='blurring'
           open={this.state.isOpen}
           onClose={this.handleClick}
