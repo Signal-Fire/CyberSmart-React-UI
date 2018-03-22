@@ -33,40 +33,49 @@ export default class MenuBar extends Component {
             pointing
             >
 
+            <Menu.Item as='a' header>
+         <Image
+           size='mini'
+           src='./assets/images/logo.png'
+           style={{ marginRight: '1.5em' }}
+         />
+         CyberSmart
+       </Menu.Item>
+
        <Menu.Item>
        <Button.Group>
             <Button animated='fade' basic to="/" as={ Link }>
-              <Button.Content visible>Home</Button.Content>
+              <Button.Content visible><Icon name='dashboard' /></Button.Content>
                 <Button.Content hidden>
-                  <Icon name='dashboard' />
+                  Home
                 </Button.Content>
             </Button>
 
             <Button animated='fade' basic to="/devices" as={ Link }>
-              <Button.Content visible>Devices</Button.Content>
+              <Button.Content visible><Icon name='block layout' /></Button.Content>
                 <Button.Content hidden>
-                  <Icon name='block layout' />
+                  Devices
                 </Button.Content>
             </Button>
 
             <Button animated='fade' basic to="/rooms" as={ Link }>
-              <Button.Content visible>Rooms</Button.Content>
+              <Button.Content visible><Icon name='home' /></Button.Content>
                 <Button.Content hidden>
-                  <Icon name='home' />
+                  Rooms
                 </Button.Content>
             </Button>
 
             <Button animated='fade' basic to="/user" as={ Link }>
-              <Button.Content visible>Users</Button.Content>
+              <Button.Content visible><Icon name='users' /></Button.Content>
                 <Button.Content hidden>
-                  <Icon name='users' />
+                  Users
                 </Button.Content>
             </Button>
 
             <Button animated='fade' basic to="/help" as={ Link }>
-              <Button.Content visible>Help</Button.Content>
+              <Button.Content visible><Icon name='info' /></Button.Content>
                 <Button.Content hidden>
-                  <Icon name='info' />
+                Help
                 </Button.Content>
             </Button>
             </Button.Group>

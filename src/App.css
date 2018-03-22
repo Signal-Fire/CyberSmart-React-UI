@@ -1,9 +1,9 @@
 .App {
   text-align: center;
-  background-color: '#FFF';
+  background-color: '#D3D3D3';
   height: 100%;
-  padding: 70px;
   border-color: white;
+  padding-top: 70px;
 }
 
 .App-title {
