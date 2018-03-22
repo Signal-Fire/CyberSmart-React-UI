@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { APP_NAME, USER_COOKIE_IDENTIFIER } from '../../config';
 import { Dropdown, Menu, Image, Container, Segment, Button, Icon } from 'semantic-ui-react';
 import { MenuIcon, MenuMessage, UserModal, HubModal } from '../Exports';
+import { HashRouter, Route, NavLink, Link } from 'react-router-dom';
 
 export default class MenuBar extends Component {
   constructor(props) {
@@ -25,6 +26,7 @@ export default class MenuBar extends Component {
   render() {
 
     return (
+      <HashRouter>
       <Menu size='small'
             fixed='top'
             borderless
@@ -33,35 +35,35 @@ export default class MenuBar extends Component {
 
        <Menu.Item>
        <Button.Group>
-            <Button animated='fade' basic>
+            <Button animated='fade' basic to="/" as={ Link }>
               <Button.Content visible>Home</Button.Content>
                 <Button.Content hidden>
                   <Icon name='home' />
                 </Button.Content>
             </Button>
 
-            <Button animated='fade' basic>
+            <Button animated='fade' basic to="/devices" as={ Link }>
               <Button.Content visible>Devices</Button.Content>
                 <Button.Content hidden>
                   <Icon name='chart' />
                 </Button.Content>
             </Button>
 
-            <Button animated='fade' basic>
+            <Button animated='fade' basic to="/rooms" as={ Link }>
               <Button.Content visible>Rooms</Button.Content>
                 <Button.Content hidden>
                   <Icon name='block device' />
                 </Button.Content>
             </Button>
 
-            <Button animated='fade' basic>
+            <Button animated='fade' basic to="/user" as={ Link }>
               <Button.Content visible>Users</Button.Content>
                 <Button.Content hidden>
                   <Icon name='user' />
                 </Button.Content>
             </Button>
 
-            <Button animated='fade' basic>
+            <Button animated='fade' basic to="/help" as={ Link }>
               <Button.Content visible>Help</Button.Content>
                 <Button.Content hidden>
                   <Icon name='info' />
@@ -81,7 +83,7 @@ export default class MenuBar extends Component {
 
            <Menu.Item>
            <Menu.Item>
-           <Button animated='fade' basic>
+           <Button animated='fade' basic onClick = {this.logout}>
              <Button.Content visible>Log out</Button.Content>
                <Button.Content hidden>
                  <Icon name='lock' icon='settings' />
@@ -91,6 +93,7 @@ export default class MenuBar extends Component {
            </Menu.Item>
          </Menu.Menu>
        </Menu>
+       </HashRouter>
     )
   }
 };
