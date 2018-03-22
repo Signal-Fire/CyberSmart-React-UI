@@ -38,28 +38,28 @@ export default class MenuBar extends Component {
             <Button animated='fade' basic to="/" as={ Link }>
               <Button.Content visible>Home</Button.Content>
                 <Button.Content hidden>
-                  <Icon name='home' />
+                  <Icon name='dashboard' />
                 </Button.Content>
             </Button>
 
             <Button animated='fade' basic to="/devices" as={ Link }>
               <Button.Content visible>Devices</Button.Content>
                 <Button.Content hidden>
-                  <Icon name='chart' />
+                  <Icon name='block layout' />
                 </Button.Content>
             </Button>
 
             <Button animated='fade' basic to="/rooms" as={ Link }>
               <Button.Content visible>Rooms</Button.Content>
                 <Button.Content hidden>
-                  <Icon name='block device' />
+                  <Icon name='home' />
                 </Button.Content>
             </Button>
 
             <Button animated='fade' basic to="/user" as={ Link }>
               <Button.Content visible>Users</Button.Content>
                 <Button.Content hidden>
-                  <Icon name='user' />
+                  <Icon name='users' />
                 </Button.Content>
             </Button>
 
