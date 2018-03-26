@@ -9,26 +9,14 @@ import '../Master.css';
 import './HelpPage.css';
 
 import {
-  Button,
-  Container,
-  Divider,
-  Grid,
-  Header,
-  Icon,
-  Image,
-  List,
-  Menu,
-  Responsive,
-  Segment,
-  Sidebar,
-  Visibility,
+  Segment
 } from 'semantic-ui-react'
 
 
 export default class HelpPage extends Component {
     render() {
         return (
-          <Segment color='teal' inverted tertiary style={{ minHeight: 600, padding: '1em 0em' }}>
+          <Segment color='teal' inverted secondary style={{ minHeight: 600, padding: '1em 0em' }}>
             <header className="page-body">
                 <HelpTabs />
             </header>

@@ -39,16 +39,9 @@ export default class MenuBar extends Component {
             pointing
             >
             <Container fluid>
-            <Menu.Item as='a' header>
-              <Image
-                size='mini'
-                src='./assets/images/logo.png'
-                />
-
-            </Menu.Item>
 
        <Menu.Item>
-       <Button.Group>
+       <Button.Group pointing='top left'>
             <Button animated='fade' basic to="/" as={ Link }>
               <Button.Content visible><Icon name='dashboard' /></Button.Content>
                 <Button.Content hidden>
@@ -70,6 +63,7 @@ export default class MenuBar extends Component {
                 </Button.Content>
             </Button>
 
+
             <Button animated='fade' basic to="/help" as={ Link }>
               <Button.Content visible><Icon name='info' /></Button.Content>
                 <Button.Content hidden>
@@ -79,14 +73,14 @@ export default class MenuBar extends Component {
             </Button.Group>
             </Menu.Item>
 
-         <Menu.Menu position='right' Icon name='gamepad'>
-           <Dropdown item text='Settings' Icon name='gamepad'>
-             <Dropdown.Menu>
-               <Dropdown.Item><HubModal /></Dropdown.Item>
-               <Dropdown.Item><UserModal /></Dropdown.Item>
-             </Dropdown.Menu>
-           </Dropdown>
-         </Menu.Menu>
+                <Dropdown item icon='settings' pointing = 'top right'>
+                          <Dropdown.Menu>
+                    <UserModal />
+                            <HubModal />
+                            <MenuIcon title = "Logout" icon = "sign out" onClick = {this.logout}/>
+                          </Dropdown.Menu>
+                        </Dropdown>
+
          </Container>
        </Menu>
        </HashRouter>

@@ -14,7 +14,7 @@ import {FluidChart} from '../../components/Exports';
 export default class HomePage extends Component {
   render() {
     return (
-      <Segment color='teal' inverted tertiary style={{ minHeight: 600, padding: '1em 0em' }}>
+      <Segment color='grey' inverted secondary style={{ minHeight: 600, padding: '1em 0em' }}>
       <header className = "page-body" >
       <StatisticsGroup />
       <FluidChart name = "Electricty Usage" color = "black"/>
