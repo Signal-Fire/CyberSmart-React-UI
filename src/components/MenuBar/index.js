@@ -33,13 +33,12 @@ export default class MenuBar extends Component {
 
     return (
       <HashRouter>
-      <Menu size='tiny'
+      <Menu size='large'
             fixed='top'
             borderless
             pointing
             >
             <Container fluid>
-
        <Menu.Item>
        <Button.Group pointing='top left'>
             <Button animated='fade' basic to="/" as={ Link }>

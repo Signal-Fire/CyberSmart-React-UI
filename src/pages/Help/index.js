@@ -16,7 +16,7 @@ import {
 export default class HelpPage extends Component {
     render() {
         return (
-          <Segment color='yellow' inverted secondary style={{ minHeight: 600, padding: '1em 0em' }}>
+          <Segment secondary style={{ minHeight: 600, padding: '1em 0em' }}>
             <header className="page-body">
                 <HelpTabs />
             </header>
