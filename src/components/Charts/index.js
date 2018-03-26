@@ -22,7 +22,7 @@ export default class charts extends Component {
                   <XAxis dataKey="time"/>
                   <YAxis dataKey='Kwh'/>
                   <CartesianGrid strokeDasharray="3 3"/>
-                  <Area connectNulls={true} type='monotone' dataKey='Kwh' stroke='#fff' fill='#fff500' />
+                  <Area connectNulls={true} type='monotone' dataKey='Kwh' stroke='#fff' fill='#000' />
               </AreaChart>
           </ResponsiveContainer>
         </Card.Group>

@@ -53,7 +53,7 @@ export default class RoomPage extends Component {
 
     render() {
         return (
-          <Segment color='teal' inverted secondary style={{ minHeight: 600, padding: '1em 0em' }}>
+          <Segment color='yellow' inverted secondary style={{ minHeight: 600, padding: '1em 0em' }}>
             <header className="page-body ">
                 <Grid stackable columns = {1} divided = 'vertically'>
                         <Grid.Column verticalAlign = 'middle'>
