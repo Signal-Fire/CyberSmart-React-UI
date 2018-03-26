@@ -5,7 +5,7 @@ import { API_LOCATION_URL } from '../../config';
 
 import { LocationWidget, LocationControlPanel } from '../../components/Exports/Widgets';
 
-import { Grid } from 'semantic-ui-react';
+import { Grid, Segment } from 'semantic-ui-react';
 
 import '../Master.css';
 import './rooms.css';
@@ -19,7 +19,7 @@ export default class RoomPage extends Component {
             locations : [],
             isLoading : true
         };
-        
+
     }
 
     componentWillMount() {
@@ -53,20 +53,22 @@ export default class RoomPage extends Component {
 
     render() {
         return (
+          <Segment inverted tertiary='true' style={{ minHeight: 600, padding: '1em 0em' }}>
             <header className="page-body ">
                 <Grid stackable columns = {1} divided = 'vertically'>
                         <Grid.Column verticalAlign = 'middle'>
                             <LocationControlPanel />
-                        </Grid.Column>                        
-                    </Grid>      
-                <Grid stackable columns = {6}> 
-                    {this.state.locations.map((location) =>                           
-                        <Grid.Column key = {location._id}>  
+                        </Grid.Column>
+                    </Grid>
+                <Grid stackable columns = {6}>
+                    {this.state.locations.map((location) =>
+                        <Grid.Column key = {location._id}>
                             <LocationWidget location = {location}/>
-                        </Grid.Column>    
-                    )}                  
+                        </Grid.Column>
+                    )}
                 </Grid>
             </header>
+            </Segment>
         )
     }
 }

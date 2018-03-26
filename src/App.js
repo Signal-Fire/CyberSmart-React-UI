@@ -21,17 +21,17 @@ class App extends Component {
 
   getSession() {
     return localStorage.getItem("token") !== null;
-  } 
+  }
 
-  render() {   
-      return (       
+  render() {
+      return (
           <div className = "App">
               <MenuBar toggleVisibility = {this.toggleVisibility} />
-              <CustomSideBar visible = {this.state.visible} />  
+              <CustomSideBar visible = {this.state.visible} />
               <LoginModal open = {!this.getSession()}/> 
           </div>
       );
   }
-}  
+}
 
 export default App;

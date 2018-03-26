@@ -5,6 +5,8 @@ import React, { Component } from 'react';
 import '../Master.css';
 import './HomePage.css';
 
+import { Dropdown, Menu, Image, Responsive, Container, Segment, Button, Icon } from 'semantic-ui-react';
+
 //Custom components import
 import {StatisticsGroup} from '../../components/Exports';
 import {FluidChart} from '../../components/Exports';
@@ -12,10 +14,12 @@ import {FluidChart} from '../../components/Exports';
 export default class HomePage extends Component {
   render() {
     return (
+      <Segment inverted tertiary='true' style={{ minHeight: 600, padding: '1em 0em' }}>
       <header className = "page-body" >
       <StatisticsGroup />
       <FluidChart name = "Electricty Usage" color = "black"/>
       </header>
+      </Segment>
     )
   }
 }

@@ -1,6 +1,6 @@
 /*jshint esversion: 6*/
 import React, { Component } from 'react';
-import { Grid } from 'semantic-ui-react';
+import { Grid, Segment } from 'semantic-ui-react';
 
 //Config
 import { API_DEVICES_URL } from '../../config';
@@ -22,7 +22,7 @@ export default class DevicePage extends Component {
           devices: []
         };
       }
-    
+
       componentDidMount() {
         axios.get(API_DEVICES_URL + '/find/all')
         .then(res => {
@@ -37,24 +37,26 @@ export default class DevicePage extends Component {
         }).catch(err => {
           console.error(err);
         });
-      }     
-    
+      }
+
     render() {
             return (
+              <Segment inverted tertiary='true' style={{ minHeight: 600, padding: '1em 0em' }}>
                 <header className="page-body">
                     <Grid stackable columns = {1} divided = 'vertically'>
                         <Grid.Column verticalAlign = 'middle'>
                             <DeviceControlPanel />
-                        </Grid.Column>                        
-                    </Grid>              
-                        <Grid stackable columns = {6}>                              
+                        </Grid.Column>
+                    </Grid>
+                        <Grid stackable columns = {6}>
                             {this.state.devices.map((d) =>
-                                <Grid.Column key = {d._id}>  
+                                <Grid.Column key = {d._id}>
                                     <DeviceWidget name = {d.name} state = {d.state} address = {d.address}/>
                                 </Grid.Column>
-                            )}                        
+                            )}
                         </Grid>
                 </header>
+                </Segment>
             )
     }
 }

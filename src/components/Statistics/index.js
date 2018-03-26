@@ -48,7 +48,7 @@ export default class StatisticsGroup extends Component {
 
   render() {
         return (
-           <Grid columns={4} relaxed inverted>
+           <Grid columns={4} relaxed >
             <Grid.Column>
               <StatisticsWidget icon = 'power' title = 'Devices ON' number = {this.state.deviceStates.activeDevices} />
             </Grid.Column>
