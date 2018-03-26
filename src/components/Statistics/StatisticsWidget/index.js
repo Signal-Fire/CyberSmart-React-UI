@@ -5,7 +5,7 @@ import { Statistic, Icon } from 'semantic-ui-react';
 export default class StatisticWidget extends Component {
     render() {
         return (
-            <Statistic inverted>
+            <Statistic>
                 <Statistic.Value >
                     <Icon name = {this.props.icon}/>
                     <p>{this.props.number}</p>

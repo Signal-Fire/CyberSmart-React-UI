@@ -22,12 +22,18 @@ export default class MenuBar extends Component {
     this.props.toggleVisibility();
   }
 
+  state = {}
+
+  hideFixedMenu = () => this.setState({ fixed: false })
+  showFixedMenu = () => this.setState({ fixed: true })
 
   render() {
+    const { children } = this.props
+    const { fixed } = this.state
 
     return (
       <HashRouter>
-      <Menu size='large'
+      <Menu size='tiny'
             fixed='top'
             borderless
             pointing

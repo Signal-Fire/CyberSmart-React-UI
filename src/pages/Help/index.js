@@ -28,7 +28,7 @@ import {
 export default class HelpPage extends Component {
     render() {
         return (
-          <Segment inverted tertiary='true' style={{ minHeight: 600, padding: '1em 0em' }}>
+          <Segment color='teal' inverted tertiary style={{ minHeight: 600, padding: '1em 0em' }}>
             <header className="page-body">
                 <HelpTabs />
             </header>
