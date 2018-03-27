@@ -1,9 +1,9 @@
 /* jshint esversion: 6 */
 import React, { Component } from 'react';
 
-import { Button, Header, Icon } from 'semantic-ui-react';
+import { Button, Header, Icon, Modal } from 'semantic-ui-react';
 
-import { SemanticModal } from '../Template';
+import { SemanticModal } from '../Exports';
 
 export default class ConfirmModal extends Component {
     constructor() {

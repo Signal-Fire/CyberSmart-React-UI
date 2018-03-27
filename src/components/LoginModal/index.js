@@ -58,11 +58,6 @@ export default class LoginModal extends Component {
       }
 
     render() {
-        const inlineStyle = {
-                marginTop: '0px',
-                marginLeft: 'auto',
-                marginRight: 'auto'         
-        };
       return (
         <Modal      
           dimmer='blurring'

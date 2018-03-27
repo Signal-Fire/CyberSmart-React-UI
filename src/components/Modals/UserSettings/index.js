@@ -62,6 +62,7 @@ export default class UserSettingsModal extends Component {
             e.target.name !== "lastName")
             return false;
 
+        // eslint-disable-next-line
         var stateOption = e.target.name;
         this.setState({ stateOption : e.target.value });
       }
