@@ -15,7 +15,9 @@ export default class MenuBar extends Component {
   }
 
   logout() {
-    localStorage.removeItem(USER_COOKIE_IDENTIFIER);
+    if (window.localStorage) 
+      localStorage.removeItem(USER_COOKIE_IDENTIFIER);
+      
     window.location.reload();
   }
 
