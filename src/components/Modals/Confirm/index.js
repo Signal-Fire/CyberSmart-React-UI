@@ -51,7 +51,7 @@ export default class ConfirmModal extends Component {
             size='small'
             open={this.state.isOpen}
             onOpen={this.handleStateTransfer}>
-                <Header icon='archive' content='Archive Old Messages' />
+                <Header icon='question' content='Are you sure?' />
                 <Modal.Content>
                 <p>Are you sure you wish to make these changes?</p>
                 </Modal.Content>

@@ -30,6 +30,7 @@ export default class UserSettingsModal extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleVisibility = this.handleVisibility.bind(this);
         this.getUserInformation = this.getUserInformation.bind(this);
+        this.updateUserInformation = this.updateUserInformation.bind(this);
     }
 
     getUserInformation() {
@@ -49,19 +50,27 @@ export default class UserSettingsModal extends Component {
     }
 
     updateUserInformation() {
-        axios.post(API_USERS_URL + '/login', {
-            username: this.state.username,
-            password: this.state.password
+        this.setState({ 
+          loading: true,
+          confirmModalOpen : false
+        });
+        axios({ method: 'POST',
+            url: API_USERS_URL + '/update',
+            headers: {
+              'Authorization' : localStorage.getItem(USER_COOKIE_IDENTIFIER)
+            },
+            data : {
+              username : this.state.username,
+              password : this.state.password,
+              first_name : this.state.firstName,
+              last_name : this.state.lastName
+            }
         }).then(res => {
-                if (res.status === 200) {
-                    localStorage.setItem(USER_COOKIE_IDENTIFIER, res.data.token)
-                    this.handleClose();
-                } else {
-                    this.setState({loginError: true});
-                }
-            }).catch(err => {
-                this.setState({ loginError: true });
-            });
+          this.setState({ loading: false, changed: true });
+        }).catch(err => {
+          this.setState({ loading: false });
+          console.error(err);
+        });
     }
 
     upperCase(value) {
