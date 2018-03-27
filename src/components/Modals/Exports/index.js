@@ -7,8 +7,12 @@ import UserSettingsModal from '../UserSettings';
 //Confirm Modal
 import ConfirmModal from '../Confirm';
 
+//Hub Settings
+import HubSettingsModal from '../HubSettings';
+
 export {
     SemanticModal,
     UserSettingsModal,
-    ConfirmModal
+    ConfirmModal,
+    HubSettingsModal
 };

@@ -48,6 +48,22 @@ export default class UserSettingsModal extends Component {
         });
     }
 
+    updateUserInformation() {
+        axios.post(API_USERS_URL + '/login', {
+            username: this.state.username,
+            password: this.state.password
+        }).then(res => {
+                if (res.status === 200) {
+                    localStorage.setItem(USER_COOKIE_IDENTIFIER, res.data.token)
+                    this.handleClose();
+                } else {
+                    this.setState({loginError: true});
+                }
+            }).catch(err => {
+                this.setState({ loginError: true });
+            });
+    }
+
     upperCase(value) {
         return value.charAt(0).toUpperCase() + value.slice(1);
     }
@@ -77,12 +93,9 @@ export default class UserSettingsModal extends Component {
                         onClick = {this.handleVisibility} 
                         />
                 }
-                dimmer = { true }
                 open = { this.state.isOpen }
                 onClose = { this.handleVisibility }
                 size='small'
-                closeOnEscape={ true }
-                closeOnRootNodeClick={ false }
             >
                 <Modal.Header>User Settings</Modal.Header>
                     <Modal.Content>
@@ -134,7 +147,7 @@ export default class UserSettingsModal extends Component {
                     <Modal.Actions>
                     <Button
                         color='black' 
-                        onClick={this.handleClick}>
+                        onClick={this.handleVisibility}>
                         Cancel
                     </Button>
                     <ConfirmModal 

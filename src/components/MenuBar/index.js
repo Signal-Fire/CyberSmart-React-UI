@@ -1,11 +1,11 @@
 /*jshint esversion: 6*/
 import React, { Component } from 'react';
 
-import { UserSettingsModal } from '../Modals/Exports';
+import { UserSettingsModal, HubSettingsModal } from '../Modals/Exports';
 
 import { APP_NAME, USER_COOKIE_IDENTIFIER } from '../../config';
 import { Dropdown, Menu } from 'semantic-ui-react';
-import { MenuIcon, MenuMessage, HubModal } from '../Exports';
+import { MenuIcon, MenuMessage } from '../Exports';
 
 export default class MenuBar extends Component {
   constructor(props) {
@@ -47,7 +47,7 @@ export default class MenuBar extends Component {
             <Dropdown item icon='settings' pointing = 'top right'>
               <Dropdown.Menu>
                 <UserSettingsModal />
-                <HubModal />
+                <HubSettingsModal />
                 <MenuIcon title = "Logout" icon = "sign out" onClick = {this.logout}/>
               </Dropdown.Menu>
             </Dropdown>

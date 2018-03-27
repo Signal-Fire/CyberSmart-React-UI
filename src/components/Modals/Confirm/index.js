@@ -12,6 +12,7 @@ export default class ConfirmModal extends Component {
             isOpen : false
         };
 
+        this.updateUserInformation = this.updateUserInformation.bind(this);
         this.handleButtonClick = this.handleButtonClick.bind(this);
         this.handleOpen = this.handleOpen.bind(this);
     }
@@ -21,7 +22,11 @@ export default class ConfirmModal extends Component {
             isOpen : false
         });
         if (e.target.name === 'yes')
-            this.props.updateUserInformation();        
+            this.updateUserInformation();
+    }
+
+    updateUserInformation() {
+        this.props.updateUserInformation();
     }
 
     handleOpen() {

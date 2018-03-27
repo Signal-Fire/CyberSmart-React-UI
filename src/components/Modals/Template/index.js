@@ -6,7 +6,13 @@ const centered = {
 };
 
 const SemanticModal = ({ children, ...rest }) => (
-    <Modal {...rest} style={centered} settings={{ observeChanges: true }}>
+    <Modal
+    closeOnEscape={ true }
+    closeOnRootNodeClick={ false }
+    dimmer = { true }
+    style={centered} 
+    {...rest} 
+    settings={{ observeChanges: true }}>
         {children}
     </Modal>
 );
