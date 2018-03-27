@@ -20,8 +20,6 @@ import InfoAccordian from '../Accordian';
 import HelpTabs from '../Help';
 
 //Modals
-import LoginModal from '../LoginModal';
-import ConfirmModal from '../ConfirmModal';
 import AddDeviceModal from '../Device/AddModal';
 
 export {
@@ -34,7 +32,5 @@ export {
     StatisticsGroup,
     InfoAccordian,
     HelpTabs,
-    LoginModal,
-    ConfirmModal,
     AddDeviceModal
 };

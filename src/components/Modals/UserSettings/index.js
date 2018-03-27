@@ -9,7 +9,7 @@ import { USER_COOKIE_IDENTIFIER, API_USERS_URL } from '../../../config';
 import { MenuIcon } from '../../Exports';
 
 //Modal Exports
-import { SemanticModal, ConfirmModal } from '../Exports';
+import { SemanticModal, ConfirmModal } from '../';
 
 import axios from 'axios';
 
@@ -21,6 +21,7 @@ export default class UserSettingsModal extends Component {
             firstName : "",
             lastName : "",
             username : "",
+            password: "",
             loading : false,
             informationChanged : false,
             isOpen : false,
@@ -82,14 +83,16 @@ export default class UserSettingsModal extends Component {
     }
 
     handleChange(e) { 
-        if (e.target.name !== "firstName" || 
-            e.target.name !== "password" || 
-            e.target.name !== "lastName")
-            return false;
-
-        // eslint-disable-next-line
-        var stateOption = e.target.name;
-        this.setState({ stateOption : e.target.value });
+        switch ( e.target.name) {
+            case "firstName":
+                return this.setState({ "firstName" : e.target.value });
+            case "lastName":
+                return this.setState({ "lastName" : e.target.value });
+            case "password":
+                return this.setState({ "password" : e.target.value });
+            default: 
+                return null;
+        }
       }
 
     render() {
@@ -115,14 +118,14 @@ export default class UserSettingsModal extends Component {
                                     <Form.Input
                                         label = 'First Name'
                                         placeholder = 'First Name'
-                                        name = 'firstname'
+                                        name = 'firstName'
                                         value = {this.state.firstName}
                                         onChange = {this.handleChange}
                                     />
                                     <Form.Input
                                         label = 'Last Name'
                                         placeholder = 'Last Name'
-                                        name = 'lastname'
+                                        name = 'lastName'
                                         value = {this.state.lastName}
                                         onChange = {this.handleChange}
                                     />

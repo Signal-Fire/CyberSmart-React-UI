@@ -1,7 +1,7 @@
 /*jshint esversion: 6*/
 import React, { Component } from 'react';
 
-import { UserSettingsModal, HubSettingsModal } from '../Modals/Exports';
+import { UserSettingsModal, HubSettingsModal } from '../Modals';
 
 import { APP_NAME, USER_COOKIE_IDENTIFIER } from '../../config';
 import { Dropdown, Menu } from 'semantic-ui-react';

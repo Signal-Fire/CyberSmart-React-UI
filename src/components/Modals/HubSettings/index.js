@@ -4,7 +4,7 @@ import { Modal, Button, Header, Form, Grid } from 'semantic-ui-react';
 
 import { CPUChart } from '../../Charts/Exports';
 import { MenuIcon } from '../../Exports';
-import { SemanticModal } from '../Exports';
+import { SemanticModal } from '../';
 
 export default class HubSettingsModal extends Component {
     constructor() {

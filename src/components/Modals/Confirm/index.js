@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 import { Button, Header, Icon, Modal } from 'semantic-ui-react';
 
-import { SemanticModal } from '../Exports';
+import { SemanticModal } from '../';
 
 export default class ConfirmModal extends Component {
     constructor() {
