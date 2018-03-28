@@ -154,6 +154,6 @@ export default class AddDeviceModal extends Component {
                     <Button positive icon='checkmark' labelPosition='right' content="Add" onClick={this.addDevice} name = 'add'/>
                 </Modal.Actions>
             </Modal>
-        )
+        );
     }
 };
