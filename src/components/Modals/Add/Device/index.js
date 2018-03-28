@@ -128,8 +128,8 @@ export default class AddDeviceModal extends Component {
         });
     }
 
-    handleVisibility() {
-        this.setState({ isOpen : !this.state.isOpen });
+    handleVisibility() {      
+        this.setState(prevState => ({ isOpen : !prevState.isOpen }));
     }
 
     render() {

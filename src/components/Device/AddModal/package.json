@@ -1,7 +1,0 @@
-{
-    "name" : "add-device-modal",
-    "main" : "index.js",
-    "version" : "1.0.0",
-    "author" : "Henry Pye",
-    "description" : "A modal to add a device to a database for a smart home system"
-}

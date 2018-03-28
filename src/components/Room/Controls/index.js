@@ -1,7 +1,7 @@
 /* jshint esversion: 6 */
 import React from 'react';
 
-import LocationControl from '../AddModal';
+import { AddLocationModal } from '../../Modals/Add';
 import { Card } from 'semantic-ui-react';
 
 const LocationControlPanel = () => (
@@ -9,7 +9,7 @@ const LocationControlPanel = () => (
       <Card.Content>
         <Card.Header>Control Panel</Card.Header>
         <Card.Meta></Card.Meta>
-        <Card.Description><LocationControl /></Card.Description>
+        <Card.Description><AddLocationModal /></Card.Description>
       </Card.Content>
     </Card>
 );

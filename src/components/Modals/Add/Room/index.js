@@ -2,11 +2,12 @@
 import React, { Component } from 'react';
 import { Modal, Label, Icon, Form, Button } from 'semantic-ui-react';
 
-import { API_LOCATION_URL, USER_COOKIE_IDENTIFIER } from '../../../config';
+import { SemanticModal } from '../../';
+import { API_LOCATION_URL, USER_COOKIE_IDENTIFIER } from '../../../../config';
 
 import axios from 'axios';
 
-export default class AddLocationModal extends Component {
+export default class AddRoomModal extends Component {
     constructor() {
         super();
         this.state = {
@@ -55,13 +56,10 @@ export default class AddLocationModal extends Component {
 
     render() {
         return (
-          <Modal
-            dimmer={true}
+          <SemanticModal
             open={this.state.isOpen}
             onClose={this.handleClick}
             size='small'
-            closeOnEscape={true}
-            closeOnRootNodeClick={false}
             trigger = {<Label as ='a' onClick ={this.handleClick}> <Icon name='setting' /> Add Location </Label>}>
                 <Modal.Header>Add a Location</Modal.Header>
                 <Modal.Content>
@@ -85,7 +83,7 @@ export default class AddLocationModal extends Component {
                     </Button>
                     <Button positive icon='checkmark' labelPosition='right' content="Add" onClick={this.addLocation} name = 'add'/>
                 </Modal.Actions>
-            </Modal>
+            </SemanticModal>
         )
     }
 };
