@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 import { API_LOCATION_URL } from '../../config';
 
-import { LocationWidget, LocationControlPanel } from '../../components/Exports/Widgets';
+import { LocationWidget, ControlPanel } from '../../components/Exports/Widgets';
 
 import { Grid } from 'semantic-ui-react';
 
@@ -56,7 +56,7 @@ export default class RoomPage extends Component {
             <header className="page-body ">
                 <Grid stackable columns = {1} divided = 'vertically'>
                         <Grid.Column verticalAlign = 'middle'>
-                            <LocationControlPanel />
+                            <ControlPanel name = 'Locations' />
                         </Grid.Column>                        
                     </Grid>      
                 <Grid stackable columns = {6}> 

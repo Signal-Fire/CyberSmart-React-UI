@@ -1,6 +1,6 @@
 /* jshint esversion: 6 */
 import React, { Component } from 'react';
-import { Modal, Label, Form, Button, Icon } from 'semantic-ui-react';
+import { Modal, Form, Button, Menu } from 'semantic-ui-react';
 import { API_LOCATION_URL, API_DEVICES_URL, USER_COOKIE_IDENTIFIER } from '../../../../config';
 import { SemanticModal } from '../../';
 import axios from 'axios';
@@ -139,10 +139,7 @@ export default class AddDeviceModal extends Component {
                 onOpen = {this.handleVisibility.bind(this)}
                 onClose={this.handleVisibility.bind(this)}
                 size='small'
-                trigger = {
-                    <Label as ='a' onClick ={this.handleClick}> 
-                    <Icon name='setting' /> Add Device </Label>
-                    }
+                trigger = {<Menu.Item icon = "plus" onClick = { this.handleClick }/>}
             >
                 <Modal.Header>Add a Device</Modal.Header>
                     <Modal.Content>

@@ -1,6 +1,6 @@
 /* jshint esversion: 6 */
 import React, { Component } from 'react';
-import { Modal, Label, Icon, Form, Button } from 'semantic-ui-react';
+import { Menu, Modal, Form, Button } from 'semantic-ui-react';
 
 import { SemanticModal } from '../../';
 import { API_LOCATION_URL, USER_COOKIE_IDENTIFIER } from '../../../../config';
@@ -15,12 +15,11 @@ export default class AddRoomModal extends Component {
             locationName : ""
         };
 
-        this.handleClick = this.handleClick.bind(this);
         this.addLocation = this.addLocation.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
 
-    handleClick() {
+    handleVisibility() {
         this.setState(prevState => ({
             isOpen : !prevState.isOpen
         }));        
@@ -58,9 +57,11 @@ export default class AddRoomModal extends Component {
         return (
           <SemanticModal
             open={this.state.isOpen}
-            onClose={this.handleClick}
+            onClose={this.handleVisibility.bind(this)}
             size='small'
-            trigger = {<Label as ='a' onClick ={this.handleClick}> <Icon name='setting' /> Add Location </Label>}>
+            trigger = {
+                <Menu.Item icon = "plus" onClick = {this.handleVisibility.bind(this)}/>
+                }>
                 <Modal.Header>Add a Location</Modal.Header>
                 <Modal.Content>
                     <Modal.Description>
@@ -78,7 +79,7 @@ export default class AddRoomModal extends Component {
                     </Modal.Description>
                 </Modal.Content>
                 <Modal.Actions>
-                    <Button color='black' onClick={this.handleClick}>
+                    <Button color='black' onClick={this.handleVisibility.bind(this)}>
                     Cancel
                     </Button>
                     <Button positive icon='checkmark' labelPosition='right' content="Add" onClick={this.addLocation} name = 'add'/>
