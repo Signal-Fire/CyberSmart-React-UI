@@ -1,6 +1,6 @@
 /* jshint esversion: 6 */
 import React, { Component } from 'react';
-import { Modal, Label, Form, Button } from 'semantic-ui-react';
+import { Modal, Label, Form, Button, Icon } from 'semantic-ui-react';
 import { API_LOCATION_URL, API_DEVICES_URL, USER_COOKIE_IDENTIFIER } from '../../../../config';
 import { SemanticModal } from '../../';
 import axios from 'axios';
@@ -11,13 +11,15 @@ export default class AddDeviceModal extends Component {
         
         this.state = {
             isOpen : false,
-            isLoading : true,
+            isLoading : false,
+            connectedLoading : true,
+            locationsLoading : true,
             isError : false,
             deviceName : "",
-            deviceAddresses : [],
-            selectedAddress,
+            physicalDevices : [],
+            selectedAddress : "",
             deviceLocations : [],
-            selectedLocation
+            selectedLocation : ""
         };
 
         this.findConnectedDevices = this.findConnectedDevices.bind(this);
@@ -28,11 +30,25 @@ export default class AddDeviceModal extends Component {
         switch(e.target.name) {
             case 'deviceName':
                 return this.setState({ 'deviceName' : e.target.value });
+            default:
+                return false;
         }
     }
 
+    selectPhysicalDevice(e, { value, key }) {        
+        this.setState({
+            selectedAddress : value
+        });        
+    }
+
+    selectLocation(e, { value, key }) {
+        this.setState({
+            selectedLocation : value
+        });
+    }
+
     componentWillMount() {
-        this.findConnectedDevices();
+        //this.findConnectedDevices();
         this.findActiveLocations();
     }
 
@@ -40,12 +56,12 @@ export default class AddDeviceModal extends Component {
         axios.get(API_DEVICES_URL + '/find/connected')
         .then(res => {
             this.setState({
-                isLoading : false,
-                deviceAddresses : this.createDeviceDropdown(res.data)
+                connectedLoading : false,
+                physicalDevices : this.createDeviceDropdown(res.data)
             });
         }).catch(err => {
             this.setState({
-                isLoading : false,
+                connectedLoading : false,
                 isError : true
             });
         });
@@ -55,32 +71,33 @@ export default class AddDeviceModal extends Component {
         axios.get(API_LOCATION_URL + '/find/all')
         .then(res => {
             this.setState({
-                isLoading : false,
+                locationsLoading : false,
                 deviceLocations : this.createLocationDropdown(res.data)
             });
         }).catch(err => {
             this.setState({
-                isLoading: false,
+                locationsLoading: false,
                 isError : true
             });
         });
     }
 
     createDeviceDropdown(data) {        
-        var newData = data.filter(x => x.ip !== undefined);
-        return newData.forEach(item => {            
+        data.filter(x => x.ip !== undefined).forEach(item => {            
             item.key = item.mac;  
             item.text = "Plug: " + item.ip.replace("(", "").replace(")", "");
             item.value = item.ip.replace("(", "").replace(")", "");               
         });
+        return data;
     }
 
-    createLocationDropdown(data) {         
-        return data.forEach(item => {            
+    createLocationDropdown(data) {    
+        data.forEach(item => {           
             item.key = item._id;  
             item.text = item.name;
             item.value = item._id;               
         });
+        return data;
     }
 
     addDevice() {
@@ -119,6 +136,7 @@ export default class AddDeviceModal extends Component {
         return (
             <SemanticModal
                 open={this.state.isOpen}
+                onOpen = {this.handleVisibility.bind(this)}
                 onClose={this.handleVisibility.bind(this)}
                 size='small'
                 trigger = {
@@ -147,7 +165,9 @@ export default class AddDeviceModal extends Component {
                                         label = 'Physical Device'
                                         options = { this.state.physicalDevices }
                                         onChange = { this.selectPhysicalDevice.bind(this) }
+                                        noResultsMessage = 'No devices available'
                                         placeholder = 'Physical Devices'
+                                        loading = { this.state.connectedLoading }
                                     />
                                 </Form.Group>
                                 <Form.Group widths = {2}>
@@ -156,7 +176,9 @@ export default class AddDeviceModal extends Component {
                                         label = 'Device Location'    
                                         options = { this.state.deviceLocations }
                                         onChange = {this.selectLocation.bind(this) }
+                                        noResultsMessage = 'No locations available'
                                         placeholder = 'Device Location'
+                                        loading = { this.state.locationsLoading }
                                     />
                                 </Form.Group>
                             </Form>
@@ -168,7 +190,13 @@ export default class AddDeviceModal extends Component {
                             onClick = {this.handleVisibility.bind(this)}>
                             Cancel
                         </Button>
-                        <Button positive icon='checkmark' labelPosition='right' content="Add" onClick={this.addDevice.bind(this)} name = 'add'/>
+                        <Button 
+                            positive 
+                            icon='checkmark' 
+                            labelPosition='right' 
+                            content="Add" 
+                            onClick={this.addDevice.bind(this)} 
+                            name = 'add'/>
                     </Modal.Actions>
             </SemanticModal>
         )
