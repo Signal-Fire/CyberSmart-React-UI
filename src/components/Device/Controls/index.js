@@ -1,7 +1,8 @@
 /* jshint esversion: 6 */
 import React from 'react';
 
-import { AddDeviceModal } from '../../Exports';
+import { AddDeviceModal } from '../../Modals/Add';
+//import { AddDeviceModal } from '../../Exports';
 import { Card } from 'semantic-ui-react';
 
 const AddDeviceControlPanel = () => (

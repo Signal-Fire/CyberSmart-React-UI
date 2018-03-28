@@ -1,9 +1,11 @@
 /*jshint esversion: 6*/
 import React, { Component } from 'react';
 
+import { UserSettingsModal, HubSettingsModal } from '../Modals';
+
 import { APP_NAME, USER_COOKIE_IDENTIFIER } from '../../config';
 import { Dropdown, Menu } from 'semantic-ui-react';
-import { MenuIcon, MenuMessage, UserModal, HubModal } from '../Exports';
+import { MenuIcon, MenuMessage } from '../Exports';
 
 export default class MenuBar extends Component {
   constructor(props) {
@@ -13,7 +15,9 @@ export default class MenuBar extends Component {
   }
 
   logout() {
-    localStorage.removeItem(USER_COOKIE_IDENTIFIER);
+    if (window.localStorage) 
+      localStorage.removeItem(USER_COOKIE_IDENTIFIER);
+      
     window.location.reload();
   }
 
@@ -42,8 +46,8 @@ export default class MenuBar extends Component {
             </Dropdown>
             <Dropdown item icon='settings' pointing = 'top right'>
               <Dropdown.Menu>
-                <UserModal />
-                <HubModal />
+                <UserSettingsModal />
+                <HubSettingsModal />
                 <MenuIcon title = "Logout" icon = "sign out" onClick = {this.logout}/>
               </Dropdown.Menu>
             </Dropdown>

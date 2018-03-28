@@ -1,7 +1,9 @@
 /* jshint esversion: 6 */
 import React, { Component } from 'react';
 
-import { Button, Modal, Header, Icon } from 'semantic-ui-react';
+import { Button, Header, Icon, Modal } from 'semantic-ui-react';
+
+import { SemanticModal } from '../';
 
 export default class ConfirmModal extends Component {
     constructor() {
@@ -10,6 +12,7 @@ export default class ConfirmModal extends Component {
             isOpen : false
         };
 
+        this.updateUserInformation = this.updateUserInformation.bind(this);
         this.handleButtonClick = this.handleButtonClick.bind(this);
         this.handleOpen = this.handleOpen.bind(this);
     }
@@ -19,7 +22,11 @@ export default class ConfirmModal extends Component {
             isOpen : false
         });
         if (e.target.name === 'yes')
-            this.props.updateUserInformation();        
+            this.updateUserInformation();
+    }
+
+    updateUserInformation() {
+        this.props.updateUserInformation();
     }
 
     handleOpen() {
@@ -29,24 +36,24 @@ export default class ConfirmModal extends Component {
     }
 
     render() {
-        const inlineStyle = {
-            modal : {
-                marginTop: '0px !important',
-                marginLeft: 'auto',
-                marginRight: 'auto'
-            }
-        };
         return (
-          <Modal
-            style = {inlineStyle.modal}
-            trigger={<Button positive icon='checkmark' labelPosition='right' content="Save" onClick = {this.handleOpen} />} 
+          <SemanticModal
+            trigger={
+                <Button
+                    positive 
+                    icon='checkmark' 
+                    labelPosition='right' 
+                    content="Save" 
+                    onClick = {this.handleOpen} 
+                    />
+            } 
             basic 
             size='small'
             open={this.state.isOpen}
             onOpen={this.handleStateTransfer}>
-                <Header icon='archive' content='Archive Old Messages' />
+                <Header icon='question' content='Are you sure?' />
                 <Modal.Content>
-                <p>Your inbox is getting full, would you like us to enable automatic archiving of old messages?</p>
+                <p>Are you sure you wish to make these changes?</p>
                 </Modal.Content>
                 <Modal.Actions>
                 <Button basic color='red' inverted onClick = {this.handleButtonClick} name='no'>
@@ -56,7 +63,7 @@ export default class ConfirmModal extends Component {
                     <Icon name='checkmark' /> Yes
                 </Button>
                 </Modal.Actions>
-            </Modal>
+            </SemanticModal>
         )
     }
 }
