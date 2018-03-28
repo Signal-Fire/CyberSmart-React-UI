@@ -14,6 +14,7 @@ export default class AddDeviceModal extends Component {
             isLoading : false,
             connectedLoading : true,
             locationsLoading : true,
+            isSuccess : false,
             isError : false,
             deviceName : "",
             physicalDevices : [],
@@ -116,7 +117,8 @@ export default class AddDeviceModal extends Component {
         }).then(res => {
             this.setState({ 
                 isLoading : false,
-                isError : false
+                isError : false,
+                isSuccess : true
             });
             this.forceUpdate();
             this.handleClick();
@@ -138,6 +140,7 @@ export default class AddDeviceModal extends Component {
                 open={this.state.isOpen}
                 onOpen = {this.handleVisibility.bind(this)}
                 onClose={this.handleVisibility.bind(this)}
+                success={this.state.isSuccess}
                 size='small'
                 trigger = {<Menu.Item icon = "plus" onClick = { this.handleClick }/>}
             >
