@@ -6,7 +6,7 @@ import { Grid } from 'semantic-ui-react';
 import { API_DEVICES_URL } from '../../config';
 
 //Custom components import
-import { DeviceWidget, DeviceControlPanel } from '../../components/Exports/Widgets';
+import { DeviceWidget, ControlPanel } from '../../components/Exports/Widgets';
 
 //CSS import
 import '../Master.css';
@@ -44,7 +44,7 @@ export default class DevicePage extends Component {
                 <header className="page-body">
                     <Grid stackable columns = {1} divided = 'vertically'>
                         <Grid.Column verticalAlign = 'middle'>
-                            <DeviceControlPanel />
+                            <ControlPanel name = 'Devices' />
                         </Grid.Column>                        
                     </Grid>              
                         <Grid stackable columns = {6}>                              

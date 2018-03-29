@@ -8,16 +8,12 @@ import StatisticsWidget from '../../Statistics/StatisticsWidget';
 //Location widget
 import LocationWidget from '../../Locations/';
 
-//Device Control Panel
-import DeviceControlPanel from '../../Device/Controls';
-
-//Location Control Panel
-import LocationControlPanel from '../../Room/Controls';
+//Control Panel
+import ControlPanel from '../../ControlPanel';
 
 export {
     DeviceWidget,
     StatisticsWidget,
     LocationWidget,
-    DeviceControlPanel,
-    LocationControlPanel
+    ControlPanel
 };

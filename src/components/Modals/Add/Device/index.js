@@ -1,6 +1,6 @@
 /* jshint esversion: 6 */
 import React, { Component } from 'react';
-import { Modal, Label, Form, Button, Icon } from 'semantic-ui-react';
+import { Modal, Form, Button, Menu } from 'semantic-ui-react';
 import { API_LOCATION_URL, API_DEVICES_URL, USER_COOKIE_IDENTIFIER } from '../../../../config';
 import { SemanticModal } from '../../';
 import axios from 'axios';
@@ -14,6 +14,7 @@ export default class AddDeviceModal extends Component {
             isLoading : false,
             connectedLoading : true,
             locationsLoading : true,
+            isSuccess : false,
             isError : false,
             deviceName : "",
             physicalDevices : [],
@@ -116,7 +117,8 @@ export default class AddDeviceModal extends Component {
         }).then(res => {
             this.setState({ 
                 isLoading : false,
-                isError : false
+                isError : false,
+                isSuccess : true
             });
             this.forceUpdate();
             this.handleClick();
@@ -138,11 +140,9 @@ export default class AddDeviceModal extends Component {
                 open={this.state.isOpen}
                 onOpen = {this.handleVisibility.bind(this)}
                 onClose={this.handleVisibility.bind(this)}
+                success={this.state.isSuccess}
                 size='small'
-                trigger = {
-                    <Label as ='a' onClick ={this.handleClick}> 
-                    <Icon name='setting' /> Add Device </Label>
-                    }
+                trigger = {<Menu.Item icon = "plus" onClick = { this.handleClick }/>}
             >
                 <Modal.Header>Add a Device</Modal.Header>
                     <Modal.Content>
