@@ -26,7 +26,7 @@ export default class AddDeviceModal extends Component {
         this.findConnectedDevices = this.findConnectedDevices.bind(this);
         this.findActiveLocations = this.findActiveLocations.bind(this);
     }
-
+    
     handleTextChange(e) {
         switch(e.target.name) {
             case 'deviceName':
@@ -47,7 +47,7 @@ export default class AddDeviceModal extends Component {
             selectedLocation : value
         });
     }
-
+    
     componentWillMount() {
         //this.findConnectedDevices();
         this.findActiveLocations();
@@ -130,7 +130,7 @@ export default class AddDeviceModal extends Component {
         });
     }
 
-    handleVisibility() {      
+    handleVisibility() {     
         this.setState(prevState => ({ isOpen : !prevState.isOpen }));
     }
 
@@ -142,7 +142,7 @@ export default class AddDeviceModal extends Component {
                 onClose={this.handleVisibility.bind(this)}
                 success={this.state.isSuccess}
                 size='small'
-                trigger = {<Menu.Item icon = "plus" onClick = { this.handleClick }/>}
+                trigger = { <Menu.Item icon = "plus" onClick = { this.handleClick } /> }
             >
                 <Modal.Header>Add a Device</Modal.Header>
                     <Modal.Content>
