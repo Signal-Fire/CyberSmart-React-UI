@@ -14,7 +14,6 @@ import {FluidChart} from '../../components/Exports';
 export default class HomePage extends Component {
   render() {
     return (
-      <Grid rows={2}>
       <Segment>
       <header className = "page-body" >
       <Grid.Row>
@@ -25,7 +24,7 @@ export default class HomePage extends Component {
       </Grid.Row>
       </header>
       </Segment>
-      </Grid>
+
     )
   }
 }

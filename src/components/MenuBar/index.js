@@ -19,31 +19,32 @@ const NavBarMobile = ({
       direction='left'
       width='large'
       visible={visible}
+      inverted
     >
-    <Button.Group pointing='top left'>
+    <Button.Group pointing='top left' >
            <Button animated='fade' basic to="/" as={ Link }>
-             <Button.Content visible><Icon name='dashboard' /></Button.Content>
+             <Button.Content visible><Icon name='dashboard' inverted/></Button.Content>
                <Button.Content hidden>
                  Home
                </Button.Content>
            </Button>
 
            <Button animated='fade' basic to="/devices" as={ Link }>
-             <Button.Content visible><Icon name='block layout' /></Button.Content>
+             <Button.Content visible><Icon name='block layout' inverted/></Button.Content>
                <Button.Content hidden>
                  Devices
                </Button.Content>
            </Button>
 
            <Button animated='fade' basic to="/rooms" as={ Link }>
-             <Button.Content visible><Icon name='home' /></Button.Content>
+             <Button.Content visible><Icon name='home' inverted /></Button.Content>
                <Button.Content hidden>
                  Rooms
                </Button.Content>
            </Button>
 
            <Button animated='fade' basic to="/help" as={ Link }>
-             <Button.Content visible><Icon name='info' /></Button.Content>
+             <Button.Content visible><Icon name='info' inverted /></Button.Content>
                <Button.Content hidden>
                  Help
                </Button.Content>
