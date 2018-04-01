@@ -15,13 +15,13 @@ const NavBarMobile = ({
   <Sidebar.Pushable>
     <Sidebar
       as={Menu}
-      animation='left slide along'
+      animation='slide along'
       direction='left'
-      width='large'
+      width='wide'
       visible={visible}
       inverted
     >
-    <Button.Group pointing='top left' >
+    <Button.Group pointing='top left'>
            <Button animated='fade' basic to="/" as={ Link }>
              <Button.Content visible><Icon name='dashboard' inverted/></Button.Content>
                <Button.Content hidden>
@@ -178,6 +178,7 @@ export default class MenuBar extends Component {
             onPusherClick={this.handlePusher}
             onToggle={this.handleToggle}
             visible={visible}
+            verticalAlign = 'middle'
           >
             <NavBarChildren>{children}</NavBarChildren>
           </NavBarMobile>
