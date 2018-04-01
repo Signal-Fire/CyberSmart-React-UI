@@ -14,7 +14,7 @@ export default class SideBar extends Component {
             <HashRouter>
                 <div className = "sidebar-container">
                     <Sidebar.Pushable as={ Segment }>
-                        <Sidebar as={Menu} animation='push' 
+                        <Sidebar as={Menu} animation='push'
                             direction='left'
                             width='thin'
                             visible={this.props.visible}
