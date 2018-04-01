@@ -141,7 +141,7 @@ const NavBarDesktop = ({ leftItems, rightItems }) => (
 );
 
 const NavBarChildren = ({ children }) => (
-  <Container style={{ marginTop: "4.5em" }}>{children}</Container>
+  <Container style={{ marginTop: "4.1em" }}>{children}</Container>
 );
 
 
