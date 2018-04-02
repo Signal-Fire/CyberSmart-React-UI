@@ -31,7 +31,7 @@ class App extends Component {
       return (       
           <div className = "App">
               <MenuBar toggleVisibility = {this.toggleVisibility} />
-              <CustomSideBar visible = {this.state.visible} />  
+              <CustomSideBar visible = {this.state.visible} toggleVisibility = {this.toggleVisibility} />  
               <LoginModal open = {this.getSession()}/> 
           </div>
       );

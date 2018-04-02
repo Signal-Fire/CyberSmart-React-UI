@@ -19,7 +19,7 @@ export default class SideBar extends Component {
                             borderRadius: 0,
                             borderWidth: 0
                          }} >
-                        <Sidebar as={Menu} animation='push' 
+                        <Sidebar as={Menu} animation='overlay' 
                             direction='left'
                             width='thin'
                             defaultVisible = {true}
@@ -34,7 +34,7 @@ export default class SideBar extends Component {
                             <NavLink to="/user"><SideBarItem icon = 'user' title = 'Users' /></NavLink>
                             <NavLink to="/help"><SideBarItem icon = 'info' title = 'Help' /></NavLink>
                         </Sidebar>
-                        <Sidebar.Pusher>
+                        <Sidebar.Pusher onClick = {this.props.toggleVisibility}>
                             <div className = "sidebar-content">
                                 <Route exact path="/" component={HomePage}  />
                                 <Route exact path="/devices" component={DevicePage} />
