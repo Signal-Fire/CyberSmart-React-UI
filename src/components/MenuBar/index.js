@@ -31,7 +31,8 @@ export default class MenuBar extends Component {
         inverted
         attached
         pointing
-        borderless>
+        borderless
+        >
           <Menu.Item icon = 'sidebar' onClick = { this.toggleVisibility } />         
           <div className="left logo">
             <div className= "item">

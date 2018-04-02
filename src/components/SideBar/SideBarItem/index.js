@@ -35,6 +35,7 @@ export default class SideBarItem extends Component {
                     <Item.Content verticalAlign='middle'>
                         <Item.Header>
                         <Icon name={this.props.icon} />
+                            <br />
                             {this.props.title}
                         </Item.Header>
                     </Item.Content>

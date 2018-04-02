@@ -13,10 +13,16 @@ export default class SideBar extends Component {
         return (
             <HashRouter>
                 <div className = "sidebar-container">
-                    <Sidebar.Pushable as={ Segment }>
+                    <Sidebar.Pushable 
+                        as={ Segment }
+                        style = {{ 
+                            borderRadius: 0,
+                            borderWidth: 0
+                         }} >
                         <Sidebar as={Menu} animation='push' 
                             direction='left'
                             width='thin'
+                            defaultVisible = {true}
                             visible={this.props.visible}
                             icon='labeled'
                             vertical
@@ -25,8 +31,8 @@ export default class SideBar extends Component {
                             <NavLink to="/" ><SideBarItem icon = 'dashboard' title = 'Dashboard' /></NavLink>
                             <NavLink to="/devices"><SideBarItem icon = 'plug' title = 'Devices' /></NavLink>
                             <NavLink to="/rooms"><SideBarItem icon = 'home' title = 'Rooms' /></NavLink>
-                            <NavLink to="/help"><SideBarItem icon = 'info' title = 'Help' /></NavLink>
                             <NavLink to="/user"><SideBarItem icon = 'user' title = 'Users' /></NavLink>
+                            <NavLink to="/help"><SideBarItem icon = 'info' title = 'Help' /></NavLink>
                         </Sidebar>
                         <Sidebar.Pusher>
                             <div className = "sidebar-content">
