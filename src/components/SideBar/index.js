@@ -1,9 +1,9 @@
 /* jshint esversion: 6*/
 import React, { Component } from 'react';
 import { Sidebar, Segment, Menu } from 'semantic-ui-react';
-import { HashRouter, Route, NavLink } from 'react-router-dom';
+import { HashRouter, Route } from 'react-router-dom';
 
-import { SideBarItem } from '../Exports';
+import { SideBarItems, Routes } from './SideBarManager';
 import { DevicePage, HomePage, RoomPage, HelpPage, UserManagementPage } from '../../pages/Exports';
 
 import './styles.css';
@@ -28,50 +28,10 @@ export default class SideBar extends Component {
                             vertical
                             inverted
                             >
-                            <NavLink 
-                                to="/" 
-                                onClick = {this.props.toggleVisibility}>
-                                <SideBarItem 
-                                    icon = 'dashboard' 
-                                    title = 'Dashboard' />
-                                </NavLink>
-                            <NavLink 
-                                to="/devices"
-                                onClick = {this.props.toggleVisibility}>
-                                <SideBarItem 
-                                    icon = 'plug' 
-                                    title = 'Devices' />
-                                </NavLink>
-                            <NavLink 
-                                to="/rooms"
-                                onClick = {this.props.toggleVisibility}>
-                                <SideBarItem 
-                                    icon = 'home' 
-                                    title = 'Rooms' />
-                                </NavLink>
-                            <NavLink 
-                                to="/user"
-                                onClick = {this.props.toggleVisibility}>
-                                <SideBarItem 
-                                    icon = 'user' 
-                                    title = 'Users' />
-                                </NavLink>
-                            <NavLink 
-                                to="/help"
-                                onClick = {this.props.toggleVisibility}>
-                                <SideBarItem 
-                                    icon = 'info' 
-                                    title = 'Help' />
-                            </NavLink>
+                            <SideBarItems toggleVisibility = { this.props.toggleVisibility } />
                         </Sidebar>
                         <Sidebar.Pusher>
-                            <div className = "sidebar-content">
-                                <Route exact path="/" component={HomePage}  />
-                                <Route exact path="/devices" component={DevicePage} />
-                                <Route exact path="/rooms" component={RoomPage} />
-                                <Route exact path="/help" component={HelpPage} />
-                                <Route exact path="/user" component={UserManagementPage} />
-                            </div>
+                            <Routes />
                         </Sidebar.Pusher>
                     </Sidebar.Pushable>
                 </div>

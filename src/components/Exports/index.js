@@ -5,7 +5,6 @@ import MenuMessage from '../MenuBar/Messages';
 
 //Sidebar
 import CustomSideBar from '../SideBar';
-import SideBarItem from '../SideBar/SideBarItem';
 
 //charts
 import FluidChart from '../Charts';
@@ -24,7 +23,6 @@ export {
     MenuIcon,
     MenuMessage,
     CustomSideBar,
-    SideBarItem,
     FluidChart,
     StatisticsGroup,
     InfoAccordian,
