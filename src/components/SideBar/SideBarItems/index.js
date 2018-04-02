@@ -4,7 +4,7 @@ import { SideBarItem }from '../SideBarManager';
 export default class SideBarItems extends Component {
     render() {
            return (
-            <div>
+           <div>
                 <SideBarItem 
                     navPage = "/"
                     toggleVisibility = {this.props.toggleVisibility}
