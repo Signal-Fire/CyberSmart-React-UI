@@ -4,6 +4,14 @@ import { Menu } from 'semantic-ui-react';
 
 import { AddLocationModal, AddDeviceModal } from '../Modals/Add';
 
+const ControlPanel = ( { name }) => {
+  return (
+
+  );
+}
+
+export default ControlPanel;
+
 export default class ControlPanel extends Component {
   render() {
     return (

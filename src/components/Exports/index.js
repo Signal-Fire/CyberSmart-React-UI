@@ -1,7 +1,6 @@
 /* jshint esversion: 6*/
 import MenuBar from '../MenuBar';
 import MenuIcon from '../MenuBar/Icons';
-import MenuMessage from '../MenuBar/Messages';
 
 //charts
 import FluidChart from '../Charts';
@@ -18,7 +17,6 @@ import HelpTabs from '../Help';
 export {
     MenuBar,
     MenuIcon,
-    MenuMessage,
     FluidChart,
     StatisticsGroup,
     InfoAccordian,

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 //Custom imports
 import { SideBar } from './components/SideBar';
-import { MenuBar } from './components/Exports';
+import { MainMenu } from './components/MenuBar';
 
 //Modals
 import { LoginModal } from './components/Modals';
@@ -31,7 +31,7 @@ class App extends Component {
   render() {   
       return (       
           <div className = "App">
-              <MenuBar toggleVisibility = {this.toggleVisibility} />
+              <MainMenu toggleVisibility = {this.toggleVisibility} />
               <SideBar visible = {this.state.visible} toggleVisibility = {this.toggleVisibility} />  
               <LoginModal open = {this.getSession()}/> 
           </div>
