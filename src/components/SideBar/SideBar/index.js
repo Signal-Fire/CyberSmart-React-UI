@@ -1,21 +1,27 @@
-import React from 'react';
-import { Sidebar, Menu } from 'semantic-ui-react';
+/* jshint esversion: 6*/
+import React, { Component } from 'react';
+import { Sidebar } from 'semantic-ui-react';
+import { HashRouter } from 'react-router-dom';
 
-const SideBar = ({ children, ...rest, isVisible }) => {
-    return (
-        <Sidebar
-            as = { Menu }
-            animation = 'slide out'
-            direction = 'left'
-            width = 'thin'
-            visible = { isVisible }
-            icon = 'labeled'
-            vertical
-            inverted
-        >
-            {children}
-        </Sidebar>
-    );
+import { SideBarItems, Routes, MainSidebar, SideBarPusher } from '../';
+
+import './styles.css';
+
+export default class SideBar extends Component {
+    render() {
+        return (
+            <HashRouter>
+                <div className = "sidebar-container">
+                    <SideBarPusher>
+                        <MainSidebar isVisible = { this.props.visible }>
+                            <SideBarItems toggleVisibility = { this.props.toggleVisibility } />
+                        </MainSidebar>
+                        <Sidebar.Pusher>
+                            <Routes />
+                        </Sidebar.Pusher>
+                    </SideBarPusher>
+                </div>
+            </HashRouter>
+        )
+    }
 }
-
-export default SideBar;
