@@ -28,11 +28,41 @@ export default class SideBar extends Component {
                             vertical
                             inverted
                             >
-                            <NavLink to="/"  onClick = {this.props.toggleVisibility}><SideBarItem icon = 'dashboard' title = 'Dashboard' /></NavLink>
-                            <NavLink to="/devices"><SideBarItem icon = 'plug' title = 'Devices' /></NavLink>
-                            <NavLink to="/rooms"><SideBarItem icon = 'home' title = 'Rooms' /></NavLink>
-                            <NavLink to="/user"><SideBarItem icon = 'user' title = 'Users' /></NavLink>
-                            <NavLink to="/help"><SideBarItem icon = 'info' title = 'Help' /></NavLink>
+                            <NavLink 
+                                to="/" 
+                                onClick = {this.props.toggleVisibility}>
+                                <SideBarItem 
+                                    icon = 'dashboard' 
+                                    title = 'Dashboard' />
+                                </NavLink>
+                            <NavLink 
+                                to="/devices"
+                                onClick = {this.props.toggleVisibility}>
+                                <SideBarItem 
+                                    icon = 'plug' 
+                                    title = 'Devices' />
+                                </NavLink>
+                            <NavLink 
+                                to="/rooms"
+                                onClick = {this.props.toggleVisibility}>
+                                <SideBarItem 
+                                    icon = 'home' 
+                                    title = 'Rooms' />
+                                </NavLink>
+                            <NavLink 
+                                to="/user"
+                                onClick = {this.props.toggleVisibility}>
+                                <SideBarItem 
+                                    icon = 'user' 
+                                    title = 'Users' />
+                                </NavLink>
+                            <NavLink 
+                                to="/help"
+                                onClick = {this.props.toggleVisibility}>
+                                <SideBarItem 
+                                    icon = 'info' 
+                                    title = 'Help' />
+                            </NavLink>
                         </Sidebar>
                         <Sidebar.Pusher>
                             <div className = "sidebar-content">
