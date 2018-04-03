@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { Modal, Button, Header, Form, Grid } from 'semantic-ui-react';
 
-import { CPUChart } from '../../Charts/Exports';
+import { PowerChart } from '../../Charts';
 import { MenuIcon } from '../../Exports';
 import { SemanticModal } from '../';
 
@@ -44,7 +44,7 @@ export default class HubSettingsModal extends Component {
                         <Header>Hub Hardware Statistics</Header>
                             <Grid stackable columns={1}>            
                                 <Grid.Column>
-                                    <CPUChart />    
+                                    <PowerChart header = 'Hub Power Consumption' />    
                                 </Grid.Column>
                             </Grid>
                     </Modal.Description>
