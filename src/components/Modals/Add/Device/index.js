@@ -13,7 +13,9 @@ export default class AddDeviceModal extends Component {
             isOpen : false,
             isLoading : false,
             connectedLoading : true,
+            connectedError : false,
             locationsLoading : true,
+            locationsError : false,
             isSuccess : false,
             isError : false,
             deviceName : "",
@@ -58,12 +60,13 @@ export default class AddDeviceModal extends Component {
         .then(res => {
             this.setState({
                 connectedLoading : false,
-                physicalDevices : this.createDeviceDropdown(res.data)
+                physicalDevices : this.createDeviceDropdown(res.data),
+                connectedError : false
             });
         }).catch(err => {
             this.setState({
                 connectedLoading : false,
-                isError : true
+                connectedError : true
             });
         });
     }
@@ -73,12 +76,13 @@ export default class AddDeviceModal extends Component {
         .then(res => {
             this.setState({
                 locationsLoading : false,
-                deviceLocations : this.createLocationDropdown(res.data)
+                deviceLocations : this.createLocationDropdown(res.data),
+                locationsError : false
             });
         }).catch(err => {
             this.setState({
-                locationsLoading: false,
-                isError : true
+                locationsLoading: true,
+                locationsError : true
             });
         });
     }
@@ -168,6 +172,7 @@ export default class AddDeviceModal extends Component {
                                         noResultsMessage = 'No devices available'
                                         placeholder = 'Physical Devices'
                                         loading = { this.state.connectedLoading }
+                                        error = { this.state.locationsError }
                                     />
                                 </Form.Group>
                                 <Form.Group widths = {2}>
@@ -179,6 +184,7 @@ export default class AddDeviceModal extends Component {
                                         noResultsMessage = 'No locations available'
                                         placeholder = 'Device Location'
                                         loading = { this.state.locationsLoading }
+                                        error = { this.state.locationsError }
                                     />
                                 </Form.Group>
                             </Form>
