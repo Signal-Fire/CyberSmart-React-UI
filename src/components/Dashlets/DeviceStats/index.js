@@ -2,13 +2,13 @@
 import React, {  Component } from 'react';
 import { Grid } from 'semantic-ui-react';
 
-import { API_DEVICES_URL } from '../../config';
+import { API_DEVICES_URL } from '../../../config';
 
-import { StatisticsWidget } from '../Exports/Widgets';
+import Widget from './Widget';
 
 import axios from 'axios';
 
-export default class StatisticsGroup extends Component {
+export default class DeviceStats extends Component {
   constructor() {
     super();
     this.state = {
@@ -16,6 +16,7 @@ export default class StatisticsGroup extends Component {
       dataSource: {},
       deviceStates: {}
     };
+
     this.calculateStatistics = this.calculateStatistics.bind(this);
   }
 
@@ -49,18 +50,37 @@ export default class StatisticsGroup extends Component {
 
   render() {
         return (
-           <Grid columns={4} relaxed inverted>
+           <Grid 
+            columns={4} 
+            relaxed 
+            inverted>
             <Grid.Column>
-              <StatisticsWidget icon = 'power' title = 'Devices ON' number = {this.state.deviceStates.activeDevices} />
+              <Widget 
+                icon = 'power' 
+                title = 'Devices ON' 
+                number = {this.state.deviceStates.activeDevices} 
+              />
             </Grid.Column>
             <Grid.Column>
-              <StatisticsWidget icon = 'power' title = 'Devices OFF' number = {this.state.deviceStates.inactiveDevices} />
+              <Widget 
+                icon = 'power' 
+                title = 'Devices OFF' 
+                number = {this.state.deviceStates.inactiveDevices} 
+              />
             </Grid.Column>
             <Grid.Column>
-              <StatisticsWidget icon = 'plug' title = 'Known Plugs' number = {this.state.deviceStates.count}/>
+              <Widget 
+                icon = 'plug' 
+                title = 'Known Plugs' 
+                number = {this.state.deviceStates.count}
+              />
             </Grid.Column>
             <Grid.Column>
-              <StatisticsWidget icon = 'warning' title = 'Errors' number = '0' />
+              <Widget 
+                icon = 'warning' 
+                title = 'Errors' 
+                number = '0'
+                />
             </Grid.Column>
           </Grid>
         );
