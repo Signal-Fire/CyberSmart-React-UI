@@ -7,14 +7,16 @@ import './HomePage.css';
 
 //Custom components import
 import {StatisticsGroup} from '../../components/Exports';
-import {FluidChart} from '../../components/Exports';
+import { PowerChart } from '../../components/Charts';
+
 
 export default class HomePage extends Component {
   render() {
     return (
       <header className = "page-body" >
-      <StatisticsGroup />
-      <FluidChart name = "Electricty Usage" color = "black"/>
+        <StatisticsGroup />
+        <PowerChart 
+          header = "Electricty Usage"/>
       </header>
     )
   }
