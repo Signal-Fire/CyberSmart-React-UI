@@ -75,33 +75,8 @@ export default class LoginModal extends Component {
                             </Grid.Row>
                             <Grid.Row>
                                 <Grid.Column style={{ maxWidth: 450 }}>
-                                    <Form size='large'>
-                                        <Form.Input
-                                            fluid
-                                            icon='user'
-                                            iconPosition='left'
-                                            placeholder='Username'
-                                            name='username'
-                                            value={this.state.username}
-                                            onChange={this.handleChange}
-                                            error = {this.state.loginError}
-                                        />
-                                        <Form.Input
-                                            fluid
-                                            icon='lock'
-                                            iconPosition='left'
-                                            placeholder='Password'
-                                            name='password'
-                                            type='password'
-                                            value={this.state.password}
-                                            onChange={this.handleChange}
-                                            error = {this.state.loginError}
-                                        />
-                                        <Button positive icon ='home' labelPosition='right' content="Login" onClick={this.performLogin.bind(this)} />
-                                    </Form>
-                                    <Message hidden={!this.state.loginError} color='red'>
-                                        There was an error logging you in, please check your login credentials!
-                                    </Message>
+                                    
+                                    
                                 </Grid.Column>
                             </Grid.Row>
                         </Grid>

@@ -13,7 +13,8 @@
     "react-scripts": "1.1.1",
     "recharts": "^1.0.0-beta.10",
     "semantic-ui-css": "^2.2.14",
-    "semantic-ui-react": "^0.78.2"
+    "semantic-ui-react": "^0.78.2",
+    "yup": "^0.24.1"
   },
   "scripts": {
     "start": "react-scripts start",
