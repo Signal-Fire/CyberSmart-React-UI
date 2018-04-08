@@ -1,6 +1,7 @@
 /* jshint esversion: 6*/
 import React, { Component } from 'react';
-import { Message, Grid, Form, Modal, Button } from 'semantic-ui-react';
+import { Message, Grid, Modal } from 'semantic-ui-react';
+import { LoginForm } from '../../Forms';
 import { USER_COOKIE_IDENTIFIER, API_USERS_URL } from '../../../config';
 import { SemanticModal } from '../';
 import axios from 'axios';
@@ -75,8 +76,7 @@ export default class LoginModal extends Component {
                             </Grid.Row>
                             <Grid.Row>
                                 <Grid.Column style={{ maxWidth: 450 }}>
-                                    
-                                    
+                                   <LoginForm />      
                                 </Grid.Column>
                             </Grid.Row>
                         </Grid>

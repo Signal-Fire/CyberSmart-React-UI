@@ -14,4 +14,4 @@ const ErrorMessage = ({
     );
 }
 
-module.exports = ErrorMessage;
+export default ErrorMessage;
