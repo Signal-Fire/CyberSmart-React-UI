@@ -1,7 +1,8 @@
 import { GET_DEVICES, GET_CONNECTED_DEVICES  } from './actionTypes';
 
 const initialState = {
-    devices: [],
+    devices: null,
+    connectedDevices : null,
     error : false,
     newDevice : false
 }

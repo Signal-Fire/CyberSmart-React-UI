@@ -43,19 +43,3 @@ export const getConnectedDevices = () => async(dispatch) => {
         });
     });
 }
-
-export const getLocations = () => async(dispatch) => {
-    await axios.get(API_LOCATION_URL + '/find/all')
-        .then(res => {            
-            this.setState({
-                locationsLoading : false,
-                deviceLocations : this.createLocationDropdown(res.data),
-                locationsError : false
-            });
-        }).catch(err => {
-            this.setState({
-                locationsLoading: true,
-                locationsError : true
-            });
-        });
-}
