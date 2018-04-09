@@ -1,4 +1,4 @@
-import { LOGIN_ACTION } from '../actions/Types/Login';
+import { LOGIN_ACTION } from '../../actions/Types/Login';
 
 const initialState = {
     token: null,

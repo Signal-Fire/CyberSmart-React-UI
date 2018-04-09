@@ -1,0 +1,1 @@
+export const GET_DEVICES = "get.devices";
