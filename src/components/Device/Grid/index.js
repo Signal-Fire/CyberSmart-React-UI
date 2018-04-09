@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Grid } from 'semantic-ui-react';
 import Widget from '../Widget';
 import { connect } from 'react-redux';
-import { getDevices } from '../../../actions/Devices';
+import { getDevices } from '../../../containers/Devices/action';
 
 class WidgetGrid extends Component {
     constructor() {

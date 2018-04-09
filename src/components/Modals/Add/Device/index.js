@@ -25,52 +25,9 @@ export default class AddDeviceModal extends Component {
             selectedLocation : ""
         };
 
-        this.findConnectedDevices = this.findConnectedDevices.bind(this);
         this.findActiveLocations = this.findActiveLocations.bind(this);
     }
     
-    handleTextChange(e) {
-        switch(e.target.name) {
-            case 'deviceName':
-                return this.setState({ 'deviceName' : e.target.value });
-            default:
-                return false;
-        }
-    }
-
-    selectPhysicalDevice(e, { value, key }) {        
-        this.setState({
-            selectedAddress : value
-        });        
-    }
-
-    selectLocation(e, { value, key }) {
-        this.setState({
-            selectedLocation : value
-        });
-    }
-    
-    componentWillMount() {
-        //this.findConnectedDevices();
-        this.findActiveLocations();
-    }
-
-    findConnectedDevices() {
-        axios.get(API_DEVICES_URL + '/find/connected')
-        .then(res => {
-            this.setState({
-                connectedLoading : false,
-                physicalDevices : this.createDeviceDropdown(res.data),
-                connectedError : false
-            });
-        }).catch(err => {
-            this.setState({
-                connectedLoading : false,
-                connectedError : true
-            });
-        });
-    }
-
     findActiveLocations() {
         axios.get(API_LOCATION_URL + '/find/all')
         .then(res => {
@@ -85,24 +42,6 @@ export default class AddDeviceModal extends Component {
                 locationsError : true
             });
         });
-    }
-
-    createDeviceDropdown(data) {        
-        data.filter(x => x.ip !== undefined).forEach(item => {            
-            item.key = item.mac;  
-            item.text = "Plug: " + item.ip.replace("(", "").replace(")", "");
-            item.value = item.ip.replace("(", "").replace(")", "");               
-        });
-        return data;
-    }
-
-    createLocationDropdown(data) {    
-        data.forEach(item => {           
-            item.key = item._id;  
-            item.text = item.name;
-            item.value = item._id;               
-        });
-        return data;
     }
 
     addDevice() {
@@ -151,43 +90,7 @@ export default class AddDeviceModal extends Component {
                 <Modal.Header>Add a Device</Modal.Header>
                     <Modal.Content>
                         <Modal.Description>
-                            <Form
-                                loading = { this.state.isLoading }
-                                error = { this.state.isError }
-                                >
-                                <Form.Group widths = {2}>
-                                    <Form.Input
-                                        fluid
-                                        label = 'Device Name'
-                                        placeholder = 'Device Name'
-                                        name = 'deviceName'
-                                        value = {this.state.deviceName}
-                                        onChange = {this.handleTextChange.bind(this)}
-                                    />
-                                    <Form.Select
-                                        fluid
-                                        label = 'Physical Device'
-                                        options = { this.state.physicalDevices }
-                                        onChange = { this.selectPhysicalDevice.bind(this) }
-                                        noResultsMessage = 'No devices available'
-                                        placeholder = 'Physical Devices'
-                                        loading = { this.state.connectedLoading }
-                                        error = { this.state.locationsError }
-                                    />
-                                </Form.Group>
-                                <Form.Group widths = {2}>
-                                    <Form.Select 
-                                        fluid
-                                        label = 'Device Location'    
-                                        options = { this.state.deviceLocations }
-                                        onChange = {this.selectLocation.bind(this) }
-                                        noResultsMessage = 'No locations available'
-                                        placeholder = 'Device Location'
-                                        loading = { this.state.locationsLoading }
-                                        error = { this.state.locationsError }
-                                    />
-                                </Form.Group>
-                            </Form>
+                            
                         </Modal.Description>
                     </Modal.Content>
                     <Modal.Actions>

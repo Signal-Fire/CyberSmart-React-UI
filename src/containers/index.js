@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import loginReducer from './Login';
-import deviceReducer from './Devices';
+import loginReducer from './Login/reducer';
+import deviceReducer from './Devices/reducer';
 
 export default combineReducers({
     loginReducer,
