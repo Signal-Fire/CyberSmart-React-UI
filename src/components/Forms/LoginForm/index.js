@@ -1,14 +1,20 @@
 /* jshint esversion: 6 */
 import React from 'react';
 import { withFormik } from 'formik';
+import PropTypes from 'prop-types';
 import { Button, Form } from 'semantic-ui-react';
 import { ErrorMessage } from './Messages';
+import { connect } from 'react-redux';
+import store from '../../../store';
+import { performLogin } from '../../../actions/loginAction';
 import Yup from 'yup';
+import { USER_COOKIE_IDENTIFIER } from '../../../config';
 
 const Gubbins = ({
     values,
     touched,
     errors,
+    loginError,
     dirty,
     isSubmitting,
     handleChange,
@@ -42,8 +48,8 @@ const Gubbins = ({
                 onChange={handleChange}
             />
             <ErrorMessage 
-                hidden = {!errors.password || !errors.username}
-                message = {errors.username || errors.password ? 'Username and password are required' : 'Something went wrong, please try again'}/>
+                hidden = {!loginError}
+                message = 'Something went wrong, please try again'/>
             <Button 
                 positive 
                 icon ='home' 
@@ -58,17 +64,42 @@ const Gubbins = ({
 const LoginForm = withFormik({
     mapPropsToValues : () => ({
          username: '',
-         password : ''
+         password : '',
+         performLogin : performLogin()
     }),
     validationSchema: Yup.object().shape({
         username: Yup.string().required('Username is required!'),
         password : Yup.string().required('Password is required!')       
     }),
-    handleSubmit: (values, { setSubmitting, errors }) => {        
-        alert(JSON.stringify(values));   
-        setSubmitting(false);     
+    handleSubmit: (values, { props, setSubmitting }) => {
+        props.performLogin(values.username, values.password);
+              
+        setSubmitting(true);
+
+        store.subscribe(() => {
+            var storeState = store.getState().loginReducer;
+            if (storeState.token !== null) {
+                localStorage.setItem(USER_COOKIE_IDENTIFIER, storeState.token);
+                window.location.reload();
+            } else if (!storeState.loginError) {
+                setSubmitting(false); 
+            }
+        })        
     },
     displayName : 'Login'
 })(Gubbins);
 
-export default LoginForm;
+LoginForm.propTypes = {
+    username : PropTypes.string,
+    password : PropTypes.string,
+    performLogin : PropTypes.func.isRequired
+}
+
+const mapStateToProps = state => {
+    return {
+        token : state.loginReducer.token,
+        loginError : state.loginReducer.error
+    }
+}
+
+export default connect(mapStateToProps, { performLogin })(LoginForm);
