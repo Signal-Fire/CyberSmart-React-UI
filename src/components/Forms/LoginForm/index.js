@@ -1,13 +1,15 @@
 /* jshint esversion: 6 */
 import React from 'react';
+import { connect } from 'react-redux';
 import { withFormik } from 'formik';
 import PropTypes from 'prop-types';
 import { Button, Form } from 'semantic-ui-react';
-import { ErrorMessage } from './Messages';
-import { connect } from 'react-redux';
-import store from '../../../store';
-import { performLogin } from '../../../actions/loginAction';
 import Yup from 'yup';
+
+import { ErrorMessage } from './Messages';
+import { TextInput } from './Input';
+import store from '../../../store';
+import { performLogin } from '../../../actions/Login';
 import { USER_COOKIE_IDENTIFIER } from '../../../config';
 
 const Gubbins = ({
@@ -27,20 +29,16 @@ const Gubbins = ({
             size='large'
             onSubmit = { handleSubmit }
             loading = {isSubmitting}>
-            <Form.Input
-                fluid
+            <TextInput
                 icon='user'
-                iconPosition='left'
                 name='username'
                 placeholder='Username'
                 type = 'text'
                 value={values.username}
                 onChange={handleChange}
             />
-            <Form.Input
-                fluid
+            <TextInput
                 icon='lock'
-                iconPosition='left'
                 placeholder='Password'
                 name='password'
                 type='password'

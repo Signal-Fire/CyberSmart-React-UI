@@ -1,4 +1,4 @@
-import { LOGIN_ACTION, LOGOUT_ACTION } from '../actions/types';
+import { LOGIN_ACTION, LOGOUT_ACTION } from '../actions/Types/Login';
 
 const initialState = {
     token: null,
@@ -14,7 +14,11 @@ export default function(state = initialState, action) {
                 error : action.error
             }
         case LOGOUT_ACTION:
-            return console.log('Logged out');
+            return {
+                ...state,
+                token: null,
+                error: false
+            }
         default:
             return state;
     }
