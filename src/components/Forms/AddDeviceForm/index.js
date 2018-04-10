@@ -2,15 +2,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withFormik } from 'formik';
-import { Form } from 'semantic-ui-react';
+import { Form, Button } from 'semantic-ui-react';
 import Yup from 'yup';
-
 import store from '../../../store';
 import { addDevice, getConnectedDevices } from '../../../containers/Devices/action';
-
-this.state = {
-
-}
+import * as deviceActions from '../../../containers/Devices/reducer';
 
 const Gubbins = ({
     values,
@@ -40,7 +36,7 @@ const Gubbins = ({
                 <Form.Select
                     fluid
                     label = 'Physical Device'
-                    options = { values.devices }
+                    options = { deviceActions.createConnectedDevicesDropdown }
                     onChange = { selectPhysicalDevice }
                     noResultsMessage = 'No devices available'
                     placeholder = 'Physical Devices'
@@ -52,7 +48,7 @@ const Gubbins = ({
                 <Form.Select 
                     fluid
                     label = 'Device Location'    
-                    options = { this.state.deviceLocations }
+                    options = { deviceActions.createConnectedDevicesDropdown }
                     onChange = { selectLocation }
                     noResultsMessage = 'No locations available'
                     placeholder = 'Device Location'
@@ -60,17 +56,16 @@ const Gubbins = ({
                     error = { this.state.locationsError }
                 />
             </Form.Group>
+            <Button 
+                positive 
+                type='submit'
+                icon='checkmark' 
+                labelPosition='right' 
+                content="Add" 
+                onClick={handleSubmit} 
+                name = 'add'/>
         </Form>
     );
-}
-
-const createLocationDropdown = (data) => {    
-    data.forEach(item => {           
-        item.key = item._id;  
-        item.text = item.name;
-        item.value = item._id;               
-    });
-    return data;
 }
 
 const selectPhysicalDevice = (e, { value, key }) => {        
