@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { withFormik } from 'formik';
 
 import { addDevice } from '../../../../containers/Devices/action';
+import * as connectedReducer from '../../../../containers/ConnectedDevices/reducer';
 import * as deviceReducer from '../../../../containers/Devices/reducer';
 import * as locationsReducer from '../../../../containers/Location/reducer'; 
 
@@ -33,6 +34,34 @@ const Gubbins = (props) => {
         }        
     }
 
+    const _locationsDropdown = () => {
+        var locations = locationsReducer.getLocations()
+        if (locations === null) {
+            return [];
+        }
+        var data = locations.forEach(item => {           
+            item.label = item.name;
+            item.value = item._id;
+            item.type = 'location';              
+        });
+
+        return data;
+    }
+
+    const _connectedDropdown = () => {
+        var devices = connectedReducer.getDevices()
+        if (devices === null) { 
+            return [];
+        }
+        var data = devices.forEach(item => {       
+            item.label = item.name;
+            item.value = item._id;
+            item.type = 'connected';          
+        });
+
+        return data;
+    }
+
     return(
         <Form
             loading = { isSubmitting }
@@ -49,22 +78,22 @@ const Gubbins = (props) => {
                 <Form.Select
                     fluid
                     label = 'Physical Device'
-                    options = { deviceReducer.getConnectedDevicesDropdown() }
-                    onChange = {_handleSelect}
+                    options = { _connectedDropdown() }
+                    onChange = {_handleSelect }
                     placeholder = 'Physical Devices'
-                    loading = { deviceReducer.isConnectedLoading() }
-                    error = {null}
+                    loading = { connectedReducer.isLoading() }
+                    error = { connectedReducer.isError() }
                 />
             </Form.Group>
             <Form.Group widths = {2}>
                 <Form.Select
                     fluid
                     label = 'Device Location'
-                    options = { locationsReducer.createLocationsDropdown() }
-                    onChange = {_handleSelect}
+                    options = { _locationsDropdown() }
+                    onChange = { _handleSelect }
                     placeholder = 'Device Location'
                     loading = { locationsReducer.isLoading() }
-                    error = {null}
+                    error = { locationsReducer.isError() }
                 />
             </Form.Group>
             <Button 

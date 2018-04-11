@@ -9,11 +9,14 @@ const initialState = {
 export default function(state = initialState, action) {
     switch(action.type) {
         case GET_LOCATIONS:
-            return {
-                ...state,
-                locations : action.payload,
-                error : action.error
-            }
+            return Object.assign({}, state, {
+                locations : action.error ? 
+                    null
+                    :
+                    action.payload.locations,
+                error : action.error,
+                isLoading : false
+            })            
         default:
             return state;
     }
@@ -23,20 +26,10 @@ export const getLocations = () => {
     return initialState.locations;
 }
 
-export const isLoading = () => {
+export const isLoading = () => {    
     return initialState.isLoading;
 }
 
-export const createLocationsDropdown = () => {
-    console.log(initialState);
-    if (initialState.locations === null ||
-        initialState.locations.length < 1)
-        return null;
-
-    var data = this.state.locations.forEach(item => {           
-        item.label = item.name;
-        item.value = item._id;
-        item.type = 'location';              
-    });
-    return data;
+export const isError = () => {
+    return initialState.error;
 }
