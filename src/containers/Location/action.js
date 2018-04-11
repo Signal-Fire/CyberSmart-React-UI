@@ -9,8 +9,8 @@ export const getLocations = () => dispatch => {
             dispatch({
                 type : GET_LOCATIONS,
                 payload: {
-                    locations : res.data,
-                    error : false
+                    locations : res.status === 200 ? res.data : null,
+                    error : res.status !== 200
                 }
             });
         }).catch(err => {

@@ -6,12 +6,14 @@ const initialState = {
 }
 
 export default function(state = initialState, action) {
+    var payload = action.payload;
+
     switch(action.type) {
         case LOGIN_ACTION:
             return {
                 ...state,
-                token : action.payload,
-                error : action.error
+                token : payload.token,
+                error : payload.error
             }        
         default:
             return state;

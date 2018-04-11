@@ -8,9 +8,9 @@ export const getConnectedDevices = () => async(dispatch) => {
     .then(res => {
         dispatch({
             type : GET_CONNECTED_DEVICES,
-            payload : {
-                connectedDevices : res.data,
-                error : false            
+            payload: {
+                devices : res.status === 200 ? res.data : null,
+                error : res.status !== 200
             }
         });
     }).catch(err => {

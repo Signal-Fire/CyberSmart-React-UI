@@ -7,9 +7,9 @@ export const getDevices = () => dispatch => {
     axios.get(API_DEVICES_URL + '/find/all').then(res => {
         dispatch({ 
             type: GET_DEVICES, 
-            payload : {
-                devices : res.data,
-                error : false
+            payload: {
+                devices : res.status === 200 ? res.data : null,
+                error : res.status !== 200
             }
         })
     }).catch(err => {

@@ -7,19 +7,21 @@ const initialState = {
 }
 
 export default function(state = initialState, action) {
+    var payload = action.payload;
+
     switch(action.type) {
         case GET_DEVICES:
-            return Object.assign({}, state, {
-                devices : action.error ? null : action.devices,
-                error : action.error,
+            return {
+                devices : payload.error ? null : payload.devices,
+                error : payload.error,
                 isLoading : false
-            }) 
+            }
         case ADD_DEVICE:
-            return Object.assign({}, state, {
-                devices : action.error ? initialState.devices : initialState.concat(action.devices),
-                error : action.error,
+            return {
+                devices : payload.error ? initialState.devices : initialState.concat(payload.devices),
+                error : payload.error,
                 isLoading : false
-            }) 
+            }
         default:
             return state;
     }

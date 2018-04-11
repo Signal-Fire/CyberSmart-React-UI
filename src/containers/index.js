@@ -5,8 +5,8 @@ import locationReducer from './Location/reducer';
 import connectedReducer from './ConnectedDevices/reducer';
 
 export default combineReducers({
-    loginReducer,
-    deviceReducer,
-    locationReducer,
-    connectedReducer
+    login : loginReducer,
+    devices : deviceReducer,
+    locations : locationReducer,
+    connected : connectedReducer
 })

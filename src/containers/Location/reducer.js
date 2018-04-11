@@ -1,35 +1,37 @@
 import { GET_LOCATIONS } from './actionTypes';
 
-const initialState = {
+const locationState = {
     locations : null,
     isLoading : true,
     error : false
 }
 
-export default function(state = initialState, action) {
+export default function(state = locationState, action) {
+    var payload = action.payload;
+
     switch(action.type) {
         case GET_LOCATIONS:
-            return Object.assign({}, state, {
-                locations : action.error ? 
+            return {
+                locations : payload.error ? 
                     null
                     :
-                    action.payload.locations,
-                error : action.error,
+                    payload.locations,
+                error : payload.error,
                 isLoading : false
-            })            
+            }            
         default:
             return state;
     }
 }
 
 export const getLocations = () => {
-    return initialState.locations;
+    return locationState.locations;
 }
 
 export const isLoading = () => {    
-    return initialState.isLoading;
+    return locationState.isLoading;
 }
 
 export const isError = () => {
-    return initialState.error;
+    return locationState.error;
 }
