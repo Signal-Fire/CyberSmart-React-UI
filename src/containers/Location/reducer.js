@@ -19,18 +19,19 @@ export default function(state = initialState, action) {
 }
 
 export const getLocations = () => {
-    return this.state.locations
+    return initialState.locations
 }
 
 export const createLocationsDropdown = () => {
-    if (this.state.locations === null ||
-        this.state.locations.length < 1)
+    console.log(initialState);
+    if (initialState.locations === null ||
+        initialState.locations.length < 1)
         return null;
 
     var data = this.state.locations.forEach(item => {           
-        item.key = item._id;  
-        item.text = item.name;
-        item.value = item._id;               
+        item.label = item.name;
+        item.value = item._id;
+        item.type = 'location';              
     });
     return data;
 }

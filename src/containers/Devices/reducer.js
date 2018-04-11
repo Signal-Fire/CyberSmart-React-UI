@@ -13,26 +13,26 @@ export default function(state = initialState, action) {
         case GET_DEVICES:
             return {
                 ...state,
-                devices : action.payload,
-                error : action.error,
-                newDevice : null
+                devices : action.error ? null : action.devices,
+                error : action.error
             }    
         case GET_CONNECTED_DEVICES:
             return {
                 ...state,
-                connectedDevices : action.payload,
-                connectedDevicesError : action.error,
-                newDevice : null
+                connectedDevices : action.error ?
+                    null
+                    :
+                    action.connectedDevices,
+                error : action.error
             };   
         case ADD_DEVICE:
             return {
                 ...state,
-                devices : action.newDevice !== null ? 
-                    initialState.devices + action.payload
-                    :
-                    initialState.devices,
-                error : action.newDevice === null,
-                newDevice : action.newDevice !== null
+                devices : action.error ? 
+                    initialState.devices 
+                    : 
+                    initialState.devices.concat(action.devices),
+                error : action.error
             }
         default:
             return state;
@@ -43,15 +43,15 @@ export const getDevices = () => {
     return initialState.devices;
 }
 
-export const createConnectedDevicesDropdown = () => {
+export const getConnectedDevicesDropdown = () => {
     if (initialState.connectedDevices === null ||
         initialState.connectedDevices.length < 1)
-        return null;
+            return null;
 
-    var data = initialState.connectedDevices.forEach(item => {           
-        item.key = item._id;  
-        item.text = item.name;
-        item.value = item._id;               
+    var data = initialState.connectedDevices.forEach(item => {       
+        item.label = item.name;
+        item.value = item._id;
+        item.type = 'connected';          
     });
 
     return data;

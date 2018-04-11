@@ -3,7 +3,7 @@ import { Grid } from 'semantic-ui-react';
 import Widget from '../Widget';
 import { connect } from 'react-redux';
 import { getDevices } from '../../../containers/Devices/action';
-import * as deviceActions from '../../../containers/Devices/reducer';
+import * as deviceReducer from '../../../containers/Devices/reducer';
 
 class WidgetGrid extends Component {
     constructor() {
@@ -42,7 +42,7 @@ class WidgetGrid extends Component {
 
 const mapStateToProps = state => {
     return {
-        devices : deviceActions.getDevices()
+        devices : deviceReducer.getDevices()
     }
 }
 
