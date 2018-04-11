@@ -2,14 +2,11 @@ import React from 'react';
 import { Form, Button } from 'semantic-ui-react';
 import Yup from 'yup';
 import { connect } from 'react-redux';
-import VirtualizedSelect from 'react-virtualized-select';
 import { withFormik } from 'formik';
 
 import { addDevice } from '../../../../containers/Devices/action';
 import * as deviceReducer from '../../../../containers/Devices/reducer';
 import * as locationsReducer from '../../../../containers/Location/reducer'; 
-
-var devicesDropdown = deviceReducer.getConnectedDevicesDropdown();
 
 const Gubbins = (props) => {
     const {
@@ -49,21 +46,25 @@ const Gubbins = (props) => {
                     value = {values.deviceName}
                     onChange = {handleChange}
                 />
-                <VirtualizedSelect
+                <Form.Select
                     fluid
-                    name = 'physicalDevices'
-                    value = 'Connected Devices'
-                    options = { devicesDropdown }
-                    onChange = { _handleSelect }
+                    label = 'Physical Device'
+                    options = { deviceReducer.getConnectedDevicesDropdown() }
+                    onChange = {_handleSelect}
+                    placeholder = 'Physical Devices'
+                    loading = { deviceReducer.isConnectedLoading() }
+                    error = {null}
                 />
             </Form.Group>
             <Form.Group widths = {2}>
-                <VirtualizedSelect
+                <Form.Select
                     fluid
-                    name = 'deviceLocation'
-                    value = 'Device Location'
+                    label = 'Device Location'
                     options = { locationsReducer.createLocationsDropdown() }
-                    onChange = { _handleSelect }
+                    onChange = {_handleSelect}
+                    placeholder = 'Device Location'
+                    loading = { locationsReducer.isLoading() }
+                    error = {null}
                 />
             </Form.Group>
             <Button 

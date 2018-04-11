@@ -2,6 +2,7 @@ import { GET_LOCATIONS } from './actionTypes';
 
 const initialState = {
     locations : null,
+    isLoading : true,
     error : false
 }
 
@@ -19,7 +20,11 @@ export default function(state = initialState, action) {
 }
 
 export const getLocations = () => {
-    return initialState.locations
+    return initialState.locations;
+}
+
+export const isLoading = () => {
+    return initialState.isLoading;
 }
 
 export const createLocationsDropdown = () => {
