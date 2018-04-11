@@ -9,7 +9,7 @@ import Yup from 'yup';
 import { ErrorMessage } from './Messages';
 import { TextInput } from './Input';
 import store from '../../../store';
-import { performLogin } from '../../../actions/Login';
+import { performLogin } from '../../../containers/Login/action';
 import { USER_COOKIE_IDENTIFIER } from '../../../config';
 
 const Gubbins = ({

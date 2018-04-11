@@ -1,4 +1,4 @@
-import { LOGIN_ACTION, LOGOUT_ACTION } from '../Types/Login';
+import { LOGIN_ACTION } from './actionTypes';
 import { API_USERS_URL } from '../../config';
 
 import axios from 'axios';
@@ -28,12 +28,4 @@ export const performLogin = (username, password) => dispatch => {
                 error : true
             })
         });
-}
-
-export const performLogout = () => dispatch => {
-    dispatch({
-        type: LOGOUT_ACTION,
-        payload : null,
-        error : false
-    })
 }

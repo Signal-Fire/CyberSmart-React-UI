@@ -9,7 +9,6 @@ import './HomePage.css';
 import { DeviceStats } from '../../components/Dashlets';
 import { PowerChart } from '../../components/Charts';
 
-
 export default class HomePage extends Component {
   render() {
     return (

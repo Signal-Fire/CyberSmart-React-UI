@@ -1,4 +1,4 @@
-import { LOGIN_ACTION, LOGOUT_ACTION } from '../actions/Types/Login';
+import { LOGIN_ACTION } from './actionTypes';
 
 const initialState = {
     token: null,
@@ -12,13 +12,7 @@ export default function(state = initialState, action) {
                 ...state,
                 token : action.payload,
                 error : action.error
-            }
-        case LOGOUT_ACTION:
-            return {
-                ...state,
-                token: null,
-                error: false
-            }
+            }        
         default:
             return state;
     }
