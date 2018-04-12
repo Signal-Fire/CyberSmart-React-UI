@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Button } from 'semantic-ui-react';
+import { Form, Button, Dropdown } from 'semantic-ui-react';
 import Yup from 'yup';
 import { connect } from 'react-redux';
 import { withFormik } from 'formik';
@@ -22,23 +22,43 @@ const Gubbins = (props) => {
         handleReset,
     } = props;
 
-    const rooms = () => {
-        return state.locations;
+    const roomsError = () => {
+        return state.locations.error;
     }
 
-    const connected = () => {
-        return state.connected;
+    const anyRooms = () => {
+        return state.locations.locations !== null &&
+            state.locations.locations.length > 0;
     }
 
-    const _handleSelect = (choice) => {
-        switch(choice.type) {
-            case 'device':
-                return setFieldValue('selectedDeviceId', choice.value);
-            case 'connected':
-                return setFieldValue('selectedConnectedId', choice.value);
-            default:
-                return null;
-        }        
+    const roomsLoading = () => {
+        return state.locations.loading;
+    }
+
+    const connectedError = () => {
+        return state.connected.devices.error;
+    }    
+
+    const anyConnected = () => {
+        return state.connected.devices !== null &&
+            state.connected.devices.length > 0;
+    }
+
+    const connectedLoading = () => {
+        return state.devices.loading;
+    }
+
+    const createOptions = (options) => {
+        options.forEach(item => {            
+            item.label = item.name;
+            item.value = item._id;
+        })
+        
+        return options;
+    }   
+
+    const _handleSelect = (e, {name, value}) => {
+        setFieldValue(name, value);    
     }
 
     return(
@@ -51,17 +71,26 @@ const Gubbins = (props) => {
                     onChange = {handleChange}
                 />
                 <DropdownSelector
-                    objects = {connected()}
+                    objects = {state.connected}
                     type = 'Device'
                     handleSelect = { _handleSelect }
                 />               
             </Form.Group>
             <Form.Group widths = {2}>
-                <DropdownSelector
-                    objects = {rooms()}
-                    type = 'Location'
-                    handleSelect = { _handleSelect }
-                />    
+                <Form.Select
+                    fluid
+                    label = 'Location'
+                    options = { anyRooms() ? 
+                        createOptions(state.locations.locations) : null}
+                    onChange = { handleChange }
+                    placeholder = { !anyRooms() ? 
+                        'No available locations' : 'Locations'}
+                    loading = { roomsLoading() }
+                    error = { roomsError() }
+                    value = { values.location }                    
+                    name = 'location'
+                    text = { values.location }
+                />        
             </Form.Group>
             <SubmitButton 
                 handleSubmit = {handleSubmit}
@@ -71,7 +100,45 @@ const Gubbins = (props) => {
     );
 }
 
-const AddDeviceForm = withFormik({
+const withSemanticUIFormik = props=> WrappedComponent=>{
+
+    return withFormik(props)(class extends React.Component{
+      handleBlur = (e, data) => {
+        if(data && data.name){
+          this.props.setFieldValue(data.name,data.value);
+          this.props.setFieldTouched(data.name);
+        }
+      }
+      handleChange = (e,data) =>{
+          console.log(data);
+      }
+  
+      render(){
+        return <WrappedComponent {...this.props}
+          handleBlur={this.handleBlur}
+          handleChange={this.handleChange}
+          />
+      }
+    })
+  }
+
+/*const blah = () => {
+    <Form.Select
+                    fluid
+                    label = 'Location'
+                    options = { anyRooms() ? 
+                        createOptions(state.locations.locations) : null}
+                    onChange = { _handleSelect }
+                    placeholder = { !anyRooms() ? 
+                        'No available locations' : 'Locations'}
+                    loading = { roomsLoading() }
+                    error = { roomsError() }
+                    value = { values.location }
+                    name = 'location'
+                />   
+}*/
+
+const AddDeviceForm = withSemanticUIFormik({
     mapPropsToValues : () => ({
          
     }),
@@ -79,7 +146,8 @@ const AddDeviceForm = withFormik({
                
     }),
     handleSubmit: (values, { props, setSubmitting }) => {
-              
+        console.log(values);
+        setSubmitting(false);
     },
     displayName : 'Add Device'
 })(Gubbins);

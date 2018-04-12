@@ -7,7 +7,9 @@ const Dropdown = ({
     handleSelect,
     ...rest
 }) => {
-    const anyObjects = () => {
+    var hisType = type;
+
+    const anyObjects = () => {        
         switch(type) {
             case 'Device':
                 return objects.devices !== null &&
@@ -28,23 +30,25 @@ const Dropdown = ({
         return objects.isLoading;
     }
 
-    const _dropdownData = (objects) => {
+    const _dropdownData = () => {
         if (objectsError() || !anyObjects())
             return [];
         
-        var data = objects.forEach(item => {           
+        var objs = type === 'Device' ? objects.devices : objects.locations;
+
+        objs.forEach(item => {           
             item.label = item.name;
             item.value = item._id;
             item.type = type;              
         });
 
-        return data;
+        return objs;
     }  
-
+    
     return(
         <Form.Select
             fluid
-            label = { type }
+            label = { hisType }
             options = { _dropdownData() }
             onChange = { handleSelect }
             placeholder = { !anyObjects() ? 'No available ' + type + 's...' : type }
