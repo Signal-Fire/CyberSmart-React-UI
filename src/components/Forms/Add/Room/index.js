@@ -11,6 +11,4 @@ class AddDeviceForm extends Component {
     }
 }
 
-
-
 export default AddDeviceForm;

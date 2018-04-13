@@ -3,14 +3,15 @@ import { Form } from 'semantic-ui-react';
 import Yup from 'yup';
 import { withFormik } from 'formik';
 import { TextInput, SubmitButton } from '../../Inputs';
-
+import { addLocation } from '../../../../../containers/Location/action';
+import { connect } from 'react-redux';
 
 const LocationsForm = props => {
     const {
         values,        
         isSubmitting,
         handleChange,
-        handleSubmit
+        handleSubmit,
     } = props;
 
     return (
@@ -21,11 +22,13 @@ const LocationsForm = props => {
                     type = 'Location'
                     value = { values.locationName }
                     onChange = { handleChange }
+                    name = 'location'
                 />                
             </Form.Group>
             <SubmitButton
                 handleSubmit = { handleSubmit }
                 type = 'Add'
+                name = 'Add'
             />
         </Form>
     );
@@ -33,15 +36,24 @@ const LocationsForm = props => {
 
 const LocationsFormik = withFormik({
     mapPropsToValues : () => ({
-        
+        location : ''
     }),
     validationSchema: Yup.object().shape({
                 
     }),
     handleSubmit: (values, { props, setSubmitting }) => {
-              
+        props.addLocation(values);
+        setSubmitting(false);
     },
     displayName : 'Add Device'
 })(LocationsForm)
 
-export default LocationsFormik;
+const mapStateToProps = state => ({
+
+})
+
+const mapDispatchToProps = dispatch => ({
+    addLocation : (location) => { dispatch(addLocation(location))}    
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(LocationsFormik);

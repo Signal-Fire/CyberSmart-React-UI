@@ -23,14 +23,11 @@ export const getLocations = () => dispatch => {
         });
 }
 
-export const addLocation = (location, authorization) => dispatch => {
+export const addLocation = (values) => dispatch => {
     axios({ method: 'POST',
-            url: API_LOCATION_URL +'/add',
-            headers: {
-                'Authorization' : localStorage.getItem(USER_COOKIE_IDENTIFIER)
-            },
+            url: API_LOCATION_URL +'/insert',
             data: {
-                name : this.state.locationName
+                name : values.location
             }
         }).then(res => {
             dispatch({
