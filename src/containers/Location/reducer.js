@@ -3,7 +3,8 @@ import * as actionTypes from './actionTypes';
 const locationState = {
     locations : null,
     isLoading : true,
-    error : false
+    error : false,
+    modalOpen : false
 }
 
 export default function(state = locationState, action) {
@@ -27,7 +28,12 @@ export default function(state = locationState, action) {
                     locationState.locations.concat(payload.location),
                 error : payload.error,
                 isLoading : false
-            }        
+            }     
+        case actionTypes.OPERATE_MODAL:
+            return {
+                ...state,
+                modalOpen : payload.modalOpen
+            }
         default:
             return state;
     }

@@ -4,10 +4,6 @@ import React, { Component } from 'react';
 import { Card, Icon } from 'semantic-ui-react';
 
 export default class LocationWidget extends Component {
-    componentWillMount() {
-        console.log(this.props.location);
-    }
-
     render() {
         return (
             <Card>

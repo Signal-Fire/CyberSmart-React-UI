@@ -1,5 +1,5 @@
-import { API_LOCATION_URL, USER_COOKIE_IDENTIFIER } from '../../config';
-import { GET_LOCATIONS, ADD_LOCATION } from './actionTypes';
+import { API_LOCATION_URL } from '../../config';
+import { GET_LOCATIONS, ADD_LOCATION, OPERATE_MODAL } from './actionTypes';
 
 import axios from 'axios';
 
@@ -45,4 +45,13 @@ export const addLocation = (values) => dispatch => {
                 }
             })
         });  
+}
+
+export const operateModal = (modalState) => dispatch => {
+    dispatch({
+        type: OPERATE_MODAL,
+        payload: {
+            modalOpen : modalState
+        }
+    });
 }
