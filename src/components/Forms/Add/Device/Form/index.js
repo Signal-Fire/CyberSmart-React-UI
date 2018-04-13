@@ -11,25 +11,11 @@ const Gubbins = (props) => {
     const {
         state,
         values,
-        touched,
-        errors,
-        dirty,
         isSubmitting,
         handleChange,
         setFieldValue,
-        handleBlur,
         handleSubmit,
-        handleReset,
     } = props;
-
-    const createOptions = (options) => {
-        options.forEach(item => {            
-            item.label = item.name;
-            item.value = item._id;
-        })
-        
-        return options;
-    }   
 
     const _handleSelect = (e, {name, value}) => {
         setFieldValue(name, value);    
