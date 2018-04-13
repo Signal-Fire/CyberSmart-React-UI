@@ -22,32 +22,6 @@ const Gubbins = (props) => {
         handleReset,
     } = props;
 
-    const roomsError = () => {
-        return state.locations.error;
-    }
-
-    const anyRooms = () => {
-        return state.locations.locations !== null &&
-            state.locations.locations.length > 0;
-    }
-
-    const roomsLoading = () => {
-        return state.locations.loading;
-    }
-
-    const connectedError = () => {
-        return state.connected.devices.error;
-    }    
-
-    const anyConnected = () => {
-        return state.connected.devices !== null &&
-            state.connected.devices.length > 0;
-    }
-
-    const connectedLoading = () => {
-        return state.devices.loading;
-    }
-
     const createOptions = (options) => {
         options.forEach(item => {            
             item.label = item.name;
@@ -80,13 +54,7 @@ const Gubbins = (props) => {
                 <Form.Select
                     fluid
                     label = 'Location'
-                    options = { anyRooms() ? 
-                        createOptions(state.locations.locations) : null}
                     onChange = { handleChange }
-                    placeholder = { !anyRooms() ? 
-                        'No available locations' : 'Locations'}
-                    loading = { roomsLoading() }
-                    error = { roomsError() }
                     value = { values.location }                    
                     name = 'location'
                     text = { values.location }
