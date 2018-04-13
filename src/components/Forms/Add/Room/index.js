@@ -2,7 +2,7 @@ import React from 'react';
 import { Form } from 'semantic-ui-react';
 import Yup from 'yup';
 import { withFormik } from 'formik';
-import { TextInput, SubmitButton } from '../Inputs';
+import { SubmitButton } from '../Inputs';
 import { addLocation } from '../../../../containers/Location/action';
 import { connect } from 'react-redux';
 
@@ -18,8 +18,10 @@ const LocationsForm = props => {
         <Form
             loading = { isSubmitting }>
             <Form.Group widths = {2}>
-                <TextInput
+                <Form.Input
                     type = 'Location'
+                    placeholder = 'Location Name'
+                    label = 'Location Name'
                     value = { values.locationName }
                     onChange = { handleChange }
                     name = 'location'

@@ -8,8 +8,6 @@ import { MainMenu } from './components/MenuBar';
 //Modals
 import { LoginModal } from './components/Modals';
 
-import store from './store';
-
 //Config
 import { USER_COOKIE_IDENTIFIER } from './config';
 
