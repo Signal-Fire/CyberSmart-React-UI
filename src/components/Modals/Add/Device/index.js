@@ -1,55 +1,41 @@
-/* jshint esversion: 6 */
-import React, { Component } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 import { Modal, Menu } from 'semantic-ui-react';
 import { AddDeviceForm } from '../../../Forms';
 import { SemanticModal } from '../../';
+import { setModalOpen } from '../../../../containers/Devices/action';
 
-export default class AddDeviceModal extends Component {
-    constructor() {
-        super();
-        
-        this.state = {
-            isOpen : false,
-            isLoading : false,
-            connectedLoading : true,
-            connectedError : false,
-            locationsLoading : true,
-            locationsError : false,
-            isSuccess : false,
-            isError : false,
-            deviceName : "",
-            physicalDevices : [],
-            selectedAddress : "",
-            deviceLocations : [],
-            selectedLocation : ""
-        };
+const AddDeviceModal = props => {
+    const {
+        modalOpen
+    } = props;
 
-    }    
-
-    handleVisibility() {     
-        this.setState(prevState => ({ isOpen : !prevState.isOpen }));
-    }
-
-    render() {
-        return (
-            <SemanticModal
-                open={this.state.isOpen}
-                onOpen = {this.handleVisibility.bind(this)}
-                onClose={this.handleVisibility.bind(this)}
-                success={this.state.isSuccess}
-                size='small'
-                trigger = { <Menu.Item icon = "plus" onClick = { this.handleClick } /> }
-            >
-                <Modal.Header>Add a Device</Modal.Header>
-                    <Modal.Content>
-                        <Modal.Description>
-                            <AddDeviceForm />
-                        </Modal.Description>
-                    </Modal.Content>
-                    <Modal.Actions>
-                        
-                    </Modal.Actions>
-            </SemanticModal>
-        )
-    }
+    return (
+        <SemanticModal
+            open={modalOpen}
+            onClose={ props.setModalOpen(false) }
+            size='small'
+            trigger = { <Menu.Item icon = "plus" onClick = { props.setModalOpen(true) } /> }
+        >
+            <Modal.Header>Add a Device</Modal.Header>
+                <Modal.Content>
+                    <Modal.Description>
+                        <AddDeviceForm />
+                    </Modal.Description>
+                </Modal.Content>
+                <Modal.Actions>
+                    
+                </Modal.Actions>
+        </SemanticModal>
+    );
 }
+
+const mapDispatchToProps = dispatch => ({
+    setModalOpen : (modalState) => { setModalOpen(modalState) }
+})
+
+const mapStateToProps = state => ({    
+    modalOpen : state.devices.modalOpen
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddDeviceModal);

@@ -1,9 +1,11 @@
 import { GET_DEVICES, ADD_DEVICE  } from './actionTypes';
+import { OPERATE_MODAL } from '../Location/actionTypes';
 
 const initialState = {
     devices: null,
     error : false,
-    isLoading : true
+    isLoading : true,
+    modalOpen : false
 }
 
 export default function(state = initialState, action) {
@@ -21,6 +23,12 @@ export default function(state = initialState, action) {
                 devices : payload.error ? initialState.devices : initialState.concat(payload.devices),
                 error : payload.error,
                 isLoading : false
+            }
+        case OPERATE_MODAL:
+            console.log('WAZZUP');
+            return {
+                ...state,
+                modalOpen : !initialState.modalOpen
             }
         default:
             return state;
