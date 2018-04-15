@@ -1,11 +1,11 @@
 import { LOGIN_ACTION } from './actionTypes';
 
-const initialState = {
+const loginState = {
     token: null,
     error: false
 }
 
-export default function(state = initialState, action) {
+export default function(state = loginState, action) {
     var payload = action.payload;
 
     switch(action.type) {

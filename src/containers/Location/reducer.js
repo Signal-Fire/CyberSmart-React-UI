@@ -41,18 +41,6 @@ export default function(state = locationState, action) {
     }
 }
 
-export const getLocations = () => {
-    return locationState.locations;
-}
-
-export const isLoading = () => {    
-    return locationState.isLoading;
-}
-
-export const isError = () => {
-    return locationState.error;
-}
-
 export const getLocationDropdown = () => {
     //var devices = initialState.devices;
 
@@ -64,7 +52,9 @@ export const getLocationDropdown = () => {
         { key: 'af5', value: 'af5', text: 'Afghanistan5', id : 5, name : 'afft' }
     ]
 
-    /*options.forEach(item => {
+    console.log(locationState);
+    /*var options = locationState.locations;
+    options.forEach(item => {
         item.key = item._id;
         item.id = item._id;
         item.name = item._id;

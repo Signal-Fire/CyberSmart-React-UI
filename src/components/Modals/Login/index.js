@@ -1,28 +1,20 @@
 /* jshint esversion: 6*/
-import React, { Component } from 'react';
+import React from 'react';
 import { Message, Grid, Modal } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+
+import { operateModal } from '../../../containers/Login/action';
 import { LoginForm } from '../../Forms';
-import { USER_COOKIE_IDENTIFIER } from '../../../config';
 import { SemanticModal } from '../';
 
-export default class LoginModal extends Component {
-    constructor() {
-        super();
-
-        this.state = {
-            isOpen : window.localStorage ? localStorage.getItem(USER_COOKIE_IDENTIFIER) === null : true            
-        };
-    }
-
-    handleVisibility() { 
-        this.setState({ isOpen : !this.state.isOpen });
-    }
-
-    render() {
-        return (
-            <SemanticModal
-                open={this.state.isOpen}
-                onClose={this.handleVisibility}
+const LoginModal = ({
+    isOpen,
+    operateModal
+}) => {
+    return (
+        <SemanticModal
+                open={isOpen}
+                onClose={() => { operateModal(false) }}
                 size='small'
             >
             <Modal.Header></Modal.Header>
@@ -51,6 +43,15 @@ export default class LoginModal extends Component {
                 </Modal.Content>
                 <Modal.Actions></Modal.Actions>
             </SemanticModal>
-        )
-    }
+    );
 }
+
+const mapStateToProps = state => ({
+    isOpen : state.login.token === null
+})
+
+const mapDispatchToProps = dispatch => ({
+    operateModal : (modalState) => { dispatch(operateModal(modalState)) } 
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginModal)
