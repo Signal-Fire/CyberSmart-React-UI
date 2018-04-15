@@ -1,5 +1,4 @@
-import { GET_DEVICES, ADD_DEVICE  } from './actionTypes';
-import { OPERATE_MODAL } from '../Location/actionTypes';
+import * as actionTypes from './actionTypes';
 
 const initialState = {
     devices: null,
@@ -12,23 +11,24 @@ export default function(state = initialState, action) {
     var payload = action.payload;
 
     switch(action.type) {
-        case GET_DEVICES:
+        case actionTypes.GET_DEVICES:
             return {
+                ...state,
                 devices : payload.error ? null : payload.devices,
                 error : payload.error,
                 isLoading : false
             }
-        case ADD_DEVICE:
+        case actionTypes.ADD_DEVICE:
             return {
+                ...state,
                 devices : payload.error ? initialState.devices : initialState.concat(payload.devices),
                 error : payload.error,
                 isLoading : false
             }
-        case OPERATE_MODAL:
-            console.log('WAZZUP');
+        case actionTypes.OPERATE_MODAL:           
             return {
                 ...state,
-                modalOpen : !initialState.modalOpen
+                modalopen : payload.modalopen
             }
         default:
             return state;

@@ -13,6 +13,7 @@ export default function(state = locationState, action) {
     switch(action.type) {
         case actionTypes.GET_LOCATIONS:
             return {
+                ...state,
                 locations : payload.error ? 
                     null
                     :
@@ -22,6 +23,7 @@ export default function(state = locationState, action) {
             }    
         case actionTypes.ADD_LOCATION:
             return {
+                ...state,
                 locations : payload.error ? 
                     locationState.locations 
                     : 
@@ -29,10 +31,10 @@ export default function(state = locationState, action) {
                 error : payload.error,
                 isLoading : false
             }     
-        case actionTypes.OPERATE_MODAL:            
+        case actionTypes.OPERATE_MODAL:         
             return {
                 ...state,
-                modalOpen : !locationState.modalOpen
+                modalOpen : !locationState.modalopen
             }
         default:
             return state;
@@ -49,10 +51,6 @@ export const isLoading = () => {
 
 export const isError = () => {
     return locationState.error;
-}
-
-export const getModalState = () => {
-    return locationState.modalOpen;
 }
 
 export const getLocationDropdown = () => {

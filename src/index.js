@@ -17,16 +17,10 @@ store.dispatch(getLocations());
 store.dispatch(getDevices());
 store.dispatch(getConnectedDevices());
 
-function render() {
-    ReactDOM.render(
-        <Provider store={store}>
-            <App />
-        </Provider>,
-    document.getElementById('root'));
-}
-
-store.subscribe(render);
-
-render();
+ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>,
+document.getElementById('root'));
 
 registerServiceWorker();

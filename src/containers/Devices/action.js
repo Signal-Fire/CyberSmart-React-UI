@@ -48,12 +48,11 @@ export const addDevice = (device, authorization) => dispatch => {
     });
 }
 
-
-export const setModalOpen = (modalState) => dispatch => {        
+export const setModalOpen = (modalState) => dispatch => {
     dispatch({
         type: OPERATE_MODAL,
         payload: {
-            modalOpen : modalState
+            modalopen : modalState
         }
     });
 }

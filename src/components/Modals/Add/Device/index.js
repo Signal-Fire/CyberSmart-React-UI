@@ -5,17 +5,17 @@ import { AddDeviceForm } from '../../../Forms';
 import { SemanticModal } from '../../';
 import { setModalOpen } from '../../../../containers/Devices/action';
 
-const AddDeviceModal = props => {
-    const {
-        modalOpen
-    } = props;
+const AddDeviceModal = ({
+    modalOpen,
+    setModalOpen
+}) => {
 
     return (
         <SemanticModal
             open={modalOpen}
-            onClose={ props.setModalOpen(false) }
+            onClose={ () => setModalOpen(false) }
             size='small'
-            trigger = { <Menu.Item icon = "plus" onClick = { props.setModalOpen(true) } /> }
+            trigger = { <Menu.Item icon = "plus" onClick = { () => setModalOpen(true) } /> }
         >
             <Modal.Header>Add a Device</Modal.Header>
                 <Modal.Content>
@@ -31,11 +31,11 @@ const AddDeviceModal = props => {
 }
 
 const mapDispatchToProps = dispatch => ({
-    setModalOpen : (modalState) => { setModalOpen(modalState) }
+    setModalOpen : (modalState) => { dispatch(setModalOpen(modalState)) }
 })
 
 const mapStateToProps = state => ({    
-    modalOpen : state.devices.modalOpen
+    modalOpen : state.devices.modalopen
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddDeviceModal);

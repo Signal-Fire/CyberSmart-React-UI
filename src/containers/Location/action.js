@@ -1,11 +1,10 @@
-import { API_LOCATION_URL } from '../../config';
+import * as config from '../../config';
 import * as actionTypes from './actionTypes';
-import * as reducerMethods from './reducer';
 
 import axios from 'axios';
 
 export const getLocations = () => dispatch => {  
-    axios.get(API_LOCATION_URL + '/find/all')
+    axios.get(config.API_LOCATION_URL + '/find/all')
         .then(res => {           
             dispatch({
                 type : actionTypes.GET_LOCATIONS,
@@ -26,7 +25,7 @@ export const getLocations = () => dispatch => {
 
 export const addLocation = (values) => dispatch => {    
     axios({ method: 'POST',
-            url: API_LOCATION_URL +'/insert',
+            url: config.API_LOCATION_URL +'/insert',
             data: {
                 name : values.location
             }
@@ -48,12 +47,11 @@ export const addLocation = (values) => dispatch => {
         });  
 }
 
-export const setModalOpen = (modalState) => dispatch => {
-    console.log('STATe', modalState);
+export const setModalOpen = (modalState) => dispatch => {    
     dispatch({
         type: actionTypes.OPERATE_MODAL,
         payload : {
-            modalOpen : modalState
+            modalopen : modalState
         }
     });
 }
