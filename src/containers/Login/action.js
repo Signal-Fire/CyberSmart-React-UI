@@ -8,8 +8,6 @@ export const performLogin = (username, password) => dispatch => {
         username: username,
         password: password
     }).then(res => {
-            if (res.status === 200) 
-                preFetch();
             dispatch({
                 type : actionTypes.LOGIN_ACTION,
                 payload : {
@@ -18,7 +16,6 @@ export const performLogin = (username, password) => dispatch => {
                 }
             })            
         }).catch(err => {
-            console.log(err);
             dispatch({
                 type : actionTypes.LOGIN_ACTION,
                 payload : {
@@ -36,8 +33,4 @@ export const operateModal = (modalState) => dispatch => {
             modalOpen : modalState
         }
     })
-}
-
-const preFetch = () => dispatch => {
-    console.log('Pre fetching');
 }
