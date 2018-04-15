@@ -68,8 +68,10 @@ const LoginForm = withFormik({
         password : Yup.string().required('Password is required!')       
     }),
     handleSubmit: (values, { props, setSubmitting }) => {
-        props.performLogin(values.username, values.password);              
-        setSubmitting(true);     
+        setSubmitting(true);  
+        props.performLogin(values.username, values.password);            
+        //Wait 3 seconds, ensures login system is dodge  
+        setTimeout(() => setSubmitting(false), 3000);              
     },
     displayName : 'Login'
 })(Gubbins);
