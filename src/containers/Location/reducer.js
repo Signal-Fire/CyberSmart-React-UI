@@ -1,16 +1,17 @@
-import { GET_LOCATIONS } from './actionTypes';
+import * as actionTypes from './actionTypes';
 
 const locationState = {
     locations : null,
     isLoading : true,
-    error : false
+    error : false,
+    modalOpen : false
 }
 
 export default function(state = locationState, action) {
     var payload = action.payload;
 
     switch(action.type) {
-        case GET_LOCATIONS:
+        case actionTypes.GET_LOCATIONS:
             return {
                 locations : payload.error ? 
                     null
@@ -18,7 +19,21 @@ export default function(state = locationState, action) {
                     payload.locations,
                 error : payload.error,
                 isLoading : false
-            }            
+            }    
+        case actionTypes.ADD_LOCATION:
+            return {
+                locations : payload.error ? 
+                    locationState.locations 
+                    : 
+                    locationState.locations.concat(payload.location),
+                error : payload.error,
+                isLoading : false
+            }     
+        case actionTypes.OPERATE_MODAL:
+            return {
+                ...state,
+                modalOpen : payload.modalOpen
+            }
         default:
             return state;
     }
