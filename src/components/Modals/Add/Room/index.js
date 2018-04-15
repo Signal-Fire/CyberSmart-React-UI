@@ -5,20 +5,20 @@ import { connect } from 'react-redux';
 
 import { AddLocationForm } from '../../../Forms';
 import { SemanticModal } from '../../';
-import { operateModal } from '../../../../containers/Location/action';
+import { setModalOpen } from '../../../../containers/Location/action';
 
-const AddRoomModal = props => {
+const AddRoomModal = (props) => {
     const {
-        modalOpen
+        modalOpen 
     } = props;
 
     return (
         <SemanticModal
             open={modalOpen}
-            onClose={props.operateModal()}
+            onClose={ () => props.setModalOpen(false) }            
             size='small'
             trigger = {
-                <Menu.Item icon = "plus" onClick = {props.operateModal()}/>
+                <Menu.Item icon = "plus" onClick = { () => { props.setModalOpen(true); } }/>
                 }>
                 <Modal.Header>Add a Location</Modal.Header>
                 <Modal.Content>
@@ -33,11 +33,11 @@ const AddRoomModal = props => {
 }
 
 const mapStateToProps = state => ({
-    modalOpen : state.modalOpen
+    modalOpen : state.locations.modalopen
 })
 
 const mapDispatchToProps = dispatch => ({
-    operateModal : () => { dispatch(operateModal())}    
+    setModalOpen : (modalState) => { dispatch(setModalOpen(modalState)); }    
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddRoomModal);

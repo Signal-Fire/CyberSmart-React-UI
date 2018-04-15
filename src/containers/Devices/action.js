@@ -1,4 +1,4 @@
-import { GET_DEVICES, ADD_DEVICE } from './actionTypes';
+import { GET_DEVICES, ADD_DEVICE, OPERATE_MODAL } from './actionTypes';
 import { API_DEVICES_URL } from '../../config';
 
 import axios from 'axios';
@@ -45,5 +45,14 @@ export const addDevice = (device, authorization) => dispatch => {
                 error : true
             }
         })
+    });
+}
+
+export const setModalOpen = (modalState) => dispatch => {
+    dispatch({
+        type: OPERATE_MODAL,
+        payload: {
+            modalopen : modalState
+        }
     });
 }

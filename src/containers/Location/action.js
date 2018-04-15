@@ -1,13 +1,13 @@
-import { API_LOCATION_URL } from '../../config';
-import { GET_LOCATIONS, ADD_LOCATION, OPERATE_MODAL } from './actionTypes';
+import * as config from '../../config';
+import * as actionTypes from './actionTypes';
 
 import axios from 'axios';
 
-export const getLocations = () => dispatch => {    
-    axios.get(API_LOCATION_URL + '/find/all')
+export const getLocations = () => dispatch => {  
+    axios.get(config.API_LOCATION_URL + '/find/all')
         .then(res => {           
             dispatch({
-                type : GET_LOCATIONS,
+                type : actionTypes.GET_LOCATIONS,
                 payload: {
                     locations : res.status === 200 ? res.data : null,
                     error : res.status !== 200
@@ -15,7 +15,7 @@ export const getLocations = () => dispatch => {
             });
         }).catch(err => {
             dispatch({
-                type : GET_LOCATIONS,
+                type : actionTypes.GET_LOCATIONS,
                 payload : {
                     error : true
                 }
@@ -23,15 +23,15 @@ export const getLocations = () => dispatch => {
         });
 }
 
-export const addLocation = (values) => dispatch => {
+export const addLocation = (values) => dispatch => {    
     axios({ method: 'POST',
-            url: API_LOCATION_URL +'/insert',
+            url: config.API_LOCATION_URL +'/insert',
             data: {
                 name : values.location
             }
         }).then(res => {
             dispatch({
-                type : ADD_LOCATION,
+                type : actionTypes.ADD_LOCATION,
                 payload: {
                     location : res.status === 201 ? res.data : null,
                     error : res.status !== 201
@@ -39,7 +39,7 @@ export const addLocation = (values) => dispatch => {
             })
         }).catch(err => {
             dispatch({
-                type : ADD_LOCATION,
+                type : actionTypes.ADD_LOCATION,
                 payload: {                    
                     error : true
                 }
@@ -47,11 +47,11 @@ export const addLocation = (values) => dispatch => {
         });  
 }
 
-export const operateModal = (modalState) => dispatch => {
+export const setModalOpen = (modalState) => dispatch => {    
     dispatch({
-        type: OPERATE_MODAL,
-        payload: {
-            modalOpen : modalState
+        type: actionTypes.OPERATE_MODAL,
+        payload : {
+            modalopen : modalState
         }
     });
 }

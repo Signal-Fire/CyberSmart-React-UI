@@ -8,9 +8,7 @@ import Yup from 'yup';
 
 import { ErrorMessage } from './Messages';
 import { TextInput } from './Input';
-import store from '../../../store';
 import { performLogin } from '../../../containers/Login/action';
-import { USER_COOKIE_IDENTIFIER } from '../../../config';
 
 const Gubbins = ({
     values,
@@ -70,19 +68,8 @@ const LoginForm = withFormik({
         password : Yup.string().required('Password is required!')       
     }),
     handleSubmit: (values, { props, setSubmitting }) => {
-        props.performLogin(values.username, values.password);
-              
-        setSubmitting(true);
-
-        store.subscribe(() => {
-            var storeState = store.getState().loginReducer;
-            if (storeState.token !== null) {
-                localStorage.setItem(USER_COOKIE_IDENTIFIER, storeState.token);
-                window.location.reload();
-            } else if (!storeState.loginError) {
-                setSubmitting(false); 
-            }
-        })        
+        props.performLogin(values.username, values.password);              
+        setSubmitting(true);     
     },
     displayName : 'Login'
 })(Gubbins);
@@ -95,9 +82,13 @@ LoginForm.propTypes = {
 
 const mapStateToProps = state => {
     return {
-        token : state.loginReducer.token,
-        loginError : state.loginReducer.error
+        token : state.login.token,
+        loginError : state.login.error
     }
 }
 
-export default connect(mapStateToProps, { performLogin })(LoginForm);
+const mapDispatchToProps = dispatch => ({
+    performLogin : (username, password) => { dispatch(performLogin(username, password)) }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
