@@ -1,4 +1,4 @@
-import { LOGIN_ACTION } from './actionTypes';
+import * as actionTypes from './actionTypes';
 
 const loginState = {
     token: null,
@@ -9,7 +9,7 @@ export default function(state = loginState, action) {
     var payload = action.payload;
 
     switch(action.type) {
-        case LOGIN_ACTION:
+        case actionTypes.LOGIN_ACTION:
             return {
                 ...state,
                 token : payload.token,
