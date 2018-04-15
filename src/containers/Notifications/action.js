@@ -1,21 +1,22 @@
-import * as actionTypes from './actionTypes';
+import { GET_NOTIFICATIONS } from './actionTypes';
 import * as config from '../../config';
 
 import axios from 'axios';
 
 export const getNotifications = () => dispatch => {
+    console.log('trippy man');
     axios.get(config.API_NOTIFICATIONS_URL + "/find/all")
-    .then(response => {
+    .then(res => {
         dispatch({
-            type: actionTypes.GET_NOTIFICATIONS,
+            type: GET_NOTIFICATIONS,
             payload : {
-                notifications : response.data,
-                error : response.status !== 200              
+                notifications : res.status === 200 ? res.data : null,
+                error : res.status !== 200              
             }
         })
     }).catch(err => {
         dispatch({
-            type: actionTypes.GET_NOTIFICATIONS,
+            type: GET_NOTIFICATIONS,
             payload : {
                 notifications : null,
                 error : true         

@@ -1,22 +1,30 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Dropdown, Message } from 'semantic-ui-react';
+import { NotificationFeed } from '../../Notifications';
+import { getNotifications } from '../../../containers/Notifications/action';
 
-const Announcements = () => {
+const Announcements = ({
+    getNotifications
+}) => {
     return (
         <Dropdown 
             item 
             icon='announcement' 
             pointing = 'top right'
+            onClick = { () => getNotifications() }
         >                        
             <Dropdown.Menu>                
                 <Message>            
-                    <p>
-                        You left x lights on this week!
-                    </p>
+                    <NotificationFeed />
                 </Message>
             </Dropdown.Menu>
         </Dropdown>
     );
 }
 
-export default Announcements;
+const mapDispatchToProps = dispatch => ({
+    getNotifications : () => { dispatch(getNotifications()) }
+})
+
+export default connect(null, mapDispatchToProps)(Announcements);

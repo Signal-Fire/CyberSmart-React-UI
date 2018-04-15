@@ -2,40 +2,38 @@ import React from 'react';
 import { Feed } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import * as notifier from '../../../containers/Notifications/action';
+import { Notification } from '../';
 
 const NotificationFeed = ({
-    getNotifications
+    notifications
 }) => {
-    getNotifications();
+    const createList = () => {
+        let notifArray = [];
+
+        notifications.forEach(notif => {
+            notifArray.push(
+                <Notification notification = {notif} />
+            );            
+        })
+
+        return notifArray.reverse();
+    }
+
     return(
         <Feed>
-            <Feed.Event
-                icon='pencil'
-                date='Today'
-                summary="You posted on your friend Stevie Feliciano's wall."
-            />
-            <Feed.Event>
-                <Feed.Label icon='pencil' />
-                <Feed.Content
-                    date='Today'
-                    summary="You posted on your friend Stevie Feliciano's wall."
-                />
-            </Feed.Event>
+            {
+                createList()
+            }
         </Feed>
     );
 }
 
-NotificationFeed.PropTypes = {
-    getNotifications : PropTypes.func
+NotificationFeed.propTypes = {
+    notifications : PropTypes.arrayOf(Object)
 }
 
 const mapStateToProps = state => ({
     notifications : state.logs.notifications
 })
 
-const mapDispatchToProps = dispatch => ({
-    getNotifications : () => dispatch(notifier.getNotifications())
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(NotificationFeed);
+export default connect(mapStateToProps, null)(NotificationFeed);
