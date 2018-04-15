@@ -1,4 +1,4 @@
-import { GET_DEVICES, GET_CONNECTED_DEVICES, ADD_DEVICE } from './actionTypes';
+import { GET_DEVICES, ADD_DEVICE } from './actionTypes';
 import { API_DEVICES_URL } from '../../config';
 
 import axios from 'axios';
@@ -7,9 +7,9 @@ export const getDevices = () => dispatch => {
     axios.get(API_DEVICES_URL + '/find/all').then(res => {
         dispatch({ 
             type: GET_DEVICES, 
-            payload : {
-                devices : res.data,
-                error : false
+            payload: {
+                devices : res.status === 200 ? res.data : null,
+                error : res.status !== 200
             }
         })
     }).catch(err => {
@@ -45,25 +45,5 @@ export const addDevice = (device, authorization) => dispatch => {
                 error : true
             }
         })
-    });
-}
-
-export const getConnectedDevices = () => async(dispatch) => {
-    await axios.get(API_DEVICES_URL + '/find/connected')
-    .then(res => {
-        dispatch({
-            type : GET_CONNECTED_DEVICES,
-            payload : {
-                connectedDevices : res.data,
-                error : false            
-            }
-        });
-    }).catch(err => {
-        dispatch({
-            type: GET_CONNECTED_DEVICES,
-            payload : {
-                error : true
-            }
-        });
     });
 }

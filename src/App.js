@@ -8,6 +8,8 @@ import { MainMenu } from './components/MenuBar';
 //Modals
 import { LoginModal } from './components/Modals';
 
+import store from './store';
+
 //Config
 import { USER_COOKIE_IDENTIFIER } from './config';
 
@@ -15,7 +17,7 @@ import './App.css';
 
 class App extends Component {
   constructor(props) {
-    super(props);
+    super(props);    
     this.state = { visible: false };
     this.toggleVisibility = this.toggleVisibility.bind(this);
   }

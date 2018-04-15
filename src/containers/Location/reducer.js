@@ -1,42 +1,37 @@
 import { GET_LOCATIONS } from './actionTypes';
 
-const initialState = {
+const locationState = {
     locations : null,
     isLoading : true,
     error : false
 }
 
-export default function(state = initialState, action) {
+export default function(state = locationState, action) {
+    var payload = action.payload;
+
     switch(action.type) {
         case GET_LOCATIONS:
             return {
-                ...state,
-                locations : action.payload,
-                error : action.error
-            }
+                locations : payload.error ? 
+                    null
+                    :
+                    payload.locations,
+                error : payload.error,
+                isLoading : false
+            }            
         default:
             return state;
     }
 }
 
 export const getLocations = () => {
-    return initialState.locations;
+    return locationState.locations;
 }
 
-export const isLoading = () => {
-    return initialState.isLoading;
+export const isLoading = () => {    
+    return locationState.isLoading;
 }
 
-export const createLocationsDropdown = () => {
-    console.log(initialState);
-    if (initialState.locations === null ||
-        initialState.locations.length < 1)
-        return null;
-
-    var data = this.state.locations.forEach(item => {           
-        item.label = item.name;
-        item.value = item._id;
-        item.type = 'location';              
-    });
-    return data;
+export const isError = () => {
+    return locationState.error;
 }

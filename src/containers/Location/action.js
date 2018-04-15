@@ -8,14 +8,17 @@ export const getLocations = () => dispatch => {
         .then(res => {           
             dispatch({
                 type : GET_LOCATIONS,
-                payload : res.data,
-                error : false
+                payload: {
+                    locations : res.status === 200 ? res.data : null,
+                    error : res.status !== 200
+                }
             });
         }).catch(err => {
             dispatch({
                 type : GET_LOCATIONS,
-                payload : null,
-                error : true
+                payload : {
+                    error : true
+                }
             });
         });
 }

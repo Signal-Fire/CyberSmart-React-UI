@@ -8,24 +8,20 @@ export const performLogin = (username, password) => dispatch => {
         username: username,
         password: password
     }).then(res => {
-            if (res.status === 200) {
-                dispatch({
-                    type : LOGIN_ACTION,
-                    payload : res.data.token,
-                    error : false
-                })
-            } else {
-                dispatch({
-                    type : LOGIN_ACTION,
-                    payload : null,
-                    error : true
-                })
-            }
+            dispatch({
+                type : LOGIN_ACTION,
+                payload : {
+                    token : res.status === 200 ? res.data.token : null,
+                    error : res.status !== 200
+                }
+            })            
         }).catch(err => {
             dispatch({
                 type : LOGIN_ACTION,
-                payload : null,
-                error : true
+                payload : {
+                    token : null,
+                    error : true
+                }
             })
         });
 }
