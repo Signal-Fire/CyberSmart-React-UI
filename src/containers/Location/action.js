@@ -29,7 +29,7 @@ export const addLocation = (values) => dispatch => {
             data: {
                 name : values.location
             }
-        }).then(res => {
+        }).then(res => {            
             dispatch({
                 type : actionTypes.ADD_LOCATION,
                 payload: {

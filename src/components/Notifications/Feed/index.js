@@ -28,12 +28,22 @@ const NotificationFeed = ({
         message : 'Issue with Notifications'
     }
 
+    const noNotifications = {
+        icon : 'smile',
+        created_by_user : 'System',
+        message : 'No Notifications'
+    }
+
     return(
         <Feed>
             {
                 notifications === null ?
                 <Notification 
                     notification = {errorMessage}/>
+                :
+                notifications.length < 1 ?
+                <Notification
+                    notification = {noNotifications} />
                 :
                 createList()
             }

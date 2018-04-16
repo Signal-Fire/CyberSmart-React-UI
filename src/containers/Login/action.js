@@ -12,10 +12,12 @@ export const performLogin = (username, password) => dispatch => {
                 type : actionTypes.LOGIN_ACTION,
                 payload : {
                     token : res.status === 200 ? res.data.token : null,
+                    name : res.status === 200 ? username : null,
                     error : res.status !== 200
                 }
             })            
         }).catch(err => {
+            console.log(err);
             dispatch({
                 type : actionTypes.LOGIN_ACTION,
                 payload : {

@@ -2,6 +2,7 @@ import * as actionTypes from './actionTypes';
 
 const loginState = {
     token: null,
+    name : null,
     error: false
 }
 
@@ -13,6 +14,7 @@ export default function(state = loginState, action) {
             return {
                 ...state,
                 token : payload.token,
+                name : payload.name,
                 error : payload.error
             }        
         default:

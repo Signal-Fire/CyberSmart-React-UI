@@ -40,12 +40,3 @@ export default function(state = locationState, action) {
             return state;
     }
 }
-
-export const getLocationDropdown = () => {
-    console.log('hey');
-    var options = locationState.locations;
-
-    
-
-    return options;
-}
