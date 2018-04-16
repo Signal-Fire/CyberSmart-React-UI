@@ -5,23 +5,36 @@ import PropTypes from 'prop-types';
 import { Notification } from '../';
 
 const NotificationFeed = ({
-    notifications
+    notifications    
 }) => {
     const createList = () => {
         let notifArray = [];
 
-        notifications.forEach(notif => {
+        notifications.forEach(notif => {   
+            notif.icon = 'alarm';         
             notifArray.push(
-                <Notification notification = {notif} />
+                <Notification 
+                    notification = {notif} 
+                    key = {notif._id}/>
             );            
         })
 
-        return notifArray.reverse();
+        return notifArray;
+    }
+
+    const errorMessage = {
+        icon : 'exclamation',
+        created_by_user : 'System',
+        message : 'Issue with Notifications'
     }
 
     return(
         <Feed>
             {
+                notifications === null ?
+                <Notification 
+                    notification = {errorMessage}/>
+                :
                 createList()
             }
         </Feed>

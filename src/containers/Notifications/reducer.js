@@ -14,14 +14,14 @@ export default function(state = initialState, action) {
             console.log(action);
             return {
                 ...state,                
-                notifications : payload.notifications,
+                notifications : payload.notifications.reverse(),
                 error : payload.error,
                 isLoading : false
             }
         case actionTypes.ADD_NOTIFICATION:
             return {
                 ...state,
-                notifications : initialState.notifications.concat(payload.notifications),
+                notifications : initialState.notifications.unshift(payload.notifications),
                 error : payload.error,
                 isLoading : false
             }

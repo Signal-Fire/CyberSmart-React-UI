@@ -17,16 +17,34 @@ const AddDeviceForm = props => {
         isSubmitting,
         handleChange,
         setFieldValue,
-        handleSubmit
+        handleSubmit,
+        stateErrors,
+        stateLoading,
+        stateObjects
     } = props;
 
     const _handleSelect = (e, { value, name }) => {
         setFieldValue(name, value);
     }
 
+    const _mapDropdown = (options) => {
+        if (!options)
+            return [];
+       
+        options.forEach(option => {
+            option.key = option._id;
+            option.id = option._id;
+            option.name = option.name;
+            option.value = option.name;
+            option.text = option.name;
+        });
+
+        return options;
+    }   
+
     return (
         <Form
-            loading = { isSubmitting }>
+            loading = { isSubmitting || stateLoading.locations || stateLoading.connected }>
             <Form.Group widths = {2}>
                 <Form.Input
                     fluid
@@ -39,13 +57,13 @@ const AddDeviceForm = props => {
                 />
                 <Form.Select
                     fluid
-                    label =  { errors.physical ? 'Physical Device is required' : 'Physical' }
+                    label =  { errors.physical ? 'Physical Device is required' : 'Physical Device' }
                     placeholder = 'Select Location...'
                     onChange = { _handleSelect }
                     value = { values.physical }   
-                    options = { getDeviceDropdown() }        
+                    options = { _mapDropdown(stateObjects.connected) }        
                     name = 'physical'
-                    error = { errors.physical ? true : false }
+                    error = { (errors.physical || stateErrors.connected) ? true : false }
                 />             
             </Form.Group>
             <Form.Group widths = {2}>
@@ -53,11 +71,11 @@ const AddDeviceForm = props => {
                     fluid
                     label = { errors.location ? 'Location is required' : 'Location' }
                     onChange = { _handleSelect }
-                    options = { getLocationDropdown() }
+                    options = { _mapDropdown(stateObjects.locations) }
                     value = { values.location }     
                     placeholder = 'Select Location...'    
                     name = 'location'
-                    error = { errors.location ? true : false }
+                    error = { (errors.location || stateErrors.locations) ? true : false }
                 />        
             </Form.Group>
             <SubmitButton 
@@ -87,7 +105,18 @@ const deviceFormik = withFormik({
 })(AddDeviceForm);
 
 const mapStateToProps = state => ({
-
+    stateLoading : {
+        locations : state.locations.isLoading,
+        connected : state.connected.isLoading
+    },
+    stateObjects : {
+        locations : state.locations.locations,
+        connected : state.connected.devices,
+    },    
+    stateErrors : {
+        locations : state.locations.error,
+        connected : state.connected.error
+    }
 })
 
 const mapDispatchToProps = dispatch => ({
