@@ -27,7 +27,8 @@ export const addLocation = (values) => dispatch => {
     axios({ method: 'POST',
             url: config.API_LOCATION_URL +'/insert',
             data: {
-                name : values.location
+                name : values.location,
+                created_by_user : values.created_by_user
             }
         }).then(res => {            
             dispatch({
