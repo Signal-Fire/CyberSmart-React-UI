@@ -7,8 +7,6 @@ import { withFormik } from 'formik';
 import Yup from 'yup';
 import { addDevice } from '../../../../containers/Devices/action';
 import { SubmitButton } from '../Inputs';
-import { getDeviceDropdown } from '../../../../containers/ConnectedDevices/reducer';
-import { getLocationDropdown } from '../../../../containers/Location/reducer';
 
 const AddDeviceForm = props => {
     const {
@@ -120,8 +118,6 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    getLocationDropdown : () => { getLocationDropdown() },
-    getDeviceDropdown : () => { getDeviceDropdown() },
     addDevice : (device) => { addDevice(device) }
 })
 
