@@ -1,5 +1,5 @@
-import DeviceGrid from './Grid';
+import DeviceTable from './Table';
 
 export {
-    DeviceGrid
+    DeviceTable
 }

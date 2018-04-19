@@ -1,6 +1,7 @@
 import React from 'react';
 import { Table } from 'semantic-ui-react';
 import { DeviceRow } from '../Row';
+import TableHeader from './Header';
 import { connect } from 'react-redux';
 
 const WidgetGrid = (props) => {
@@ -9,16 +10,10 @@ const WidgetGrid = (props) => {
     } = props;
 
     return(
-        <Table celled>
-            <Table.Header>
-                <Table.Row>
-                    <Table.HeaderCell>Device Name</Table.HeaderCell>
-                    <Table.HeaderCell>Action</Table.HeaderCell>
-                    <Table.HeaderCell>Location</Table.HeaderCell>
-                    <Table.HeaderCell>State</Table.HeaderCell>
-                    <Table.HeaderCell>Created By</Table.HeaderCell>
-                </Table.Row>
-            </Table.Header>
+        <Table 
+            celled
+            textAlign = 'center'>
+            <TableHeader />
             <Table.Body>
                 { devices !== null ?
                 devices.map((d => {
