@@ -21,14 +21,14 @@ export default function(state = initialState, action) {
         case actionTypes.ADD_DEVICE:
             return {
                 ...state,
-                devices : payload.error ? initialState.devices : initialState.concat(payload.devices),
+                devices : payload.error ? state.devices : state.devices.concat(payload.device),
                 error : payload.error,
                 isLoading : false
             }
         case actionTypes.OPERATE_MODAL:           
             return {
                 ...state,
-                modalOpen : payload.modalopen
+                modalOpen : payload.modalOpen
             }
         default:
             return state;

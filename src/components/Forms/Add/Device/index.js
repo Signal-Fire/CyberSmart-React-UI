@@ -5,7 +5,7 @@ import { Form } from 'semantic-ui-react';
 import { withFormik } from 'formik';
 
 import Yup from 'yup';
-import { addDevice } from '../../../../containers/Devices/action';
+import { addDevice, setModalOpen } from '../../../../containers/Devices/action';
 import { SubmitButton } from '../Inputs';
 
 const AddDeviceForm = props => {
@@ -98,7 +98,7 @@ const deviceFormik = withFormik({
     handleSubmit : (values, { props, setSubmitting }) => {
         values.created_by_user = props.user.name;
         props.addDevice(values, props.user.auth);
-        setTimeout(() => window.location.reload(), 1000);   
+        setTimeout(() => props.setModalOpen(false), 500);   
     },
     displayName : 'Add Device'
 })(AddDeviceForm);
@@ -123,7 +123,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    addDevice : (device, auth) => { dispatch(addDevice(device, auth)) }
+    addDevice : (device, auth) => { dispatch(addDevice(device, auth)) },
+    setModalOpen : (modalState) => { dispatch(setModalOpen(modalState)) }
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(deviceFormik)

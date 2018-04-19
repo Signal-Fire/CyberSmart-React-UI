@@ -52,7 +52,7 @@ export const setModalOpen = (modalState) => dispatch => {
     dispatch({
         type: OPERATE_MODAL,
         payload: {
-            modalopen : modalState
+            modalOpen : modalState
         }
     });
 }

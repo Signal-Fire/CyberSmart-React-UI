@@ -3,7 +3,7 @@ import { Form } from 'semantic-ui-react';
 import Yup from 'yup';
 import { withFormik } from 'formik';
 import { SubmitButton } from '../Inputs';
-import { addLocation } from '../../../../containers/Location/action';
+import { addLocation, setModalOpen } from '../../../../containers/Location/action';
 import { connect } from 'react-redux';
 
 const LocationsForm = props => {
@@ -46,7 +46,7 @@ const LocationsFormik = withFormik({
     handleSubmit: (values, { props, setSubmitting }) => {
         values.created_by_user = props.username
         props.addLocation(values);
-        setTimeout(() => window.location.reload(), 1000);        
+        setTimeout(() => props.setModalOpen(false), 500);     
     },
     displayName : 'Add Device'
 })(LocationsForm)
@@ -56,7 +56,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    addLocation : (location) => { dispatch(addLocation(location))}
+    addLocation : (location) => { dispatch(addLocation(location)) },
+    setModalOpen : (modalState) => { dispatch(setModalOpen(false)) }
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(LocationsFormik);

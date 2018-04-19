@@ -35,7 +35,7 @@ export default function(state = locationState, action) {
         case actionTypes.OPERATE_MODAL:         
             return {
                 ...state,
-                modalOpen : payload.modalopen
+                modalOpen : payload.modalOpen
             }
         default:
             return state;
