@@ -98,7 +98,7 @@ const deviceFormik = withFormik({
     handleSubmit : (values, { props, setSubmitting }) => {
         values.created_by_user = props.user.name;
         props.addDevice(values, props.user.auth);
-        setSubmitting(false);
+        setTimeout(() => window.location.reload(), 1000);   
     },
     displayName : 'Add Device'
 })(AddDeviceForm);

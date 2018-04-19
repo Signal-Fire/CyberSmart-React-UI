@@ -28,7 +28,7 @@ export default function(state = initialState, action) {
         case actionTypes.OPERATE_MODAL:           
             return {
                 ...state,
-                modalopen : payload.modalopen
+                modalOpen : payload.modalopen
             }
         default:
             return state;

@@ -23,7 +23,6 @@ export const getDevices = () => dispatch => {
 }
 
 export const addDevice = (device, authorization) => dispatch => {
-    console.log(device);
     axios({ 
         method: 'POST',
         url : API_DEVICES_URL + '/insert',

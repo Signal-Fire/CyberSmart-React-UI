@@ -1,49 +1,29 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Grid } from 'semantic-ui-react';
 import Widget from '../Widget';
 import { connect } from 'react-redux';
-import { getDevices } from '../../../containers/Devices/action';
-import * as deviceReducer from '../../../containers/Devices/reducer';
 
-class WidgetGrid extends Component {
-    constructor() {
-        super();
-        
-        this.state = {
-            devices : []
-        }
-    }
+const WidgetGrid = (props) => {
+    const {
+        devices
+    } = props;
 
-    componentDidMount = () => {
-        this.props.getDevices();
-    }   
-      
-    componentWillReceiveProps = (nextProps) => {
-        if (nextProps.newDevice) {
-            this.props.getDevices();
-        }
-    }
-
-    render() {
-        return(
-            <Grid stackable columns = {6}>                              
-                {this.props.devices !== null ?
-                this.props.devices.map((d) =>
-                    <Grid.Column key = {d._id}>  
-                        <Widget name = {d.name} state = {d.state} address = {d.address}/>
-                    </Grid.Column>
-                )
-                :
-                false}                        
-            </Grid>
-        );
-    }
+    return(
+        <Grid stackable columns = {6}>                              
+            {devices !== null ?
+            devices.map((d) =>
+                <Grid.Column key = {d._id}>  
+                    <Widget name = {d.name} state = {d.state} address = {d.address}/>
+                </Grid.Column>
+            )
+            :
+            false}                        
+        </Grid>
+    )
 }
 
-const mapStateToProps = state => {
-    return {
-        devices : deviceReducer.getDevices()
-    }
-}
+const mapStateToProps = (state) => ({
+    devices : state.devices.devices
+})
 
-export default connect(mapStateToProps, { getDevices })(WidgetGrid);
+export default connect(mapStateToProps, null)(WidgetGrid);

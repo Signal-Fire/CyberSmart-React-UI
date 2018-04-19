@@ -24,7 +24,7 @@ const LocationsForm = props => {
                     label = 'Location Name'
                     value = { values.locationName }
                     onChange = { handleChange }
-                    name = 'location'
+                    name = 'name'
                 /> 
             </Form.Group>
                 <SubmitButton
@@ -38,16 +38,15 @@ const LocationsForm = props => {
 
 const LocationsFormik = withFormik({
     mapPropsToValues : () => ({
-        location : ''
+        name : ''
     }),
     validationSchema: Yup.object().shape({
-        location : Yup.string().required('Location is required')
+        name : Yup.string().required('Location is required')
     }),
     handleSubmit: (values, { props, setSubmitting }) => {
         values.created_by_user = props.username
         props.addLocation(values);
-        setSubmitting(false);
-        window.location.reload();
+        setTimeout(() => window.location.reload(), 1000);        
     },
     displayName : 'Add Device'
 })(LocationsForm)
@@ -57,7 +56,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    addLocation : (location) => { dispatch(addLocation(location))}    
+    addLocation : (location) => { dispatch(addLocation(location))}
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(LocationsFormik);
