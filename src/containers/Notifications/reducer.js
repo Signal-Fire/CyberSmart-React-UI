@@ -9,12 +9,11 @@ const initialState = {
 export default function(state = initialState, action) {
     let payload = action.payload;
 
-    console.log(action);
     switch(action.type) {
         case actionTypes.GET_NOTIFICATIONS:           
             return {
                 ...state,                
-                notifications : payload.notifications.reverse(),
+                notifications : payload.notifications.reverse().slice(0, 5),
                 error : payload.error,
                 isLoading : false
             }        
