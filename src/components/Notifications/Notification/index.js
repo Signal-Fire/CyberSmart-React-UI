@@ -2,17 +2,13 @@ import React from 'react';
 import { Feed } from 'semantic-ui-react';
 import moment from 'moment';
 
-const capz = (word) => {
+const modify = (word, type) => {
     try {
-        return word.charAt(0).toUpperCase() + word.slice(1);
-    } catch (ex) {
-        return word;
-    }
-}
-
-const lower = (word) => {
-    try {
-        return word.charAt(0).toLowerCase() + word.slice(1);
+        return (type === 'upper' ? 
+            word.charAt(0).toUpperCase() 
+            : 
+            word.charAt(0).toLowerCase())
+            + word.slice(1);
     } catch (ex) {
         return word;
     }
@@ -37,7 +33,7 @@ const Notification = ({
             icon ={iconSelector(notification.type)}
             author = 'me'
             date ={moment(notification.timestamp).format('dddd, HH:mm')}
-            summary = {capz(notification.created_by_user) + ' ' + lower(notification.message)}>
+            summary = {modify(notification.created_by_user, "upper") + ' ' + modify(notification.message, "lower")}>
         </Feed.Event>
     );
 }
