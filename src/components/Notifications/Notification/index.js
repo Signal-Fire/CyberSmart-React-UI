@@ -9,22 +9,35 @@ const Notification = ({
         try {
             return word.charAt(0).toUpperCase() + word.slice(1);
         } catch (ex) {
-            return "";
+            return word;
+        }
+    }
+
+    const lower = (word) => {
+        try {
+            return word.charAt(0).toLowerCase() + word.slice(1);
+        } catch (ex) {
+            return word;
+        }
+    }
+
+    const iconSelector = (type) => {
+        switch(type) {
+            case 'Device':
+                return 'mobile';
+            case 'Location':
+                return 'home';
+            default:
+                return 'alarm';
         }
     }
 
     return(
-        <Feed.Event>
-            <Feed.Label icon ={notification.icon} />
-            <Feed.Content>
-                <Feed.Summary>
-                    {capz(notification.created_by_user)}
-                    <Feed.Date>{moment(notification.timestamp).format('dddd, hh:mm')}</Feed.Date>
-                </Feed.Summary>
-                <Feed.Extra text>
-                    {capz(notification.message)} 
-                </Feed.Extra>
-            </Feed.Content>
+        <Feed.Event
+            icon ={iconSelector(notification.type)}
+            author = 'me'
+            date ={moment(notification.timestamp).format('dddd, HH:mm')}
+            summary = {capz(notification.created_by_user) + ' ' + lower(notification.message)}>
         </Feed.Event>
     );
 }
