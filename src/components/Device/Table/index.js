@@ -4,7 +4,7 @@ import { DeviceRow } from '../Row';
 import TableHeader from './Header';
 import { connect } from 'react-redux';
 
-const WidgetGrid = (props) => {
+const DeviceTable = (props) => {
     const {
         devices
     } = props;
@@ -33,4 +33,4 @@ const mapStateToProps = (state) => ({
     devices : state.devices.devices
 })
 
-export default connect(mapStateToProps, null)(WidgetGrid);
+export default connect(mapStateToProps, null)(DeviceTable);
