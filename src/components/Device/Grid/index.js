@@ -1,6 +1,6 @@
 import React from 'react';
-import { Grid } from 'semantic-ui-react';
-import Widget from '../Widget';
+import { Table } from 'semantic-ui-react';
+import { DeviceRow } from '../Row';
 import { connect } from 'react-redux';
 
 const WidgetGrid = (props) => {
@@ -9,16 +9,28 @@ const WidgetGrid = (props) => {
     } = props;
 
     return(
-        <Grid stackable columns = {6}>                              
-            {devices !== null ?
-            devices.map((d) =>
-                <Grid.Column key = {d._id}>  
-                    <Widget name = {d.name} state = {d.state} address = {d.address}/>
-                </Grid.Column>
-            )
-            :
-            false}                        
-        </Grid>
+        <Table celled>
+            <Table.Header>
+                <Table.Row>
+                    <Table.HeaderCell>Device Name</Table.HeaderCell>
+                    <Table.HeaderCell>Action</Table.HeaderCell>
+                    <Table.HeaderCell>Location</Table.HeaderCell>
+                    <Table.HeaderCell>State</Table.HeaderCell>
+                    <Table.HeaderCell>Created By</Table.HeaderCell>
+                </Table.Row>
+            </Table.Header>
+            <Table.Body>
+                { devices !== null ?
+                devices.map((d => {
+                    return (<DeviceRow 
+                        device = {d}
+                        key = {d._id}/>);
+                }))
+                :
+                false
+                }
+            </Table.Body>
+        </Table>        
     )
 }
 
