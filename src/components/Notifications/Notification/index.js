@@ -6,12 +6,16 @@ const Notification = ({
     notification
 }) => {
     const capz = (word) => {
-        return word.charAt(0).toUpperCase() + word.slice(1);
+        try {
+            return word.charAt(0).toUpperCase() + word.slice(1);
+        } catch (ex) {
+            return "";
+        }
     }
 
     return(
         <Feed.Event>
-            <Feed.Label icon ='bell' />
+            <Feed.Label icon ={notification.icon} />
             <Feed.Content>
                 <Feed.Summary>
                     {capz(notification.created_by_user)}
