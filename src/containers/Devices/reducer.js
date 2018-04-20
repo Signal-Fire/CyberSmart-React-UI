@@ -33,13 +33,14 @@ export default function(state = initialState, action) {
         case actionTypes.OPERATE_DEVICE:
             if (payload.error)
                 return state;
-                
+
             var newDevices = state.devices;
 
             newDevices.forEach((element, index) => {
                 if (element._id === payload.deviceId)
                     newDevices[index].state = payload.state
             })
+            
             return {
                 ...state,
                 devices : newDevices,

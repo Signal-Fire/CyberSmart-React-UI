@@ -6,10 +6,10 @@ const TableHeaders = () => {
         <Table.Header>
             <Table.Row>
                 <Table.HeaderCell>Device Name</Table.HeaderCell>
-                <Table.HeaderCell>Action</Table.HeaderCell>
                 <Table.HeaderCell>Location</Table.HeaderCell>
                 <Table.HeaderCell>State</Table.HeaderCell>
-                <Table.HeaderCell>Created By</Table.HeaderCell>
+                <Table.HeaderCell>Action</Table.HeaderCell>
+                <Table.HeaderCell>Creator</Table.HeaderCell>
             </Table.Row>
         </Table.Header>
     );

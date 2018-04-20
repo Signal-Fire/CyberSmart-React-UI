@@ -11,7 +11,8 @@ const DeviceTable = (props) => {
 
     return(
         <Table 
-            celled
+            compact
+            selectable
             textAlign = 'center'>
             <TableHeader />
             <Table.Body>
