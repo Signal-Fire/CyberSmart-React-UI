@@ -6,8 +6,8 @@ import PropTypes from 'prop-types';
 import { Button, Form, Label } from 'semantic-ui-react';
 import Yup from 'yup';
 
-import { ErrorMessage } from './Messages';
-import { TextInput } from './Input';
+import { ErrorMessage, ErrorPopup } from './Messages';
+import { Submit, Username, Password } from './Input';
 import { performLogin } from '../../../containers/Login/action';
 
 const Gubbins = ({
@@ -28,23 +28,15 @@ const Gubbins = ({
             onSubmit = { handleSubmit }
             loading = {isSubmitting}>
             <Form.Field>
-                {errors.username ? <Label basic color='red' pointing='below'>Please enter a username</Label> : null }
-                <TextInput
-                    icon='user'
-                    name='username'
-                    placeholder='Username'
-                    type = 'text'
+                {errors.username ? <ErrorPopup text = 'username' /> : null }
+                <Username                    
                     value={values.username}
                     onChange={handleChange}
                 />
             </Form.Field>     
             <Form.Field>
-                {errors.password ? <Label basic color='red' pointing='below'>Please enter a password</Label> : null }
-                <TextInput
-                    icon='lock'
-                    placeholder='Password'
-                    name='password'
-                    type='password'
+                {errors.password ? <ErrorPopup text = 'password' /> : null }
+                <Password                    
                     value={values.password}
                     onChange={handleChange}
                 />
@@ -52,12 +44,7 @@ const Gubbins = ({
             <ErrorMessage 
                 hidden = {!loginError}
                 message = 'Something went wrong, please try again'/>
-            <Button 
-                positive 
-                icon ='home' 
-                labelPosition='right' 
-                content="Login"
-                type='submit'
+            <Submit
                 disabled={isSubmitting} />             
         </Form>
     );
