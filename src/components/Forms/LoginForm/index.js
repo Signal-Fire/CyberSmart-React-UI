@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withFormik } from 'formik';
 import PropTypes from 'prop-types';
-import { Button, Form, Label } from 'semantic-ui-react';
+import { Form } from 'semantic-ui-react';
 import Yup from 'yup';
 
 import { ErrorMessage, ErrorPopup } from './Messages';
