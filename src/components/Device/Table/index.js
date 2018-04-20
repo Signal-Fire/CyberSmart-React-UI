@@ -4,6 +4,12 @@ import { DeviceRow } from '../Row';
 import TableHeader from './Header';
 import { connect } from 'react-redux';
 
+const TableStyle = {
+    width : '80%',
+    margin: 'auto',
+    marginTop: '15px'
+}
+
 const DeviceTable = (props) => {
     const {
         devices
@@ -13,7 +19,8 @@ const DeviceTable = (props) => {
         <Table 
             compact
             selectable
-            textAlign = 'center'>
+            textAlign = 'center'
+            style = {TableStyle}>
             <TableHeader />
             <Table.Body>
                 { devices !== null ?
