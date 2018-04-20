@@ -2,29 +2,38 @@ import React from 'react';
 import { Feed } from 'semantic-ui-react';
 import moment from 'moment';
 
+const modify = (word, type) => {
+    try {
+        return (type === 'upper' ? 
+            word.charAt(0).toUpperCase() 
+            : 
+            word.charAt(0).toLowerCase())
+            + word.slice(1);
+    } catch (ex) {
+        return word;
+    }
+}
+
+const iconSelector = (type) => {
+    switch(type) {
+        case 'Device':
+            return 'mobile';
+        case 'Location':
+            return 'home';
+        default:
+            return 'alarm';
+    }
+}
+
 const Notification = ({
     notification
-}) => {
-    const capz = (word) => {
-        try {
-            return word.charAt(0).toUpperCase() + word.slice(1);
-        } catch (ex) {
-            return "";
-        }
-    }
-
+}) => {  
     return(
-        <Feed.Event>
-            <Feed.Label icon ={notification.icon} />
-            <Feed.Content>
-                <Feed.Summary>
-                    {capz(notification.created_by_user)}
-                    <Feed.Date>{moment(notification.timestamp).format('dddd, hh:mm')}</Feed.Date>
-                </Feed.Summary>
-                <Feed.Extra text>
-                    {capz(notification.message)} 
-                </Feed.Extra>
-            </Feed.Content>
+        <Feed.Event
+            icon ={iconSelector(notification.type)}
+            author = 'me'
+            date ={moment(notification.timestamp).format('dddd, HH:mm')}
+            summary = {modify(notification.created_by_user, "upper") + ' ' + modify(notification.message, "lower")}>
         </Feed.Event>
     );
 }

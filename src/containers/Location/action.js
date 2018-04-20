@@ -26,10 +26,7 @@ export const getLocations = () => dispatch => {
 export const addLocation = (values) => dispatch => {    
     axios({ method: 'POST',
             url: config.API_LOCATION_URL +'/insert',
-            data: {
-                name : values.location,
-                created_by_user : values.created_by_user
-            }
+            data: values
         }).then(res => {            
             dispatch({
                 type : actionTypes.ADD_LOCATION,
@@ -52,7 +49,7 @@ export const setModalOpen = (modalState) => dispatch => {
     dispatch({
         type: actionTypes.OPERATE_MODAL,
         payload : {
-            modalopen : modalState
+            modalOpen : modalState
         }
     });
 }

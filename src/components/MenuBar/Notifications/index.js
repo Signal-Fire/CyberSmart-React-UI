@@ -13,10 +13,10 @@ const Announcements = ({
             icon='announcement' 
             pointing = 'top right'
             onClick = { () => getNotifications() }
-        >                        
-            <Dropdown.Menu>                
+        >                   
+            <Dropdown.Menu>                                
                 <Message>            
-                    <NotificationFeed />
+                    <NotificationFeed />                        
                 </Message>
             </Dropdown.Menu>
         </Dropdown>

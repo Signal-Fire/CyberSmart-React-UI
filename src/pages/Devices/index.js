@@ -1,6 +1,6 @@
 /*jshint esversion: 6*/
 import React, { Component } from 'react';
-import { DeviceGrid } from '../../components/Device';
+import { DeviceTable } from '../../components/Device';
 import { Panel } from '../../components/ControlPanel';
 
 //CSS import
@@ -21,7 +21,7 @@ class DevicePage extends Component {
         return (
             <header className="page-body">
                 <Panel name = 'Devices' />                             
-                <DeviceGrid />
+                <DeviceTable />
             </header>
         )
     }    

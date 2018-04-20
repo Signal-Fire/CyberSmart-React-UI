@@ -21,14 +21,30 @@ export default function(state = initialState, action) {
         case actionTypes.ADD_DEVICE:
             return {
                 ...state,
-                devices : payload.error ? initialState.devices : initialState.concat(payload.devices),
+                devices : payload.error ? state.devices : state.devices.concat(payload.device),
                 error : payload.error,
                 isLoading : false
             }
         case actionTypes.OPERATE_MODAL:           
             return {
                 ...state,
-                modalopen : payload.modalopen
+                modalOpen : payload.modalOpen
+            }
+        case actionTypes.OPERATE_DEVICE:
+            if (payload.error)
+                return state;
+                
+            var newDevices = state.devices;
+
+            newDevices.forEach((element, index) => {
+                if (element._id === payload.deviceId)
+                    newDevices[index].state = payload.state
+            })
+            return {
+                ...state,
+                devices : newDevices,
+                isLoading : false,
+                error : payload.error
             }
         default:
             return state;

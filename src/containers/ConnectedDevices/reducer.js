@@ -1,4 +1,4 @@
-import { GET_CONNECTED_DEVICES } from './actionTypes';
+import * as actionTypes from './actionTypes';
 
 const initialState = {
     devices : null,
@@ -10,7 +10,7 @@ export default function(state = initialState, action) {
     var payload = action.payload;
 
     switch(action.type) {        
-        case GET_CONNECTED_DEVICES:
+        case actionTypes.GET_CONNECTED_DEVICES:
             return {
                 ...state,
                 devices : payload.devices ? 
@@ -19,20 +19,8 @@ export default function(state = initialState, action) {
                     null,
                 error : payload.error,
                 isLoading : false
-            }
+            }        
         default:
             return state;
     }
-}
-
-export const getDevices = () => {
-    return initialState.devices;
-}
-
-export const isLoading = () => {
-    return initialState.isLoading;
-}
-
-export const isError = () => {
-    return initialState.error
 }

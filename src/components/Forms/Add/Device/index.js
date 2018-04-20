@@ -5,7 +5,7 @@ import { Form } from 'semantic-ui-react';
 import { withFormik } from 'formik';
 
 import Yup from 'yup';
-import { addDevice } from '../../../../containers/Devices/action';
+import { addDevice, setModalOpen } from '../../../../containers/Devices/action';
 import { SubmitButton } from '../Inputs';
 
 const AddDeviceForm = props => {
@@ -47,11 +47,11 @@ const AddDeviceForm = props => {
                 <Form.Input
                     fluid
                     placeholder = 'Device Name'
-                    label =  { errors.deviceName ? 'Device Name is required' : 'Device Name' }
+                    label =  { errors.name ? 'Device Name is required' : 'Device Name' }
                     value = {values.name}
                     onChange = {handleChange}
-                    name = 'deviceName'
-                    error = { errors.deviceName ? true : false }
+                    name = 'name'
+                    error = { errors.name ? true : false }
                 />
                 <Form.Select
                     fluid
@@ -86,23 +86,28 @@ const AddDeviceForm = props => {
 
 const deviceFormik = withFormik({
     mapPropsToValues : () => ({
-        deviceName : '',
+        name : '',
         location : '',
         physical : ''
     }),
     validationSchema : Yup.object().shape({
         location : Yup.string().required('Device Location is required!'),
-        deviceName : Yup.string().required('Device Name is required!'),
-        physical : Yup.string().required('Physical Device is required!')
+        name : Yup.string().required('Device Name is required!'),
+        //physical : Yup.string().required('Physical Device is required!')
     }),
     handleSubmit : (values, { props, setSubmitting }) => {
-        props.addDevice(values);
-        setSubmitting(false);
+        values.created_by_user = props.user.name;
+        props.addDevice(values, props.user.auth);
+        setTimeout(() => props.setModalOpen(false), 500);   
     },
     displayName : 'Add Device'
 })(AddDeviceForm);
 
 const mapStateToProps = state => ({
+    user : {
+        auth : state.login.token,
+        name : state.login.name
+    },
     stateLoading : {
         locations : state.locations.isLoading,
         connected : state.connected.isLoading
@@ -118,7 +123,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    addDevice : (device) => { addDevice(device) }
+    addDevice : (device, auth) => { dispatch(addDevice(device, auth)) },
+    setModalOpen : (modalState) => { dispatch(setModalOpen(modalState)) }
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(deviceFormik)

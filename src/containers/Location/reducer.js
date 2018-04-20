@@ -25,16 +25,17 @@ export default function(state = locationState, action) {
             return {
                 ...state,
                 locations : payload.error ? 
-                    locationState.locations 
+                    state.locations 
                     : 
-                    locationState.locations.concat(payload.location),
+                    state.locations.concat(payload.location),
                 error : payload.error,
+                modalOpen : false,
                 isLoading : false
             }     
         case actionTypes.OPERATE_MODAL:         
             return {
                 ...state,
-                modalOpen : !locationState.modalopen
+                modalOpen : payload.modalOpen
             }
         default:
             return state;

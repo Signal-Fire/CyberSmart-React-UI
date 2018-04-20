@@ -35,7 +35,7 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const mapStateToProps = state => ({    
-    modalOpen : state.devices.modalopen
+    modalOpen : state.devices.modalOpen
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddDeviceModal);
