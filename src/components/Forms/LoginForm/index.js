@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withFormik } from 'formik';
 import PropTypes from 'prop-types';
-import { Button, Form } from 'semantic-ui-react';
+import { Button, Form, Label } from 'semantic-ui-react';
 import Yup from 'yup';
 
 import { ErrorMessage } from './Messages';
@@ -27,22 +27,28 @@ const Gubbins = ({
             size='large'
             onSubmit = { handleSubmit }
             loading = {isSubmitting}>
-            <TextInput
-                icon='user'
-                name='username'
-                placeholder='Username'
-                type = 'text'
-                value={values.username}
-                onChange={handleChange}
-            />
-            <TextInput
-                icon='lock'
-                placeholder='Password'
-                name='password'
-                type='password'
-                value={values.password}
-                onChange={handleChange}
-            />
+            <Form.Field>
+                {errors.username ? <Label basic color='red' pointing='below'>Please enter a username</Label> : null }
+                <TextInput
+                    icon='user'
+                    name='username'
+                    placeholder='Username'
+                    type = 'text'
+                    value={values.username}
+                    onChange={handleChange}
+                />
+            </Form.Field>     
+            <Form.Field>
+                {errors.password ? <Label basic color='red' pointing='below'>Please enter a password</Label> : null }
+                <TextInput
+                    icon='lock'
+                    placeholder='Password'
+                    name='password'
+                    type='password'
+                    value={values.password}
+                    onChange={handleChange}
+                />
+            </Form.Field>
             <ErrorMessage 
                 hidden = {!loginError}
                 message = 'Something went wrong, please try again'/>
@@ -71,7 +77,7 @@ const LoginForm = withFormik({
         setSubmitting(true);  
         props.performLogin(values.username, values.password);            
         //Wait 3 seconds, ensures login system is dodge  
-        setTimeout(() => setSubmitting(false), 3000);              
+        setTimeout(() => setSubmitting(false), 1000);              
     },
     displayName : 'Login'
 })(Gubbins);

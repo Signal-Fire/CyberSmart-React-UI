@@ -9,7 +9,7 @@ const CreatedByLabel = ({
     return (
         <Label as = 'a' color = 'teal' image>
             {name}   
-            <Label.Detail>{moment(date).format('dddd, HH:mm')}</Label.Detail>     
+            <Label.Detail>{moment(date).format('MMMM Do, HH:mm')}</Label.Detail>     
         </Label>
     );
 }

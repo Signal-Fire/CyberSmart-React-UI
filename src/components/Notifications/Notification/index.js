@@ -32,7 +32,7 @@ const Notification = ({
         <Feed.Event
             icon ={iconSelector(notification.type)}
             author = 'me'
-            date ={moment(notification.timestamp).format('dddd, HH:mm')}
+            date ={moment(notification.timestamp).format('MMMM Do, HH:mm')}
             summary = {modify(notification.created_by_user, "upper") + ' ' + modify(notification.message, "lower")}>
         </Feed.Event>
     );
