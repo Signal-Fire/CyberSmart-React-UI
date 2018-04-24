@@ -7,7 +7,7 @@ import { Form } from 'semantic-ui-react';
 import Yup from 'yup';
 
 import { NameInput, PasswordInput, SubmitButton } from './Input';
-import { getUserDetailsFrom } from '../../../containers/User/action';
+import { getUserDetailsFrom, updateUserDetails } from '../../../containers/User/action';
 
 const Gubbins = ({
     values,
@@ -19,12 +19,14 @@ const Gubbins = ({
     handleChange,
     handleBlur,
     handleSubmit,
-    handleReset
-}) => {
-    return(
+    handleReset,
+    formError
+}) => {    
+    return(       
         <Form 
+            readOnly
             onSubmit = { handleSubmit }
-            loading = { isSubmitting }>
+            loading = { isSubmitting || formError }>
             <Form.Group widths = {2}>
                 <Form.Field>
                     <NameInput
@@ -62,9 +64,7 @@ const Gubbins = ({
                 <Form.Field>
                 </Form.Field>
                 <Form.Field>
-                    <SubmitButton
-                        loading = { isSubmitting }
-                        />
+                    <SubmitButton />
                 </Form.Field>
             </Form.Group>                     
         </Form>
@@ -91,9 +91,10 @@ const UserSettingsForm = withFormik({
         last_name : Yup.string('Please only use letters for your name!')  
     }),
     handleSubmit: (values, { props, setSubmitting }) => {
-        setSubmitting(true);  
-        console.log(values);               
-        //Wait 3 seconds, ensures login system is dodge  
+        setSubmitting(true);   
+
+        props.updateUserDetails(values, props.token);
+
         setTimeout(() => setSubmitting(false), 1000);              
     },
     displayName : 'User Settings'
@@ -103,7 +104,8 @@ UserSettingsForm.propTypes = {
     first_name : PropTypes.string,
     last_name : PropTypes.string,
     username : PropTypes.string,
-    password : PropTypes.string
+    password : PropTypes.string,
+    updateUserDetails : PropTypes.func
 }
 
 const mapStateToProps = state => {
@@ -111,12 +113,14 @@ const mapStateToProps = state => {
         token : state.login.token,
         first_name : state.user.first_name,
         last_name : state.user.last_name,
-        username : state.user.username
+        username : state.user.username,
+        formError : state.user.error
     }
 }
 
 const mapDispatchToProps = dispatch => ({
-    getUserDetailsFrom :  (token) => { dispatch(getUserDetailsFrom(token)) }
+    getUserDetailsFrom :  (token) => { dispatch(getUserDetailsFrom(token)) },
+    updateUserDetails : (user, token) => { dispatch(updateUserDetails(user, token)) }
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserSettingsForm);

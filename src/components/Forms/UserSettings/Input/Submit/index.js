@@ -11,6 +11,7 @@ const SubmitButton = ({
             icon='checkmark' 
             labelPosition='right' 
             content="Save" 
+            {...rest}
         />
     );
 }

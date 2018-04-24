@@ -28,6 +28,34 @@ export const getUserDetailsFrom = (token) => dispatch => {
     })
 }
 
+export const updateUserDetails = (user, token) => dispatch => {
+    axios({
+        method : 'POST',
+        headers: {
+            'Authorization' : token
+        },
+        url : config.API_USERS_URL + "/update/user",
+        data : user
+    })
+    .then(res => {
+        dispatch({
+            type : actionTypes.UPDATE_USER_DETAILS,
+            payload: {
+                token : res.status === 200 ? res.data : null,
+                user : user,
+                error : res.status !== 200
+            }
+        })
+    }).catch(err => {
+        dispatch({
+            type : actionTypes.UPDATE_USER_DETAILS,
+            payload: {
+                error : true
+            }
+        })
+    });
+}
+
 export const setModalOpen = (modalState) => dispatch => {    
     dispatch({
         type : actionTypes.OPERATE_MODAL,

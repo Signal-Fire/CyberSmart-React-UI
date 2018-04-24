@@ -25,6 +25,13 @@ export default function(state = userState, action) {
                 ...state,
                 modalOpen : payload.isOpen
             }
+        case actionTypes.UPDATE_USER_DETAILS:
+            return {
+                ...state,
+                first_name : payload.error ? state.first_name : payload.user.full_name.split(' ')[0],
+                last_name : payload.error ? state.last_name : payload.user.full_name.split(' ')[1],
+                username : payload.error ? state.username : payload.user.username,
+            }            
         default:
             return state;
     }
