@@ -1,11 +1,5 @@
-import React from 'react';
+import UserSettingsForm from './Form';
 
-const UserSettingsForm = ({
-
-}) => {
-    return (
-
-    );
+export {
+    UserSettingsForm
 }
-
-export default UserSettingsForm;

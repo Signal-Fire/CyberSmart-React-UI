@@ -3,10 +3,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withFormik } from 'formik';
 import PropTypes from 'prop-types';
-import { Form, Button } from 'semantic-ui-react';
+import { Form } from 'semantic-ui-react';
 import Yup from 'yup';
 
-import { NameInput, PasswordInput } from '../Input';
+import { NameInput, PasswordInput, SubmitButton } from '../Input';
 
 const Gubbins = ({
     values,
@@ -59,16 +59,11 @@ const Gubbins = ({
             </Form.Group> 
             <Form.Group widths = {2}>
                 <Form.Field>
-
                 </Form.Field>
                 <Form.Field>
-                    <Button
-                        positive 
-                        icon='checkmark' 
-                        labelPosition='right' 
-                        content="Save" 
-                        onClick = {this.handleOpen} 
-                    />
+                    <SubmitButton
+                        loading = { isSubmitting }
+                        />
                 </Form.Field>
             </Form.Group>                     
         </Form>
