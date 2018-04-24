@@ -1,50 +1,46 @@
 /* jshint esversion: 6 */
-import React, { Component } from 'react';
+import React from 'react';
 import { Modal } from 'semantic-ui-react';
+import { connect } from 'react-redux';
 
 import { MenuIcon } from '../../Exports';
 import { UserSettingsForm } from '../../Forms';
-
-//Modal Exports
 import { SemanticModal } from '../';
+import { setModalOpen } from '../../../containers/User/action';
 
-export default class UserSettingsModal extends Component {
-    constructor() {
-        super();
-
-        this.state = {      
-            isOpen : false,
-            confirmModalOpen : false
-        };
-
-        this.handleVisibility = this.handleVisibility.bind(this);
-    }    
-
-    handleVisibility() {
-        this.setState({ isOpen : !this.state.isOpen });
-    }
-
-    render() {
-        return (
-            <SemanticModal 
-                trigger = { 
-                    <MenuIcon 
-                        title = "User Settings" 
-                        icon = "user" 
-                        onClick = {this.handleVisibility} 
-                        />
-                }
-                open = { this.state.isOpen }
-                onClose = { this.handleVisibility }
-                size='small'
-            >
-                <Modal.Header>Edit your User Settings</Modal.Header>
-                    <Modal.Content>                       
-                        <UserSettingsForm />
-                    </Modal.Content>
-                    <Modal.Actions>                                      
-                </Modal.Actions>
-            </SemanticModal>
-        )
-    }
+const UserSettingsModal = ({
+    isOpen,
+    setModalOpen
+}) => {
+    return (
+        <SemanticModal 
+            trigger = { 
+                <MenuIcon 
+                    title = "User Settings" 
+                    icon = "user" 
+                    onClick = { () => setModalOpen(true) } 
+                    />
+            }
+            open = { isOpen }
+            onClose = { () => setModalOpen(false) }
+            size='small'
+        >
+            <Modal.Header>Edit your User Settings</Modal.Header>
+                <Modal.Content>                       
+                    <UserSettingsForm />
+                </Modal.Content>
+                <Modal.Actions>                                      
+            </Modal.Actions>
+        </SemanticModal>
+    );
 }
+
+const mapStateToProps = state => ({
+    isOpen : state.user.modalOpen
+})
+
+const mapDispatchToProps = dispatch => ({
+    setModalOpen : (modalState) => { dispatch(setModalOpen(modalState)) } 
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserSettingsModal);

@@ -75,7 +75,7 @@ export const operateDevice = (deviceState, address, id) => async(dispatch) => {
     });
 }
 
-export const setModalOpen = (modalState) => dispatch => {
+export const setModalOpen = (modalState) => dispatch => {    
     dispatch({
         type: actionTypes.OPERATE_MODAL,
         payload: {

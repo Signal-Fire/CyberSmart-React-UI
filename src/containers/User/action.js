@@ -3,8 +3,7 @@ import * as config from '../../config';
 
 import axios from 'axios';
 
-export const getUserDetailsFrom = (token) => dispatch => {
-    console.log(token);
+export const getUserDetailsFrom = (token) => dispatch => {    
     axios({
         headers : {
             'Authorization' : token
@@ -26,5 +25,14 @@ export const getUserDetailsFrom = (token) => dispatch => {
                 error : true         
             }
         })
+    })
+}
+
+export const setModalOpen = (modalState) => dispatch => {    
+    dispatch({
+        type : actionTypes.OPERATE_MODAL,
+        payload : {
+            isOpen : modalState
+        }
     })
 }
