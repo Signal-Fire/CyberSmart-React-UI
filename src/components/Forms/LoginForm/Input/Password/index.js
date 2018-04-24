@@ -7,6 +7,7 @@ const PasswordInput = ({
   return (
     <Form.Input
         icon='lock'
+        iconPosition = 'left'
         placeholder='Password'
         name='password'
         type='password'
