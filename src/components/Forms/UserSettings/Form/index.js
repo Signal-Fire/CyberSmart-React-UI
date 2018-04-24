@@ -24,64 +24,74 @@ const Gubbins = ({
         <Form 
             size='large'
             onSubmit = { handleSubmit }
-            loading = {isSubmitting}>
-            <Form.Field>
-                <NameInput
-                    name = 'First Name'
-                    value = { values.firstname }
-                    onChange = { handleChange }
-                />
-            </Form.Field>     
-            <Form.Field>
-                <NameInput
-                    name = 'Last Name'
-                    value = { values.lastname }
-                    onChange = { handleChange }
-                />
-            </Form.Field>
-            <ErrorMessage 
-                hidden = {!loginError}
-                message = 'Something went wrong, please try again'/>
-            <Submit
-                disabled={isSubmitting} />             
+            loading = { isSubmitting }>
+            <Form.Group widths = {2}>
+                <Form.Field>
+                    <NameInput
+                        name = 'First Name'
+                        value = { values.firstname }
+                        onChange = { handleChange }
+                    />
+                </Form.Field>          
+                <Form.Field>
+                    <NameInput
+                        name = 'Last Name'
+                        value = { values.lastname }
+                        onChange = { handleChange }
+                    />
+                </Form.Field>
+            </Form.Group>
+            <Form.Group widths = {2}>
+                <Form.Field>
+                    <NameInput
+                        name = 'Hub Username'
+                        values = { values.hubusername }
+                        onChange = { handleChange }
+                    />
+                </Form.Field>
+                <Form.Field>
+
+                </Form.Field>               
+            </Form.Group>                      
         </Form>
     );
 }
 
 const LoginForm = withFormik({
     mapPropsToValues : () => ({
-         username: '',
-         password : '',
-         performLogin : performLogin()
+        first_name : '',
+        last_name : '',
+        username: '',
+        password : ''
     }),
     validationSchema: Yup.object().shape({
-        username: Yup.string().required('Username is required!'),
-        password : Yup.string().required('Password is required!')       
+        first_name : Yup.string('Please only use letters for your name!'),
+        last_name : Yup.string('Please only use letters for your name!')   
     }),
     handleSubmit: (values, { props, setSubmitting }) => {
         setSubmitting(true);  
-        props.performLogin(values.username, values.password);            
+        console.log(props);               
         //Wait 3 seconds, ensures login system is dodge  
         setTimeout(() => setSubmitting(false), 1000);              
     },
-    displayName : 'Login'
+    displayName : 'User Settings'
 })(Gubbins);
 
 LoginForm.propTypes = {
+    first_name : PropTypes.string,
+    last_name : PropTypes.string,
     username : PropTypes.string,
-    password : PropTypes.string,
-    performLogin : PropTypes.func.isRequired
+    password : PropTypes.string
 }
 
 const mapStateToProps = state => {
     return {
-        token : state.login.token,
-        loginError : state.login.error
+        token : state.login.token
     }
 }
 
 const mapDispatchToProps = dispatch => ({
-    performLogin : (username, password) => { dispatch(performLogin(username, password)) }
+    //TODO - map function to update yh
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
