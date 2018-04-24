@@ -1,5 +1,9 @@
-import TextInput from './Text';
+import Username from './Username';
+import Password from './Password';
+import Submit from './Submit';
 
 export {
-    TextInput
+    Username,
+    Password,
+    Submit
 }
