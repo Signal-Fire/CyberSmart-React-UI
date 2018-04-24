@@ -7,6 +7,7 @@ import { Form } from 'semantic-ui-react';
 import Yup from 'yup';
 
 import { NameInput, PasswordInput, SubmitButton } from './Input';
+import { getUserDetailsFrom } from '../../../containers/User/action';
 
 const Gubbins = ({
     values,
@@ -22,21 +23,21 @@ const Gubbins = ({
 }) => {
     return(
         <Form 
-            size='small'
             onSubmit = { handleSubmit }
             loading = { isSubmitting }>
             <Form.Group widths = {2}>
                 <Form.Field>
                     <NameInput
                         name = 'First Name'
-                        value = { values.firstname }
+                        onBlur = { handleBlur }
+                        value = { values.first_name }
                         onChange = { handleChange }
                     />
                 </Form.Field>          
                 <Form.Field>
                     <NameInput
                         name = 'Last Name'
-                        value = { values.lastname }
+                        value = { values.last_name }
                         onChange = { handleChange }
                     />
                 </Form.Field>
@@ -45,14 +46,14 @@ const Gubbins = ({
                 <Form.Field>
                     <NameInput
                         name = 'Username'
-                        values = { values.username }
+                        value = { values.username }
                         onChange = { handleChange }
                     />
                 </Form.Field>
                 <Form.Field>
                     <PasswordInput
                         name = 'Password'
-                        values = { values.password }
+                        value = { values.password }
                         onChange = { handleChange }
                     />
                 </Form.Field>               
@@ -104,7 +105,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-    //TODO - map function to update yh
+    getUserDetailsFrom :  (token) => { dispatch(getUserDetailsFrom(token)) }
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserSettingsForm);

@@ -1,6 +1,6 @@
 /* jshint esversion: 6 */
 import React, { Component } from 'react';
-import { Modal, Header } from 'semantic-ui-react';
+import { Modal } from 'semantic-ui-react';
 
 import { MenuIcon } from '../../Exports';
 import { UserSettingsForm } from '../../Forms';
