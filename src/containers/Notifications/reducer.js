@@ -10,10 +10,10 @@ export default function(state = initialState, action) {
     let payload = action.payload;
 
     switch(action.type) {
-        case actionTypes.GET_NOTIFICATIONS:           
+        case actionTypes.GET_NOTIFICATIONS:  
             return {
                 ...state,                
-                notifications : payload.notifications.reverse().slice(0, 5),
+                notifications : (payload.error) ? null : payload.notifications.reverse().slice(0, 5),
                 error : payload.error,
                 isLoading : false
             }        
