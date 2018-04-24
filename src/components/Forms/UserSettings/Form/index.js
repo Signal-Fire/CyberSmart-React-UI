@@ -3,10 +3,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withFormik } from 'formik';
 import PropTypes from 'prop-types';
-import { Form } from 'semantic-ui-react';
+import { Form, Button } from 'semantic-ui-react';
 import Yup from 'yup';
 
-import { NameInput } from '../Input';
+import { NameInput, PasswordInput } from '../Input';
 
 const Gubbins = ({
     values,
@@ -50,14 +50,32 @@ const Gubbins = ({
                     />
                 </Form.Field>
                 <Form.Field>
-
+                    <PasswordInput
+                        name = 'Password'
+                        values = { values.password }
+                        onChange = { handleChange }
+                    />
                 </Form.Field>               
-            </Form.Group>                      
+            </Form.Group> 
+            <Form.Group widths = {2}>
+                <Form.Field>
+
+                </Form.Field>
+                <Form.Field>
+                    <Button
+                        positive 
+                        icon='checkmark' 
+                        labelPosition='right' 
+                        content="Save" 
+                        onClick = {this.handleOpen} 
+                    />
+                </Form.Field>
+            </Form.Group>                     
         </Form>
     );
 }
 
-const LoginForm = withFormik({
+const UserSettingsForm = withFormik({
     mapPropsToValues : () => ({
         first_name : '',
         last_name : '',
@@ -77,7 +95,7 @@ const LoginForm = withFormik({
     displayName : 'User Settings'
 })(Gubbins);
 
-LoginForm.propTypes = {
+UserSettingsForm.propTypes = {
     first_name : PropTypes.string,
     last_name : PropTypes.string,
     username : PropTypes.string,
@@ -94,4 +112,4 @@ const mapDispatchToProps = dispatch => ({
     //TODO - map function to update yh
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
+export default connect(mapStateToProps, mapDispatchToProps)(UserSettingsForm);
