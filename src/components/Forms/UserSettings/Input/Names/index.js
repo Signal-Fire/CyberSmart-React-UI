@@ -10,7 +10,7 @@ const NameInput = ({
             label = { name }
             placeholder = { name } 
             type = 'text'
-            name = { name.replace(' ', '').toLowerCase() }
+            name = { name.replace(' ', '_').toLowerCase() }
             { ...rest }            
         />
     );

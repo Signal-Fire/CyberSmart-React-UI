@@ -22,7 +22,7 @@ const Gubbins = ({
 }) => {
     return(
         <Form 
-            size='large'
+            size='small'
             onSubmit = { handleSubmit }
             loading = { isSubmitting }>
             <Form.Group widths = {2}>
@@ -44,8 +44,8 @@ const Gubbins = ({
             <Form.Group widths = {2}>
                 <Form.Field>
                     <NameInput
-                        name = 'Hub Username'
-                        values = { values.hubusername }
+                        name = 'Username'
+                        values = { values.username }
                         onChange = { handleChange }
                     />
                 </Form.Field>
@@ -79,11 +79,11 @@ const UserSettingsForm = withFormik({
     }),
     validationSchema: Yup.object().shape({
         first_name : Yup.string('Please only use letters for your name!'),
-        last_name : Yup.string('Please only use letters for your name!')   
+        last_name : Yup.string('Please only use letters for your name!')  
     }),
     handleSubmit: (values, { props, setSubmitting }) => {
         setSubmitting(true);  
-        console.log(props);               
+        console.log(values);               
         //Wait 3 seconds, ensures login system is dodge  
         setTimeout(() => setSubmitting(false), 1000);              
     },
