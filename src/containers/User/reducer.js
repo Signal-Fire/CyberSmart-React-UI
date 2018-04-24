@@ -28,8 +28,8 @@ export default function(state = userState, action) {
         case actionTypes.UPDATE_USER_DETAILS:
             return {
                 ...state,
-                first_name : payload.error ? state.first_name : payload.user.full_name.split(' ')[0],
-                last_name : payload.error ? state.last_name : payload.user.full_name.split(' ')[1],
+                first_name : payload.error ? state.first_name : payload.user.first_name,
+                last_name : payload.error ? state.last_name : payload.user.last_name,
                 username : payload.error ? state.username : payload.user.username,
             }            
         default:

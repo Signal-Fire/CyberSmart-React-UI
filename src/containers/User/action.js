@@ -1,4 +1,5 @@
 import * as actionTypes from './actionTypes';
+import * as loginActions from '../Login/actionTypes';
 import * as config from '../../config';
 
 import axios from 'axios';
@@ -38,10 +39,18 @@ export const updateUserDetails = (user, token) => dispatch => {
         data : user
     })
     .then(res => {
+        if (res.status === 200)
+            dispatch({
+                type : loginActions.LOGIN_ACTION,
+                payload : {
+                    token : res.data.token,
+                    error : false
+                }
+            })
+
         dispatch({
             type : actionTypes.UPDATE_USER_DETAILS,
-            payload: {
-                token : res.status === 200 ? res.data : null,
+            payload: {                
                 user : user,
                 error : res.status !== 200
             }
