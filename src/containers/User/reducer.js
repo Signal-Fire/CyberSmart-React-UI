@@ -16,7 +16,7 @@ export default function(state = userState, action) {
                 ...state,
                 first_name : payload.error ? null : payload.user.full_name.split(' ')[0],
                 last_name : payload.error ? null : payload.user.full_name.split(' ')[1],
-                username : payload.error ? null : payload.user,
+                username : payload.error ? null : payload.user.username,
                 error : payload.error
             }        
         default:

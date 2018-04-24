@@ -71,11 +71,19 @@ const Gubbins = ({
     );
 }
 
+const upperCase = (value) => {
+    return value.charAt(0).toUpperCase() + value.slice(1);
+}
+
 const UserSettingsForm = withFormik({
-    mapPropsToValues : () => ({
-        first_name : '',
-        last_name : '',
-        username: '',
+    mapPropsToValues : ({
+        first_name,
+        last_name,
+        username
+    }) => ({
+        first_name : upperCase(first_name),
+        last_name : upperCase(last_name),
+        username: username,
         password : ''
     }),
     validationSchema: Yup.object().shape({
@@ -100,7 +108,10 @@ UserSettingsForm.propTypes = {
 
 const mapStateToProps = state => {
     return {
-        token : state.login.token
+        token : state.login.token,
+        first_name : state.user.first_name,
+        last_name : state.user.last_name,
+        username : state.user.username
     }
 }
 

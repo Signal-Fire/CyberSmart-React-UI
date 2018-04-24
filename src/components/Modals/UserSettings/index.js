@@ -18,11 +18,7 @@ export default class UserSettingsModal extends Component {
         };
 
         this.handleVisibility = this.handleVisibility.bind(this);
-    }
-
-    upperCase(value) {
-        return value.charAt(0).toUpperCase() + value.slice(1);
-    }
+    }    
 
     handleVisibility() {
         this.setState({ isOpen : !this.state.isOpen });

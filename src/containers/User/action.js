@@ -4,8 +4,9 @@ import * as config from '../../config';
 import axios from 'axios';
 
 export const getUserDetailsFrom = (token) => dispatch => {
-    axios.get({
-        header : {
+    console.log(token);
+    axios({
+        headers : {
             'Authorization' : token
         },
         url : config.API_USERS_URL + "/find/user/details"
