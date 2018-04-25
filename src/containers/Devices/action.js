@@ -55,7 +55,7 @@ export const operateDevice = (deviceState, address, id) => async(dispatch) => {
         data : {
             address : address,
             state : deviceState,
-            deviceId : id
+            id : id
         }
     }).then(res => {
         dispatch({
