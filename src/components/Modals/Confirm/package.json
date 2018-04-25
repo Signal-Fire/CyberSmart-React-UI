@@ -1,0 +1,7 @@
+{
+    "name" : "confirm-modal",
+    "version" : "2.0.0",
+    "author" : "Henry Pye",
+    "main" : "index.js",
+    "description" : "A confirm modal"
+}

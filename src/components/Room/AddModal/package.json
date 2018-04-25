@@ -1,7 +1,0 @@
-{
-    "name" : "add-location-modal",
-    "version" : "1.0.0",
-    "author" : "Henry Pye",
-    "description" : "A modal for adding a location to a smart home",
-    "main" : "index.js"
-}

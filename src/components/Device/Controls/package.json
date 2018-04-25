@@ -1,7 +1,0 @@
-{
-    "name" : "add-device-widget",
-    "version" : "1.0.0",
-    "author" : "Henry Pye",
-    "main" : "index.js",
-    "description" : "An add device widget, containing settings for adding a device to a smart home system"
-}

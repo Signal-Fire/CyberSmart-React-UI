@@ -1,7 +1,0 @@
-{
-    "name" : "hub-settings-page",
-    "version" : "1.0.0",
-    "author" : "Henry Pye",
-    "description" : "A hub settings modal",
-    "main" : "index.js"
-}

@@ -1,0 +1,6 @@
+{
+    "name": "statistics-widget",
+    "version": "2.0.0",
+    "author": "Dean Lingard",
+    "main" :"index.js"
+}

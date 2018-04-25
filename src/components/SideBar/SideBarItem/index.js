@@ -1,5 +1,6 @@
 /* jshint esversion: 6*/
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import { Item, Icon } from 'semantic-ui-react';
 
 export default class SideBarItem extends Component {
@@ -29,23 +30,26 @@ export default class SideBarItem extends Component {
     }
 
     render() {
-        if (!this.state.isMobile) {
-            return (            
+        return (     
+            <NavLink 
+                to= {this.props.navPage}
+                onClick = {this.props.toggleVisibility}>
                 <Item>
-                    <Item.Content verticalAlign='middle'>
-                        <Item.Header>
-                        <Icon name={this.props.icon} />
-                            {this.props.title}
-                        </Item.Header>
-                    </Item.Content>
-                </Item>      
-            );
-        } else {
-            return(
-                <Item>
-                    <Icon name={this.props.icon} />  
-                </Item>
-            );
-        }
+                    { !this.state.isMobile ? 
+                        <Item.Content verticalAlign='middle'>
+                            <Item.Header>
+                            <Icon name={this.props.icon} />
+                                <br />
+                                {this.props.title}
+                            </Item.Header>
+                        </Item.Content>
+                    : 
+                        <Item>
+                            <Icon name={this.props.icon} />  
+                        </Item>
+                    }
+                </Item>           
+            </NavLink>               
+        );
     }
 }

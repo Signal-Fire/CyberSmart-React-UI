@@ -1,17 +1,22 @@
 /* jshint esversion: 6*/
 import React, { Component } from 'react';
 
-import { LoginModal } from './components/Exports';
-
 //Custom imports
-import { MenuBar, CustomSideBar } from './components/Exports';
+import { SideBar } from './components/SideBar';
+import { MainMenu } from './components/MenuBar';
+
+//Modals
+import { LoginModal } from './components/Modals';
+
+//Config
+import { USER_COOKIE_IDENTIFIER } from './config';
 
 import './App.css';
 
 class App extends Component {
   constructor(props) {
-    super(props);
-    this.state = { visible: false }
+    super(props);    
+    this.state = { visible: false };
     this.toggleVisibility = this.toggleVisibility.bind(this);
   }
 
@@ -20,15 +25,15 @@ class App extends Component {
   }
 
   getSession() {
-    return localStorage.getItem("token") !== null;
+        return window.localStorage ? localStorage.getItem(USER_COOKIE_IDENTIFIER) === null : null;
   } 
 
   render() {   
       return (       
           <div className = "App">
-              <MenuBar toggleVisibility = {this.toggleVisibility} />
-              <CustomSideBar visible = {this.state.visible} />  
-              <LoginModal open = {!this.getSession()}/> 
+              <MainMenu toggleVisibility = {this.toggleVisibility} />
+              <SideBar visible = {this.state.visible} toggleVisibility = {this.toggleVisibility} />  
+              <LoginModal open = {this.getSession()}/> 
           </div>
       );
   }
