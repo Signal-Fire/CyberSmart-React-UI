@@ -10,7 +10,7 @@ const CreatedByLabel = ({
     return (
         <Label as = 'a' color = 'teal'>
             <Icon name = 'user' />
-            {helpers.capz(name)}   Jeremey
+            {helpers.capz(name)}
             <Label.Detail>{moment(date).format('MMMM Do, HH:mm')}</Label.Detail>     
         </Label>
     );
