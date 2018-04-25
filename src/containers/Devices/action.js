@@ -65,7 +65,7 @@ export const operateDevice = (deviceState, address, id, callback) => async(dispa
                 error : false//res.status !== 201,                
             }
         })
-        return callback('hey');
+        callback('hey')
     }).catch(err => {
         dispatch({
             type : actionTypes.OPERATE_DEVICE,
@@ -73,6 +73,7 @@ export const operateDevice = (deviceState, address, id, callback) => async(dispa
                 error : true                
             }
         })
+        callback('hey')
     });
 }
 

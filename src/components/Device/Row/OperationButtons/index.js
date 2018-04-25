@@ -11,6 +11,7 @@ const OperationButtons = ({
     return(            
         <Button 
             size = 'mini' 
+            disabled = { isLoading }
             loading = { isLoading }
             color={device.state === 0 ? 'green' : 'red' } 
             onClick = {() => operateDevice((device.state === 0 ? 1 : 0), device.address, device._id)}
@@ -28,8 +29,8 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch, props) => ({
     operateDevice : (state, address, id) => { 
         dispatch(setIsLoading(true))
-        dispatch(operateDevice(state, address, id, () => {
-            dispatch(setIsLoading(false))            
+        dispatch(operateDevice(state, address, id, () => {            
+            window.location.reload();        
         })
     ); }
 })
