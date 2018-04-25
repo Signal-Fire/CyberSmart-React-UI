@@ -1,36 +1,29 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { SideBarItem }from '../';
 
-export default class SideBarItems extends Component {
-    render() {
-           return (
-           <div>
-                <SideBarItem 
-                    navPage = "/"
-                    toggleVisibility = {this.props.toggleVisibility}
-                    icon = 'home' 
-                    title = 'Home' />
-                <SideBarItem 
-                    navPage = "/devices"
-                    toggleVisibility = {this.props.toggleVisibility}
-                    icon = 'plug' 
-                    title = 'Devices' />
-                <SideBarItem 
-                    navPage = "/rooms"
-                    toggleVisibility = {this.props.toggleVisibility}
-                    icon = 'home' 
-                    title = 'Rooms' />
-                <SideBarItem 
-                    navPage = "/user"
-                    toggleVisibility = {this.props.toggleVisibility}
-                    icon = 'user' 
-                    title = 'Users' />
-                <SideBarItem 
-                    navPage = "/help"
-                    toggleVisibility = {this.props.toggleVisibility}
-                    icon = 'info' 
-                    title = 'Help' />
-            </div>)
-            ;
-    }
+export default () => {
+    return (
+        <div>
+            <SideBarItem 
+                navPage = "/"               
+                icon = 'home' 
+                title = 'Home' />
+            <SideBarItem 
+                navPage = "/devices"                
+                icon = 'plug' 
+                title = 'Devices' />
+            <SideBarItem 
+                navPage = "/rooms"
+                icon = 'home' 
+                title = 'Rooms' />
+            <SideBarItem 
+                navPage = "/user"
+                icon = 'user' 
+                title = 'Users' />
+            <SideBarItem 
+                navPage = "/help"
+                icon = 'info' 
+                title = 'Help' />
+        </div>
+    )
 }
