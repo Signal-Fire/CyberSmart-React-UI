@@ -70,13 +70,13 @@ const AddDeviceForm = props => {
                 />
                 <Form.Select
                     fluid
-                    label =  { errors.physical ? 'Physical Device is required' : 'Physical Device' }
+                    label =  { errors.address ? 'Physical Device is required' : 'Physical Device' }
                     placeholder = 'Select Location...'
                     onChange = { _handleSelect }
-                    value = { values.physical }   
+                    value = { values.address }   
                     options = { _mapConnectedDropdown(stateObjects.connected) }        
-                    name = 'physical'
-                    error = { (errors.physical || stateErrors.connected) ? true : false }
+                    name = 'address'
+                    error = { (errors.address || stateErrors.connected) ? true : false }
                 />             
             </Form.Group>
             <Form.Group widths = {2}>
@@ -103,12 +103,12 @@ const deviceFormik = withFormik({
     mapPropsToValues : () => ({
         name : '',
         location : '',
-        physical : ''
+        address : ''
     }),
     validationSchema : Yup.object().shape({
         location : Yup.string().required('Device Location is required!'),
         name : Yup.string().required('Device Name is required!'),
-        physical : Yup.string().required('Physical Device is required!')
+        address : Yup.string().required('Physical Device is required!')
     }),
     handleSubmit : (values, { props, setSubmitting }) => {
         values.created_by_user = props.user.name;
