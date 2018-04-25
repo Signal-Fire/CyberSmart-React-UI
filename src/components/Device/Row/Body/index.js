@@ -5,29 +5,27 @@ import { connect } from 'react-redux';
 import * as helpers from '../../../../helpers';
 
 const Row = ({
-    device
+    devices
 }) => {
     return (
-        <Table.Row             
-            positive = {device.state === 1}
-            negative = {device.state !== 1}
-            >
-            <Table.Cell>{helpers.capz(device.name)}</Table.Cell>     
-            <Table.Cell>{device.address}</Table.Cell>          
-            <Table.Cell>{helpers.capz(device.location)}</Table.Cell>                  
-            <Table.Cell><StateTag 
-                            state = {device.state} /></Table.Cell>
-                            <Table.Cell><StateButtons 
-                    state = {device.state}
-                    id = {device._id}
-                    address = {device.address}
-                /></Table.Cell>
-            <Table.Cell width ='3'><CreatedTag 
-                            name = {device.created_by_user} 
-                            date = {device.date_added}/></Table.Cell>
-            <Table.Cell><DeleteButton id = {device._id} /></Table.Cell>
-        </Table.Row>
+        devices.filter(x => x.active).map((d, index) => {            
+            return (<Table.Row         
+                key = { d._id }
+                >
+                <Table.Cell>{helpers.capz(d.name)}</Table.Cell>     
+                <Table.Cell>{d.address}</Table.Cell>          
+                <Table.Cell>{helpers.capz(d.location)}</Table.Cell>                  
+                <Table.Cell><StateTag id = { d._id } /></Table.Cell>
+                <Table.Cell><StateButtons id = { d._id }/></Table.Cell>
+                <Table.Cell width ='3'><CreatedTag device = { d } /></Table.Cell>
+                <Table.Cell><DeleteButton id = {d._id} /></Table.Cell>
+            </Table.Row>);
+        })   
     );
 }
 
-export default connect(null, null)(Row);
+const mapStateToProps = state => ({
+    devices : state.devices.devices
+})
+
+export default connect(mapStateToProps, null)(Row);
