@@ -37,8 +37,8 @@ export default function(state = initialState, action) {
             var newDevices = state.devices;
 
             newDevices.forEach((element, index) => {
-                if (element._id === payload.deviceId)
-                    newDevices[index].state = payload.state
+                if (element._id === payload.device._id)
+                    newDevices[index].state = payload.device.state
             })
             
             return {
@@ -46,6 +46,11 @@ export default function(state = initialState, action) {
                 devices : newDevices,
                 isLoading : false,
                 error : payload.error
+            }
+        case actionTypes.SET_LOADING:
+            return {
+                ...state,
+                isLoading : payload.isLoading
             }
         default:
             return state;

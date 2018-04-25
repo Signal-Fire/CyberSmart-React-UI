@@ -48,7 +48,7 @@ export const addDevice = (device, authorization) => dispatch => {
     });
 }
 
-export const operateDevice = (deviceState, address, id) => async(dispatch) => {
+export const operateDevice = (deviceState, address, id, callback) => async(dispatch) => {    
     await axios({
         method: 'POST',
         url : config.API_DEVICES_URL + '/update/state',
@@ -62,9 +62,10 @@ export const operateDevice = (deviceState, address, id) => async(dispatch) => {
             type : actionTypes.OPERATE_DEVICE,
             payload : {
                 device : res.status === 200 ? res.data : null,
-                error : res.status !== 201,                
+                error : false//res.status !== 201,                
             }
         })
+        return callback('hey');
     }).catch(err => {
         dispatch({
             type : actionTypes.OPERATE_DEVICE,
@@ -73,6 +74,15 @@ export const operateDevice = (deviceState, address, id) => async(dispatch) => {
             }
         })
     });
+}
+
+export const setIsLoading = (isLoading) => dispatch => {
+    dispatch({
+        type : actionTypes.SET_LOADING,
+        payload : {
+            isLoading : isLoading
+        }
+    })
 }
 
 export const setModalOpen = (modalState) => dispatch => {    

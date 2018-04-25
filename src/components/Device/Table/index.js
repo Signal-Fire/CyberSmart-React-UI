@@ -1,6 +1,6 @@
 import React from 'react';
 import { Table } from 'semantic-ui-react';
-import { DeviceRow } from '../Row';
+import { DeviceRows } from '../Row';
 import TableHeader from './Header';
 import { connect } from 'react-redux';
 
@@ -11,10 +11,6 @@ const TableStyle = {
 }
 
 const DeviceTable = (props) => {
-    const {
-        devices
-    } = props;
-
     return(
         <Table 
             compact
@@ -23,22 +19,10 @@ const DeviceTable = (props) => {
             style = {TableStyle}>
             <TableHeader />
             <Table.Body>
-                { devices !== null ?
-                devices.map((d => {
-                    return (<DeviceRow 
-                        device = {d}
-                        key = {d._id}/>);
-                }))
-                :
-                false
-                }
+                <DeviceRows />
             </Table.Body>
         </Table>        
     )
 }
 
-const mapStateToProps = (state) => ({
-    devices : state.devices.devices
-})
-
-export default connect(mapStateToProps, null)(DeviceTable);
+export default connect(null, null)(DeviceTable);

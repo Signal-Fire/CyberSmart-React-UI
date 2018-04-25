@@ -1,31 +1,37 @@
 import React from 'react';
 import { Button } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import { operateDevice } from '../../../../containers/Devices/action';
+import { operateDevice, setIsLoading } from '../../../../containers/Devices/action';
 
 const OperationButtons = ({
-    state,
-    id,
-    address,
+    device,
+    isLoading,
     operateDevice
 }) => {
-    return(
-        <div>
-            {state === 0 ?
-                <Button size = 'mini' color='green' onClick = {() => operateDevice(1, address, id)}>TURN ON</Button>   
-            :                     
-                <Button size = 'mini' color='red' onClick = {() => operateDevice(0, address, id)}>TURN OFF</Button>
-            }
-        </div>
+    return(            
+        <Button 
+            size = 'mini' 
+            loading = { isLoading }
+            color={device.state === 0 ? 'green' : 'red' } 
+            onClick = {() => operateDevice((device.state === 0 ? 1 : 0), device.address, device._id)}
+        >
+            TURN {device.state === 0 ? 'ON' : 'OFF'}
+        </Button>   
     );
 }
 
-const mapStateToProps = props => ({
-
+const mapStateToProps = (state, ownProps) => ({
+    device : state.devices.devices.find(x => x._id === ownProps.id),
+    isLoading : state.devices.isLoading
 })
 
-const mapDispatchToProps = (dispatch) => ({
-    operateDevice : (state, address, id) => { dispatch(operateDevice(state, address, id)); window.location.reload() }
+const mapDispatchToProps = (dispatch, props) => ({
+    operateDevice : (state, address, id) => { 
+        dispatch(setIsLoading(true))
+        dispatch(operateDevice(state, address, id, () => {
+            dispatch(setIsLoading(false))            
+        })
+    ); }
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(OperationButtons);
