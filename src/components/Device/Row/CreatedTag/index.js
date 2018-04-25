@@ -1,14 +1,16 @@
 import React from 'react';
-import { Label } from 'semantic-ui-react';
+import { Label, Icon } from 'semantic-ui-react';
 import moment from 'moment';
+import * as helpers from '../../../../helpers';
 
 const CreatedByLabel = ({
     name,
     date
 }) => {
     return (
-        <Label as = 'a' color = 'teal' image>
-            {name}   
+        <Label as = 'a' color = 'teal'>
+            <Icon name = 'user' />
+            {helpers.capz(name)}   Jeremey
             <Label.Detail>{moment(date).format('MMMM Do, HH:mm')}</Label.Detail>     
         </Label>
     );

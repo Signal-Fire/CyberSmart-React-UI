@@ -2,6 +2,7 @@ import React from 'react';
 import { Table } from 'semantic-ui-react';
 import { CreatedTag, StateTag, StateButtons, DeleteButton } from '../';
 import { connect } from 'react-redux';
+import * as helpers from '../../../../helpers';
 
 const Row = ({
     device
@@ -11,9 +12,9 @@ const Row = ({
             positive = {device.state === 1}
             negative = {device.state !== 1}
             >
-            <Table.Cell>{device.name}</Table.Cell>     
+            <Table.Cell>{helpers.capz(device.name)}</Table.Cell>     
             <Table.Cell>{device.address}</Table.Cell>          
-            <Table.Cell>{device.location}</Table.Cell>                  
+            <Table.Cell>{helpers.capz(device.location)}</Table.Cell>                  
             <Table.Cell><StateTag 
                             state = {device.state} /></Table.Cell>
                             <Table.Cell><StateButtons 
