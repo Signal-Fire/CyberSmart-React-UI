@@ -45,7 +45,7 @@ const Gubbins = ({
                 hidden = {!loginError}
                 message = 'Something went wrong, please try again'/>
             <Submit
-                disabled={isSubmitting} />             
+                loading={isSubmitting} />             
         </Form>
     );
 }

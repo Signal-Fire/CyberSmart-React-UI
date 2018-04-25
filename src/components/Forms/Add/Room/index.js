@@ -52,7 +52,7 @@ const LocationsFormik = withFormik({
 })(LocationsForm)
 
 const mapStateToProps = state => ({
-    username : state.login.name
+    username : state.user.username
 })
 
 const mapDispatchToProps = dispatch => ({
