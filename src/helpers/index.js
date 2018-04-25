@@ -1,3 +1,7 @@
 export const capz = (word) => {
-    return word.charAt(0).toUpperCase() + word.slice(1, word.length);
+    try {
+        return word.charAt(0).toUpperCase() + word.slice(1, word.length);
+    } catch (ex) {
+        return word;
+    }
 }
