@@ -47,6 +47,19 @@ export default function(state = initialState, action) {
                 isLoading : false,
                 error : payload.error
             }
+        case actionTypes.DELETE_DEVICE:
+            console.log(payload);
+
+            if (payload.error)
+                return state;
+
+            var deviceIndex = state.devices.devices.findIndex(x => x._id === payload.device._id);
+            var deviceArray = state.devices.splice(deviceIndex, 1);
+
+            return {
+                ...state,
+                devices : deviceArray
+            }
         case actionTypes.SET_LOADING:
             return {
                 ...state,

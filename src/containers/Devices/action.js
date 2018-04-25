@@ -48,7 +48,37 @@ export const addDevice = (device, authorization) => dispatch => {
     });
 }
 
-export const operateDevice = (deviceState, address, id, callback) => async(dispatch) => {    
+export const deleteDevice = (id, token, deleter, callback) => async(dispatch) => {    
+    await axios({
+        method : 'POST',
+        url : config.API_DEVICES_URL + '/delete/' + id,
+        headers : {
+            'Authorization' : token
+        },
+        data : {
+            deleter : deleter
+        }
+    }).then(res => {
+        dispatch({
+            type : actionTypes.DELETE_DEVICE,
+            payload : {
+                device : res.status === 200 ? res.data : null,
+                error : res.status !== 200
+            }
+        })
+        callback('done')
+    }).catch(err => {
+        dispatch({
+            type : actionTypes.DELETE_DEVICE,
+            payload : {
+                error : true
+            }
+        })
+        callback('done')
+    })
+}
+
+export const operateDevice = (deviceState, address, id, callback) => async(dispatch) => {  
     await axios({
         method: 'POST',
         url : config.API_DEVICES_URL + '/update/state',

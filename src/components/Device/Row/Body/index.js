@@ -8,7 +8,7 @@ const Row = ({
     devices
 }) => {
     return (
-        devices.map((d, index) => {            
+        devices.filter(x => x.active).map((d, index) => {            
             return (<Table.Row         
                 key = { d._id }
                 >
