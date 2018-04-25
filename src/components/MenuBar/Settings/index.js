@@ -7,7 +7,7 @@ import { USER_COOKIE_IDENTIFIER } from '../../../config';
 
 const logout = () => {
     if (window.localStorage) 
-    localStorage.removeItem(USER_COOKIE_IDENTIFIER);
+        localStorage.removeItem(USER_COOKIE_IDENTIFIER);
     
     window.location.reload();
 };
