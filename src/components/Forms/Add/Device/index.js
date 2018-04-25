@@ -38,7 +38,22 @@ const AddDeviceForm = props => {
         });
 
         return options;
-    }   
+    }  
+    
+    const _mapConnectedDropdown = (options) => {
+        if (!options)
+            return [];
+
+        options.forEach(option => {
+            option.key = option.mac;
+            option.id = option.mac;
+            option.name = "Plug " + option.ip;
+            option.value = "Plug " + option.ip;
+            option.text = "Plug " + option.ip;
+        })
+
+        return options;
+    }
 
     return (
         <Form
@@ -59,7 +74,7 @@ const AddDeviceForm = props => {
                     placeholder = 'Select Location...'
                     onChange = { _handleSelect }
                     value = { values.physical }   
-                    options = { _mapDropdown(stateObjects.connected) }        
+                    options = { _mapConnectedDropdown(stateObjects.connected) }        
                     name = 'physical'
                     error = { (errors.physical || stateErrors.connected) ? true : false }
                 />             
@@ -93,7 +108,7 @@ const deviceFormik = withFormik({
     validationSchema : Yup.object().shape({
         location : Yup.string().required('Device Location is required!'),
         name : Yup.string().required('Device Name is required!'),
-        //physical : Yup.string().required('Physical Device is required!')
+        physical : Yup.string().required('Physical Device is required!')
     }),
     handleSubmit : (values, { props, setSubmitting }) => {
         values.created_by_user = props.user.name;
