@@ -1,8 +1,5 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
-# let's not commit our config files boys
-/src/config
-
 # dependencies
 /node_modules
 
