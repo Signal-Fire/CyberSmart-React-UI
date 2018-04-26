@@ -1,9 +1,10 @@
-/* jshint esversion: 6*/
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom';
 import { Item, Icon } from 'semantic-ui-react';
+import { operateSidebar } from '../../../containers/Login/action';
 
-export default class SideBarItem extends Component {
+class SideBarItem extends Component {
     constructor() {
         super();
 
@@ -33,7 +34,7 @@ export default class SideBarItem extends Component {
         return (     
             <NavLink 
                 to= {this.props.navPage}
-                onClick = {this.props.toggleVisibility}>
+                onClick = { () => this.props.operateSidebar() }>
                 <Item>
                     { !this.state.isMobile ? 
                         <Item.Content verticalAlign='middle'>
@@ -53,3 +54,9 @@ export default class SideBarItem extends Component {
         );
     }
 }
+
+const mapDispatchToProps = dispatch => ({
+    operateSidebar : () => { dispatch(operateSidebar()) }
+})
+
+export default connect(null, mapDispatchToProps)(SideBarItem);

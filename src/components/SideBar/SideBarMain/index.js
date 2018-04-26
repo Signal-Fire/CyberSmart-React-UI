@@ -1,14 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Sidebar, Menu } from 'semantic-ui-react';
 
-const SideBar = ({ children, ...rest, isVisible }) => {
+const SideBar = ({ children, ...rest, isOpen }) => {
     return (
         <Sidebar
             as = { Menu }
             animation = 'slide out'
             direction = 'left'
             width = 'thin'
-            visible = { isVisible }
+            visible = { isOpen }
             icon = 'labeled'
             vertical
             inverted
@@ -18,4 +19,8 @@ const SideBar = ({ children, ...rest, isVisible }) => {
     );
 }
 
-export default SideBar;
+const mapStateToProps = state => ({
+    isOpen : state.login.sidebarOpen
+})
+
+export default connect(mapStateToProps,null)(SideBar);

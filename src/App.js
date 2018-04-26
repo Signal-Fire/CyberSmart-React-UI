@@ -1,42 +1,28 @@
-/* jshint esversion: 6*/
-import React, { Component } from 'react';
-
-//Custom imports
+import React from 'react';
+import { connect } from 'react-redux';
 import { SideBar } from './components/SideBar';
 import { MainMenu } from './components/MenuBar';
-
-//Modals
 import { LoginModal } from './components/Modals';
-
-//Config
-import { USER_COOKIE_IDENTIFIER } from './config';
 
 import './App.css';
 
-class App extends Component {
-  constructor(props) {
-    super(props);    
-    this.state = { visible: false };
-    this.toggleVisibility = this.toggleVisibility.bind(this);
-  }
+const App = ({
+    token,
+    sidebarOpen,
+    operateSidebar
+}) => {
+    return (       
+        <div className = "App">
+            <MainMenu />
+            <SideBar />  
+            <LoginModal open = {token === null}/> 
+        </div>
+    );
+}
 
-  toggleVisibility() {
-      this.setState({ visible: !this.state.visible });
-  }
+const mapStateToProps = state => ({
+    token : state.login.token,
+    sidebarVisible : state.login.sidebarOpen
+})
 
-  getSession() {
-        return window.localStorage ? localStorage.getItem(USER_COOKIE_IDENTIFIER) === null : null;
-  } 
-
-  render() {   
-      return (       
-          <div className = "App">
-              <MainMenu toggleVisibility = {this.toggleVisibility} />
-              <SideBar visible = {this.state.visible} toggleVisibility = {this.toggleVisibility} />  
-              <LoginModal open = {this.getSession()}/> 
-          </div>
-      );
-  }
-}  
-
-export default App;
+export default connect(mapStateToProps, null)(App);
