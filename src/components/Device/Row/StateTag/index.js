@@ -1,14 +1,21 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Label } from 'semantic-ui-react';
 
 const StateTag = ({
-    state
+    device
 }) => {
     return (
-        <Label color = {state === 0 ? 'red' : 'green'}>
-            {state === 0 ? 'OFF' : 'ON'}
+        <Label
+            color = {device.state === 0 ? 'red' : 'green'}>
+            {device.state === 0 ? 'OFF' : 'ON'}
         </Label>
     );
 }
 
-export default StateTag;
+const mapStateToProps = (state, ownProps) => ({
+    device : state.devices.devices.find(x => x._id === ownProps.id),
+    isLoading : state.devices.isLoading
+})
+
+export default connect(mapStateToProps, null)(StateTag);

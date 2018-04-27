@@ -2,18 +2,17 @@
 import React from 'react';
 import { Sidebar } from 'semantic-ui-react';
 import { HashRouter } from 'react-router-dom';
-
 import { SideBarItems, Routes, MainSidebar, SideBarPusher } from '../';
 
 import './styles.css';
 
-const SideBar = ({ visible, toggleVisibility }) => {
+const SideBar = ({ isOpen }) => {
     return (
         <HashRouter>
             <div className = "sidebar-container">
                 <SideBarPusher>
-                    <MainSidebar isVisible = { visible }>
-                        <SideBarItems toggleVisibility = { toggleVisibility } />
+                    <MainSidebar>
+                        <SideBarItems />
                     </MainSidebar>
                     <Sidebar.Pusher>
                         <Routes />

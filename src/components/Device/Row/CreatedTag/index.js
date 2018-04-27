@@ -4,14 +4,13 @@ import moment from 'moment';
 import * as helpers from '../../../../helpers';
 
 const CreatedByLabel = ({
-    name,
-    date
+    device
 }) => {
     return (
         <Label as = 'a' color = 'teal'>
             <Icon name = 'user' />
-            {helpers.capz(name)}
-            <Label.Detail>{moment(date).format('MMMM Do, HH:mm')}</Label.Detail>     
+            {helpers.capz(device.created_by_user)}
+            <Label.Detail>{moment(device.date_added).format('MMMM Do, HH:mm')}</Label.Detail>     
         </Label>
     );
 }
