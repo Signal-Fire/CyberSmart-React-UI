@@ -5,21 +5,11 @@ import * as stateLoader from './stateManager';
 
 const middleware = [thunk];
 
-if (window.navigator.userAgent.include('Chrome')) {
-    export default  createStore(
-        rootReducer, 
-        stateLoader.loadState(), 
-        compose(
-            applyMiddleware(...middleware),
-            window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-        )
-    );
-} else {
-    export default  createStore(
-        rootReducer, 
-        stateLoader.loadState(), 
-        compose(
-            applyMiddleware(...middleware)
-        )
-    );
-}
+export default  createStore(
+    rootReducer, 
+    stateLoader.loadState(), 
+    compose(
+        applyMiddleware(...middleware),
+        (window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()) || compose
+    )
+);
