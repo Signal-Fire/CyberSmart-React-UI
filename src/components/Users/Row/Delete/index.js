@@ -11,7 +11,7 @@ const Delete = ({
     <Label 
       color = 'red' 
       as = 'a' 
-      onClick = {() => { deleteUser(props.id, props.token, props.deleter) }}>
+      onClick = {() => { deleteUser(props.id, props.token) }}>
         Remove
         <Icon name = 'close' />
     </Label>
@@ -21,14 +21,13 @@ const Delete = ({
 const mapStateToProps = (state, ownProps) => ({
   props : {
     id : ownProps.id,
-    token : state.login.token,
-    deleter : state.user.first_name
+    token : state.login.token
   }
 })
 
 const mapDispatchToProps = dispatch => ({
-  deleteUser : (id, token, deleter) => { 
-    dispatch(deleteUser(id, token, deleter, () => {
+  deleteUser : (id, token) => { 
+    dispatch(deleteUser(id, token, () => {
       window.location.reload();
     }))}
 })

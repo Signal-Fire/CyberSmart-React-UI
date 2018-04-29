@@ -29,8 +29,9 @@ export const getAllUsers = (token) => dispatch => {
     })
 }
 
-export const deleteUser = (id, token, user) => dispatch => {
-    axios({
+export const deleteUser = (id, token, callback) => async(dispatch) => {
+    await axios({
+        method : 'POST',
         headers : {
             'Authorization' : token
         },
@@ -40,10 +41,11 @@ export const deleteUser = (id, token, user) => dispatch => {
         dispatch({
             type : actionTypes.DELETE_USER,
             payload : {
-                user : res.status === 200 ? null : res.data,
+                user : res.status === 200 ? res.data : null,
                 error : res.status !== 200
             }
         })
+        callback('done')
     }).catch(err => {
         dispatch({
             type : actionTypes.DELETE_USER,
@@ -51,6 +53,7 @@ export const deleteUser = (id, token, user) => dispatch => {
                 error : true
             }
         })
+        callback('error')
     })
 }
 
