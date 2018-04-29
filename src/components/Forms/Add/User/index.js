@@ -83,6 +83,7 @@ const AddUserFormik = withFormik({
         props.addUser(user, props.token)
         
         props.setCreateModalOpen(false);
+
     },
     displayName : 'Add User'
 })(AddUserForm)
