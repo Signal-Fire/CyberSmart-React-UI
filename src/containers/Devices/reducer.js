@@ -52,11 +52,10 @@ export default function(state = initialState, action) {
                 return state;
 
             var deviceIndex = state.devices.findIndex(x => x._id === payload.device._id);            
-            var deviceArray = state.devices.splice(deviceIndex, 1);
+            state.devices.splice(deviceIndex, 1);
 
             return {
-                ...state,
-                devices : deviceArray
+                ...state
             }
         case actionTypes.SET_LOADING:
             return {
@@ -66,8 +65,4 @@ export default function(state = initialState, action) {
         default:
             return state;
     }
-}
-
-export const getDevices = () => {
-    return initialState.devices;
 }

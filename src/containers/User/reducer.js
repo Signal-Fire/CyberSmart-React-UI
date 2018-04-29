@@ -48,13 +48,12 @@ export default function(state = userState, action) {
         case actionTypes.DELETE_USER:
             if(payload.error)
                 return state;
-                
+            
             var userIndex = state.all_users.findIndex(x => x._id === payload.user._id);
-            var usersArray = state.all_users.splice(userIndex, 1);
-
+            state.all_users.splice(userIndex, 1);
+            
             return {
-                ...state,
-                all_users : usersArray
+                ...state
             }
         default:
             return state;
