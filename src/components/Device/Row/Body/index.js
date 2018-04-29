@@ -7,21 +7,26 @@ import * as helpers from '../../../../helpers';
 const Row = ({
     devices
 }) => {
-    return (
-        devices.filter(x => x.active).map((d, index) => {            
-            return (<Table.Row         
-                key = { d._id }
-                >
-                <Table.Cell>{helpers.capz(d.name)}</Table.Cell>     
-                <Table.Cell>{d.address}</Table.Cell>          
-                <Table.Cell>{helpers.capz(d.location)}</Table.Cell>                  
-                <Table.Cell><StateTag id = { d._id } /></Table.Cell>
-                <Table.Cell><StateButtons id = { d._id }/></Table.Cell>
-                <Table.Cell width ='3'><CreatedTag device = { d } /></Table.Cell>
-                <Table.Cell><DeleteButton id = {d._id} /></Table.Cell>
-            </Table.Row>);
-        })   
-    );
+    if (devices !== null) {
+        return (
+            devices.filter(x => x.active).map((d, index) => {            
+                return (<Table.Row         
+                    key = { d._id }
+                    >
+                    <Table.Cell>{helpers.capz(d.name)}</Table.Cell>     
+                    <Table.Cell>{d.address}</Table.Cell>          
+                    <Table.Cell>{helpers.capz(d.location)}</Table.Cell>                  
+                    <Table.Cell><StateTag id = { d._id } /></Table.Cell>
+                    <Table.Cell><StateButtons id = { d._id }/></Table.Cell>
+                    <Table.Cell width ='3'><CreatedTag device = { d } /></Table.Cell>
+                    <Table.Cell><DeleteButton id = {d._id} /></Table.Cell>
+                </Table.Row>);
+            })        
+        );
+    }
+        return (
+            <p>Hey</p>
+        );
 }
 
 const mapStateToProps = state => ({

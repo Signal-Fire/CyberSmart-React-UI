@@ -1,15 +1,23 @@
 import React from 'react';
 import { Statistic, Icon } from 'semantic-ui-react';
 
-const StatisticWidget = ({ icon, number, title }) => {
+const StatisticWidget = ({ 
+    stats
+}) => {
     return(
-        <Statistic>
+        <Statistic
+            color = {stats.color}>
             <Statistic.Value >
-                    <Icon name = {icon}/> 
-                    <p>{number}</p> 
+                    <Icon name = {stats.icon}/> 
+                    <p>{ stats.number }</p> 
                 </Statistic.Value> 
-                <Statistic.Label > 
-                    <p>{title}</p>
+                <Statistic.Label> 
+                    <p 
+                    style = {
+                        { color : stats.color }
+                        }>
+                        { stats.title }
+                        </p>
                 </Statistic.Label> 
         </Statistic>
     );
