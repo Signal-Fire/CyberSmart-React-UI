@@ -29,6 +29,32 @@ export const getAllUsers = (token) => dispatch => {
     })
 }
 
+export const addUser = (user, token) => async(dispatch) => {
+    await axios({
+        method : 'POST',
+        url : config.API_USERS_URL + "/register",
+        headers : {
+            'Authorization' : token
+        },
+        data : user
+    }).then(res => {
+        dispatch({
+            type : actionTypes.ADD_USER,
+            payload : {
+                user : res.status === 201 ? res.data : null,
+                error : res.status !== 201
+            }
+        })
+    }).catch(error => {
+        dispatch({
+            type : actionTypes.ADD_USER,
+            payload : {
+                error : true
+            }
+        })
+    });
+}
+
 export const deleteUser = (id, token, callback) => async(dispatch) => {
     await axios({
         method : 'POST',

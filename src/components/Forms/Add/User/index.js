@@ -4,6 +4,7 @@ import Yup from 'yup';
 import { withFormik } from 'formik';
 import { SubmitButton } from '../Inputs';
 import { connect } from 'react-redux';
+import { addUser, setCreateModalOpen } from '../../../../containers/User/action';
 
 const AddUserForm = props => {
     const {
@@ -60,22 +61,39 @@ const AddUserForm = props => {
 
 const AddUserFormik = withFormik({
     mapPropsToValues : () => ({
-
+            firstname : '',
+            lastname : '',
+            username : '',
+            password : ''        
     }),
     validationSchema: Yup.object().shape({
+        firstname : Yup.string().required('First Name is required!'),
+        lastname : Yup.string().required('Last Name is required!'),
+        username : Yup.string().required('Username is required!'),
+        password : Yup.string().required('Password is required!')
     }),
     handleSubmit: (values, { props, setSubmitting }) => {
+        var user = {
+            first_name : values.firstname,
+            last_name : values.lastname,
+            username : values.username,
+            password : values.password
+        }
 
+        props.addUser(user, props.token)
+        
+        props.setCreateModalOpen(false);
     },
     displayName : 'Add User'
 })(AddUserForm)
 
 const mapStateToProps = state => ({
-    
+    token : state.login.token
 })
 
 const mapDispatchToProps = dispatch => ({
-    
+    addUser : (user, token) => { dispatch(addUser(user, token)) },
+    setCreateModalOpen : (modalState) => { dispatch(setCreateModalOpen(modalState)) }
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddUserFormik);

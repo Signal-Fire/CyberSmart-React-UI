@@ -51,6 +51,15 @@ export default function(state = userState, action) {
             
             var userIndex = state.all_users.findIndex(x => x._id === payload.user._id);
             state.all_users.splice(userIndex, 1);
+
+            return {
+                ...state
+            }
+        case actionTypes.ADD_USER:
+            if(payload.error)
+                return state;
+
+            state.all_users.push(payload.user);
             
             return {
                 ...state
