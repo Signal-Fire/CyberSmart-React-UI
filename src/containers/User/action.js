@@ -102,3 +102,12 @@ export const setModalOpen = (modalState) => dispatch => {
         }
     })
 }
+
+export const setCreateModalOpen = (modalState) => dispatch => {
+    dispatch({
+        type : actionTypes.OPERATE_CREATE_MODAL,
+        payload : {
+            createModalOpen : modalState
+        }
+    })
+}

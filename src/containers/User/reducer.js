@@ -6,7 +6,8 @@ const userState = {
     username : null,
     error : false,
     all_users : null,
-    modalOpen : false
+    modalOpen : false,
+    createModalOpen : false
 };
 
 export default function(state = userState, action) {
@@ -38,6 +39,11 @@ export default function(state = userState, action) {
                 ...state,
                 all_users : payload.error ? null : payload.users,
                 error : payload.error
+            }
+        case actionTypes.OPERATE_CREATE_MODAL:
+            return {
+                ...state,
+                createModalOpen : payload.createModalOpen
             }
         default:
             return state;

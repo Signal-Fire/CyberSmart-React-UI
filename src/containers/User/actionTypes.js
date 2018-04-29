@@ -3,3 +3,4 @@ export const UPDATE_USER_DETAILS = "update.user.details";
 export const OPERATE_MODAL = "operate.user.modal";
 export const LOGIN_ACTION = "login.action";
 export const GET_ALL_USERS = "get.all.user.details";
+export const OPERATE_CREATE_MODAL = "operate.create.modal";
