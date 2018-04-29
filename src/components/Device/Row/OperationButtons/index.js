@@ -27,9 +27,10 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 const mapDispatchToProps = (dispatch, props) => ({
-    operateDevice : (state, address, id) => { 
+    operateDevice : (state, address, id) => {         
         dispatch(setIsLoading(true))
-        dispatch(operateDevice(state, address, id, () => {            
+        dispatch(operateDevice(state, address, id, (cb) => {        
+            console.log(cb);    
             window.location.reload();        
         })
     ); }

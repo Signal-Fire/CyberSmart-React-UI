@@ -24,13 +24,14 @@ const NotificationFeed = ({
 
     const errorMessage = {
         icon : 'exclamation',
+        type : 'error',
         created_by_user : 'System',
         message : 'Issue with Notifications'
     }
 
     const noNotifications = {
         icon : 'smile',
-        created_by_user : 'System',
+        type : 'none',
         message : 'No Notifications'
     }
 

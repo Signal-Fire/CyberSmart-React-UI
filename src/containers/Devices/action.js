@@ -78,7 +78,7 @@ export const deleteDevice = (id, token, deleter, callback) => async(dispatch) =>
     })
 }
 
-export const operateDevice = (deviceState, address, id, callback) => async(dispatch) => {  
+export const operateDevice = (deviceState, address, id, callback) => async(dispatch) => {
     await axios({
         method: 'POST',
         url : config.API_DEVICES_URL + '/update/state',
@@ -92,7 +92,7 @@ export const operateDevice = (deviceState, address, id, callback) => async(dispa
             type : actionTypes.OPERATE_DEVICE,
             payload : {
                 device : res.status === 200 ? res.data : null,
-                error : false//res.status !== 201,                
+                error : res.status !== 201,                
             }
         })
         callback('hey')
@@ -103,7 +103,7 @@ export const operateDevice = (deviceState, address, id, callback) => async(dispa
                 error : true                
             }
         })
-        callback('hey')
+        callback('error')
     });
 }
 
