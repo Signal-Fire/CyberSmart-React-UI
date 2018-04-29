@@ -4,6 +4,31 @@ import * as config from '../../config';
 
 import axios from 'axios';
 
+export const getAllUsers = (token) => dispatch => {
+    axios({
+        headers : {
+            'Authorization' : token
+        },
+        url : config.API_USERS_URL + "/find/all"
+    })
+    .then(res => {
+        dispatch({
+            type : actionTypes.GET_ALL_USERS,
+            payload : {
+                users : res.status === 200 ? res.data : null,
+                error : res.status !== 200
+            }
+        })
+    }).catch(err => {
+        dispatch({
+            type : actionTypes.GET_ALL_USERS,
+            payload : {
+                error : true
+            }
+        })
+    })
+}
+
 export const getUserDetailsFrom = (token) => dispatch => {    
     axios({
         headers : {

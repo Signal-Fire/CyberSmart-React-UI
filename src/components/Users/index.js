@@ -1,5 +1,5 @@
-import DeviceTable from './Table';
+import UsersTable from './Table';
 
 export {
-    DeviceTable
+    UsersTable
 }

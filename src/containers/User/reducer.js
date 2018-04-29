@@ -5,6 +5,7 @@ const userState = {
     last_name : null,
     username : null,
     error : false,
+    all_users : null,
     modalOpen : false
 };
 
@@ -31,7 +32,13 @@ export default function(state = userState, action) {
                 first_name : payload.error ? state.first_name : payload.user.first_name,
                 last_name : payload.error ? state.last_name : payload.user.last_name,
                 username : payload.error ? state.username : payload.user.username,
-            }            
+            } 
+        case actionTypes.GET_ALL_USERS:
+            return {
+                ...state,
+                all_users : payload.error ? null : payload.users
+                error : payload.error
+            }
         default:
             return state;
     }
