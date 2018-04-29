@@ -5,7 +5,9 @@ const userState = {
     last_name : null,
     username : null,
     error : false,
-    modalOpen : false
+    all_users : null,
+    modalOpen : false,
+    createModalOpen : false
 };
 
 export default function(state = userState, action) {
@@ -31,7 +33,37 @@ export default function(state = userState, action) {
                 first_name : payload.error ? state.first_name : payload.user.first_name,
                 last_name : payload.error ? state.last_name : payload.user.last_name,
                 username : payload.error ? state.username : payload.user.username,
-            }            
+            } 
+        case actionTypes.GET_ALL_USERS:
+            return {
+                ...state,
+                all_users : payload.error ? null : payload.users,
+                error : payload.error
+            }
+        case actionTypes.OPERATE_CREATE_MODAL:
+            return {
+                ...state,
+                createModalOpen : payload.createModalOpen
+            }
+        case actionTypes.DELETE_USER:
+            if(payload.error)
+                return state;
+            
+            var userIndex = state.all_users.findIndex(x => x._id === payload.user._id);
+            state.all_users.splice(userIndex, 1);
+
+            return {
+                ...state
+            }
+        case actionTypes.ADD_USER:
+            if(payload.error)
+                return state;
+
+            state.all_users.push(payload.user);
+            
+            return {
+                ...state
+            }
         default:
             return state;
     }

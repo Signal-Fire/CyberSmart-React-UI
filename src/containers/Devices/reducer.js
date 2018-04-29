@@ -48,17 +48,14 @@ export default function(state = initialState, action) {
                 error : payload.error
             }
         case actionTypes.DELETE_DEVICE:
-            console.log(payload);
-
             if (payload.error)
                 return state;
 
-            var deviceIndex = state.devices.devices.findIndex(x => x._id === payload.device._id);
-            var deviceArray = state.devices.splice(deviceIndex, 1);
+            var deviceIndex = state.devices.findIndex(x => x._id === payload.device._id);            
+            state.devices.splice(deviceIndex, 1);
 
             return {
-                ...state,
-                devices : deviceArray
+                ...state
             }
         case actionTypes.SET_LOADING:
             return {
@@ -68,8 +65,4 @@ export default function(state = initialState, action) {
         default:
             return state;
     }
-}
-
-export const getDevices = () => {
-    return initialState.devices;
 }

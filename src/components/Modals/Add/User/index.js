@@ -1,28 +1,28 @@
-/* jshint esversion: 6 */
 import React from 'react';
 import { Menu, Modal } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 
-import { AddLocationForm } from '../../../Forms';
+import { AddUserForm } from '../../../Forms';
 import { SemanticModal } from '../../';
-import { setModalOpen } from '../../../../containers/Location/action';
+import { setCreateModalOpen } from '../../../../containers/User/action';
 
-const AddRoomModal = ({
-    modalOpen,
-    setModalOpen
-}) => {
+const AddRoomModal = (props) => {
+    const {
+        modalOpen 
+    } = props;
+
     return (
         <SemanticModal
             open={modalOpen}
-            onClose={ () => setModalOpen(false) }            
+            onClose={ () => props.setCreateModalOpen(false) }            
             size='small'
             trigger = {
-                <Menu.Item icon = "plus" onClick = { () => { setModalOpen(true); } }/>
+                <Menu.Item icon = "plus" onClick = { () => { props.setCreateModalOpen(true); } }/>
                 }>
-                <Modal.Header>Add a Location</Modal.Header>
+                <Modal.Header>Add a User</Modal.Header>
                 <Modal.Content>
                     <Modal.Description>
-                        <AddLocationForm />
+                        <AddUserForm />
                     </Modal.Description>
                 </Modal.Content>
                 <Modal.Actions>
@@ -32,11 +32,11 @@ const AddRoomModal = ({
 }
 
 const mapStateToProps = state => ({
-    modalOpen : state.locations.modalOpen
+    createMoalOpen : state.user.createModalOpen
 })
 
 const mapDispatchToProps = dispatch => ({
-    setModalOpen : (modalState) => { dispatch(setModalOpen(modalState)); }    
+    setCreateModalOpen : (modalState) => { dispatch(setCreateModalOpen(modalState)); }    
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddRoomModal);

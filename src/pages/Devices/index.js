@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { DeviceTable } from '../../components/Device';
 import { Panel } from '../../components/ControlPanel';
 
-//CSS import
 import '../Master.css';
 import './DevicePage.css';
 

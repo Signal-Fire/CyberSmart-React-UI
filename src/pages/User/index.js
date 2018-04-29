@@ -1,15 +1,17 @@
-/*jshint esversion: 6*/
-import React, { Component } from 'react'
+import React from 'react'
+import { UsersTable } from '../../components/Users';
+import { Panel } from '../../components/ControlPanel';
 
 import '../Master.css';
 import './user.css';
 
-export default class UserManagementPage extends Component {
-      render() {
-          return (
-              <header className="page-body">
-                  <p>User management page</p>
-              </header>
-          )
-      }
+const UserManagementPage = () => {
+    return (
+        <header className="page-body">
+            <Panel name = 'Users' />                             
+            <UsersTable />
+        </header>
+    )
 }
+
+export default UserManagementPage;
