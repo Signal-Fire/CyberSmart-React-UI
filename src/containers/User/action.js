@@ -29,8 +29,29 @@ export const getAllUsers = (token) => dispatch => {
     })
 }
 
-export const deleteUser = (id) => dispatch => {
-    return id;
+export const deleteUser = (id, token, user) => dispatch => {
+    axios({
+        headers : {
+            'Authorization' : token
+        },
+        url : config.API_USERS_URL + "/delete/" + id
+    })
+    .then(res => {        
+        dispatch({
+            type : actionTypes.DELETE_USER,
+            payload : {
+                user : res.status === 200 ? null : res.data,
+                error : res.status !== 200
+            }
+        })
+    }).catch(err => {
+        dispatch({
+            type : actionTypes.DELETE_USER,
+            payload : {
+                error : true
+            }
+        })
+    })
 }
 
 export const getUserDetailsFrom = (token) => dispatch => {    

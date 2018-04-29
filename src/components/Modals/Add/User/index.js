@@ -2,7 +2,7 @@ import React from 'react';
 import { Menu, Modal } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 
-import { AddLocationForm } from '../../../Forms';
+import { AddUserForm } from '../../../Forms';
 import { SemanticModal } from '../../';
 import { setCreateModalOpen } from '../../../../containers/User/action';
 
@@ -22,7 +22,7 @@ const AddRoomModal = (props) => {
                 <Modal.Header>Add a User</Modal.Header>
                 <Modal.Content>
                     <Modal.Description>
-                        <AddLocationForm />
+                        <AddUserForm />
                     </Modal.Description>
                 </Modal.Content>
                 <Modal.Actions>
