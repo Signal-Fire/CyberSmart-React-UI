@@ -1,17 +1,17 @@
 import React from 'react'
 import { Label, Icon } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import { deleteDevice } from '../../../../containers/Devices/action';
+import { deleteUser } from '../../../../containers/User/action';
 
 const Delete = ({
   props,
-  deleteDevice
+  deleteUser
 }) => {
   return (
     <Label 
       color = 'red' 
       as = 'a' 
-      onClick = {() => { deleteDevice(props.id, props.token, props.deleter) }}>
+      onClick = {() => { deleteUser(props.id, props.token, props.deleter) }}>
         Remove
         <Icon name = 'close' />
     </Label>
@@ -27,8 +27,8 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  deleteDevice : (id, token, deleter) => { 
-    dispatch(deleteDevice(id, token, deleter, () => {
+  deleteUser : (id, token, deleter) => { 
+    dispatch(deleteUser(id, token, deleter, () => {
       window.location.reload();
     }))}
 })

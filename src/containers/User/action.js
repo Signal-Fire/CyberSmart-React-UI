@@ -29,6 +29,10 @@ export const getAllUsers = (token) => dispatch => {
     })
 }
 
+export const deleteUser = (id) => dispatch => {
+    return id;
+}
+
 export const getUserDetailsFrom = (token) => dispatch => {    
     axios({
         headers : {

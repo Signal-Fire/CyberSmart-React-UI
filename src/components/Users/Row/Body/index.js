@@ -1,36 +1,33 @@
 import React from 'react';
 import { Table } from 'semantic-ui-react';
-import { CreatedTag, StateTag, StateButtons, DeleteButton } from '../';
+import { CreatedTag, DeleteButton } from '../';
 import { connect } from 'react-redux';
 import * as helpers from '../../../../helpers';
 
 const Row = ({
-    devices
+    users
 }) => {
-    if (devices !== null) {
+    if (users !== null) {
         return (
-            devices.filter(x => x.active).map((d, index) => {            
+            users.map((user, index) => {            
                 return (<Table.Row         
-                    key = { d._id }
+                    key = { user._id }
                     >
-                    <Table.Cell>{helpers.capz(d.name)}</Table.Cell>     
-                    <Table.Cell>{d.address}</Table.Cell>          
-                    <Table.Cell>{helpers.capz(d.location)}</Table.Cell>                  
-                    <Table.Cell><StateTag id = { d._id } /></Table.Cell>
-                    <Table.Cell><StateButtons id = { d._id }/></Table.Cell>
-                    <Table.Cell width ='3'><CreatedTag device = { d } /></Table.Cell>
-                    <Table.Cell><DeleteButton id = {d._id} /></Table.Cell>
+                    <Table.Cell>{helpers.capz(user.username)}</Table.Cell>     
+                    <Table.Cell>{helpers.capz(user.first_name) + " " + helpers.capz(user.last_name)}</Table.Cell>
+                    <Table.Cell width ='3'><CreatedTag user = { user } /></Table.Cell>
+                    <Table.Cell><DeleteButton id = {user._id} /></Table.Cell>
                 </Table.Row>);
             })        
         );
     }
         return (
-            <p>Hey</p>
+            <p>No users!</p>
         );
 }
 
 const mapStateToProps = state => ({
-    devices : state.devices.devices
+    users : state.user.all_users
 })
 
 export default connect(mapStateToProps, null)(Row);

@@ -1,13 +1,9 @@
-import DeviceRows from './Body';
+import UserRows from './Body';
 import CreatedTag from './CreatedTag';
-import StateTag from './StateTag';
-import StateButtons from './OperationButtons';
 import DeleteButton from './Delete';
 
 export {
-    DeviceRows,
+    UserRows,
     CreatedTag,
-    StateTag,
-    StateButtons,
     DeleteButton
 }

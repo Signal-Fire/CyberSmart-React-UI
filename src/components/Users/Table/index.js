@@ -1,6 +1,6 @@
 import React from 'react';
 import { Table } from 'semantic-ui-react';
-import { DeviceRows } from '../Row';
+import { UserRows } from '../Row';
 import TableHeader from './Header';
 import { connect } from 'react-redux';
 
@@ -10,7 +10,7 @@ const TableStyle = {
     marginTop: '15px'
 }
 
-const DeviceTable = (props) => {
+const UsersTable = (props) => {
     return(
         <Table 
             compact
@@ -19,10 +19,10 @@ const DeviceTable = (props) => {
             style = {TableStyle}>
             <TableHeader />
             <Table.Body>
-                <DeviceRows />
+                <UserRows />
             </Table.Body>
         </Table>        
     )
 }
 
-export default connect(null, null)(DeviceTable);
+export default connect(null, null)(UsersTable);

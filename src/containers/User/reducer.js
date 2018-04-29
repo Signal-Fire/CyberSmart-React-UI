@@ -36,7 +36,7 @@ export default function(state = userState, action) {
         case actionTypes.GET_ALL_USERS:
             return {
                 ...state,
-                all_users : payload.error ? null : payload.users
+                all_users : payload.error ? null : payload.users,
                 error : payload.error
             }
         default:
