@@ -14,7 +14,7 @@ export default function(state = initialState, action) {
         case actionTypes.GET_DEVICES:
             return {
                 ...state,
-                devices : payload.error ? null : payload.devices,
+                devices : payload.error ? null : payload.devices.filter(x => x.active),
                 error : payload.error,
                 isLoading : false
             }
