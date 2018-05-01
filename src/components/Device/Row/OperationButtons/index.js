@@ -8,17 +8,21 @@ const OperationButtons = ({
     isLoading,
     operateDevice
 }) => {
-    return(            
-        <Button 
-            size = 'mini' 
-            disabled = { isLoading }
-            loading = { isLoading }
-            color={device.state === 0 ? 'green' : 'red' } 
-            onClick = {() => operateDevice((device.state === 0 ? 1 : 0), device.address, device._id)}
-        >
-            TURN {device.state === 0 ? 'ON' : 'OFF'}
-        </Button>   
-    );
+    try {
+        return(            
+            <Button 
+                size = 'mini' 
+                disabled = { isLoading }
+                loading = { isLoading }
+                color={device.state === 0 ? 'green' : 'red' } 
+                onClick = {() => operateDevice((device.state === 0 ? 1 : 0), device.address, device._id)}
+            >
+                TURN {device.state === 0 ? 'ON' : 'OFF'}
+            </Button>   
+        );
+    } catch (ex) {
+        return(<div></div>);
+    }
 }
 
 const mapStateToProps = (state, ownProps) => ({

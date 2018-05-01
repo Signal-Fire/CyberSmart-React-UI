@@ -5,12 +5,16 @@ import { Label } from 'semantic-ui-react';
 const StateTag = ({
     device
 }) => {
-    return (
-        <Label
-            color = {device.state === 0 ? 'red' : 'green'}>
-            {device.state === 0 ? 'OFF' : 'ON'}
-        </Label>
-    );
+    try {
+        return (        
+            <Label
+                color = {device.state === 0 ? 'red' : 'green'}>
+                {device.state === 0 ? 'OFF' : 'ON'}
+            </Label>
+        );
+    } catch (ex) {
+        return(<div></div>);
+    }
 }
 
 const mapStateToProps = (state, ownProps) => ({
