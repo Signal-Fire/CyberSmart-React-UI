@@ -121,7 +121,7 @@ const deviceFormik = withFormik({
 const mapStateToProps = state => ({
     user : {
         auth : state.login.token,
-        name : state.user.username
+        name : state.user.first_name
     },
     stateLoading : {
         locations : state.locations.isLoading,
