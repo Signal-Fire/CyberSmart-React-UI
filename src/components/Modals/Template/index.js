@@ -2,9 +2,9 @@ import React from 'react';
 import { Modal } from 'semantic-ui-react';
 
 const centered = {
-    /*marginTop: '15px !important',
+    marginTop: '15px !important',
     marginLeft: 'auto',
-    marginRight: 'auto'*/
+    marginRight: 'auto'
 };
 
 const SemanticModal = ({ children, ...rest }) => (
