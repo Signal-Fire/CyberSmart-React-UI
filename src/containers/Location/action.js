@@ -3,7 +3,7 @@ import * as actionTypes from './actionTypes';
 
 import axios from 'axios';
 
-export const deleteLocation = (id, token, deleter) => dispatch => {
+export const deleteLocation = (id, token, deleter, callback) => dispatch => {
     axios({ method: 'POST',
         url: config.API_LOCATION_URL +'/delete/' + id,
         data: {
@@ -17,6 +17,7 @@ export const deleteLocation = (id, token, deleter) => dispatch => {
                 error : res.status !== 200
             }
         })
+        callback('done')
     }).catch(err => {
         dispatch({
             type : actionTypes.DELETE_LOCATION,
@@ -24,6 +25,7 @@ export const deleteLocation = (id, token, deleter) => dispatch => {
                 error : true
             }
         })
+        callback('error')
     }); 
 }
 
