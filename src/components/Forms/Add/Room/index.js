@@ -44,7 +44,7 @@ const LocationsFormik = withFormik({
         name : Yup.string().required('Location is required')
     }),
     handleSubmit: (values, { props, setSubmitting }) => {
-        values.created_by_user = props.username
+        values.created_by_user = props.first_name
         props.addLocation(values);
         setTimeout(() => props.setModalOpen(false), 500);     
     },
@@ -52,7 +52,7 @@ const LocationsFormik = withFormik({
 })(LocationsForm)
 
 const mapStateToProps = state => ({
-    username : state.user.username
+    first_name : state.user.first_name
 })
 
 const mapDispatchToProps = dispatch => ({
