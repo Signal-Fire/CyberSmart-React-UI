@@ -37,6 +37,16 @@ export default function(state = locationState, action) {
                 ...state,
                 modalOpen : payload.modalOpen
             }
+        case actionTypes.DELETE_LOCATION:
+            if (payload.error)
+                return state;
+
+            var locationsIndex = state.locations.findIndex(x => x._id === payload.location._id);            
+            state.locationsIndex.splice(locationsIndex, 1);
+
+            return {
+                ...state
+            }
         default:
             return state;
     }

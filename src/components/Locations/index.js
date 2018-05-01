@@ -1,23 +1,5 @@
-/* jshint esversion: 6 */
-import React, { Component } from 'react';
+import LocationsTable from './Table';
 
-import { Card, Icon } from 'semantic-ui-react';
-
-export default class LocationWidget extends Component {
-    render() {
-        return (
-            <Card>
-                <Card.Content>
-                    <Card.Header>
-                        <Icon name = 'home' size='large'/>
-                    </Card.Header>
-                    <Card.Meta>
-                    </Card.Meta>
-                    <Card.Description>
-                        {this.props.location.name}
-                    </Card.Description>
-                </Card.Content>
-            </Card>
-        )
-    }
+export {
+    LocationsTable
 }
