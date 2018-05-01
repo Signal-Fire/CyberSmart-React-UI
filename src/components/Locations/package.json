@@ -1,9 +1,9 @@
 {
-    "name" : "location-widget",
+    "name" : "locations-table",
     "version" : "1.0.0",
     "author" : "Henry Pye",
     "main" : "index.js",
-    "description" : "Locations widget for the locations page of a smarthome",
+    "description" : "Locations table for the locations page of a smarthome",
     "keywords" : [
         "location", "widget", "smarthome", "hub"
     ]

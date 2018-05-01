@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { DeviceTable } from '../../components/Device';
 import { Panel } from '../../components/ControlPanel';
+import { AddMe } from '../../components/Messages';
 
 import '../Master.css';
 import './DevicePage.css';
@@ -16,8 +17,8 @@ const DevicePage = ({
                 devices !== null ?           
                     devices.filter(x => x.active).length > 0 ?                        
                         <DeviceTable />
-                    : null
-                : null
+                    : <AddMe objects = 'Devices' />
+                : <AddMe objects = 'Devices' />
             }
         </header>
     );

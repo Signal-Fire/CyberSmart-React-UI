@@ -11,9 +11,13 @@ const BasicChart = ( {
 }) => {
     const data = [];  
     
-    locations.forEach(location => {        
-        data.push({devices: devices.filter(x => x.location === location.name && x.active).length, room: location.name})
-    })
+    try {
+        locations.filter(x => x.active).forEach(location => {        
+            data.push({devices: devices.filter(x => x.location === location.name && x.active).length, room: location.name})
+        })
+    } catch (ex) {
+        //do nothing, lazy programming ftw
+    }
     
     return (
         <div>
