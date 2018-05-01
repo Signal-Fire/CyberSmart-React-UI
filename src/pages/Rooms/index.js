@@ -17,8 +17,8 @@ const RoomsPage = ({
                 locations !== null ?
                     locations.filter(x => x.active).length > 0 ?                     
                         <LocationsTable />  
-                    : <AddMe objects = 'Locations' />
-                : <AddMe objects = 'Locations' />
+                    : <AddMe objects = 'Rooms' />
+                : <AddMe objects = 'Rooms' />
             }
         </header>
     );

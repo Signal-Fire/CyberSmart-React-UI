@@ -17,7 +17,7 @@ export default function(state = locationState, action) {
                 locations : payload.error ? 
                     null
                     :
-                    payload.locations,
+                    payload.locations.filter(x => x.active),
                 error : payload.error,
                 isLoading : false
             }    
@@ -41,8 +41,12 @@ export default function(state = locationState, action) {
             if (payload.error)
                 return state;
 
-            var locationsIndex = state.locations.findIndex(x => x._id === payload.location._id);            
-            state.locationsIndex.splice(locationsIndex, 1);
+            var locationsIndex = state.locations.findIndex(x => x._id === payload.location._id);      
+                  
+            state.locationsIndex.forEach((element, index) => {
+                if (index === locationsIndex)
+                    element.active = false;
+            })
 
             return {
                 ...state
