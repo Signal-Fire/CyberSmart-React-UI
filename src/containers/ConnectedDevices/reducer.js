@@ -14,7 +14,7 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 devices : payload.devices ? 
-                    payload.devices 
+                    payload.devices
                     : 
                     null,
                 error : payload.error,

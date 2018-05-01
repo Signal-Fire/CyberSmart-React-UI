@@ -17,7 +17,7 @@ export default function(state = locationState, action) {
                 locations : payload.error ? 
                     null
                     :
-                    payload.locations,
+                    payload.locations.filter(x => x.active),
                 error : payload.error,
                 isLoading : false
             }    
@@ -36,6 +36,20 @@ export default function(state = locationState, action) {
             return {
                 ...state,
                 modalOpen : payload.modalOpen
+            }
+        case actionTypes.DELETE_LOCATION:
+            if (payload.error)
+                return state;
+
+            var locationsIndex = state.locations.findIndex(x => x._id === payload.location._id);      
+                  
+            state.locationsIndex.forEach((element, index) => {
+                if (index === locationsIndex)
+                    element.active = false;
+            })
+
+            return {
+                ...state
             }
         default:
             return state;

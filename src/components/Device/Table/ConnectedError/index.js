@@ -15,7 +15,7 @@ const ConnectedErrorMessage = ({
                 error
                 compact
                 style = {MessageStyle}>
-                There is currently an issue with the Nodes, please try again later!
+                The Nodes are currently experiencing issues, please try again later!
             </Message>
     )
 }

@@ -15,9 +15,11 @@ export const performLogin = (username, password) => dispatch => {
         username: username,
         password: password
     }).then(res => {
-            if (res.status === 200)
+            if (res.status === 200) {
                 dispatch(userActions.getUserDetailsFrom(res.data.token));
-
+                dispatch(userActions.getAllUsers(res.data.token));
+            }
+            
             dispatch({
                 type : actionTypes.LOGIN_ACTION,
                 payload : {

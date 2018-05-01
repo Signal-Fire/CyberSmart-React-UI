@@ -17,7 +17,6 @@ store.dispatch(locationActions.getLocations());
 store.dispatch(connectedActions.getConnectedDevices());
 
 store.subscribe(() => {
-    console.log('saving state');
     stateLoader.saveState(store.getState());
 });
 
