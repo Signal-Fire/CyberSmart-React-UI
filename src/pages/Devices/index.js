@@ -12,10 +12,12 @@ const DevicePage = ({
     return(
         <header className="page-body">
             <Panel name = 'Devices' />   
-            {devices !== null && devices.length > 0  ?                        
-                <DeviceTable />
-            :
-                <p>Please add a device</p>
+            {
+                devices !== null ?           
+                    devices.filter(x => x.active).length > 0 ?                        
+                        <DeviceTable />
+                    : null
+                : null
             }
         </header>
     );
