@@ -7,18 +7,17 @@ import { AddLocationForm } from '../../../Forms';
 import { SemanticModal } from '../../';
 import { setModalOpen } from '../../../../containers/Location/action';
 
-const AddRoomModal = (props) => {
-    const {
-        modalOpen 
-    } = props;
-
+const AddRoomModal = ({
+    modalOpen,
+    setModalOpen
+}) => {
     return (
         <SemanticModal
             open={modalOpen}
-            onClose={ () => props.setModalOpen(false) }            
+            onClose={ () => setModalOpen(false) }            
             size='small'
             trigger = {
-                <Menu.Item icon = "plus" onClick = { () => { props.setModalOpen(true); } }/>
+                <Menu.Item icon = "plus" onClick = { () => { setModalOpen(true); } }/>
                 }>
                 <Modal.Header>Add a Location</Modal.Header>
                 <Modal.Content>

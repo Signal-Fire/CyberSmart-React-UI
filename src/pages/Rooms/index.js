@@ -1,42 +1,31 @@
-/*jshint esversion: 6*/
 import React from 'react';
-
-
-import { LocationWidget } from '../../components/Exports/Widgets';
-import { Panel } from '../../components/ControlPanel';
-
-import { Grid } from 'semantic-ui-react';
 import { connect } from 'react-redux';
+import { Panel } from '../../components/ControlPanel';
+import { LocationsTable } from '../../components/Locations';
+import { AddMe } from '../../components/Messages';
 
 import '../Master.css';
 import './rooms.css';
 
-const Page = ({
+const RoomsPage = ({
     locations
 }) => {
     return(
         <header className="page-body">
-            <Grid stackable columns = {1} divided = 'vertically'>
-                        <Grid.Column verticalAlign = 'middle'>
-                            <Panel name = 'Locations' />
-                        </Grid.Column>                        
-                    </Grid>      
-                <Grid stackable columns = {6}> 
-                    { locations === null ?
-                        false
-                        :
-                        locations.map((location) =>                           
-                        <Grid.Column key = {location._id}>  
-                            <LocationWidget location = {location}/>
-                        </Grid.Column>    
-                    )}                  
-                </Grid>
+            <Panel name = 'Locations' />   
+            {
+                locations !== null ?
+                    locations.filter(x => x.active).length > 0 ?                     
+                        <LocationsTable />  
+                    : <AddMe objects = 'Rooms' />
+                : <AddMe objects = 'Rooms' />
+            }
         </header>
     );
-}
+};
 
 const mapStateToProps = state => ({
     locations : state.locations.locations
 })
 
-export default connect(mapStateToProps, null)(Page);
+export default connect(mapStateToProps, null)(RoomsPage);

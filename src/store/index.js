@@ -5,11 +5,11 @@ import * as stateLoader from './stateManager';
 
 const middleware = [thunk];
 
-export default createStore(
+export default  createStore(
     rootReducer, 
     stateLoader.loadState(), 
     compose(
         applyMiddleware(...middleware),
-        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+        (window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()) || compose
     )
 );

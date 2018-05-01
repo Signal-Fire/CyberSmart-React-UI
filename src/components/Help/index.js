@@ -1,17 +1,13 @@
-/* jshint esversion: 6*/
 import React from 'react';
 
+import FAQPane from './FAQ';
 import { APP_NAME } from '../../config';
 import { Tab, Image } from 'semantic-ui-react';
 
-const panes = [
-  {
-    menuItem: { key: 'Guide', icon: 'file', content: 'Guide' },
-    render: () => <Tab.Pane>Coming soon!</Tab.Pane>,
-  },
+const panes = [  
   {
     menuItem: { key: 'FAQ', icon: 'question circle', content: 'FAQ' },
-    render: () => <Tab.Pane>Coming soon!</Tab.Pane>,
+    render: () => <FAQPane />,
   },
   {
     menuItem: { key: 'Contact', icon: 'talk', content: 'Contact us' },

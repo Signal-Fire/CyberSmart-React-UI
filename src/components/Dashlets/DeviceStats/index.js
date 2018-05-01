@@ -1,88 +1,78 @@
-/* jshint esversion: 6 */
-import React, {  Component } from 'react';
+import React from 'react';
 import { Grid } from 'semantic-ui-react';
-
-import { API_DEVICES_URL } from '../../../config';
+import { connect } from 'react-redux';
 
 import Widget from './Widget';
 
-import axios from 'axios';
-
-export default class DeviceStats extends Component {
-  constructor() {
-    super();
-    this.state = {
-      isLoading: true,
-      dataSource: {},
-      deviceStates: {}
-    };
-
-    this.calculateStatistics = this.calculateStatistics.bind(this);
-  }
-
-  componentDidMount() {
-    axios.get(API_DEVICES_URL + '/find/all')
-    .then(res => {
-      this.setState({
-        isLoading : false,
-        deviceStates : this.calculateStatistics(res.data)
-      });
-    }).catch(err => {
-      console.error(err);
-    });
-  }
-
-  calculateStatistics(responseJson) {
-    var deviceStates = {};
-    deviceStates.activeDevices = 0;
-    deviceStates.inactiveDevices = 0;
-    deviceStates.errorDevices = 0;
-    deviceStates.count = 0;
-
-    for(let i = 0; i < responseJson.length; i++) {
-      // eslint-disable-next-line
-      (parseInt(responseJson[i].state)) === 1 ? deviceStates.activeDevices++ : deviceStates.inactiveDevices++;
-      deviceStates.count++;
-    }
-
-    return deviceStates;
-  }
-
-  render() {
-        return (
-           <Grid 
-            columns={4} 
-            relaxed 
-            inverted>
-            <Grid.Column>
+const DeviceStats = ({
+  state
+}) => {
+    return (
+      <Grid
+        columns = {5}
+        relaxed
+        inverted>
+          <Grid.Column>
               <Widget 
-                icon = 'power' 
-                title = 'Devices ON' 
-                number = {this.state.deviceStates.activeDevices} 
+                stats = {{
+                  icon : 'power',
+                  title : 'Devices On',
+                  number : state.devices ? state.devices.filter(x => x.state === 1 && x.active).length : 0,
+                  color : 'green'
+                }}
               />
-            </Grid.Column>
-            <Grid.Column>
+          </Grid.Column>
+          <Grid.Column>
               <Widget 
-                icon = 'power' 
-                title = 'Devices OFF' 
-                number = {this.state.deviceStates.inactiveDevices} 
-              />
-            </Grid.Column>
-            <Grid.Column>
+                stats = {{
+                  icon : 'power',
+                  title : 'Devices Off',
+                  number : state.devices ? state.devices.filter(x => x.state === 0 && x.active).length : 0,
+                  color : 'red'
+                }}
+              />              
+          </Grid.Column>
+          <Grid.Column>
               <Widget 
-                icon = 'plug' 
-                title = 'Known Plugs' 
-                number = {this.state.deviceStates.count}
-              />
-            </Grid.Column>
-            <Grid.Column>
+                stats = {{
+                  icon : 'home',
+                  title : 'Total Rooms',
+                  number : state.devices ? state.locations.filter(x => x.active).length : 0,
+                  color : 'blue'
+                }}
+              />   
+            </Grid.Column> 
+            <Grid.Column>                
               <Widget 
-                icon = 'warning' 
-                title = 'Errors' 
-                number = '0'
-                />
-            </Grid.Column>
-          </Grid>
-        );
-  }
+                stats = {{
+                  icon : 'plug',
+                  title : 'Total Devices',
+                  number : state.devices ? state.devices.filter(x => x.active).length : 0,
+                  color : 'orange'
+                }}
+              />            
+          </Grid.Column>
+          <Grid.Column>                
+              <Widget 
+                stats = {{
+                  icon : 'user',
+                  title : 'Total Users',
+                  number : state.all_users ? state.all_users.length : 0,
+                  color : 'black'
+                }}
+              />            
+          </Grid.Column>
+      </Grid>
+    );
 }
+
+const mapStateToProps = state => ({
+  state : {
+    locations : state.locations.locations,
+    devices : state.devices.devices,
+    all_users : state.user.all_users
+  }
+});
+
+export default connect(mapStateToProps, null)(DeviceStats);
+

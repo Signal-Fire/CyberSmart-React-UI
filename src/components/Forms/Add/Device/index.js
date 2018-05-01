@@ -55,6 +55,21 @@ const AddDeviceForm = props => {
         return options;
     }
 
+    const _mapConnectedDropdown = (options) => {
+        if (!options)
+            return [];
+
+        options.forEach(option => {
+            option.key = option.mac;
+            option.id = option.mac;
+            option.name = option.ip;
+            option.value = option.ip;
+            option.text = "Plug " + option.ip;
+        });
+
+        return options;
+    }
+
     return (
         <Form
             loading = { isSubmitting || stateLoading.locations || stateLoading.connected }>
@@ -121,7 +136,7 @@ const deviceFormik = withFormik({
 const mapStateToProps = state => ({
     user : {
         auth : state.login.token,
-        name : state.user.username
+        name : state.user.first_name
     },
     stateLoading : {
         locations : state.locations.isLoading,

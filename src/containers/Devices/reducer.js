@@ -14,7 +14,7 @@ export default function(state = initialState, action) {
         case actionTypes.GET_DEVICES:
             return {
                 ...state,
-                devices : payload.error ? null : payload.devices,
+                devices : payload.error ? null : payload.devices.filter(x => x.active),
                 error : payload.error,
                 isLoading : false
             }
@@ -37,8 +37,8 @@ export default function(state = initialState, action) {
             var newDevices = state.devices;
 
             newDevices.forEach((element, index) => {
-                if (element._id === payload.deviceId)
-                    newDevices[index].state = payload.state
+                if (element._id === payload.device._id)
+                    newDevices[index].state = payload.device.state
             })
             
             return {
@@ -47,11 +47,22 @@ export default function(state = initialState, action) {
                 isLoading : false,
                 error : payload.error
             }
+        case actionTypes.DELETE_DEVICE:
+            if (payload.error)
+                return state;
+
+            var deviceIndex = state.devices.findIndex(x => x._id === payload.device._id);            
+            state.devices.splice(deviceIndex, 1);
+
+            return {
+                ...state
+            }
+        case actionTypes.SET_LOADING:
+            return {
+                ...state,
+                isLoading : payload.isLoading
+            }
         default:
             return state;
     }
-}
-
-export const getDevices = () => {
-    return initialState.devices;
 }

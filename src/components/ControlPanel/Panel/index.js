@@ -1,7 +1,7 @@
 import React from 'react'
 import { Menu, Grid } from 'semantic-ui-react';
 
-import { AddDeviceModal, AddLocationModal } from '../../Modals/Add';
+import { AddDeviceModal, AddLocationModal, AddUserModal } from '../../Modals/Add';
 import { Bar } from '../';
 
 const Panel = ( { name } ) => {
@@ -16,7 +16,11 @@ const Panel = ( { name } ) => {
                         ? 
                             <AddLocationModal /> 
                         :
+                            name === 'Devices' 
+                            ?
                             <AddDeviceModal />
+                            :
+                            <AddUserModal />
                     }
                     </Menu.Menu>
                 </Bar>         

@@ -2,6 +2,7 @@ import * as actionTypes from './actionTypes';
 
 const loginState = {
     token: null,
+    sidebarOpen : false,
     error: false
 }
 
@@ -15,6 +16,11 @@ export default function(state = loginState, action) {
                 token : payload.token,
                 error : payload.error
             }        
+        case actionTypes.OPERATE_SIDEBAR:
+            return {
+                ...state,
+                sidebarOpen : !state.sidebarOpen
+            }
         default:
             return state;
     }
