@@ -28,7 +28,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = dispatch => ({
   deleteDevice : (id, token, deleter) => { 
-    dispatch(deleteDevice(id, token, deleter, () => {
+    dispatch(deleteDevice(id, token, deleter, (cb) => {      
       window.location.reload();
     }))}
 })

@@ -93,7 +93,9 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    addUser : (user, token) => { dispatch(addUser(user, token)) },
+    addUser : (user, token) => { dispatch(addUser(user, token, () => {
+        window.location.reload();
+    })) },
     setCreateModalOpen : (modalState) => { dispatch(setCreateModalOpen(modalState)) }
 })
 

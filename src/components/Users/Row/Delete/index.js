@@ -26,8 +26,11 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  deleteUser : (id, token) => { 
-    dispatch(deleteUser(id, token, () => {
+  deleteUser : (id, token, deleter) => { 
+    dispatch(deleteUser(id, token, (cb) => {
+      if (cb === 'error') 
+        return alert('Unable to delete yourself!');
+        
       window.location.reload();
     }))}
 })

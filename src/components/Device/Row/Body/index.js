@@ -19,7 +19,7 @@ const Row = ({
                     <Table.Cell><StateTag id = { d._id } /></Table.Cell>
                     <Table.Cell><StateButtons id = { d._id }/></Table.Cell>
                     <Table.Cell width ='3'><CreatedTag device = { d } /></Table.Cell>
-                    <Table.Cell><DeleteButton id = {d._id} /></Table.Cell>
+                    <Table.Cell><DeleteButton id = {d._id} rowUsername = {d.name} /></Table.Cell>
                 </Table.Row>);
             })        
         );

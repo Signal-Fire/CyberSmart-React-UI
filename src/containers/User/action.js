@@ -29,7 +29,7 @@ export const getAllUsers = (token) => dispatch => {
     })
 }
 
-export const addUser = (user, token) => async(dispatch) => {
+export const addUser = (user, token, callback) => async(dispatch) => {
     await axios({
         method : 'POST',
         url : config.API_USERS_URL + "/register",
@@ -45,6 +45,7 @@ export const addUser = (user, token) => async(dispatch) => {
                 error : res.status !== 201
             }
         })
+        callback('done');
     }).catch(error => {
         dispatch({
             type : actionTypes.ADD_USER,
@@ -52,6 +53,7 @@ export const addUser = (user, token) => async(dispatch) => {
                 error : true
             }
         })
+        callback('error')
     });
 }
 

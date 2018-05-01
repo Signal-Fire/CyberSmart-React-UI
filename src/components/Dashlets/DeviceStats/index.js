@@ -9,7 +9,7 @@ const DeviceStats = ({
 }) => {
     return (
       <Grid
-        columns = {4}
+        columns = {5}
         relaxed
         inverted>
           <Grid.Column>
@@ -17,7 +17,7 @@ const DeviceStats = ({
                 stats = {{
                   icon : 'power',
                   title : 'Devices On',
-                  number : state.devices.filter(x => x.state === 1 && x.active).length,
+                  number : state.devices ? state.devices.filter(x => x.state === 1 && x.active).length : 0,
                   color : 'green'
                 }}
               />
@@ -27,7 +27,7 @@ const DeviceStats = ({
                 stats = {{
                   icon : 'power',
                   title : 'Devices Off',
-                  number : state.devices.filter(x => x.state === 0 && x.active).length,
+                  number : state.devices ? state.devices.filter(x => x.state === 0 && x.active).length : 0,
                   color : 'red'
                 }}
               />              
@@ -37,7 +37,7 @@ const DeviceStats = ({
                 stats = {{
                   icon : 'home',
                   title : 'Total Rooms',
-                  number : state.locations.filter(x => x.active).length,
+                  number : state.devices ? state.locations.filter(x => x.active).length : 0,
                   color : 'blue'
                 }}
               />   
@@ -47,8 +47,18 @@ const DeviceStats = ({
                 stats = {{
                   icon : 'plug',
                   title : 'Total Devices',
-                  number : state.devices.filter(x => x.active).length,
+                  number : state.devices ? state.devices.filter(x => x.active).length : 0,
                   color : 'orange'
+                }}
+              />            
+          </Grid.Column>
+          <Grid.Column>                
+              <Widget 
+                stats = {{
+                  icon : 'user',
+                  title : 'Total Users',
+                  number : state.all_users ? state.all_users.length : 0,
+                  color : 'black'
                 }}
               />            
           </Grid.Column>
@@ -59,7 +69,8 @@ const DeviceStats = ({
 const mapStateToProps = state => ({
   state : {
     locations : state.locations.locations,
-    devices : state.devices.devices
+    devices : state.devices.devices,
+    all_users : state.user.all_users
   }
 });
 
