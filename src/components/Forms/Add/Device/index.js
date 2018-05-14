@@ -47,25 +47,10 @@ const AddDeviceForm = props => {
         options.forEach(option => {
             option.key = option.mac;
             option.id = option.mac;
-            option.name = "Plug " + option.ip;
-            option.value = "Plug " + option.ip;
-            option.text = "Plug " + option.ip;
-        })
-
-        return options;
-    }
-
-    const _mapConnectedDropdown = (options) => {
-        if (!options)
-            return [];
-
-        options.forEach(option => {
-            option.key = option.mac;
-            option.id = option.mac;
             option.name = option.ip;
             option.value = option.ip;
-            option.text = "Plug " + option.ip;
-        });
+            option.text = option.ip;
+        })
 
         return options;
     }
@@ -123,7 +108,7 @@ const deviceFormik = withFormik({
     validationSchema : Yup.object().shape({
         location : Yup.string().required('Device Location is required!'),
         name : Yup.string().required('Device Name is required!'),
-        address : Yup.string().required('Physical Device is required!')
+        //address : Yup.string().required('Physical Device is required!')
     }),
     handleSubmit : (values, { props, setSubmitting }) => {
         values.created_by_user = props.user.name;

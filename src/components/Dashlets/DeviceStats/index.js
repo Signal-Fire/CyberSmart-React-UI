@@ -37,7 +37,7 @@ const DeviceStats = ({
                 stats = {{
                   icon : 'home',
                   title : 'Total Rooms',
-                  number : state.devices ? state.locations.filter(x => x.active).length : 0,
+                  number : state.locations ? state.locations.filter(x => x.active).length : 0,
                   color : 'blue'
                 }}
               />   

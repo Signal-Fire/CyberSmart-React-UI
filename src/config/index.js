@@ -1,6 +1,6 @@
-const DEV = false;
+const DEV = true;
 const DEV_API_URL = "http://localhost";
-const LIVE_API_URL = "http://192.168.1.105";
+const LIVE_API_URL = "http://192.168.0.2";
 
 export const API_USERS_URL = (DEV ? DEV_API_URL : LIVE_API_URL) + ":8080";
 export const API_NOTIFICATIONS_URL = (DEV ? DEV_API_URL : LIVE_API_URL) + ":8081";
