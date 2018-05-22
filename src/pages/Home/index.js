@@ -19,7 +19,7 @@ const HomePage = () => {
           <Grid.Column>
             <DeviceChart 
               header = "Total Devices"/>
-          </Grid.Column>         
+          </Grid.Column>     
         </Grid>
     </header>
   )

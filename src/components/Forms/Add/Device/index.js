@@ -108,7 +108,7 @@ const deviceFormik = withFormik({
     validationSchema : Yup.object().shape({
         location : Yup.string().required('Device Location is required!'),
         name : Yup.string().required('Device Name is required!'),
-        //address : Yup.string().required('Physical Device is required!')
+        address : Yup.string().required('Physical Device is required!')
     }),
     handleSubmit : (values, { props, setSubmitting }) => {
         values.created_by_user = props.user.name;

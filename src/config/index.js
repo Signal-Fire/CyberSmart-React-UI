@@ -1,4 +1,4 @@
-const DEV = true;
+const DEV = false;
 const DEV_API_URL = "http://localhost";
 const LIVE_API_URL = "http://192.168.0.2";
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table } from 'semantic-ui-react';
+import { Table, Message } from 'semantic-ui-react';
 import { UserRows } from '../Row';
 import TableHeader from './Header';
 import { connect } from 'react-redux';
@@ -10,19 +10,35 @@ const TableStyle = {
     marginTop: '15px'
 }
 
-const UsersTable = (props) => {
-    return(
-        <Table 
-            compact
-            selectable
-            textAlign = 'center'
-            style = {TableStyle}>
-            <TableHeader />
-            <Table.Body>
-                <UserRows />
-            </Table.Body>
-        </Table>        
-    )
+const UsersTable = ({
+    users
+}) => {
+    if (users !== null) {
+        return(
+            <Table 
+                compact
+                selectable
+                textAlign = 'center'
+                style = {TableStyle}>
+                <TableHeader />
+                <Table.Body>
+                    <UserRows />
+                </Table.Body>
+            </Table>        
+        )
+    } else {
+        return (
+            <Message
+                info
+                compact>
+                No users have been added yet!
+            </Message>
+        )
+    }
 }
 
-export default connect(null, null)(UsersTable);
+const mapStateToProps = state => ({
+    users : state.user.users
+})
+
+export default connect(mapStateToProps, null)(UsersTable);

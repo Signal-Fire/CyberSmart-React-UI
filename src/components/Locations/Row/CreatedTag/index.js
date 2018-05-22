@@ -7,7 +7,7 @@ const CreatedByLabel = ({
     location
 }) => {
     return (
-        <Label as = 'a' color = 'teal'>
+        <Label color = 'teal'>
             <Icon name = 'home' />
             {helpers.capz(location.created_by_user)}
             <Label.Detail>{moment(location.created).format('MMMM Do, HH:mm')}</Label.Detail>     
