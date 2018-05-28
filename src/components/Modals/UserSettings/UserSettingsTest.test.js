@@ -8,18 +8,39 @@ import { API_USERS_URL } from '../../../config';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 
-test('renders without crashing', () => {
-    var Mock = new MockAdapter(axios);
+//Redux
+import configureStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
+import { Provider } from 'react-redux';
 
-    const data = {
-        firstName : "",
-        lastName: "",
-        username: ""
-    };
+const middlewares = [thunk];
+const mockStore = configureStore(middlewares);
 
-    Mock.onGet(API_USERS_URL + '/info').reply(200, data);
-    
-    const div = document.createElement('div');
-    ReactDOM.render(<UserSettingsModal />, div);
-    ReactDOM.unmountComponentAtNode(div);
+describe('User Settings Modal Test Suite', () => {
+    test('renders without crashing', () => {
+        const initialState = {
+            user : {
+                modalOpen : false
+            }
+        }
+
+        const store = mockStore(initialState);
+
+        var Mock = new MockAdapter(axios);
+
+        const data = {
+            firstName : "",
+            lastName: "",
+            username: ""
+        };
+
+        Mock.onGet(API_USERS_URL + '/info').reply(200, data);
+        
+        const div = document.createElement('div');
+        ReactDOM.render(
+        <Provider store = {store}>
+            <UserSettingsModal />
+        </Provider>, div);
+        ReactDOM.unmountComponentAtNode(div);
+    });
 });
