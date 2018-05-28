@@ -15,6 +15,16 @@ describe('Menu Bar Test Suite', () => {
         const initialState = {
             logs : {
                 notifications : []
+            },
+            login : {
+                token  : null
+            },
+            user : {
+                modalOpen : false,
+                first_name : null,
+                last_name : null,
+                username : null,
+                error : null
             }
         }
 

@@ -13,7 +13,7 @@ import MockAdapter from 'axios-mock-adapter';
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
 
-describe('app test suite', () => {
+describe('Main App test suite', () => {
   it('renders without crashing', () => {
     var Mock = new MockAdapter(axios);
 
@@ -22,7 +22,22 @@ describe('app test suite', () => {
     };
 
     const initialState = {
-      token : null
+      locations : {
+        locations : []
+      },
+      devices : {
+        devices: []
+      },
+      login : {
+        token : null
+      },
+      user : {
+        modalOpen : false,
+        all_users : []
+      },
+      logs : {
+        notifications : []
+      }
     }
 
     const store = mockStore(initialState);
