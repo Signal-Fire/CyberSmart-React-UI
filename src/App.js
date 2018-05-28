@@ -11,9 +11,7 @@ const MainStyle = {
 }
 
 const App = ({
-    token,
-    sidebarOpen,
-    operateSidebar
+    token
 }) => {
     return (       
         <div style = { MainStyle }>
@@ -25,8 +23,7 @@ const App = ({
 }
 
 const mapStateToProps = state => ({
-    token : state.login.token,
-    sidebarVisible : state.login.sidebarOpen
+    token : state.login.token
 })
 
 export default connect(mapStateToProps, null)(App);
