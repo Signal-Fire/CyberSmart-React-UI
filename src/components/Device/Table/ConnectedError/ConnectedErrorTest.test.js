@@ -13,8 +13,11 @@ const mockStore = configureStore(middlewares);
 describe('Connection Error Test Suite', () => {
     test('renders without crashing', () => {
         const initialState = {
-            connectedError : false
+            connected : {
+                error : false
+            }
         }
+        
         const store = mockStore(initialState);
         const div = document.createElement('div');
 
