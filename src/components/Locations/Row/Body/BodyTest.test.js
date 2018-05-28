@@ -13,8 +13,12 @@ const mockStore = configureStore(middlewares);
 describe('Locations Table Body Test Suite', () => {
     test('renders without crashing with no devices and no locations', () => {
         const initialState = {
-            locations : [],
-            devices : []
+            locations : {
+                locations : []
+            },
+            devices : {
+                devices : []
+            }
         }
         const store = mockStore( initialState );
 
@@ -44,6 +48,7 @@ describe('Locations Table Body Test Suite', () => {
                 }]
             },
             login : {
+                first_name : null,
                 token : null
             }
         }
