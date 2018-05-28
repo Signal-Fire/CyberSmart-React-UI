@@ -32,7 +32,7 @@ const AddRoomModal = (props) => {
 }
 
 const mapStateToProps = state => ({
-    createMoalOpen : state.user.createModalOpen
+    modalOpen : state.user.createModalOpen
 })
 
 const mapDispatchToProps = dispatch => ({
