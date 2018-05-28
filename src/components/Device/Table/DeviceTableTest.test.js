@@ -13,7 +13,9 @@ const mockStore = configureStore(middlewares);
 describe('Device Table Test Suite', () => {
     test('renders without crashing', () => {
         const initialState = {
-
+            devices : {
+                devices : []
+            }
         }
         const store = mockStore(initialState);
         const div = document.createElement('div');
