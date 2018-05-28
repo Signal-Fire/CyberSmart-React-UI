@@ -15,6 +15,9 @@ describe('Device Table Body Test Suite', () => {
         const initialState = {
             devices : {
                 devices : []
+            },
+            login : {
+                token : null
             }
         }
         const store = mockStore(initialState);

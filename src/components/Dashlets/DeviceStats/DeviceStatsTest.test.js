@@ -15,7 +15,7 @@ import { Provider } from 'react-redux';
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
 
-describe('Device Stats test', () => {
+describe('Device Stats test suite', () => {
     test('renders without crashing', () => {
         const initialState = {
             locations : {
