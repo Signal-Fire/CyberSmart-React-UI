@@ -5,6 +5,7 @@ import App from './App';
 //Redux
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
+import { Provider } from 'react-redux';
 
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
@@ -20,10 +21,19 @@ describe('app test suite', () => {
       response : 1
     };
 
+    const initialState = {
+      token : null
+    }
+
+    const store = mockStore(initialState);
+
     Mock.onGet().reply(200, data);
 
     const div = document.createElement('div');
-    ReactDOM.render(<App />, div);
+    ReactDOM.render(
+      <Provider store = {store}>
+        <App />
+      </Provider>, div);
     ReactDOM.unmountComponentAtNode(div);
   });
 });
