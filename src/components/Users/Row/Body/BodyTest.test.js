@@ -27,11 +27,11 @@ describe('Users Table Body Tests', () => {
         }
         const store = mockStore(initialState);
 
-        const div = document.createElement('div');
+        const table = document.createElement('tbody');
         ReactDOM.render(
         <Provider store = {store}>
             <Body />
-        </Provider>, div);
-        ReactDOM.unmountComponentAtNode(div);
+        </Provider>, table);
+        ReactDOM.unmountComponentAtNode(table);
     });
 });

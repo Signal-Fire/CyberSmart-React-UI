@@ -1,7 +1,7 @@
 import React from 'react';
 import { Table } from 'semantic-ui-react';
 
-const TableHeaders = () => {
+export default () => {
     return (
         <Table.Header>
             <Table.Row>
@@ -13,5 +13,3 @@ const TableHeaders = () => {
         </Table.Header>
     );
 }
-
-export default TableHeaders;

@@ -22,14 +22,14 @@ describe('Locations Table Body Test Suite', () => {
         }
         const store = mockStore( initialState );
 
-        const div = document.createElement('div');
+        const table = document.createElement('tbody');
 
         ReactDOM.render(
         <Provider store = { store }>
             <Body />
-        </Provider>, div);
+        </Provider>, table);
 
-        ReactDOM.unmountComponentAtNode(div);
+        ReactDOM.unmountComponentAtNode(table);
     });
     test('renders without crashing with devices and locations', () => {
         const initialState = {
@@ -57,13 +57,13 @@ describe('Locations Table Body Test Suite', () => {
 
         const store = mockStore( initialState );
 
-        const div = document.createElement('div');
+        const table = document.createElement('tbody');
 
         ReactDOM.render(
         <Provider store = { store }>
             <Body />
-        </Provider>, div);
+        </Provider>, table);
 
-        ReactDOM.unmountComponentAtNode(div);
+        ReactDOM.unmountComponentAtNode(table);
     });
 })

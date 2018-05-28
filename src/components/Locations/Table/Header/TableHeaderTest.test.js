@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Grid from './';
 
 test('renders without crashing', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<Grid />, div);
-    ReactDOM.unmountComponentAtNode(div);
+    const table = document.createElement('table');
+    ReactDOM.render(<Grid />, table);
+    ReactDOM.unmountComponentAtNode(table);
 });
