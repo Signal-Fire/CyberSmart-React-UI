@@ -1,5 +1,4 @@
 import React from 'react';
-import Container from '../Container';
 import { Header } from 'semantic-ui-react';
 import { CustomChart } from '../CustomChart';
 
@@ -14,7 +13,7 @@ const data = [
     {kwh: 0.09, time: '01:00'}
 ];
 
-const BasicChart = ( { header }) => {
+export default ( { header }) => {
     return (
         <div>
             <Header as ='h3' textAlign='center'>{ header }</Header>
@@ -27,5 +26,3 @@ const BasicChart = ( { header }) => {
         </div>
     );
 }
-
-export default BasicChart;
