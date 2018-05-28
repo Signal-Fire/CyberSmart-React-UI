@@ -29,16 +29,20 @@ describe('Devices Table Body Test Suite', () => {
     });
     test('renders without crashing with devices and locations', () => {
         const initialState = {
-            locations : [{
-                _id : '1',
-                active : true,
-                name : 'Living Room',
-                created_by_user : 'henry'
-            }],
-            devices : [{
-                active : true,
-                location : 'Living Room'
-            }]
+            locations : {
+                locations : [{
+                    _id : '1',
+                    active : true,
+                    name : 'Living Room',
+                    created_by_user : 'henry'
+                }]
+            },
+            devices : {
+                devices : [{
+                    active : true,
+                    location : 'Living Room'
+                }]
+            }
         }
 
         const store = mockStore( initialState );

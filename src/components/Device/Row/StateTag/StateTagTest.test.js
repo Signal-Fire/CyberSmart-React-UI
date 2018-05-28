@@ -13,8 +13,10 @@ const mockStore = configureStore(middlewares);
 describe('Devices Created Tag Test Suite', () => {
     test('renders without crashing', () => {
         const initialState = {
-            device : [],
-            isLoading : false
+            devices : {
+                devices : [],
+                isLoading : false
+            }
         }        
         const store = mockStore(initialState);
 
