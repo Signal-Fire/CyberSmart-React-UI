@@ -10,7 +10,7 @@ import { Provider } from 'react-redux';
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
 
-describe('Devices Table Body Test Suite', () => {
+describe('Locations Table Body Test Suite', () => {
     test('renders without crashing with no devices and no locations', () => {
         const initialState = {
             locations : [],
@@ -42,6 +42,9 @@ describe('Devices Table Body Test Suite', () => {
                     active : true,
                     location : 'Living Room'
                 }]
+            },
+            login : {
+                token : null
             }
         }
 
