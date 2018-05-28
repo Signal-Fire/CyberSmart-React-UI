@@ -13,7 +13,9 @@ const mockStore = configureStore(middlewares);
 describe('Menu Bar Test Suite', () => {
     test('renders without crashing', () => {
         const initialState = {
-
+            logs : {
+                notifications : []
+            }
         }
 
         const store = mockStore(initialState);
