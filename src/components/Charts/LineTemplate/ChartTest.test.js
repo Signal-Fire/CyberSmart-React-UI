@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { CustomChart } from './';
+import { LineChartTemplate } from './';
 
 describe('Line Chart Test Suite', () => {
     it('renders a line chart without worries', () => {
@@ -16,7 +16,7 @@ describe('Line Chart Test Suite', () => {
         ];
 
         var div = document.createElement('div');
-        ReactDOM.render(<CustomChart 
+        ReactDOM.render(<LineChartTemplate 
                             chartData = { chartData }
                             dataKeys = { { 
                               X : 'time',

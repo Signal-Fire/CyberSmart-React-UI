@@ -1,6 +1,6 @@
 import React from 'react';
 import { Header } from 'semantic-ui-react';
-import { CustomChart } from '../CustomChart';
+import { LineChartTemplate } from '../LineTemplate';
 
 const data = [
     {kwh: 0.89, time: '21:30'},
@@ -17,7 +17,7 @@ export default ( { header }) => {
     return (
         <div>
             <Header as ='h3' textAlign='center'>{ header }</Header>
-            <CustomChart 
+            <LineChartTemplate 
                 data = {data}
                 dataKeys = {{
                         X : 'time',

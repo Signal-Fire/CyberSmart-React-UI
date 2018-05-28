@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Header } from 'semantic-ui-react';
-import { CustomChart } from '../CustomChart';
+import { LineChartTemplate } from '../LineTemplate';
 
 const BasicChart = ( { 
     header,
@@ -19,7 +19,7 @@ const BasicChart = ( {
     return (
         <div>
             <Header as ='h3' textAlign='center'>{ header }</Header>
-            <CustomChart 
+            <LineChartTemplate 
                 data = {data} 
                 dataKeys = {{
                     X : 'rooms',
