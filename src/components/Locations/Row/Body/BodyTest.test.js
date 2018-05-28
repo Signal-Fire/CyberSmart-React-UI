@@ -48,8 +48,10 @@ describe('Locations Table Body Test Suite', () => {
                 }]
             },
             login : {
-                first_name : null,
                 token : null
+            },
+            user : {
+                first_name : null
             }
         }
 
