@@ -4,7 +4,11 @@ import { SideBar } from './components/SideBar';
 import { MainMenu } from './components/MenuBar';
 import { LoginModal } from './components/Modals';
 
-import './App.css';
+const MainStyle = {
+    textAlign: 'center',
+    backgroundColor: '#FFF',
+    height: '100%'
+}
 
 const App = ({
     token,
@@ -12,7 +16,7 @@ const App = ({
     operateSidebar
 }) => {
     return (       
-        <div className = "App">
+        <div style = { MainStyle }>
             <MainMenu />
             <SideBar />  
             <LoginModal open = {token === null}/> 

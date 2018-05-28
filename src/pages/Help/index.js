@@ -1,17 +1,12 @@
-/*jshint esversion: 6*/
 import React, { Component } from 'react';
-
-//Component imports
 import { HelpTabs } from '../../components/Exports';
+import * as Styles from '../Styles';
 
-//CSS import
-import '../Master.css';
-import './HelpPage.css';
 
 export default class HelpPage extends Component {
     render() {
         return (
-            <header className="page-body">
+            <header style = { Styles.PageBody }>
                 <HelpTabs />
             </header>
         )

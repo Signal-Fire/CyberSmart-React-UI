@@ -27,11 +27,18 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "jest",
     "eject": "react-scripts eject"
+  },
+  "jest": {
+    "transformIgnorePatterns": [
+      "/node_modules/",
+      ".css"
+    ]
   },
   "devDependencies": {
     "eslint": "^4.19.1",
-    "eslint-config-react-app": "^2.1.0"
+    "eslint-config-react-app": "^2.1.0",
+    "jest-cli": "^23.0.1"
   }
 }

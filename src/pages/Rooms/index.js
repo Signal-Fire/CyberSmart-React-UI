@@ -3,15 +3,13 @@ import { connect } from 'react-redux';
 import { Panel } from '../../components/ControlPanel';
 import { LocationsTable } from '../../components/Locations';
 import { AddMe } from '../../components/Messages';
-
-import '../Master.css';
-import './rooms.css';
+import * as Styles from '../Styles';
 
 const RoomsPage = ({
     locations
 }) => {
     return(
-        <header className="page-body">
+        <header style = { Styles.PageBody }>
             <Panel name = 'Locations' />   
             {
                 locations !== null ?

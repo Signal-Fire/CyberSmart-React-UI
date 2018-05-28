@@ -3,15 +3,13 @@ import { connect } from 'react-redux';
 import { DeviceTable } from '../../components/Device';
 import { Panel } from '../../components/ControlPanel';
 import { AddMe } from '../../components/Messages';
-
-import '../Master.css';
-import './DevicePage.css';
+import * as Styles from '../Styles';
 
 const DevicePage = ({
     devices
 }) => {
     return(
-        <header className="page-body">
+        <header style = { Styles.PageBody }>
             <Panel name = 'Devices' />   
             {
                 devices !== null ?           
