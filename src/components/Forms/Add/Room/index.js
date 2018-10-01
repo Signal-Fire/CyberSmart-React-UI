@@ -1,9 +1,11 @@
 import React from 'react';
 import { Form } from 'semantic-ui-react';
 import Yup from 'yup';
+import { Add } from '../../../../containers/actions/add';
+import * as Thing from '../../../../containers/Things';
 import { withFormik } from 'formik';
 import { SubmitButton } from '../Inputs';
-import { addLocation, setModalOpen } from '../../../../containers/Location/action';
+import { setModalOpen } from '../../../../containers/Location/action';
 import { connect } from 'react-redux';
 
 const LocationsForm = props => {
@@ -11,7 +13,7 @@ const LocationsForm = props => {
         values,        
         isSubmitting,
         handleChange,
-        handleSubmit,        
+        handleSubmit  
     } = props;
 
     return (
@@ -45,18 +47,19 @@ const LocationsFormik = withFormik({
     }),
     handleSubmit: (values, { props, setSubmitting }) => {
         values.created_by_user = props.first_name
-        props.addLocation(values);
+        props.addLocation(values, props.jwt);
         setTimeout(() => props.setModalOpen(false), 500);     
     },
     displayName : 'Add Device'
 })(LocationsForm)
 
 const mapStateToProps = state => ({
-    first_name : state.user.first_name
+    first_name : state.user.first_name,
+    jwt : state.login.token
 })
 
-const mapDispatchToProps = dispatch => ({
-    addLocation : (location) => { dispatch(addLocation(location)) },
+const mapDispatchToProps = (state) => dispatch => ({
+    addLocation : (location, auth) => { dispatch(Add(Thing.Location, location, auth)) },
     setModalOpen : (modalState) => { dispatch(setModalOpen(false)) }
 })
 

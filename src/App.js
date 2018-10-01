@@ -7,9 +7,7 @@ import { LoginModal } from './components/Modals';
 import './App.css';
 
 const App = ({
-    token,
-    sidebarOpen,
-    operateSidebar
+    token
 }) => {
     return (       
         <div className = "App">
