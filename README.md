@@ -38,6 +38,3 @@ The UI should appear in your browser, if not go to http://localhost:3000
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-## Acknowledgments
-
-* 420
