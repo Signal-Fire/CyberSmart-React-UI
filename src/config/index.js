@@ -1,6 +1,3 @@
-const DEV = process.env.DEV;
-const API_URL = process.env.API_URL;
-
 export const API_USERS_URL = process.env.API_USERS_URL;
 export const API_NOTIFICATIONS_URL = process.env.API_NOTIFICATIONS_URL;
 export const API_LOCATION_URL = process.env.API_LOCATION_URL;

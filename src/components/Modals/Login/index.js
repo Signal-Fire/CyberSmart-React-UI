@@ -1,4 +1,3 @@
-/* jshint esversion: 6*/
 import React from 'react';
 import { Message, Grid, Modal } from 'semantic-ui-react';
 import { connect } from 'react-redux';
