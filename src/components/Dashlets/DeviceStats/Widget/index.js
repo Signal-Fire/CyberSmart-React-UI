@@ -6,9 +6,9 @@ const StatisticWidget = ({
 }) => {
     return(
         <Statistic
-            color = {stats.color}>
+            color = { stats.color }>
             <Statistic.Value >
-                    <Icon name = {stats.icon}/> 
+                    <Icon name = { stats.icon }/> 
                     <p>{ stats.number }</p> 
                 </Statistic.Value> 
                 <Statistic.Label> 

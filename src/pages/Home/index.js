@@ -1,15 +1,20 @@
 import React from 'react';
 import { Grid } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import '../Master.css';
-import './HomePage.css';
 
 import { DeviceStats } from '../../components/Dashlets';
 import { PowerChart, DeviceChart } from '../../components/Charts';
 
+const HomeStyle = {
+    backgroundColor: '#FFF',
+    height: '100%',
+    padding: '20px',
+    color: 'black'
+}
+
 const HomePage = () => {
   return (
-    <header className = "page-body" >
+    <header style = { HomeStyle } >
       <DeviceStats />
       <Grid columns = {2}>
           <Grid.Column>

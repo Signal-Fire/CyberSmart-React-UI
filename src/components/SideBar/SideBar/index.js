@@ -1,15 +1,16 @@
-/* jshint esversion: 6*/
 import React from 'react';
 import { Sidebar } from 'semantic-ui-react';
 import { HashRouter } from 'react-router-dom';
 import { SideBarItems, Routes, MainSidebar, SideBarPusher } from '../';
 
-import './styles.css';
+const SideBarContainer = {
+    height : '100%'
+}
 
 const SideBar = ({ isOpen }) => {
     return (
         <HashRouter>
-            <div className = "sidebar-container">
+            <div style = { SideBarContainer }>
                 <SideBarPusher>
                     <MainSidebar>
                         <SideBarItems />

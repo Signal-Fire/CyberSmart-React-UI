@@ -108,15 +108,13 @@ UserSettingsForm.propTypes = {
     updateUserDetails : PropTypes.func
 }
 
-const mapStateToProps = state => {
-    return {
+const mapStateToProps = state => ({
         token : state.login.token,
         first_name : state.user.first_name,
         last_name : state.user.last_name,
         username : state.user.username,
         formError : state.user.error
-    }
-}
+})
 
 const mapDispatchToProps = dispatch => ({
     getUserDetailsFrom :  (token) => { dispatch(getUserDetailsFrom(token)) },

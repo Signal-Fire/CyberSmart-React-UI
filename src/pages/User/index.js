@@ -1,13 +1,11 @@
 import React from 'react'
 import { UsersTable } from '../../components/Users';
 import { Panel } from '../../components/ControlPanel';
-
-import '../Master.css';
-import './user.css';
+import * as Styles from '../Styles';
 
 const UserManagementPage = () => {
     return (
-        <header className="page-body">
+        <header style = { Styles.PageBody }>
             <Panel name = 'Users' />                             
             <UsersTable />
         </header>

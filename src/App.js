@@ -4,15 +4,17 @@ import { SideBar } from './components/SideBar';
 import { MainMenu } from './components/MenuBar';
 import { LoginModal } from './components/Modals';
 
-import './App.css';
+const MainStyle = {
+    textAlign: 'center',
+    backgroundColor: '#FFF',
+    height: '100%'
+}
 
 const App = ({
-    token,
-    sidebarOpen,
-    operateSidebar
+    token
 }) => {
     return (       
-        <div className = "App">
+        <div style = { MainStyle }>
             <MainMenu />
             <SideBar />  
             <LoginModal open = {token === null}/> 
@@ -21,8 +23,7 @@ const App = ({
 }
 
 const mapStateToProps = state => ({
-    token : state.login.token,
-    sidebarVisible : state.login.sidebarOpen
+    token : state.login.token
 })
 
 export default connect(mapStateToProps, null)(App);

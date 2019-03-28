@@ -2,9 +2,13 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import { DevicePage, HomePage, RoomPage, HelpPage, UserManagementPage } from '../../../pages/Exports';
 
+const SideBarContent = {
+    height : '100%'
+}
+
 const Routes = () => {
     return (
-        <div className = "sidebar-content">
+        <div style = { SideBarContent }>
             <Route exact path="/" component={HomePage}  />
             <Route exact path="/devices" component={DevicePage} />
             <Route exact path="/rooms" component={RoomPage} />

@@ -32,7 +32,6 @@ const AddDeviceForm = props => {
         options.forEach(option => {
             option.key = option._id;
             option.id = option._id;
-            option.name = option.name;
             option.value = option.name;
             option.text = option.name;
         });
