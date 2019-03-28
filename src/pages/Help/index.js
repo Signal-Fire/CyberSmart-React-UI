@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HelpTabs } from '../../components/Exports';
+import HelpTabs from '../../components/Help';
 import * as Styles from '../Styles';
 
 export default class HelpPage extends Component {

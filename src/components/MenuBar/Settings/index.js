@@ -1,7 +1,7 @@
 import React from 'react';
 import { Dropdown } from 'semantic-ui-react';
 
-import { MenuIcon } from '../../Exports';
+import MenuIcon from '../../MenuBar/Icons';
 import { UserSettingsModal, HubSettingsModal } from '../../Modals';
 import { USER_COOKIE_IDENTIFIER } from '../../../config';
 
