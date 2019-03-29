@@ -21,13 +21,13 @@ const NotificationFeed = ({
 
         return notifArray;
     }
-
+    /*
     const errorMessage = {
         icon : 'exclamation',
         type : 'error',
         created_by_user : 'System',
         message : 'Issue with Notifications'
-    }
+    }*/
 
     const noNotifications = {
         icon : 'smile',
@@ -40,7 +40,7 @@ const NotificationFeed = ({
             {
                 notifications === null ?
                 <Notification 
-                    notification = {errorMessage}/>
+                    notification = {noNotifications}/>
                 :
                 notifications.length < 1 ?
                 <Notification

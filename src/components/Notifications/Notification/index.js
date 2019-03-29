@@ -20,6 +20,8 @@ const iconSelector = (type) => {
             return 'mobile';
         case 'Location':
             return 'home';
+        case 'none':
+            return 'smile outline';
         default:
             return 'alarm';
     }
