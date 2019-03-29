@@ -72,7 +72,8 @@ const Gubbins = ({
 }
 
 const upperCase = (value) => {
-    return value.charAt(0).toUpperCase() + value.slice(1);
+    if (value)
+        return value.charAt(0).toUpperCase() + value.slice(1);
 }
 
 const UserSettingsForm = withFormik({

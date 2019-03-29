@@ -32,14 +32,13 @@ const AddDeviceForm = props => {
         options.forEach(option => {
             option.key = option._id;
             option.id = option._id;
-            option.name = option.name;
             option.value = option.name;
             option.text = option.name;
         });
 
         return options;
-    }   
-
+    }  
+    
     const _mapConnectedDropdown = (options) => {
         if (!options)
             return [];
@@ -49,8 +48,8 @@ const AddDeviceForm = props => {
             option.id = option.mac;
             option.name = option.ip;
             option.value = option.ip;
-            option.text = "Plug " + option.ip;
-        });
+            option.text = option.ip;
+        })
 
         return options;
     }

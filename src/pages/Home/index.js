@@ -5,28 +5,28 @@ import { connect } from 'react-redux';
 import { DeviceStats } from '../../components/Dashlets';
 import { PowerChart, DeviceChart } from '../../components/Charts';
 
-const HomeStyle = {
-    backgroundColor: '#FFF',
-    height: '100%',
-    padding: '20px',
-    color: 'black'
-}
+import './homeStyle.css';
 
 const HomePage = () => {
   return (
-    <header style = { HomeStyle } >
-      <DeviceStats />
-      <Grid columns = {2}>
-          <Grid.Column>
-            <PowerChart 
-              header = "Electricty Usage"/>
-          </Grid.Column>
-          <Grid.Column>
-            <DeviceChart 
-              header = "Total Devices"/>
-          </Grid.Column>         
-        </Grid>
-    </header>
+    <div className = "container">
+      <div className = "device-stats">
+        <DeviceStats />
+      </div>
+      <h1>Your Device Statistics</h1>
+      <div className = "usage">
+        <Grid columns = {2}>
+            <Grid.Column>
+              <PowerChart 
+                header = "Electricty Usage"/>
+            </Grid.Column>
+            <Grid.Column>
+              <DeviceChart 
+                header = "Total Devices"/>
+            </Grid.Column>     
+          </Grid>
+        </div>      
+    </div>
   )
 }
 

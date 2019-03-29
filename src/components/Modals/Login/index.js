@@ -1,4 +1,3 @@
-/* jshint esversion: 6*/
 import React from 'react';
 import { Message, Grid, Modal } from 'semantic-ui-react';
 import { connect } from 'react-redux';
@@ -47,7 +46,7 @@ const LoginModal = ({
 }
 
 const mapStateToProps = state => ({
-    isOpen : state.login.token === null
+    isOpen : false //state.login.token === null
 })
 
 const mapDispatchToProps = dispatch => ({

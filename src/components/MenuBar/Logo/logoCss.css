@@ -1,0 +1,8 @@
+.logo {
+    font-size: 1em;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 10px 10px 10px;
+    color: white;
+    font-family: "Lucida Console", Monaco, monospace;
+}

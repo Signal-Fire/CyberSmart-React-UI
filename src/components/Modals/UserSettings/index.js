@@ -3,7 +3,7 @@ import React from 'react';
 import { Modal } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 
-import { MenuIcon } from '../../Exports';
+import MenuIcon from '../../MenuBar/Icons';
 import { UserSettingsForm } from '../../Forms';
 import { SemanticModal } from '../';
 import { setModalOpen } from '../../../containers/User/action';

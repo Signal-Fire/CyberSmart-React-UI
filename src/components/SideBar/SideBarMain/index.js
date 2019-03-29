@@ -2,9 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Sidebar, Menu } from 'semantic-ui-react';
 
-const SideBar = ({ children, ...rest, isOpen }) => {
+const SideBar = ({ children, isOpen, ...rest }) => {
     return (
         <Sidebar
+            className = 'bar-styles'
             as = { Menu }
             animation = 'slide out'
             direction = 'left'

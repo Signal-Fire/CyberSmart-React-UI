@@ -7,7 +7,7 @@ export default ({
     device
 }) => {
     return (
-        <Label as = 'a' color = 'teal'>
+        <Label color = 'teal'>
             <Icon name = 'user' />
             {helpers.capz(device.created_by_user)}
             <Label.Detail>{moment(device.created_timestamp).format('MMMM Do, HH:mm')}</Label.Detail>     

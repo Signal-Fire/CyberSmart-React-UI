@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Modal, Button, Header, Form, Grid } from 'semantic-ui-react';
 
 import { PowerChart } from '../../Charts';
-import { MenuIcon } from '../../Exports';
+import MenuIcon from '../../MenuBar/Icons';
 import { SemanticModal } from '../';
 
 export default class HubSettingsModal extends Component {
