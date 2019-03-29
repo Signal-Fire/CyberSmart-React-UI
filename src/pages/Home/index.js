@@ -39,7 +39,7 @@ class HomePage extends React.Component {
         <div className = "device-stats">
           <DeviceStats />
         </div>    
-        <h1>Your Device Statistics {width}</h1>
+        <h1>Your Device Statistics</h1>
         <div className = "usage">
           <Grid columns = {2}>
               <Grid.Column>

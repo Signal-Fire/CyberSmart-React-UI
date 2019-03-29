@@ -14,7 +14,7 @@ export default () => {
                 title = 'Devices' />
             <SideBarItem 
                 navPage = "/rooms"
-                icon = 'home' 
+                icon = 'map pin' 
                 title = 'Rooms' />
             <SideBarItem 
                 navPage = "/user"
