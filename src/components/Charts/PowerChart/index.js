@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header } from 'semantic-ui-react';
+import { Header, Segment } from 'semantic-ui-react';
 import { LineChartTemplate } from '../LineTemplate';
 
 const data = [
@@ -15,7 +15,7 @@ const data = [
 
 export default ( { header }) => {
     return (
-        <div>
+        <Segment>
             <Header as ='h3' textAlign='center'>{ header }</Header>
             <LineChartTemplate 
                 data = {data}
@@ -23,6 +23,6 @@ export default ( { header }) => {
                         X : 'time',
                         Y : 'kwh'
                 }} />
-        </div>
+        </Segment>
     );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Header } from 'semantic-ui-react';
+import { Header, Segment } from 'semantic-ui-react';
 import { LineChartTemplate } from '../LineTemplate';
 
 const BasicChart = ( { 
@@ -17,7 +17,7 @@ const BasicChart = ( {
     }
     
     return (
-        <div>
+        <Segment>
             <Header as ='h3' textAlign='center'>{ header }</Header>
             <LineChartTemplate 
                 data = {data} 
@@ -25,7 +25,7 @@ const BasicChart = ( {
                     X : 'rooms',
                     Y : 'devices'  
                 }}/>
-        </div>
+        </Segment>
     );
 }
 

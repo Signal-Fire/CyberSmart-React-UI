@@ -46,7 +46,7 @@ const LoginModal = ({
 }
 
 const mapStateToProps = state => ({
-    isOpen : state.login.token === null
+    isOpen : false //state.login.token === null
 })
 
 const mapDispatchToProps = dispatch => ({

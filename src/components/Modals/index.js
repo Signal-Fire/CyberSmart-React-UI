@@ -1,4 +1,4 @@
-/* jshint esversion: 6 */
+
 import SemanticModal from './Template';
 import UserSettingsModal from './UserSettings';
 import ConfirmModal from './Confirm';
